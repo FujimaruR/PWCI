@@ -27,3 +27,10 @@ input[type="date"]{
     font-size: 18px;
 
 }
+
+textarea {
+    width: 60%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: none; 
+  }
