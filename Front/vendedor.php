@@ -55,7 +55,7 @@
   <div class="vendedor_general">
         <div class="row">
           <div class="col-md-6 d-flex justify-content-center">
-            <div class="card mb-3" style="max-width: 540px; height: 33%;">
+            <div class="card mb-3" style="max-width: 540px; height: 40%;">
               <div class="row g-0">
                   <div class="col-md-4">
                   <img src="http://localhost/prueba/PWCI/img/Lilysa.png" class="img-fluid rounded-start" alt="...">
@@ -75,10 +75,14 @@
               <div class="card-body">
               <h5 class="card-title">Consulta de ventas</h5>
               <p class="card-text">Ingrese el rango de fechas: </p>
-              <p>Desde: </p>
-              <input type="date" name="dateIni"/>
-              <p>Hasta: </p>
-              <input type="date" name="dateFin"/>
+                <div class="d-flex">
+                    <p>Desde: </p>
+                    <input type="date" name="dateIni" class="ml-2" />
+                </div>
+                <div class="d-flex">
+                    <p>Hasta: </p>
+                    <input type="date" name="dateFin" class="ml-2" />
+                </div>
 
               <label for="combobox">Selecciona o escribe una categoria:</label>
               <select id="combobox" name="combobox">
