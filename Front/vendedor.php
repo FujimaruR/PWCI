@@ -71,7 +71,7 @@
             </div>
         </li>
         <li>
-            <div class="card w-50" style="width: 90%;">
+            <div class="card w-75" style="width: 30%;">
                 <div class="card-body">
                 <h5 class="card-title">Consulta de ventas</h5>
                 <p class="card-text">Ingrese el rango de fechas: </p>
