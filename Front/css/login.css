@@ -1,0 +1,4 @@
+/* Login */
+.transparent-bg {
+    background-color: rgba(255, 219, 219, 0.7); /* Adjust the last value (0.9) for the desired transparency level */
+}
