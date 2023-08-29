@@ -10,4 +10,8 @@ li {
 .custom-active-bg {
     background-color: rgba(255, 219, 219, 0.7);
     color: white;
-  }
+}
+
+body{
+    background: linear-gradient(to left, #F2AFA0, #F2CEA2);
+}
