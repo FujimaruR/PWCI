@@ -1,10 +1,14 @@
 .vendedor_general{
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translate(-50%);
     width: 90%;
-    background: #5C1D1C;
-    border-radius: 10px;
+    background-image: url(http://localhost/prueba/PWCI/img/vendedor/vendedor.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    border-radius: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -18,19 +22,38 @@ li {
     margin-left: 20px;
 }
 
-input[type="date"]{
-    background: none;
-    margin: 0;
-    padding: 0;
-    font-family: Tahoma;
-    color: #000;
-    font-size: 18px;
-
-}
-
 textarea {
     width: 60%; 
     padding: 10px;
     border: 1px solid #ccc;
     resize: none; 
-  }
+}
+
+.menupri{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.menupri h1{
+    font-family: Bradley Hand, cursive;
+}
+
+.productocard{
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.productocard:hover{
+    transform: scale(1.05); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
+}
+
+.vendeprin{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.vendeprin h1{
+    font-family: Bradley Hand, cursive;
+}

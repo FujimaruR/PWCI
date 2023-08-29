@@ -1,0 +1,13 @@
+ul {
+    display: flex;
+    list-style: none;
+}
+
+li {
+    margin-left: 20px;
+}
+
+.custom-active-bg {
+    background-color: rgba(255, 219, 219, 0.7);
+    color: white;
+  }
