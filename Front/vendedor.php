@@ -47,11 +47,11 @@
           PERFIL DEL VENDEDOR
         </h1>
       </div>
-      <div class="col-md-6 d-flex justify-content-center">
-        <div class="card mb-3" id="cardperfil" style="max-width: 540px; height: 27%; background-color: rgba(255, 219, 219, 0.7);">
+      <div class="col-md-6">
+        <div class="card mb-3" id="cardperfil" style="max-width: 90%; background-color: rgba(255, 219, 219, 0.7);">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="http://localhost/prueba/PWCI/img/Lilysa.png" class="img-fluid rounded-start" alt="...">
+              <img src="http://localhost/prueba/PWCI/img/Lilysa.png" class="img-fluid rounded-start" alt="..." style="height: 100%;">
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -62,8 +62,12 @@
             </div>
           </div>
         </div>
+
+        <div class="gifbon">
+          <img src="http://localhost/prueba/PWCI/img/vendedor/nRm.gif" alt="Un GIF bonito">
+        </div>
       </div>
-      <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div class="col-md-6 vendecen">
         <div class="card w-75" style="width: 30%; background-color: rgba(255, 219, 219, 0.7);">
           <div class="card-body">
             <h5 class="card-title">Consulta de ventas</h5>
@@ -85,7 +89,7 @@
               <button type="button" class="btn btn-danger btn-sm">Agregar categoria</button>
             </div>
             <p>Categorias: </p>
-            <textarea disabled cols="40" rows="5" id="categorias" name="categorias"></textarea>
+            <textarea disabled class="form-control"></textarea>
 
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#consulvent">
               Confirmar

@@ -7,11 +7,11 @@ li {
     margin-left: 20px;
 }
 
-body{
+body {
     background: linear-gradient(to left, #F2AFA0, #F2CEA2);
 }
 
-.vproducto{
+.vproducto {
     position: relative;
     left: 50%;
     transform: translate(-50%);
@@ -22,19 +22,36 @@ body{
     padding-bottom: 20px;
 }
 
-.vproducto h1{
+.vproducto h1 {
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
     font-family: Bradley Hand, cursive;
 }
 
-.imgven{
+.imgven {
+    justify-content: center;
     text-align: center;
     font-family: Bradley Hand, cursive;
 }
 
-.datven{
-    text-align: center;
+.datven {
     font-family: Bradley Hand, cursive;
+}
+
+.datven h2{
+    text-align: center;
+}
+
+.carousel-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+}
+
+.carousel-media img,
+.carousel-media video {
+    object-fit: cover;
+    height: 50%;
 }
