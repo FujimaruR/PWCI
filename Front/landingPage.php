@@ -19,39 +19,28 @@
 <body>
 
 <div class="container-fluid px-0">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="bg-custom-color navbar navbar-expand-lg bg-body-tertiary fixed-top " style=" background-color: transparent!important;">
+        <div class="container-fluid ">
+            <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
+            <a class="nav-link active mx-2" aria-current="page" href="#"><h5 class="letraFuente text-white">Micherry</h5></a>
+          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse mx-4" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-            <a class="navbar-brand mt-2 mt-lg-0 text-white" href="#">
-            <img
-                src="http://localhost/prueba/PWCI/img/logo/Micherry.png"
-                height="50"
-                alt="MDB Logo"
-                loading="lazy"
-            />  Micherry
-            </a>
-        </div>
-
-        <div class="d-flex align-items-center">
-            <a href="registro.php" class="btn btnColorCard btnHover text-white ">Registrate</a>
-        </div>
-        <div class="d-flex align-items-center">
-            <a href="login.php" class="btn btnColorCard btnHover text-white mx-5">Iniciar sesión</a>
+              <li class="nav-item text-center">
+                <a href="registro.php" class="btn btnColorCard btnHover text-white ">Registrate</a>
+              </li>
+              <li class="nav-item text-center">
+                <a href="login.php" class="btn btnColorCard btnHover text-white mx-5">Iniciar sesión</a>
+              </li>
+            </ul>
+          </div>
         </div>
     </nav>
-
 
 </div>
 
@@ -149,7 +138,7 @@
             </div>
         </div>
     </div>
-</footer>
+    </footer>
 
 </body>
 </html>
