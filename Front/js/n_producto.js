@@ -37,3 +37,15 @@ document.getElementById('img-uploader-nprod').addEventListener('change', (e) => 
   }
 });
 
+
+const checkbox = document.getElementById('flexSwitchCheckDefault');
+const priceInput = document.getElementById('priceinput');
+
+checkbox.addEventListener('change', function () {
+  if (this.checked) {
+    priceInput.disabled = true; // Desactivar el input
+  } else {
+    priceInput.disabled = false; // Habilitar el input
+  }
+});
+

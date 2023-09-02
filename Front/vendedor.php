@@ -108,7 +108,38 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <div class="row">
+            <div class="col-md-6 consuagrupa">
+              <h1>Detallada</h1>
+              <div class="consualtagrupada">
+                <p class="izquierda">Fecha y hora de la venta:</p>
+                <p class="derecha">01/09/2023 a las 11:59</p>
+                <p class="izquierda">Categoria:</p>
+                <p class="derecha">Anime, ropa</p>
+                <p class="izquierda">Producto:</p>
+                <p class="derecha">Cosplay escolar Hatsune Miku</p>
+                <p class="izquierda">Calificacion:</p>
+                <p class="derecha">5 estrellas</p>
+                <p class="izquierda">Precio:</p>
+                <p class="derecha">200MXN</p>
+                <p class="izquierda">Existencia actual:</p>
+                <p class="derecha">5</p>
+                <p>Producto detallado</p>
+              </div>
+            </div>
+            <div class="col-md-6 consuagrupa">
+              <h1>Agrupada</h1>
+              <div class="consualtagrupada">
+                <p class="izquierda">Mes y año de la venta:</p>
+                <p class="derecha">Septiembre del 2023</p>
+                <p class="izquierda">Categoria:</p>
+                <p class="derecha">Anime, ropa</p>
+                <p class="izquierda">Ventas:</p>
+                <p class="derecha">1 pieza</p>
+                <p>Producto agrupado</p>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
@@ -122,104 +153,129 @@
   </div>
 
   <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
-    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row">
-                    <!-- Aquí comienzan las tarjetas del carrusel -->
-                    <div class="col-md-3">
-                        <div class="card productocard" style="width: 18rem; ">
-                            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_blanca.png" class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>MXN$300</strong></h5>
-                                <p class="card-text">Camisa blanca</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Agregar más tarjetas aquí -->
-                    <div class="col-md-3">
-                      <div class="card productocard" style="width: 18rem; ">
-                          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_chino.png" class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
-                          <div class="card-body">
-                              <h5 class="card-title"><strong>MXN$200</strong></h5>
-                              <p class="card-text">Ropa china</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="card productocard" style="width: 18rem; ">
-                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_miku.png" class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
-                        <div class="card-body">
-                            <h5 class="card-title"><strong>MXN$1000</strong></h5>
-                            <p class="card-text">Hatsune Miku cosplay</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
+          <div class="carousel-item active">
+            <div class="row">
+              <!-- Aquí comienzan las tarjetas del carrusel -->
+
+              <div class="col-md-3">
+                <a href="n_producto.php">
                   <div class="card productocard" style="width: 18rem; ">
-                      <img src="http://localhost/prueba/PWCI/img/vendedor/productos/Gojo.png" class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
-                      <div class="card-body">
-                          <h5 class="card-title"><strong>MXN$6000</strong></h5>
-                          <p class="card-text">Gojo cosplay maid</p>
-                      </div>
+                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_blanca.png"
+                      class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>MXN$300</strong></h5>
+                      <p class="card-text">Camisa blanca</p>
+                    </div>
                   </div>
+                </a>
               </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row">
-                    <!-- Continuación de las tarjetas del carrusel -->
-                    <div class="col-md-3">
-                        <div class="card productocard" style="width: 18rem;">
-                            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_linda.png" class="card-img-top" alt="Producto 5" style="object-fit: cover; height: 200px;">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>MXN$450</strong></h5>
-                                <p class="card-text">Vestido lindo</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Agregar más tarjetas aquí -->
-                    <div class="col-md-3">
-                      <div class="card productocard" style="width: 18rem; ">
-                          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/sirvienta.png" class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
-                          <div class="card-body">
-                              <h5 class="card-title"><strong>MXN$8000</strong></h5>
-                              <p class="card-text">Traje lindo de sirvienta</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="card productocard" style="width: 18rem; ">
-                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
-                        <div class="card-body">
-                            <h5 class="card-title"><strong>MXN$4000</strong></h5>
-                            <p class="card-text">Vestido blanco</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
+              <!-- Agregar más tarjetas aquí -->
+              <div class="col-md-3">
+                <a href="n_producto.php">
                   <div class="card productocard" style="width: 18rem; ">
-                      <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png" class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
-                      <div class="card-body">
-                          <h5 class="card-title"><strong>MXN$500</strong></h5>
-                          <p class="card-text">Vestido de temporada</p>
-                      </div>
+                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_chino.png"
+                      class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>MXN$200</strong></h5>
+                      <p class="card-text">Ropa china</p>
+                    </div>
                   </div>
+                </a>
               </div>
-                </div>
+              <div class="col-md-3">
+                <a href="n_producto.php">
+                  <div class="card productocard" style="width: 18rem; ">
+                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_miku.png" class="card-img-top"
+                      alt="Camisa blanca" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>MXN$1000</strong></h5>
+                      <p class="card-text">Hatsune Miku cosplay</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-3">
+                <a href="n_producto.php">
+                  <div class="card productocard" style="width: 18rem; ">
+                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/Gojo.png" class="card-img-top"
+                      alt="Camisa blanca" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>MXN$6000</strong></h5>
+                      <p class="card-text">Gojo cosplay maid</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
-            <!-- Agregar más elementos "carousel-item" según sea necesario -->
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <!-- Continuación de las tarjetas del carrusel -->
+              <div class="col-md-3">
+                <a href="n_producto.php">
+                  <div class="card productocard" style="width: 18rem;">
+                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_linda.png" class="card-img-top"
+                      alt="Producto 5" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>MXN$450</strong></h5>
+                      <p class="card-text">Vestido lindo</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <!-- Agregar más tarjetas aquí -->
+              <div class="col-md-3">
+                <a href="n_producto.php">
+                  <div class="card productocard" style="width: 18rem; ">
+                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/sirvienta.png" class="card-img-top"
+                      alt="Camisa blanca" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>MXN$8000</strong></h5>
+                      <p class="card-text">Traje lindo de sirvienta</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-3">
+                <a href="n_producto.php">
+                  <div class="card productocard" style="width: 18rem; ">
+                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png"
+                      class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>MXN$4000</strong></h5>
+                      <p class="card-text">Vestido blanco</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-3">
+                <a href="n_producto.php">
+                  <div class="card productocard" style="width: 18rem; ">
+                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png"
+                      class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                      <h5 class="card-title"><strong>MXN$500</strong></h5>
+                      <p class="card-text">Vestido de temporada</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Agregar más elementos "carousel-item" según sea necesario -->
         </div>
-        <a class="carousel-control-prev" href="#productCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
+        <a class="carousel-control-prev" href="#productCarousel" role="button" data-bs-slide="prev" style="margin-left: -15%;">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
         </a>
-        <a class="carousel-control-next" href="#productCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
+        <a class="carousel-control-next" href="#productCarousel" role="button" data-bs-slide="next" style="margin-right: -15%;">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
         </a>
+      </div>
     </div>
-</div>
 
 </body>
 

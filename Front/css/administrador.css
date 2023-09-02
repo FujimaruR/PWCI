@@ -22,3 +22,17 @@ body {
     padding-bottom: 2%;
     padding-left: 2%;
 }
+
+.productocard{
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.productocard:hover{
+    transform: scale(1.05); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
+}
+
+.salirbtn:hover{
+    cursor: pointer;
+}
