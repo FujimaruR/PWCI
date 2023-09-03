@@ -57,3 +57,35 @@ textarea {
 .vendeprin h1{
     font-family: Bradley Hand, cursive;
 }
+
+.gifbon{
+    width: 10%; 
+    height: 100%;
+}
+
+.consuagrupa{
+    font-family: Bradley Hand, cursive;
+    padding-bottom: 10%;
+}
+
+.consuagrupa h1{
+    text-align: center;
+}
+
+.consualtagrupada{
+    width: 80%;
+    background-color: rgba(255, 219, 219, 0.7);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5%;
+}
+
+.izquierda {
+    float: left;
+    width: 50%;
+}
+
+.derecha {
+    float: left;
+    width: 50%;
+}
