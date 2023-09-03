@@ -1,0 +1,127 @@
+body {
+    background-image: url(http://localhost/prueba/PWCI/img/buscar_producto/arco-iris.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.cardColor {
+    background: linear-gradient(to left, #fcebff, #fff5ea) !important;
+}
+
+.btnColorCard {
+    background-color: #E484A2 !important;
+}
+
+.btnHover:hover {
+    background-color: #B9B4D9 !important;
+}
+
+.navColor {
+    background-color: #BA3A47 !important;
+}
+
+.bg-custom-color {
+    background-color: #BA3A47 !important;
+}
+
+.letraFuente {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+
+li {
+    margin-left: 1%;
+}
+
+.precio-input {
+    display: flex;
+    align-items: center;
+}
+
+.precio-input input {
+    width: 30%;
+    margin: 0 1%;
+}
+
+
+.configbus button {
+    margin-left: 1%;
+}
+
+.heart-icon {
+    color: pink;
+    font-size: 150%;
+    transition: color 0.3s;
+}
+
+.heart-icon:hover {
+    color: red;
+    transform: scale(1.2);
+}
+
+.cardPrinc:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.cardPrinc {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.princPrecio h1 {
+    font-family: Bradley Hand, cursive;
+}
+
+.elemento {
+    width: 200%;
+    height: 100%;
+    position: relative;
+
+}
+
+.fixed-card {
+    width: 300%;
+    height: 100%;
+}
+
+.fixed-image {
+    width: auto;
+    height: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.heart-button {
+    position: absolute;
+    top: 1%;  
+    right: 1%;    
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2;     
+}
+
+.cardsprodu{
+    margin-top: 1%;
+}
+
+.paginacionp{
+    display: flex;
+    justify-content: center;
+}
+
+.margen{
+    margin-left: 0;
+}
+
+.mediar{
+    display: flex;
+    justify-content: center;
+}
