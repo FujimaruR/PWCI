@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/perfil_usuario.css">
+  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/mensajes_usuario.css">
+  <script src="http://localhost/prueba/PWCI/Front/js/mensajes_usuario.js"></script>
   <script
     src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet"
@@ -139,80 +140,39 @@
     </div>
   </div>
 
-  <div class="datos_usuario">
-    <h1>Perfil de usuario</h1>
+  <div class="container mt-4">
     <div class="row">
-      <div class="col-md-6">
-
-        <div class="card mb-3" style="max-width: 90%;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" class="img-fluid rounded-start" alt="..."
-                style="height: 100%; width: 100%; object-fit:cover;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <div class="badge rounded-pill btnColorCard">Lucero </div>
-                <hr>
-                <p class="card-text" style="padding-top: 1%;">Correo: lucero@gmail.com</p>
-                <p>Codigo postal:  66420</p>
-                <p>Direccion de entrega: Cinco # 629, col VILLAZUL,  San Nicolas de los Garza,  Nuevo Leon,  MX</p>
-                <p>Numero telefonico: 8183321706</p>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editarPerfil">Editar</button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-md-3">
+        <ul class="list-group" id="user-list">
+          <li class="list-group-item active list-group-item-danger" data-user="usuario1">Usuario 1</li>
+          <li class="list-group-item list-group-item-danger" data-user="usuario2">Usuario 2</li>
+          <!-- Agrega más usuarios aquí -->
+        </ul>
       </div>
-      <div class="col-md-6">
-        <h2>Otras configuraciones</h2>
-        <a class="btn btn-danger" href="vendedor.php" role="button">
-          Ir al perfil de vendedor
-        </a>
-        <h3>Perfil</h3>
-        <div class="form-check form-switch d-flex my-2 ">
-          <label class="form-check-label px-5 " for="genderSwitch">Publico</label>
-          <input class="form-check-input px-3" type="checkbox" id="genderSwitch">
-          <label class="form-check-label" for="genderSwitch">Privado</label>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="modal fade" id="editarPerfil" tabindex="-1" aria-labelledby="editarPerfilLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="editarPerfilLabel">Editar perfil</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <label for="postalcod">Codigo postal: </label>
-          <input type="text" class="form-control" id="postalcod" placeholder="...">
-          <label for="direc">Direccion: </label>
-          <input type="text" class="form-control" id="direc" placeholder="...">
-          <label for="telef">Numero telefonico:</label>  
-          <input type="number" class="form-control" id="telef" placeholder="...">
-          
-
-          <div class="col-4">
-            <label for="formFile" class="form-label">Foto de perfil</label>
-              <div class="card">
-                <input class="form-control" style="background-size: 50%" type="file" id="#img-preview" onchange="loadFile(event)" required>
-                <img id="#img-uploader"/>
-              </div>
+      <div class="col-md-9">
+        <div class="card" id="conversation-card">
+          <div class="card-header">
+            Conversación
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-danger">Guardar</button>
+          <div class="card-body">
+            <ul class="list-group" id="message-list">
+              <!-- Mensajes se agregarán aquí dinámicamente -->
+            </ul>
+          </div>
+          <div class="card-footer">
+            <form id="message-form">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Escribe tu mensaje...">
+                <div class="input-group-append">
+                  <button class="btn btn-danger" type="submit">Enviar</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <script src="http://localhost/prueba/PWCI/Front/js/perfil_usuario.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/perfil_usuario.css">
+  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/pedidos.css">
+  <script src="http://localhost/prueba/PWCI/Front/js/b_producto.js"></script>
   <script
     src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet"
@@ -139,80 +140,84 @@
     </div>
   </div>
 
-  <div class="datos_usuario">
-    <h1>Perfil de usuario</h1>
-    <div class="row">
-      <div class="col-md-6">
-
-        <div class="card mb-3" style="max-width: 90%;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" class="img-fluid rounded-start" alt="..."
-                style="height: 100%; width: 100%; object-fit:cover;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <div class="badge rounded-pill btnColorCard">Lucero </div>
-                <hr>
-                <p class="card-text" style="padding-top: 1%;">Correo: lucero@gmail.com</p>
-                <p>Codigo postal:  66420</p>
-                <p>Direccion de entrega: Cinco # 629, col VILLAZUL,  San Nicolas de los Garza,  Nuevo Leon,  MX</p>
-                <p>Numero telefonico: 8183321706</p>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editarPerfil">Editar</button>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div id="elementoFijo">
+    <div class="contenido">
+      <h2>Filtrar por:</h2>
+      <h3>Fechas</h3>
+      <p class="me-2">Desde: </p>
+      <input type="date" name="dateIni" class="form-control mb-2 mb-md-0" />
+      <p class="me-2">Hasta: </p>
+      <input type="date" name="dateFin" class="form-control mb-2 mb-md-0" />
+      <p class="me-2">Categorias: </p>
+      <div class="input-group">
+        <select class="form-select" id="inputGroupSelect05" aria-label="Example select with button addon">
+          <option selected>Anime</option>
+          <option value="1">Ropa</option>
+          <option value="2">Electronica</option>
+          <option value="3">Figuras</option>
+        </select>
+        <button class="btn btn-outline-danger" type="button">Confirmar</button>
       </div>
-      <div class="col-md-6">
-        <h2>Otras configuraciones</h2>
-        <a class="btn btn-danger" href="vendedor.php" role="button">
-          Ir al perfil de vendedor
-        </a>
-        <h3>Perfil</h3>
-        <div class="form-check form-switch d-flex my-2 ">
-          <label class="form-check-label px-5 " for="genderSwitch">Publico</label>
-          <input class="form-check-input px-3" type="checkbox" id="genderSwitch">
-          <label class="form-check-label" for="genderSwitch">Privado</label>
+      <div class="form-floating my-2">
+        <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
+        <label for="floatingTextaread">Categorias del producto</label>
+      </div>
+      <div>
+        <ul class="ml-2">
+          <li>
+            <button class="btn btn-outline-danger" type="button">Eliminar</button>
+          </li>
+          <li>
+            <button class="btn btn-outline-danger" type="button">Confirmar</button>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="headerpedidos">
+    <h1>Consulta de pedidos realizados</h1>
+  </div>
+
+  <div class="mpedidos">
+    <h1>Pedidos</h1>
+    <div class="card mb-3" style="max-width: 60%;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="img-fluid rounded-start" alt="..."
+            style="height: 100%; object-fit: cover;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="badge rounded-pill btnColorCard">Laptop </div>
+            <p class="card-text" style="padding-top: 1%;">Laptop linda kawai uwu chi</p>
+            <p class="card-text"><small class="text-body-secondary"><strong>MXN$18300.00</strong></small></p>
+            <hr>
+            <p>Fecha y hora de la compra: 01/09/2023</p>
+            <p>Categorias: Electronica</p>
+            <p>Cantidad: 1</p>
+            <p>Calificacion:</p>
+            <form class="estrellas">
+              <p class="clasificacion">
+                <input id="radio1" type="radio" name="estrellas" value="5">
+                <label for="radio1">★</label>
+                <input id="radio2" type="radio" name="estrellas" value="4">
+                <label for="radio2">★</label>
+                <input id="radio3" type="radio" name="estrellas" value="3">
+                <label for="radio3">★</label>
+                <input id="radio4" type="radio" name="estrellas" value="2">
+                <label for="radio4">★</label>
+                <input id="radio5" type="radio" name="estrellas" value="1">
+                <label for="radio5">★</label>
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
-
-  <div class="modal fade" id="editarPerfil" tabindex="-1" aria-labelledby="editarPerfilLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="editarPerfilLabel">Editar perfil</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <label for="postalcod">Codigo postal: </label>
-          <input type="text" class="form-control" id="postalcod" placeholder="...">
-          <label for="direc">Direccion: </label>
-          <input type="text" class="form-control" id="direc" placeholder="...">
-          <label for="telef">Numero telefonico:</label>  
-          <input type="number" class="form-control" id="telef" placeholder="...">
-          
-
-          <div class="col-4">
-            <label for="formFile" class="form-label">Foto de perfil</label>
-              <div class="card">
-                <input class="form-control" style="background-size: 50%" type="file" id="#img-preview" onchange="loadFile(event)" required>
-                <img id="#img-uploader"/>
-              </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-danger">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <script src="http://localhost/prueba/PWCI/Front/js/perfil_usuario.js"></script>
 </body>
 
 </html>

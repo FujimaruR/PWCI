@@ -1,0 +1,79 @@
+body {
+    background-image: url(http://localhost/prueba/PWCI/img/buscar_producto/arco-iris.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.cardColor {
+    background: linear-gradient(to left, #fcebff, #fff5ea) !important;
+}
+
+.btnColorCard {
+    background-color: #E484A2 !important;
+}
+
+.btnHover:hover {
+    background-color: #B9B4D9 !important;
+}
+
+.navColor {
+    background-color: #BA3A47 !important;
+}
+
+.bg-custom-color {
+    background-color: #BA3A47 !important;
+}
+
+.letraFuente {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+}
+
+li {
+    margin-left: 1%;
+}
+
+.precio-input {
+    display: flex;
+    align-items: center;
+}
+
+.precio-input input {
+    width: 30%;
+    margin: 0 1%;
+}
+
+
+.configbus button {
+    margin-left: 1%;
+}
+
+.datos_usuario{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    background-color: rgba(255, 219, 219, 0.7);
+    border-radius: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: Bradley Hand, cursive;
+}
+
+.datos_usuario h1{
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+
+.badge.rounded-pill {
+    font-size: 100%;
+    padding: 5% 8%;
+}
