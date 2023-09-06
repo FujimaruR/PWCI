@@ -7,16 +7,13 @@
   <script
     src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
 
-  <link rel="stylesheet"
-    href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
   <link rel="stylesheet" href="./css/vistaProducto.css">
+  <link rel="stylesheet" href="http://localhost/prueba/PWCI/node_modules/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 
 <body class="letraFuente">
@@ -110,7 +107,7 @@
           </ul>
         </div>
       </div>
-    
+
       <div class="offcanvas offcanvas-start" tabindex="-1" id="categorias" aria-labelledby="titulocatego">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="titulocatego">Menu de categorias</h5>
@@ -139,7 +136,7 @@
                 <button class="btn btn-outline-danger" type="button">Confirmar</button>
               </li>
             </ul>
-    
+
           </div>
         </div>
       </div>
@@ -147,7 +144,7 @@
         <div class="row">
             <div class="col-md-6 col-lg-8 ">
                 <div class="card align-items-center py-3 transparent-bg"style="height:550px;">
-                    
+
                     <div id="miCarrusel" class="carousel">
                         <ol class="carousel-indicators">
                             <li data-bs-target="#miCarrusel" data-bs-slide-to="0" class="active"></li>
@@ -219,32 +216,32 @@
                         <div class="modal fade" id="comprar">
                             <div class="modal-dialog">
                             <div class="modal-content">
-                            
+
                                 <!-- Cabecera del Modal -->
                                 <div class="modal-header">
                                 <h4 class="modal-title">Método de pago</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-                                
+
                                 <!-- Contenido del Modal -->
                                 <div class="modal-body text-center">
-                                    <p><span>Un articulo en tu carrito</span></p>                     
+                                    <p><span>Un articulo en tu carrito</span></p>
                                     <div class="row">
                                         <div class="col-4 mx-5" >
                                             <p><span>Subtotal=</span></p>
                                         </div>
                                         <div class="col-4">
                                             <p><span>$500</span></p>
-                                        </div>   
+                                        </div>
                                     </div>
                                     <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C;"><h5>Pagar con PayPal</h5></button>
                                 </div>
-                                
+
                                 <!-- Pie del Modal -->
                                 <div class="modal-footer">
                                 <button type="button" class="btn btnColorCard btnHover" data-dismiss="modal">Cerrar</button>
                                 </div>
-                                
+
                             </div>
                             </div>
                         </div>
@@ -252,16 +249,16 @@
                         <div class="modal fade" id="crearLista" tabindex="-1" aria-labelledby="crearLista" aria-hidden="true">
                             <div class="modal-dialog">
                             <div class="modal-content">
-                            
+
                                 <!-- Cabecera del Modal -->
                                 <div class="modal-header">
                                 <h4 class="modal-title">Crear lista</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-                                
+
                                 <!-- Contenido del Modal -->
                                 <div class="modal-body text-center">
-                
+
                                     <div class="row">
                                         <div class="col-5 mx-5 my-5" >
                                             <input type="text" class="form-control my-2" id="nomLista" placeholder="Nombre de la lista" required>
@@ -272,16 +269,16 @@
                                                 <input class="form-control" style="background-size: 50vh" type="file" id="#img-preview" onchange="loadFile(event)" required>
                                                 <img id="#img-uploader" src="../img/principal/abanico.jpg"/>
                                             </div>
-                                        </div>   
+                                        </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Pie del Modal -->
                                 <div class="modal-footer">
                                     <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C; color:aliceblue;">Crear</button>
                                     <button type="button" class="btn btnColorCard btnHover" data-dismiss="modal" style="color:aliceblue;">Cerrar</button>
                                 </div>
-                                
+
                             </div>
                             </div>
                         </div>
@@ -298,7 +295,7 @@
                                 <img src="../img/fotoPerfil.jpg" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
                                 <span style="background-color: rgb(251, 233, 226); border-radius: 10px 10px 10px 10px;">Jaky</span>
                                 <p class="mx-5" >
-                                    Me encanta!!, es de las mejores lamparas del mercado xd, muy bonitaaa </p>   
+                                    Me encanta!!, es de las mejores lamparas del mercado xd, muy bonitaaa </p>
                             </div>
                             <div class="my-2">
                                 <img src="../img/Lilysa.png" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
@@ -350,7 +347,7 @@
                 <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" width="60" alt="Logo Micherry" class="img-logo mr-2">
                 Micherry
             </div>
-  
+
             <div class="col-md-3 col-lg-3">
                 <!-- Menú 1 -->
                 <ul class="list-unstyled">
@@ -358,7 +355,7 @@
                     <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
                 </ul>
             </div>
-  
+
             <div class="col-md-3 col-lg-3">
                 <!-- Menú 2 -->
                 <ul class="list-unstyled">
@@ -367,7 +364,7 @@
                     <li class="my-2">Emilio Yair Castillo Pacheco</li>
                 </ul>
             </div>
-  
+
             <div class="col-md-3 col-lg-3">
                 <!-- Menú 3 -->
                 <ul class="list-unstyled">
