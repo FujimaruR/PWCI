@@ -36,7 +36,7 @@
                 <div class="col-4">
                     <input type="email" class="form-control " id="correoLogin" placeholder="name@example.com" required>
                     
-                    <input type="text" class="form-control my-2" id="correoLogin" placeholder="usuario" required>
+                    <input type="text" class="form-control my-2" id="usuario" placeholder="usuario" required>
 
                     <input type="Password" class="form-control my-2" id="PasswordLogin"name="Password" placeholder="password" required>
                    

@@ -40,76 +40,85 @@
       </div>
     </div>
   </nav>
+<div class="container mt-5">
+      <div class="row">
+      <div class="col-md-6 col-lg-6 imgven mx-auto">
+        <div class="card " style="background-color: rgba(255, 219, 219, 0.7);">
+          <div class="card-body ">
+            <h4>Producto nuevo</h4>
+             <h5 class="me-2">Imagenes y videos</h5>
+            <p class="mb-2 mb-md-0">Ingresa las imágenes y el video del producto</p>
 
+            <div id="mediaCarousel" class="carousel slide" >
+              <div class="carousel-inner text-center" id="mediaCarouselInner">
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#mediaCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#mediaCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
 
-  <div class="vproducto">
-    <div class="row">
-      <h1>PRODUCTO NUEVO</h1>
-      <div class="col-md-6 imgven">
-        <h2 class="me-2">Imagenes y videos</h2>
-        <p class="mb-2 mb-md-0">Ingresa las imágenes y el video del producto</p>
-
-        <div id="mediaCarousel" class="carousel slide">
-          <div class="carousel-inner" id="mediaCarouselInner">
+            <video id="video-preview" controls style="display: none;"></video>
+            <input class="form-control" type="file" id="img-uploader-nprod" accept="image/*, video/*" multiple>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#mediaCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#mediaCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
 
-        <video id="video-preview" controls style="display: none;"></video>
-        <input class="form-control" type="file" id="img-uploader-nprod" accept="image/*, video/*" multiple>
       </div>
-      <div class="col-md-6 datven">
-        <h2>Datos del producto</h2>
-        <div class="form-floating my-2">
-          <input type="text" class="form-control" id="productinput" placeholder="...">
-          <label for="productinput">Nombre del producto</label>
+      <div class="col-md-6 col-lg-4 datven " >
+        <div class="card"style="background-color: rgba(255, 219, 219, 0.7);">
+          <div class="card-body">
+            <h5 class="text-center">Datos del producto</h5>
+            <div class="form-floating my-2" >
+              <input type="text" class="form-control" id="productinput" placeholder="...">
+              <label for="productinput">Nombre del producto</label>
+            </div>
+            <div class="form-floating my-2">
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+              <label for="floatingTextarea">Descripcion del producto</label>
+            </div>
+            <div class="form-floating my-2">
+              <input type="number" class="form-control" id="floatingInput" placeholder="...">
+              <label for="floatingInput">Cantidad del producto</label>
+            </div>
+            <p>Categorias: </p>
+            <div class="form-floating my-2">
+              <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <option selected>Anime</option>
+                <option value="1">Ropa</option>
+                <option value="2">Electronica</option>
+                <option value="3">Figuras</option>
+              </select>
+              <label for="floatingSelect">Categoria del producto</label>
+            </div>
+            <div class="input-group my-2">
+              <input type="text" class="form-control" placeholder="Nueva categoria" aria-label="Nueva categoria" aria-describedby="button-addon2">
+              <button class="btn btn-danger" type="button" id="button-addon2">Confirmar</button>
+            </div>
+            <div class="form-floating my-2">
+              <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
+              <label for="floatingTextaread">Categorias del producto</label>
+            </div>
+            <div class="form-check form-switch d-flex">
+              <label class="form-check-label px-5" for="flexSwitchCheckDefault">Vender</label>
+              <input class="form-check-input px-3" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Cotizar</label>
+            </div>
+            <div class="form-floating my-2">
+              <input type="number" class="form-control" id="priceinput" placeholder="...">
+              <label for="priceinput">Precio del producto</label>
+            </div>
+            <button type="button" class="btn btn-danger">Confirmar</button>
+          </div>
         </div>
-        <div class="form-floating my-2">
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-          <label for="floatingTextarea">Descripcion del producto</label>
-        </div>
-        <div class="form-floating my-2">
-          <input type="number" class="form-control" id="floatingInput" placeholder="...">
-          <label for="floatingInput">Cantidad del producto</label>
-        </div>
-        <p>Categorias: </p>
-        <div class="form-floating my-2">
-          <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-            <option selected>Anime</option>
-            <option value="1">Ropa</option>
-            <option value="2">Electronica</option>
-            <option value="3">Figuras</option>
-          </select>
-          <label for="floatingSelect">Categoria del producto</label>
-        </div>
-        <div class="input-group my-2">
-          <input type="text" class="form-control" placeholder="Nueva categoria" aria-label="Nueva categoria" aria-describedby="button-addon2">
-          <button class="btn btn-danger" type="button" id="button-addon2">Confirmar</button>
-        </div>
-        <div class="form-floating my-2">
-          <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
-          <label for="floatingTextaread">Categorias del producto</label>
-        </div>
-        <div class="form-check form-switch d-flex">
-          <label class="form-check-label px-5" for="flexSwitchCheckDefault">Vender</label>
-          <input class="form-check-input px-3" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">Cotizar</label>
-        </div>
-        <div class="form-floating my-2">
-          <input type="number" class="form-control" id="priceinput" placeholder="...">
-          <label for="priceinput">Precio del producto</label>
-        </div>
-        <button type="button" class="btn btn-danger">Confirmar</button>
+
+
       </div>
     </div>
-  </div>
+</div>
 
   <script src="http://localhost/prueba/PWCI/Front/js/n_producto.js"></script>
 </body>

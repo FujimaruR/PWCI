@@ -14,6 +14,7 @@
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
   <link rel="stylesheet" href="./css/vistaProducto.css">
   <link rel="stylesheet" href="http://localhost/prueba/PWCI/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
 </head>
 
 <body class="letraFuente">
@@ -48,7 +49,7 @@
             <li class="nav-item dropdown">
 
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35">
+                <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35" style="border-radius: 20px 20px 20px 20px;">
 
                 </a>
                 <ul class="dropdown-menu">
@@ -156,17 +157,17 @@
                         <div class="carousel-inner">
                             <!-- Imágenes -->
                             <div class="carousel-item active">
-                                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_869344-CBT45737948226_042021-F.webp" style="max-width: 400px; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 1">
+                                <img src="../img/principal/mascara.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 1">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_893241-CBT45561506333_042021-F.webp" style="max-width: 400px; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 2">
+                                <img src="../img/principal/lampara.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 2">
                             </div>
                             <div class="carousel-item">
-                                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_707924-CBT45561506330_042021-F.webp" style="max-width: 400px; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 3">
+                                <img src="../img/principal/llaveroGatito.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 3">
                             </div>
                             <!-- Video -->
                             <div class="carousel-item">
-                                <video controls style="width:100%; max-width: 400px; height: 500px;">
+                                <video controls style="max-width: 100%; height: 500px;">
                                     <source src="../img/cubo.mp4" type="video/mp4">
                                     Tu navegador no admite el elemento de video.
                                 </video>
@@ -208,19 +209,19 @@
                         <button type="button" class="btn btnColorCard btnHover"  style="color:aliceblue;">Cotizar</button>
                             <div class="text-center my-5">
                                   <div class="btn-group" role="group" aria-label="Grupo de botones">
-                                     <button type="button" class="btn btnColorCard btnHover " style="color:aliceblue;"data-toggle="modal" data-target="#comprar">Comprar</button>
+                                     <button type="button" class="btn btnColorCard btnHover " style="color:aliceblue;"data-bs-toggle="modal" data-bs-target="#comprar">Comprar</button>
                                      <button type="button" class="btn btnHover" style="background-color: #7dcf72;color:aliceblue;">&#128722;</button>
                                   </div>
                             </div>
                         <!-- Modal -->
-                        <div class="modal fade" id="comprar">
+                        <div class="modal fade" id="comprar"  tabindex="-1" aria-labelledby="comprar" aria-hidden="true">
                             <div class="modal-dialog">
                             <div class="modal-content">
 
                                 <!-- Cabecera del Modal -->
                                 <div class="modal-header">
                                 <h4 class="modal-title">Método de pago</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                                 </div>
 
                                 <!-- Contenido del Modal -->
@@ -239,9 +240,8 @@
 
                                 <!-- Pie del Modal -->
                                 <div class="modal-footer">
-                                <button type="button" class="btn btnColorCard btnHover" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btnColorCard btnHover" data-bs-dismiss="modal">Cerrar</button>
                                 </div>
-
                             </div>
                             </div>
                         </div>
@@ -253,7 +253,7 @@
                                 <!-- Cabecera del Modal -->
                                 <div class="modal-header">
                                 <h4 class="modal-title">Crear lista</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                                 </div>
 
                                 <!-- Contenido del Modal -->
@@ -276,9 +276,8 @@
                                 <!-- Pie del Modal -->
                                 <div class="modal-footer">
                                     <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C; color:aliceblue;">Crear</button>
-                                    <button type="button" class="btn btnColorCard btnHover" data-dismiss="modal" style="color:aliceblue;">Cerrar</button>
+                                    <button type="button" class="btn btnColorCard btnHover" data-bs-dismiss="modal" style="color:aliceblue;">Cerrar</button>
                                 </div>
-
                             </div>
                             </div>
                         </div>
