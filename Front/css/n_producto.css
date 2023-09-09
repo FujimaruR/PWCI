@@ -7,9 +7,7 @@ li {
     margin-left: 20px;
 }
 
-body {
-    background: linear-gradient(to left, #F2AFA0, #F2CEA2);
-}
+
 
 .vproducto {
     position: relative;
@@ -64,3 +62,12 @@ body {
     margin: 0 auto; /* Para centrar la imagen horizontalmente */
 }
 
+body{ background-image: url(http://localhost/prueba/PWCI/img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+.letraFuente {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}

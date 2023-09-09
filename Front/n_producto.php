@@ -14,10 +14,10 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg" style="background-color: #FFDBDB;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="vendedor.php">
-        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo" width="30" height="24"
+<nav class="navbar navbar-expand-lg" style="background-color:#7D2C6F;">
+    <div class="container-fluid letraFuente">
+      <a class="navbar-brand text-light" href="vendedor.php">
+        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo"  height="30"
           class="d-inline-block align-text-top">
         Micherry
       </a>
@@ -25,16 +25,14 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse " id="navbarSupportedContent" >
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
           <li class="nav-item">
-            <a class="nav-link" href="n_producto.php">Nuevo producto</a>
+            <a class="nav-link text-light" href="mensajes_vendedor.php">Mensajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="mensajes_vendedor.php">Mensajes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Volver al perfil de comprador</a>
+            <a class="nav-link active text-light" aria-current="page" href="perfil_usuario.php">Volver al perfil de comprador</a>
           </li>
         </ul>
       </div>
@@ -43,13 +41,12 @@
 <div class="container mt-5">
       <div class="row">
       <div class="col-md-6 col-lg-6 imgven mx-auto">
-        <div class="card " style="background-color: rgba(255, 219, 219, 0.7);">
+        <div class="card " style="background-color:#f5d3dfe4; border-radius: 30px;">
           <div class="card-body ">
             <h4>Producto nuevo</h4>
-             <h5 class="me-2">Imagenes y videos</h5>
-            <p class="mb-2 mb-md-0">Ingresa las imágenes y el video del producto</p>
+            <p class="mb-2 mb-md-0 py-2">Ingresa las imágenes y el video del producto</p>
 
-            <div id="mediaCarousel" class="carousel slide" >
+            <div id="mediaCarousel" class="carousel slide py-2" >
               <div class="carousel-inner text-center" id="mediaCarouselInner">
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#mediaCarousel" data-bs-slide="prev">
@@ -69,7 +66,7 @@
 
       </div>
       <div class="col-md-6 col-lg-4 datven " >
-        <div class="card"style="background-color: rgba(255, 219, 219, 0.7);">
+        <div class="card"style="background-color:#f5d3dfe4;  border-radius: 30px;">  
           <div class="card-body">
             <h5 class="text-center">Datos del producto</h5>
             <div class="form-floating my-2" >
