@@ -30,8 +30,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex justify-content-center" role="search">
-          <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btnColorCard btnHover" type="submit">Search</button>
+          <input class="form-control me-2 " type="search" placeholder="Buscar producto" aria-label="Search">
+          <a href="b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
         </form>
         <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
@@ -290,21 +290,26 @@
                         <div class="card-body">
                             <h5 class="my-3 mx-2">Comentarios</h5>
                             <div class="my-2">
-
+                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="http://localhost/prueba/PWCI/Front/eliminar/perfilPublico.php">
                                 <img src="../img/fotoPerfil.jpg" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
                                 <span style="background-color: rgb(251, 233, 226); border-radius: 10px 10px 10px 10px;">Jaky</span>
+                                </a>
                                 <p class="mx-5" >
                                     Me encanta!!, es de las mejores lamparas del mercado xd, muy bonitaaa </p>
                             </div>
                             <div class="my-2">
+                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="http://localhost/prueba/PWCI/Front/eliminar/perfilPrivado.php">
                                 <img src="../img/Lilysa.png" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
                                 <span style="background-color: rgb(251, 233, 226); border-radius: 10px 10px 10px 10px;">Mei</span>
+                                </a>
                                 <p class="mx-5" >
                                     Me gustaria que tuvieran mas variedad de colores, no se, tal vez uno de color turqueza estaria bastante bien
                             </div>
                             <div class="my-2">
+                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="http://localhost/prueba/PWCI/Front/eliminar/perfilPrivado.php">
                                 <img src="../img/Lilysa.png" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
                                 <span style="background-color: rgb(251, 233, 226); border-radius: 0px 10px 10px 10px;">uwu</span>
+                                </a>
                                 <br>
                                 <p class="mx-5" >
                                     Bastante buena

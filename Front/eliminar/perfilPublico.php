@@ -4,21 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/mensajes_usuario.css">
-  <script src="http://localhost/prueba/PWCI/Front/js/mensajes_usuario.js"></script>
+  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/perfil_usuario.css">
   <script
     src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet"
     href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
+  <link rel="stylesheet" href="http://localhost/prueba/PWCI/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
 </head>
 
 <body>
   <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
     <div class="container-fluid ">
       <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
-      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.php">
+      <a class="nav-link active mx-2" aria-current="page" href="http://localhost/prueba/PWCI/Front/paginaPrincipal.php">
         <h5 class="letraFuente text-white">Micherry</h5>
       </a>
       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex justify-content-center" role="search">
           <input class="form-control me-2 " type="search" placeholder="Buscar producto" aria-label="Search">
-          <a href="b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
+          <a href="http://localhost/prueba/PWCI/Front/b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
         </form>
         <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
@@ -50,19 +50,19 @@
 
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="perfil_usuario.php">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="carrito.php">Carrito</a></li>
-              <li><a class="dropdown-item" href="pedidos.php">Mis pedidos</a></li>
-              <li><a class="dropdown-item" href="vendedor.php">Perfil vendedor</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/perfil_usuario.php">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/carrito.php">Carrito</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/pedidos.php">Mis pedidos</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/vendedor.php">Perfil vendedor</a></li>
 
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="login.php">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/login.php">Cerrar sesión</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="mensajes_usuario.php">
+            <a class="nav-link" href="http://localhost/prueba/PWCI/Front/mensajes_usuario.php">
               <h6>Mensajes</h6>
             </a>
           </li>
@@ -140,41 +140,66 @@
     </div>
   </div>
 
-  <div class="container mt-4">
+  <div class="datos_usuario">
+    <h1>Perfil de Lucero</h1>
     <div class="row">
-      <div class="col-md-3">
-        <ul class="list-group" id="user-list">
-          <li class="list-group-item active list-group-item-danger" data-user="usuario1">Usuario 1</li>
-          <li class="list-group-item list-group-item-danger" data-user="usuario2">Usuario 2</li>
-          <!-- Agrega más usuarios aquí -->
-        </ul>
-      </div>
-      <div class="col-md-9">
-        <div class="card" id="conversation-card">
-          <div class="card-header">
-            Conversación
-          </div>
-          <div class="card-body">
-            <ul class="list-group" id="message-list">
-              <!-- Mensajes se agregarán aquí dinámicamente -->
-            </ul>
-          </div>
-          <div class="card-footer">
-            <form id="message-form">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Escribe tu mensaje...">
-                <div class="input-group-append">
-                  <button class="btn btn-danger" type="submit">Enviar</button>
-                </div>
+
+        <div class="card mb-3" style="max-width: 90%; margin-left: 5%;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" class="img-fluid rounded-start" alt="..."
+                style="height: 100%; width: 100%; object-fit:cover;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="badge rounded-pill btnColorCard">Lucero </div>
+                <hr>
+                <p class="card-text" style="padding-top: 1%;">Correo: lucero@gmail.com</p>
+                <p>Numero telefonico: 8183321706</p>
               </div>
-            </form>
+            </div>
           </div>
-        </div>
       </div>
     </div>
-  </div>
-</body>
 
+  </div>
+
+  <div class="listas">
+    <h1>Listas de Lucero</h1>
+    <div class="MlisUno">
+      <ul class="ml-2">
+        <li>
+          <h3><strong>Ropa bonita</strong></h3>
+        </li>
+      </ul>
+      <ul class="ml-2">
+        <li>
+          <h4>6 articulos</h4>
+        </li>
+      </ul>
+      <ul class="ml-2">
+        <li>
+          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid" alt="...">
+        </li>
+        <li>
+          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png" class="img-fluid" alt="...">
+        </li>
+        <li>
+          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindod.png" class="img-fluid" alt="...">
+        </li>
+        <li class="img-container">
+          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="img-fluid" alt="...">
+          <div class="overlay">
+            <h2>+</h2>
+            <p>15 productos</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <script src="http://localhost/prueba/PWCI/Front/js/perfil_usuario.js"></script>
+</body>
 <footer class="bg-dark text-white p-5">
   <div class="container Footer">
     <div class="row">

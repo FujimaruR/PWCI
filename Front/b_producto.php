@@ -27,8 +27,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex justify-content-center" role="search">
-          <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btnColorCard btnHover" type="submit">Search</button>
+          <input class="form-control me-2 " type="search" placeholder="Buscar producto" aria-label="Search">
+          <a href="b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
         </form>
         <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample" style="margin-left: 1%;">

@@ -1,9 +1,11 @@
 .bg-custom-color {
     background-color: #BA3A47 !important;
 }
+
 .letraFuente {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
+
 .cardColor {
     background: linear-gradient(to left, #fcebff, #fff5ea) !important;
 }
@@ -17,15 +19,19 @@
 }
 
 .fixed-image {
-    width: 300px; /* Cambia este valor al ancho deseado */
-    height: 500px; /* Cambia este valor al alto deseado */
+    width: 300px;
+    /* Cambia este valor al ancho deseado */
+    height: 500px;
+    /* Cambia este valor al alto deseado */
     object-fit: cover;
     align-items: center;
-  }
+}
 
 .fixed-card {
-    width: 350px; /* Debe ser igual o mayor que el ancho de la imagen */
-    height: 600px; /* Cambia este valor según tu diseño */
+    width: 350px;
+    /* Debe ser igual o mayor que el ancho de la imagen */
+    height: 600px;
+    /* Cambia este valor según tu diseño */
 }
 
 .info-box {
@@ -36,11 +42,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
+
 .info-label {
     font-weight: bold;
-    color: #bc3f6d; /* Cambia el color según tu preferencia */
+    color: #bc3f6d;
+    /* Cambia el color según tu preferencia */
     margin-right: 10px;
 }
+
 body {
     background-image: url(http://localhost/prueba/PWCI/img/buscar_producto/arco-iris.jpg);
     background-repeat: no-repeat;
@@ -48,28 +57,33 @@ body {
     background-size: cover;
     background-position: center;
 }
+
 .transparent-bg {
-    background-color: #855a8572; /* Adjust the last value (0.9) for the desired transparency level  #5944428e*/
+    background-color: #855a8572;
+    /* Adjust the last value (0.9) for the desired transparency level  #5944428e*/
 }
 
 .heart-button {
     position: absolute;
-    top: 10px;  
-    right: 10px;    
+    top: 10px;
+    right: 10px;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    z-index: 2;     
+    z-index: 2;
 }
+
 .heart-icon {
     color: rgb(75, 108, 110);
     font-size: 30px;
     transition: color 0.3s;
 }
+
 .heart-icon:hover {
     color: red;
     transform: scale(1.2);
 }
+
 ul {
     display: flex;
     list-style: none;
@@ -89,16 +103,28 @@ li {
     margin: 0 1%;
 }
 
-.star{
+.star {
     font-size: 15px;
-    color:#B9B4D9;
+    color: #B9B4D9;
     transition: color o.3s;
-    cursor:pointer;
+    cursor: pointer;
 }
+
 .star:hover,
-.star.checked{
-    color:gold;
+.star.checked {
+    color: gold;
 }
-.rating{
+
+.rating {
     display: flex;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
 }
