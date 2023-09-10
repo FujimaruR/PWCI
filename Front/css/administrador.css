@@ -41,3 +41,11 @@ body{
 .salirbtn:hover{
     cursor: pointer;
 }
+.Footer{
+    position:relative;
+    bottom: 0;
+    width: 100%;
+    color: #fff; 
+    text-align: center;
+    padding: 10px;
+}

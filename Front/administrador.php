@@ -35,12 +35,18 @@
           <li class="nav-item">
             <a class="nav-link active salirbtn text-light" aria-current="page" data-bs-toggle="modal"
               data-bs-target="#exampleModal">Salir de la sesion</a>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Salir de la sesion</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Salir de la sesion</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -53,12 +59,6 @@
               </div>
 
             </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
   <div class="tituload  p-3">
     <h4 class="text-light "><strong>Productos autorizados y por autorizar</strong></h4>
   </div>
@@ -342,5 +342,41 @@
 
   <script src="http://localhost/prueba/PWCI/Front/js/administrador.js"></script>
 </body>
+<footer class="bg-dark text-white p-5 Footer" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
 
+        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" width="60" alt="Logo Micherry"
+          class="img-logo mr-2">
+        Micherry
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-2">1975922</li>
+          <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-2"></li>
+          <li class="my-2">1959520</li>
+          <li class="my-2">Emilio Yair Castillo Pacheco</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-3">Materia</li>
+          <li class="my-2">Programación web de capa intermedia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 </html>
