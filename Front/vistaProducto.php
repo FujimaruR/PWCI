@@ -18,61 +18,61 @@
 </head>
 
 <body class="letraFuente">
-    <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
-        <div class="container-fluid ">
-        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
-        <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.html">
-            <h5 class="letraFuente text-white">Micherry</h5>
-        </a>
-        <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid ">
+      <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
+      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.php">
+        <h5 class="letraFuente text-white">Micherry</h5>
+      </a>
+      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="d-flex justify-content-center" role="search">
+          <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btnColorCard btnHover" type="submit">Search</button>
+        </form>
+        <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
+          style="margin-left: 1%;">
+          Filtros
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex justify-content-center" role="search">
-            <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btnColorCard btnHover" type="submit">Search</button>
-            </form>
-            <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
-            style="margin-left: 1%;">
-            Filtros
-            </button>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
 
-            <li class="nav-item">
-                <a class="nav-link disabled">
-                <h6>Usuario</h6>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
+          <li class="nav-item">
+            <a class="nav-link disabled">
+              <h6>Usuario</h6>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
 
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35" style="border-radius: 20px 20px 20px 20px;">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35">
 
-                </a>
-                <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-                <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                <li><a class="dropdown-item" href="#">Mis pedidos</a></li>
-                <li><a class="dropdown-item" href="#">Vender producto</a></li>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="perfil_usuario.php">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="carrito.php">Carrito</a></li>
+              <li><a class="dropdown-item" href="pedidos.php">Mis pedidos</a></li>
+              <li><a class="dropdown-item" href="vendedor.php">Perfil vendedor</a></li>
 
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                <h6>carrito</h6>
-                </a>
-            </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="login.php">Cerrar sesión</a></li>
             </ul>
-        </div>
-        </div>
-    </nav>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mensajes_usuario.php">
+              <h6>Mensajes</h6>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
     <div class="collapse" id="collapseFiltros">
         <div class="card card-body">
           <ul class="ml-2">
@@ -339,39 +339,40 @@
     <script src="../Front/js/vistaProducto.js"></script>
 </body>
 <footer class="bg-dark text-white p-5">
-    <div class="container Footer">
-        <div class="row">
-            <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
-                <!-- Logo inferior -->
-                <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" width="60" alt="Logo Micherry" class="img-logo mr-2">
-                Micherry
-            </div>
+  <div class="container Footer">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
 
-            <div class="col-md-3 col-lg-3">
-                <!-- Menú 1 -->
-                <ul class="list-unstyled">
-                    <li class="my-2">1975922</li>
-                    <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
-                </ul>
-            </div>
+        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" width="60" alt="Logo Micherry"
+          class="img-logo mr-2">
+        Micherry
+      </div>
 
-            <div class="col-md-3 col-lg-3">
-                <!-- Menú 2 -->
-                <ul class="list-unstyled">
-                    <li class="my-2"></li>
-                    <li class="my-2">1975922</li>
-                    <li class="my-2">Emilio Yair Castillo Pacheco</li>
-                </ul>
-            </div>
+      <div class="col-md-3 col-lg-3">
 
-            <div class="col-md-3 col-lg-3">
-                <!-- Menú 3 -->
-                <ul class="list-unstyled">
-                    <li class="my-3">Materia</li>
-                    <li class="my-2">Programación web de capa intermedia</li>
-                </ul>
-            </div>
-        </div>
+        <ul class="list-unstyled">
+          <li class="my-2">1975922</li>
+          <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-2"></li>
+          <li class="my-2">1959520</li>
+          <li class="my-2">Emilio Yair Castillo Pacheco</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-3">Materia</li>
+          <li class="my-2">Programación web de capa intermedia</li>
+        </ul>
+      </div>
     </div>
-    </footer>
+  </div>
+</footer>
 </html>

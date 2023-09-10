@@ -18,7 +18,7 @@
   <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
     <div class="container-fluid ">
       <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
-      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.html">
+      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.php">
         <h5 class="letraFuente text-white">Micherry</h5>
       </a>
       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -259,14 +259,14 @@
   <div class="container Footer">
     <div class="row">
       <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
-        <!-- Logo inferior -->
+
         <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" width="60" alt="Logo Micherry"
           class="img-logo mr-2">
         Micherry
       </div>
 
       <div class="col-md-3 col-lg-3">
-        <!-- Menú 1 -->
+
         <ul class="list-unstyled">
           <li class="my-2">1975922</li>
           <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
@@ -274,7 +274,7 @@
       </div>
 
       <div class="col-md-3 col-lg-3">
-        <!-- Menú 2 -->
+
         <ul class="list-unstyled">
           <li class="my-2"></li>
           <li class="my-2">1959520</li>
@@ -283,7 +283,7 @@
       </div>
 
       <div class="col-md-3 col-lg-3">
-        <!-- Menú 3 -->
+
         <ul class="list-unstyled">
           <li class="my-3">Materia</li>
           <li class="my-2">Programación web de capa intermedia</li>

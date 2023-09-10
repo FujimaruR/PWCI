@@ -18,7 +18,7 @@
   <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
     <div class="container-fluid ">
       <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
-      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.html">
+      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.php">
         <h5 class="letraFuente text-white">Micherry</h5>
       </a>
       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -49,20 +49,20 @@
 
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="#">Wishlist</a></li>
-              <li><a class="dropdown-item" href="#">Mis pedidos</a></li>
-              <li><a class="dropdown-item" href="#">Vender producto</a></li>
+              <li><a class="dropdown-item" href="perfil_usuario.php">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="carrito.php">Carrito</a></li>
+              <li><a class="dropdown-item" href="pedidos.php">Mis pedidos</a></li>
+              <li><a class="dropdown-item" href="vendedor.php">Perfil vendedor</a></li>
 
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="login.php">Cerrar sesión</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <h6>carrito</h6>
+            <a class="nav-link" href="mensajes_usuario.php">
+              <h6>Mensajes</h6>
             </a>
           </li>
         </ul>
@@ -423,5 +423,42 @@
     </nav>
   </div>
 </body>
+<footer class="bg-dark text-white p-5">
+  <div class="container Footer">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
+
+        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" width="60" alt="Logo Micherry"
+          class="img-logo mr-2">
+        Micherry
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-2">1975922</li>
+          <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-2"></li>
+          <li class="my-2">1959520</li>
+          <li class="my-2">Emilio Yair Castillo Pacheco</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-3">Materia</li>
+          <li class="my-2">Programación web de capa intermedia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </html>
