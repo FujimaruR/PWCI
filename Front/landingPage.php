@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/landing.css">
     <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
 <style>
-     body {
-        overflow-x: hidden; /* Evita la barra de desplazamiento horizontal */
-        background: linear-gradient(to left, #F2AFA0, #F2CEA2);
-     }
+body{ 
+    background-image: url(http://localhost/prueba/PWCI/img/landingPageImg/fondoLandingxd.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+}
 </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -70,13 +74,13 @@
             </div>
         </div>
 
-        <div class="row "style="background: linear-gradient(to left, #F2AFA0, #F2CEA2);color:#5d0c48">
+        <div class="row ">
             <div class="text-center letraFuente ">
                 <h2 class="py-5">¡Productos escolares!</h2>
                 <h4>Mochilas con accesorios</h4>
             </div>
         </div>
-        <div class="row"style="background: linear-gradient(to left, #F2AFA0,#F2CEA2); ">
+        <div class="row">
             <div class="image-container text-center " >
                 <img src="http://localhost/prueba/PWCI/img/landingPageImg/mochila.jpg" alt="Imagen 1">
                 <img src="http://localhost/prueba/PWCI/img/landingPageImg/mochila2.jpg" alt="Imagen 2">
@@ -96,7 +100,7 @@
                 <img src="http://localhost/prueba/PWCI/img/landingPageImg/Mac.jpg" alt="Imagen 3">
             </div>
         </div>
-        <div class="text-center letraFuente "style="background: linear-gradient(to left, #F2AFA0,#F2CEA2); color:#5d0c48">
+        <div class="text-center letraFuente >
             <h2 class="py-5">¡Y mucho más!</h2>
             <h4>Inicia sesión para ver nuestra pagina principal</h4>
             <a href="login.php" class="btn btnColorCard btnHover text-white mx-5 my-5">Iniciar sesión</a>

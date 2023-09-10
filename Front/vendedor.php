@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg" style="background-color:#7D2C6F;">
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color:#7D2C6F;">
     <div class="container-fluid letraFuente">
       <a class="navbar-brand text-light" href="vendedor.php">
         <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo"  height="30"

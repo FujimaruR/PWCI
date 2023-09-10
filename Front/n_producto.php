@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg" style="background-color:#7D2C6F;">
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color:#7D2C6F;">
     <div class="container-fluid letraFuente">
       <a class="navbar-brand text-light" href="vendedor.php">
         <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo"  height="30"
@@ -38,7 +38,7 @@
       </div>
     </div>
   </nav>
-<div class="container mt-5">
+<div class="container mt-2">
       <div class="row">
       <div class="col-md-6 col-lg-6 imgven mx-auto">
         <div class="card " style="background-color:#f5d3dfe4; border-radius: 30px;">

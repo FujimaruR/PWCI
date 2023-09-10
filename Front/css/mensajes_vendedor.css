@@ -11,7 +11,14 @@ li {
     background-color: rgba(255, 219, 219, 0.7);
     color: white;
 }
-
-body{
-    background: linear-gradient(to left, #F2AFA0, #F2CEA2);
+body{ 
+    background-image: url(http://localhost/prueba/PWCI/img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+}
+.letraFuente {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }

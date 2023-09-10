@@ -12,12 +12,22 @@
     href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
+  <style>
+        body{ 
+        background-image: url(http://localhost/prueba/PWCI/img/fondo.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        overflow-x: hidden;
+    }
+  </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg" style="background-color: #FFDBDB;">
+  <nav class="navbar navbar-expand-lg sticky-top "style="background-color:#7D2C6F;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="vendedor.php">
+      <a class="navbar-brand text-light letraFuente" href="vendedor.php">
         <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
         Micherry
       </a>
@@ -28,13 +38,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="n_producto.php">Nuevo producto</a>
+            <a class="nav-link text-light letraFuente" href="n_producto.php">Nuevo producto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="mensajes_vendedor.php">Mensajes</a>
+            <a class="nav-link text-light letraFuente" href="mensajes_vendedor.php">Mensajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Volver al perfil de comprador</a>
+            <a class="nav-link active text-light letraFuente" aria-current="page" href="perfil_usuario.php">Volver al perfil de comprador</a>
           </li>
         </ul>
       </div>
