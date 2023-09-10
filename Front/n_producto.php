@@ -38,7 +38,7 @@
       </div>
     </div>
   </nav>
-<div class="container mt-2">
+<div class="container mt-2 my-5">
       <div class="row">
       <div class="col-md-6 col-lg-6 imgven mx-auto">
         <div class="card " style="background-color:#f5d3dfe4; border-radius: 30px;">
@@ -119,4 +119,41 @@
 
   <script src="http://localhost/prueba/PWCI/Front/js/n_producto.js"></script>
 </body>
+<footer class="bg-dark text-white p-5" >
+  <div class="container Footer">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
+
+        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" width="60" alt="Logo Micherry"
+          class="img-logo mr-2">
+        Micherry
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-2">1975922</li>
+          <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-2"></li>
+          <li class="my-2">1959520</li>
+          <li class="my-2">Emilio Yair Castillo Pacheco</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+
+        <ul class="list-unstyled">
+          <li class="my-3">Materia</li>
+          <li class="my-2">Programación web de capa intermedia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 </html>

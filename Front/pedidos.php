@@ -12,6 +12,15 @@
     href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
+  <style>
+    body{
+      background-image: url(http://localhost/prueba/PWCI/img/principal/fondoPrincipal.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 
 <body>

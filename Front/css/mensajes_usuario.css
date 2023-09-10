@@ -1,11 +1,10 @@
 body {
-    background-image: url(http://localhost/prueba/PWCI/img/buscar_producto/arco-iris.jpg);
+    background-image: url(http://localhost/prueba/PWCI/img/principal/fondoPrincipal.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
-
 .cardColor {
     background: linear-gradient(to left, #fcebff, #fff5ea) !important;
 }
@@ -53,3 +52,11 @@ li {
     margin-left: 1%;
 }
 
+.Footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}

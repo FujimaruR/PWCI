@@ -12,6 +12,15 @@
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
   <link rel="stylesheet" href="http://localhost/prueba/PWCI/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <style>
+    body {
+    background-image: url(http://localhost/prueba/PWCI/img/principal/fondoPrincipal.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+  </style>
 </head>
 
 <body>
