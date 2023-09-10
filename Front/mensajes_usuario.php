@@ -19,7 +19,7 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-}
+  }
   </style>
 </head>
 

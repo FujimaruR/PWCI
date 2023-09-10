@@ -11,13 +11,14 @@
     href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
+
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg" style="background-color: #FFDBDB;">
+  <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #070606;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="administrador.php">
-        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo" width="30" height="24"
+      <a class="navbar-brand text-light" href="administrador.php">
+        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo" width="40" height="40"
           class="d-inline-block align-text-top">
         Micherry
       </a>
@@ -27,19 +28,19 @@
       </button>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-danger" type="submit">Search</button>
+        <button class="btn btn-danger text-light" type="submit">Search</button>
       </form>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active salirbtn" aria-current="page" data-bs-toggle="modal"
+            <a class="nav-link active salirbtn text-light" aria-current="page" data-bs-toggle="modal"
               data-bs-target="#exampleModal">Salir de la sesion</a>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Salir de la sesion</h1>
+                    <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Salir de la sesion</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -58,12 +59,12 @@
     </div>
   </nav>
 
-  <div class="tituload text-bg-danger p-3">
-    <h1>Productos autorizados y por autorizar</h1>
+  <div class="tituload  p-3">
+    <h4 class="text-light "><strong>Productos autorizados y por autorizar</strong></h4>
   </div>
 
   <div class="autorizados">
-    <h2>Autorizados</h2>
+  <h4 class="text-light mx-5"><strong>Autorizados</strong></h4>
 
     <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
       <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -193,7 +194,7 @@
   </div>
 
   <div class="autorizados">
-    <h2>Por autorizar</h2>
+  <h4 class="text-light mx-5"><strong>Por autorizar</strong></h4>
 
     <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
       <div id="productCarouseld" class="carousel slide" data-bs-ride="carousel">
