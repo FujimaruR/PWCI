@@ -14,90 +14,87 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg" style="background-color: #FFDBDB;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="vendedor.php">
-        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+<nav class="navbar navbar-expand-lg" style="background-color:#7D2C6F;">
+    <div class="container-fluid letraFuente">
+      <a class="navbar-brand text-light" href="vendedor.php">
+        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo"  height="30"
+          class="d-inline-block align-text-top">
         Micherry
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse " id="navbarSupportedContent" >
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="n_producto.php">Nuevo producto</a>
+            <a class="nav-link text-light" href="n_producto.php">Nuevo producto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="mensajes_vendedor.php">Mensajes</a>
+            <a class="nav-link text-light" href="mensajes_vendedor.php">Mensajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Volver al perfil de comprador</a>
+            <a class="nav-link active text-light" aria-current="page" href="perfil_usuario.php">Volver al perfil de comprador</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <div class="vendedor_general">
+  <div class="container-fluid mt-5 p-5">
     <div class="row">
-      <div class="vendeprin">
-        <h1>
-          PERFIL DEL VENDEDOR
-        </h1>
-      </div>
-      <div class="col-md-6">
-        <div class="card mb-3" id="cardperfil" style="max-width: 90%; background-color: rgba(255, 219, 219, 0.7);">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="http://localhost/prueba/PWCI/img/Lilysa.png" class="img-fluid rounded-start" alt="..." style="height: 100%;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Yair Castillo</h5>
-                <p class="card-text">Correo: yair.castillo.p1@gmail.com</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      <div class="col-lg-9 col-md-10 col-sm-12 mx-auto">
+        <h5>Perfil vendedor</h5>
+        <div class="card"style="background-color:#f5d3dfe4; border-radius: 30px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-8 m-4">
+                  <div class="col-lg-8 col-md-8 col-sm-8 ">
+                    <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" class="img-fluid rounded-start" alt="..." style="height: 100%; width: 80%;">
+                  </div>
+                  <div class="col-md-12">
+                    <div class="card-body">
+                      <h5 class="card-title">Yair Castillo</h5>
+                      <p class="card-text">Correo: yair.castillo.p1@gmail.com</p>
+                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 mx-auto">
+                  <div class="card-body">
+                    <h5 class="card-title">Consulta de ventas</h5>
+                    <p class="card-text">Ingrese el rango de fechas: </p>
+                    <p class="me-2">Desde: </p>
+                    <input type="date" name="dateIni" class="form-control mb-2 mb-md-0" />
+                    <p class="me-2">Hasta: </p>
+                    <input type="date" name="dateFin" class="form-control mb-2 mb-md-0"/>
+                  </div>
+              </div>
+              <div class="col-lg-3 mx-auto">
+                <label for="combobox" class="me-2">Selecciona o escribe una categoria:</label>
+                <select id="combobox" name="combobox" class="form-control">
+                  <option value="opcion1">Anime</option>
+                  <option value="opcion2">Ropa</option>
+                  <option value="opcion3">Electronica</option>
+                  <option value="opcion4">Figuras</option>
+                </select>
+                <input type="text" class="form-control my-2" id="nuevaOpcion" name="nuevaOpcion" placeholder="Escribe una nueva categoria">
+                <div class="col-12">
+                  <button type="button" class="btn btn-danger btn-sm">Agregar categoria</button>
+                </div>
+                <p>Categorias: </p>
+                <textarea disabled class="form-control"></textarea>
+    
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#consulvent">
+                  Confirmar
+                </button>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="gifbon">
-          <img src="http://localhost/prueba/PWCI/img/vendedor/nRm.gif" alt="Un GIF bonito">
-        </div>
-      </div>
-      <div class="col-md-6 vendecen">
-        <div class="card w-75" style="width: 30%; background-color: rgba(255, 219, 219, 0.7);">
-          <div class="card-body">
-            <h5 class="card-title">Consulta de ventas</h5>
-            <p class="card-text">Ingrese el rango de fechas: </p>
-            <p class="me-2">Desde: </p>
-            <input type="date" name="dateIni" class="form-control mb-2 mb-md-0" />
-            <p class="me-2">Hasta: </p>
-            <input type="date" name="dateFin" class="form-control mb-2 mb-md-0"/>
-
-            <label for="combobox" class="me-2">Selecciona o escribe una categoria:</label>
-            <select id="combobox" name="combobox" class="form-control">
-              <option value="opcion1">Anime</option>
-              <option value="opcion2">Ropa</option>
-              <option value="opcion3">Electronica</option>
-              <option value="opcion4">Figuras</option>
-            </select>
-            <input type="text" class="form-control my-2" id="nuevaOpcion" name="nuevaOpcion" placeholder="Escribe una nueva categoria">
-            <div class="col-12">
-              <button type="button" class="btn btn-danger btn-sm">Agregar categoria</button>
-            </div>
-            <p>Categorias: </p>
-            <textarea disabled class="form-control"></textarea>
-
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#consulvent">
-              Confirmar
-            </button>
-          </div>
-        </div>
       </div>
     </div>
+
   </div>
 
   <div class="modal fade" id="consulvent" tabindex="-1" aria-labelledby="consulventLabel" aria-hidden="true">
@@ -149,7 +146,7 @@
   </div>
 
   <div class="menupri">
-    <h1>PRODUCTOS PUBLICADOS</h1>
+    <h4>Productos Publicados</h4>
   </div>
 
   <div class="container" style="padding-top: 20px; padding-bottom: 20px;">

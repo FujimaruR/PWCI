@@ -23,6 +23,7 @@
 <body>
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center min-vh-100">
+
         <div class="col-sm-8 col-md-6 col-lg-4 transparent-bg py-5 rounded ">
           <div class="col-12 text-center">
              <img class="mx-auto mb-3" src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Centered Image" style="max-width: 150px;">
@@ -48,6 +49,7 @@
             </div>
         </div>
     </div>
+
   </div>
 </body>
 </html>

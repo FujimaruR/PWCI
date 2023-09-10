@@ -89,3 +89,13 @@ textarea {
     float: left;
     width: 50%;
 }
+body{ background-image: url(http://localhost/prueba/PWCI/img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+}
+.letraFuente {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
