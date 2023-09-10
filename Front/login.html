@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/perfil_usuario.css">
+  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/carrito.css">
   <script
     src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet"
@@ -50,20 +50,20 @@
 
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="#">Wishlist</a></li>
-              <li><a class="dropdown-item" href="#">Mis pedidos</a></li>
-              <li><a class="dropdown-item" href="#">Vender producto</a></li>
+              <li><a class="dropdown-item" href="perfil_usuario.php">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="carrito.php">Carrito</a></li>
+              <li><a class="dropdown-item" href="pedidos.php">Mis pedidos</a></li>
+              <li><a class="dropdown-item" href="vendedor.php">Perfil vendedor</a></li>
 
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="login.php">Cerrar sesión</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <h6>carrito</h6>
+            <a class="nav-link" href="mensajes_usuario.php">
+              <h6>Mensajes</h6>
             </a>
           </li>
         </ul>
@@ -140,120 +140,178 @@
     </div>
   </div>
 
-  <div class="datos_usuario">
-    <h1>Perfil de usuario</h1>
-    <div class="row">
-      <div class="col-md-6">
-
-        <div class="card mb-3" style="max-width: 90%;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" class="img-fluid rounded-start" alt="..."
-                style="height: 100%; width: 100%; object-fit:cover;">
+  <div class="carrito">
+    <div class="container px-4 text-center">
+      <div class="row gx-5 gutter">
+        <div class="col-md-6 col-lg-6 headercomp mb-4">
+          <div class="p-3">
+            <h3>Cesta de la comprar (2)</h3>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Seleccionar todos los productos
+              </label>
             </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <div class="badge rounded-pill btnColorCard">Lucero </div>
-                <hr>
-                <p class="card-text" style="padding-top: 1%;">Correo: lucero@gmail.com</p>
-                <p>Codigo postal:  66420</p>
-                <p>Direccion de entrega: Cinco # 629, col VILLAZUL,  San Nicolas de los Garza,  Nuevo Leon,  MX</p>
-                <p>Numero telefonico: 8183321706</p>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editarPerfil">Editar</button>
-              </div>
+            <hr>
+          </div>
+          <div class="p-3">
+            <div class="producom">
+              <ul class="ml-2">
+                <li>
+                  <input class="form-check-input" type="radio" name="productrad1" id="productrad1">
+                </li>
+                <li>
+                  <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="img-fluid" alt="...">
+                </li>
+                <li>
+                  <ul>
+                    <li>
+                      <h4>Computadora linda</h4>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <p><strong>MXN$1,200</strong></p>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="ml-2">
+                    <li>
+                      <i class="bi bi-heart-fill"></i>
+                    </li>
+                    <li>
+                      <i class="bi bi-trash3-fill"></i>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <ul>
+                        <p>Cantidad</p>
+                      </ul>
+                      <ul>
+                        <div class="form-floating">
+                          <select class="form-select" id="cantidadcom">
+                            <option selected>1</option>
+                            <option value="1">2</option>
+                            <option value="2">3</option>
+                            <option value="3">4</option>
+                          </select>
+                        </div>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <hr>
+            </div>
+          </div>
+          <div class="p-3">
+            <div class="producom">
+              <ul class="ml-2">
+                <li>
+                  <input class="form-check-input" type="radio" name="productrad2" id="productrad2">
+                </li>
+                <li>
+                  <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_chino.png" class="img-fluid"
+                    alt="...">
+                </li>
+                <li>
+                  <ul>
+                    <li>
+                      <h4>Cosplay chino</h4>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <p><strong>MXN$1,000</strong></p>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul class="ml-2">
+                    <li>
+                      <i class="bi bi-heart-fill"></i>
+                    </li>
+                    <li>
+                      <i class="bi bi-trash3-fill"></i>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <ul>
+                        <p>Cantidad</p>
+                      </ul>
+                      <ul>
+                        <div class="form-floating">
+                          <select class="form-select" id="cantidadcomd">
+                            <option selected>1</option>
+                            <option value="1">2</option>
+                            <option value="2">3</option>
+                            <option value="3">4</option>
+                          </select>
+                        </div>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 headercompd mb-4">
+          <div class="p-3">
+            <h3>Resumen</h3>
+            <h5>Total a pagar: </h5>
+            <p><strong>MXN$0,00</strong></p>
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button type="button" class="btn btn-danger mb-3">Pagar</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <h2>Otras configuraciones</h2>
-        <a class="btn btn-danger" href="vendedor.php" role="button">
-          Ir al perfil de vendedor
-        </a>
-        <h3>Perfil</h3>
-        <div class="form-check form-switch d-flex my-2 ">
-          <label class="form-check-label px-5 " for="genderSwitch">Publico</label>
-          <input class="form-check-input px-3" type="checkbox" id="genderSwitch">
-          <label class="form-check-label" for="genderSwitch">Privado</label>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="modal fade" id="editarPerfil" tabindex="-1" aria-labelledby="editarPerfilLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="editarPerfilLabel">Editar perfil</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <label for="postalcod">Codigo postal: </label>
-          <input type="text" class="form-control" id="postalcod" placeholder="...">
-          <label for="direc">Direccion: </label>
-          <input type="text" class="form-control" id="direc" placeholder="...">
-          <label for="telef">Numero telefonico:</label>  
-          <input type="number" class="form-control" id="telef" placeholder="...">
-          
-
-          <div class="col-4">
-            <label for="formFile" class="form-label">Foto de perfil</label>
-              <div class="card">
-                <input class="form-control" style="background-size: 50%" type="file" id="#img-preview" onchange="loadFile(event)" required>
-                <img id="#img-uploader"/>
-              </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-danger">Guardar</button>
-        </div>
-      </div>
     </div>
   </div>
 
-  <div class="listas">
-    <h1>Listas del usuario</h1>
-    <div class="MlisUno">
-      <ul class="ml-2">
-        <li>
-          <h3><strong>Ropa bonita</strong></h3>
-        </li>
-        <li class="posder">
-          <h3>Cambiar nombre<i class="bi bi-pencil-square"></i></h3>
-        </li>
-        <li class="posder">
-          <h3>Borrar<i class="bi bi-trash3-fill"></i></h3>
-        </li>
-      </ul>
-      <ul class="ml-2">
-        <li>
-          <h4>6 articulos</h4>
-        </li>
-      </ul>
-      <ul class="ml-2">
-        <li>
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid" alt="...">
-        </li>
-        <li>
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png" class="img-fluid" alt="...">
-        </li>
-        <li>
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindod.png" class="img-fluid" alt="...">
-        </li>
-        <li class="img-container">
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="img-fluid" alt="...">
-          <div class="overlay">
-            <h2>+</h2>
-            <p>15 productos</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
-  <script src="http://localhost/prueba/PWCI/Front/js/perfil_usuario.js"></script>
+  <script src="http://localhost/prueba/PWCI/Front/js/carrito.js"></script>
 </body>
+<footer class="bg-dark text-white p-5">
+  <div class="container Footer">
+    <div class="row">
+      <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
+        <!-- Logo inferior -->
+        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" width="60" alt="Logo Micherry"
+          class="img-logo mr-2">
+        Micherry
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+        <!-- Menú 1 -->
+        <ul class="list-unstyled">
+          <li class="my-2">1975922</li>
+          <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+        <!-- Menú 2 -->
+        <ul class="list-unstyled">
+          <li class="my-2"></li>
+          <li class="my-2">1959520</li>
+          <li class="my-2">Emilio Yair Castillo Pacheco</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-lg-3">
+        <!-- Menú 3 -->
+        <ul class="list-unstyled">
+          <li class="my-3">Materia</li>
+          <li class="my-2">Programación web de capa intermedia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </html>
