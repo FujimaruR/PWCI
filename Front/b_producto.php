@@ -145,32 +145,34 @@
       <li>
         <div class="elemento">
           <div class="col-2">
-            <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-              <div class="dropdown">
-                <button class="heart-button text-lg-end text-md-end text-sm-end my-0 " data-bs-toggle="dropdown">
-                  <span class="heart-icon">&#x2665;</span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                  <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                  <li><a class="dropdown-item" href="#">Crear lista</a></li>
-                </ul>
-              </div>
-              <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image"
-                  alt="..." style="object-fit: cover; height: 200px;">
-                <div class="card-body" style="height: 70px;">
-                  <div class="row mb-3">
-                    <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Laptop </div>
-                    </div>
-                    <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$18300.00</strong></div>
+            <a href="vistaProducto.php">
+              <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+                <div class="dropdown">
+                  <button class="heart-button text-lg-end text-md-end text-sm-end my-0 " data-bs-toggle="dropdown">
+                    <span class="heart-icon">&#x2665;</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Lista 1</a></li>
+                    <li><a class="dropdown-item" href="#">Lista 2</a></li>
+                    <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                  </ul>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                  <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image"
+                    alt="..." style="object-fit: cover; height: 200px;">
+                  <div class="card-body" style="height: 70px;">
+                    <div class="row mb-3">
+                      <div class="col-4">
+                        <div class="badge rounded-pill btnColorCard">Laptop </div>
+                      </div>
+                      <div class="col-8 text-end">
+                        <div class="price-hp"><strong>MXN$18300.00</strong></div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </li>
