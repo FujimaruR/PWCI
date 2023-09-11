@@ -14,12 +14,12 @@
   <link rel="stylesheet" href="http://localhost/prueba/PWCI/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
   <style>
     body {
-    background-image: url(http://localhost/prueba/PWCI/img/principal/fondoPrincipal.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
+      background-image: url(http://localhost/prueba/PWCI/img/principal/fondoPrincipal.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
   </style>
 </head>
 
@@ -55,8 +55,7 @@
           <li class="nav-item dropdown">
 
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35">
-
+              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35" style="border-radius: 20px 20px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="perfil_usuario.php">Mi perfil</a></li>
