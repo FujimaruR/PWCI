@@ -1,6 +1,6 @@
 var loadMediaCarousel = function () {
     const mediaCarouselInner = document.getElementById('mediaCarouselInner');
-    mediaCarouselInner.innerHTML = ''; // Clear existing carousel items
+    mediaCarouselInner.innerHTML = ''; 
   
     for (let i = 0; i < mediaFiles.length; i++) {
       const media = mediaFiles[i];
@@ -12,7 +12,7 @@ var loadMediaCarousel = function () {
         image.src = URL.createObjectURL(media);
         image.classList.add('d-block');
         image.style.maxWidth = '100%'; // Limitar el ancho al 100%
-        image.style.maxHeight = '400px'; // Limitar la altura a 500px
+        image.style.maxHeight = '70%'; // Limitar la altura a 500px
         image.style.objectFit = 'cover';      
         carouselItem.appendChild(image);
       } else if (media.type.startsWith('video')) {
@@ -20,7 +20,7 @@ var loadMediaCarousel = function () {
         video.src = URL.createObjectURL(media);
         video.classList.add('d-block', 'w-100');
         video.style.maxWidth = '100%'; // Limitar el ancho al 100%
-        video.style.maxHeight = '400px'; // Limitar la altura a 500px
+        video.style.maxHeight = '100%'; // Limitar la altura a 500px
   
         video.controls = true;
         carouselItem.appendChild(video);

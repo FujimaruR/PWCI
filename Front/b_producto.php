@@ -158,8 +158,8 @@
               </div>
               <div class="d-flex flex-column align-items-center">
                 <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image"
-                  alt="...">
-                <div class="card-body">
+                  alt="..." style="object-fit: cover; height: 200px;">
+                <div class="card-body" style="height: 70px;">
                   <div class="row mb-3">
                     <div class="col-4">
                       <div class="badge rounded-pill btnColorCard">Laptop </div>
@@ -189,15 +189,15 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image"
-                  alt="...">
-                <div class="card-body">
+                <img src="http://localhost/prueba/PWCI/img/principal/abanico.jpg" class="card-img-top  fixed-image"
+                  alt="..." style="object-fit: cover; height: 200px;">
+                <div class="card-body" style="height: 70px;">
                   <div class="row mb-3">
                     <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Laptop </div>
+                      <div class="badge rounded-pill btnColorCard">Abanico </div>
                     </div>
                     <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$18300.00</strong></div>
+                      <div class="price-hp"><strong>MXN$200.00</strong></div>
                     </div>
                   </div>
                 </div>
@@ -221,15 +221,15 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image"
-                  alt="...">
-                <div class="card-body">
+                <img src="http://localhost/prueba/PWCI/img/principal/anillos.jpg" class="card-img-top  fixed-image"
+                  alt="..." style="object-fit: cover; height: 200px;">
+                <div class="card-body" style="height: 70px;">
                   <div class="row mb-3">
                     <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Laptop </div>
+                      <div class="badge rounded-pill btnColorCard">Anillos </div>
                     </div>
                     <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$18300.00</strong></div>
+                      <div class="price-hp"><strong>MXN$120.00</strong></div>
                     </div>
                   </div>
                 </div>
@@ -253,15 +253,15 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top fixed-image"
-                  alt="...">
-                <div class="card-body">
+                <img src="http://localhost/prueba/PWCI/img/principal/audifonos.jpg" class="card-img-top fixed-image"
+                  alt="..." style="object-fit: cover; height: 200px;">
+                <div class="card-body" style="height: 70px;">
                   <div class="row mb-3">
                     <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Laptop </div>
+                      <div class="badge rounded-pill btnColorCard">Audifonos</div>
                     </div>
                     <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$18300.00</strong></div>
+                      <div class="price-hp"><strong>MXN$400.00</strong></div>
                     </div>
                   </div>
                 </div>
@@ -288,15 +288,15 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image"
-                  alt="...">
-                <div class="card-body">
+                <img src="http://localhost/prueba/PWCI/img/principal/Labial.jpg" class="card-img-top  fixed-image"
+                  alt="..." style="object-fit: cover; height: 200px;">
+                <div class="card-body" style="height: 70px;">
                   <div class="row mb-3">
                     <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Laptop </div>
+                      <div class="badge rounded-pill btnColorCard">Labial</div>
                     </div>
                     <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$18300.00</strong></div>
+                      <div class="price-hp"><strong>MXN$110.00</strong></div>
                     </div>
                   </div>
                 </div>
@@ -320,15 +320,15 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image"
-                  alt="...">
-                <div class="card-body">
+                <img src="http://localhost/prueba/PWCI/img/principal/lampara.jpg" class="card-img-top  fixed-image"
+                  alt="..." style="object-fit: cover; height: 200px;">
+                <div class="card-body" style="height: 70px;">
                   <div class="row mb-3">
                     <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Laptop </div>
+                      <div class="badge rounded-pill btnColorCard">Lampara </div>
                     </div>
                     <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$18300.00</strong></div>
+                      <div class="price-hp"><strong>MXN$450.00</strong></div>
                     </div>
                   </div>
                 </div>
@@ -352,15 +352,15 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image"
-                  alt="...">
-                <div class="card-body">
+                <img src="http://localhost/prueba/PWCI/img/principal/maceta.jpg" class="card-img-top  fixed-image"
+                  alt="..." style="object-fit: cover; height: 200px;">
+                <div class="card-body" style="height: 70px;">
                   <div class="row mb-3">
                     <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Laptop </div>
+                      <div class="badge rounded-pill btnColorCard">Maceta </div>
                     </div>
                     <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$18300.00</strong></div>
+                      <div class="price-hp"><strong>MXN$300.00</strong></div>
                     </div>
                   </div>
                 </div>
@@ -384,15 +384,15 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top fixed-image"
-                  alt="...">
-                <div class="card-body">
+                <img src="http://localhost/prueba/PWCI/img/principal/sombrilla.jpg" class="card-img-top fixed-image"
+                  alt="..." style="object-fit: cover; height: 200px;">
+                <div class="card-body" style="height: 70px;">
                   <div class="row mb-3">
                     <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Laptop </div>
+                      <div class="badge rounded-pill btnColorCard">Sombrilla </div>
                     </div>
                     <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$18300.00</strong></div>
+                      <div class="price-hp"><strong>MXN$320.00</strong></div>
                     </div>
                   </div>
                 </div>

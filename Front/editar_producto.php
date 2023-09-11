@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/n_producto.css">
+  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/editar_producto.css">
   <script
     src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet"
@@ -43,11 +43,26 @@
       <div class="col-md-6 col-lg-6 imgven mx-auto">
         <div class="card " style="background-color:#f5d3dfe4; border-radius: 30px;">
           <div class="card-body ">
-            <h4>Producto nuevo</h4>
-            <p class="mb-2 mb-md-0 py-2">Ingresa las imágenes y el video del producto</p>
+            <h4>Laptop</h4>
+            <p class="mb-2 mb-md-0 py-2">Modificar las imágenes y el video del producto</p>
 
             <div id="mediaCarousel" class="carousel slide py-2" >
               <div class="carousel-inner text-center" id="mediaCarouselInner">
+                <div class="carousel-item active">
+                  <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" alt="..." style="max-width: 100%; max-height: 400px">
+                </div>
+                <div class="carousel-item">
+                  <img src="http://localhost/prueba/PWCI/img/principal/lampara.jpg" class="d-block w-100" alt="..." style="max-width: 100%; max-height: 400px">
+                </div>
+                <div class="carousel-item">
+                  <img src="http://localhost/prueba/PWCI/img/principal/Labial.jpg" class="d-block w-100" alt="..." style="max-width: 100%; max-height: 400px">
+                </div>
+                <div class="carousel-item">
+                  <video controls style="max-width: 100%; height: 400px;">
+                    <source src="../img/cubo.mp4" type="video/mp4">
+                    Tu navegador no admite el elemento de video.
+                  </video>
+                </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#mediaCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -98,16 +113,13 @@
             <div class="form-floating my-2">
               <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
               <label for="floatingTextaread">Categorias del producto</label>
-            </div>
-            <div class="form-check form-switch d-flex">
-              <label class="form-check-label px-5" for="flexSwitchCheckDefault">Vender</label>
-              <input class="form-check-input px-3" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-              <label class="form-check-label" for="flexSwitchCheckDefault">Cotizar</label>
+              <hr>
             </div>
             <div class="form-floating my-2">
               <input type="number" class="form-control" id="priceinput" placeholder="...">
               <label for="priceinput">Precio del producto</label>
             </div>
+            <button type="button" class="btn btn-secondary">Cancelar</button>
             <button type="button" class="btn btn-danger">Confirmar</button>
           </div>
         </div>
@@ -117,7 +129,7 @@
     </div>
 </div>
 
-  <script src="http://localhost/prueba/PWCI/Front/js/n_producto.js"></script>
+  <script src="http://localhost/prueba/PWCI/Front/js/editar_producto.js"></script>
 </body>
 <footer class="bg-dark text-white p-5" >
   <div class="container Footer">
