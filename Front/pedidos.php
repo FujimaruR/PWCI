@@ -181,7 +181,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-floating my-2">
+            <div class="form-floating my-2 col-lg-4 col-md-8 col-sm-12">
               <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
               <label for="floatingTextaread">Categorias del producto</label>
             </div>
@@ -230,17 +230,13 @@
               <i class="bi bi-star-fill star"></i>
               <i class="bi bi-star-fill star"></i>
             </div>
-
           </div>
         </div>
       </div>
     </div>
-
-
+    
   </div>
-
 </body>
-
 <footer class="bg-dark text-white p-5">
   <div class="container Footer">
     <div class="row">
