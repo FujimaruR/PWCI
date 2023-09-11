@@ -41,7 +41,6 @@
   </style>
 
   </head>
-
   <body>
 <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
     <div class="container-fluid ">

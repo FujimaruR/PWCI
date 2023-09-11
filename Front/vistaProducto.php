@@ -20,7 +20,7 @@
 <body class="letraFuente">
 <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
     <div class="container-fluid ">
-      <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
+      <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40" style="border-radius: 20px 20px 20px 20px;">
       <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.php">
         <h5 class="letraFuente text-white">Micherry</h5>
       </a>
@@ -49,7 +49,7 @@
           <li class="nav-item dropdown">
 
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35">
+              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35"style="border-radius: 20px 20px 20px 20px;">
 
             </a>
             <ul class="dropdown-menu">
@@ -185,7 +185,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="card" style="height: 550px;">
+                <div class="card" style="height: 550px;background-color: white;">
                     <div class="card-body mx-5">
                         <div class="text-end">
                             <div class="dropdown">
@@ -286,13 +286,13 @@
             </div>
             <div class="row my-4">
                 <div class="col-md-6 col-lg-8">
-                    <div class="card">
+                    <div class="card"style="background-color: rgba(246, 244, 233, 0.903);">
                         <div class="card-body">
                             <h5 class="my-3 mx-2">Comentarios</h5>
                             <div class="my-2">
                                 <a class="link-offset-2 link-underline link-underline-opacity-0" href="http://localhost/prueba/PWCI/Front/eliminar/perfilPublico.php">
                                 <img src="../img/fotoPerfil.jpg" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
-                                <span style="background-color: rgb(251, 233, 226); border-radius: 10px 10px 10px 10px;">Jaky</span>
+                                <span style="background-color: rgb(227, 156, 209); border-radius: 10px 10px 10px 10px;">Jaky</span>
                                 </a>
                                 <p class="mx-5" >
                                     Me encanta!!, es de las mejores lamparas del mercado xd, muy bonitaaa </p>
@@ -300,7 +300,7 @@
                             <div class="my-2">
                                 <a class="link-offset-2 link-underline link-underline-opacity-0" href="http://localhost/prueba/PWCI/Front/eliminar/perfilPrivado.php">
                                 <img src="../img/Lilysa.png" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
-                                <span style="background-color: rgb(251, 233, 226); border-radius: 10px 10px 10px 10px;">Mei</span>
+                                <span style="background-color: rgb(227, 156, 209); border-radius: 10px 10px 10px 10px;">Mei</span>
                                 </a>
                                 <p class="mx-5" >
                                     Me gustaria que tuvieran mas variedad de colores, no se, tal vez uno de color turqueza estaria bastante bien
@@ -308,7 +308,7 @@
                             <div class="my-2">
                                 <a class="link-offset-2 link-underline link-underline-opacity-0" href="http://localhost/prueba/PWCI/Front/eliminar/perfilPrivado.php">
                                 <img src="../img/Lilysa.png" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
-                                <span style="background-color: rgb(251, 233, 226); border-radius: 0px 10px 10px 10px;">uwu</span>
+                                <span style="background-color: rgb(227, 156, 209); border-radius: 0px 10px 10px 10px;">uwu</span>
                                 </a>
                                 <br>
                                 <p class="mx-5" >
@@ -318,7 +318,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card">
+                    <div class="card"style="background-color: rgba(246, 244, 233, 0.903);">
                         <div class="card-body">
                             <form>
                                 <div class="mb-3">

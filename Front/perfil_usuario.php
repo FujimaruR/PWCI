@@ -149,41 +149,48 @@
     </div>
   </div>
 
-  <div class="datos_usuario">
-    <h1>Perfil de usuario</h1>
+  <div class="container-fluid mt-5 p-3">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-lg-9 col-md-10 col-sm-12 mx-auto">
+        <h5>Perfil de usuario</h5>
+        <div class="card"style="background-color:#f5d3dfe4; border-radius: 30px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3 col-md-8 col-sm-8 m-4">
+                  <div class="col-lg-12 col-md-12 col-sm-12 ">
+                    <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" class="img-fluid rounded-start" alt="..." style="height: 100%; width: 80%;border-radius: 80px 80px 50px 50px;">
+                  </div>
+                  <div class="col-md-12">
+                    <div class="card-body">
+                    <h5 class="card-title">Lucero Mendoza</h5>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-lg-3">
+                      <h5>Información</h5>
+                      <p class="card-text">Correo: lucero@gmail.com</p>
+                      <p class="card-text">Codigo postal: 66420</p>
+                      <p class="card-text">Direccion de entrega: Cinco # 629, col VILLAZUL, San Nicolas de los Garza, Nuevo Leon, MX</p>
+                      <p class="card-text">Numero telefonico: 8183321706</p>
+                      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editarPerfil">Editar</button>
 
-        <div class="card mb-3" style="max-width: 90%; margin-left: 5%;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" class="img-fluid rounded-start" alt="..."
-                style="height: 100%; width: 100%; object-fit:cover;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <div class="badge rounded-pill btnColorCard">Lucero </div>
-                <hr>
-                <p class="card-text" style="padding-top: 1%;">Correo: lucero@gmail.com</p>
-                <p>Codigo postal:  66420</p>
-                <p>Direccion de entrega: Cinco # 629, col VILLAZUL,  San Nicolas de los Garza,  Nuevo Leon,  MX</p>
-                <p>Numero telefonico: 8183321706</p>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editarPerfil">Editar</button>
+              </div>
+              <div class="col-md-5">
+                  <div class="card-body ">
+                  <h5>Otras configuraciones</h5>
+                    <a class="btn btn-danger" href="vendedor.php" role="button">
+                      Ir al perfil de vendedor
+                    </a>
+                    <h5 >Perfil</h5>
+                      <div class="form-check form-switch d-flex my-2">
+                      <label class="form-check-label px-5" for="genderSwitch">Publico</label>
+                      <input class="form-check-input px-3" type="checkbox" id="genderSwitch">
+                      <label class="form-check-label" for="genderSwitch">Privado</label>
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <h2>Otras configuraciones</h2>
-        <a class="btn btn-danger" href="vendedor.php" role="button">
-          Ir al perfil de vendedor
-        </a>
-        <h3>Perfil</h3>
-        <div class="form-check form-switch d-flex my-2 ">
-          <label class="form-check-label px-5 " for="genderSwitch">Publico</label>
-          <input class="form-check-input px-3" type="checkbox" id="genderSwitch">
-          <label class="form-check-label" for="genderSwitch">Privado</label>
         </div>
       </div>
     </div>
@@ -222,45 +229,61 @@
     </div>
   </div>
 
-  <div class="listas">
-    <h1>Listas del usuario</h1>
-    <div class="MlisUno">
-      <ul class="ml-2">
-        <li>
-          <h3><strong>Ropa bonita</strong></h3>
-        </li>
-        <li class="posder">
-          <h3>Cambiar nombre<i class="bi bi-pencil-square"></i></h3>
-        </li>
-        <li class="posder">
-          <h3>Borrar<i class="bi bi-trash3-fill"></i></h3>
-        </li>
-      </ul>
-      <ul class="ml-2">
-        <li>
-          <h4>6 articulos</h4>
-        </li>
-      </ul>
-      <ul class="ml-2">
-        <li>
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid" alt="...">
-        </li>
-        <li>
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png" class="img-fluid" alt="...">
-        </li>
-        <li>
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindod.png" class="img-fluid" alt="...">
-        </li>
-        <li class="img-container">
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="img-fluid" alt="...">
-          <div class="overlay">
-            <h2>+</h2>
-            <p>15 productos</p>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-10 mx-auto p-5">
+        <h5 class=" my-4">Listas del usuario</h5>
+
+        <div class="card" style="border-radius: 10px 10px 10px 10px;background-color:#e1f5fae4;">
+          <div class="card-body">
+          <div class="text-center">
+
+      </div>
+      <div class="MlisUno">
+        <ul class="ml-2">
+          <li>
+            <h5 class="m-4"><strong>Ropa bonita</strong></h5>
+          </li>
+          <li class="posder">
+            <h6 class="m-4">Cambiar nombre<i class="bi bi-pencil-square"></i></h6>
+          </li>
+          <li class="posder">
+            <h6 class="m-4">Borrar<i class="bi bi-trash3-fill"></i></h6>
+          </li>
+        </ul>
+        <ul class="ml-2">
+          <li>
+            <h5>6 articulos</h5>
+          </li>
+        </ul>
+        <ul class="ml-2">
+          <li>
+            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid" alt="...">
+          </li>
+          <li>
+            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png" class="img-fluid" alt="...">
+          </li>
+          <li>
+            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindod.png" class="img-fluid" alt="...">
+          </li>
+          <li class="img-container">
+            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="img-fluid" alt="...">
+            <div class="overlay">
+              <h2>+</h2>
+              <p>15 productos</p>
+            </div>
+          </li>
+        </ul>
+        
+      </div>
+  </div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
+
   
   <script src="http://localhost/prueba/PWCI/Front/js/perfil_usuario.js"></script>
 </body>
