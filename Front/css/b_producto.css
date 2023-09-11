@@ -150,3 +150,11 @@ li {
     display: flex;
     justify-content: center;
 }
+
+.refervista{
+    color: black;
+}
+
+.refervista:hover{
+    color: black;
+}
