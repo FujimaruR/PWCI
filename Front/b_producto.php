@@ -31,7 +31,8 @@
           <a href="b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
         </form>
         <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample" style="margin-left: 1%;">
+          data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
+          style="margin-left: 1%;">
           Filtros
         </button>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -81,7 +82,7 @@
         </li>
         <li>
           <div class="precio-input">
-            <span>Precio:</span> 
+            <span>Precio:</span>
             <input type="number" id="input1" name="input1">
             - <input type="number" id="input2" name="input2">
           </div>
@@ -142,43 +143,10 @@
 
   <div class="cardsprodu">
     <ul class="mediar">
-    <li>
-  <div class="elemento">
-    <div class="col-2">
-      <a href="vistaProducto.php">
-        <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-          <div class="dropdown">
-            <button class="heart-button text-lg-end text-md-end text-sm-end my-0 " data-bs-toggle="dropdown">
-              <span class="heart-icon">&#x2665;</span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Lista 1</a></li>
-              <li><a class="dropdown-item" href="#">Lista 2</a></li>
-              <li><a class="dropdown-item" href="#">Crear lista</a></li>
-            </ul>
-          </div>
-          <div class="d-flex flex-column align-items-center">
-            <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top fixed-image" alt="..." style="object-fit: cover; height: 200px;">
-            <div class="card-body" style="height: 70px;">
-              <div class="row mb-3">
-                <div class="col-4">
-                  <div class="badge rounded-pill btnColorCard">Laptop</div>
-                </div>
-                <div class="col-8 text-end">
-                  <div class="price-hp"><strong>MXN$18300.00</strong></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</li>
       <li>
         <div class="elemento">
           <div class="col-2">
-            <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+            <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc" href="vistaProducto.php">
               <div class="dropdown">
                 <button class="heart-button text-lg-end text-md-end text-sm-end my-0 " data-bs-toggle="dropdown">
                   <span class="heart-icon">&#x2665;</span>
@@ -190,18 +158,22 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/abanico.jpg" class="card-img-top  fixed-image"
-                  alt="..." style="object-fit: cover; height: 200px;">
-                <div class="card-body" style="height: 70px;">
-                  <div class="row mb-3">
-                    <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Abanico </div>
-                    </div>
-                    <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$200.00</strong></div>
+                <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+                  title="Ver detalles del producto">
+                  <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top fixed-image"
+                    alt="..." style="object-fit: cover; height: 200px;">
+
+                  <div class="card-body" style="height: 70px;">
+                    <div class="row mb-3">
+                      <div class="col-4">
+                        <div class="badge rounded-pill btnColorCard">Laptop</div>
+                      </div>
+                      <div class="col-8 text-end">
+                        <div class="price-hp"><strong>MXN$18300.00</strong></div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -222,18 +194,21 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/anillos.jpg" class="card-img-top  fixed-image"
-                  alt="..." style="object-fit: cover; height: 200px;">
-                <div class="card-body" style="height: 70px;">
-                  <div class="row mb-3">
-                    <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Anillos </div>
-                    </div>
-                    <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$120.00</strong></div>
+                <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+                  title="Ver detalles del producto">
+                  <img src="http://localhost/prueba/PWCI/img/principal/abanico.jpg" class="card-img-top  fixed-image"
+                    alt="..." style="object-fit: cover; height: 200px;">
+                  <div class="card-body" style="height: 70px;">
+                    <div class="row mb-3">
+                      <div class="col-4">
+                        <div class="badge rounded-pill btnColorCard">Abanico </div>
+                      </div>
+                      <div class="col-8 text-end">
+                        <div class="price-hp"><strong>MXN$200.00</strong></div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -254,18 +229,56 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
-                <img src="http://localhost/prueba/PWCI/img/principal/audifonos.jpg" class="card-img-top fixed-image"
-                  alt="..." style="object-fit: cover; height: 200px;">
-                <div class="card-body" style="height: 70px;">
-                  <div class="row mb-3">
-                    <div class="col-4">
-                      <div class="badge rounded-pill btnColorCard">Audifonos</div>
-                    </div>
-                    <div class="col-8 text-end">
-                      <div class="price-hp"><strong>MXN$400.00</strong></div>
+                <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+                  title="Ver detalles del producto">
+                  <img src="http://localhost/prueba/PWCI/img/principal/anillos.jpg" class="card-img-top  fixed-image"
+                    alt="..." style="object-fit: cover; height: 200px;">
+                  <div class="card-body" style="height: 70px;">
+                    <div class="row mb-3">
+                      <div class="col-4">
+                        <div class="badge rounded-pill btnColorCard">Anillos </div>
+                      </div>
+                      <div class="col-8 text-end">
+                        <div class="price-hp"><strong>MXN$120.00</strong></div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="elemento">
+          <div class="col-2">
+            <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+              <div class="dropdown">
+                <button class="heart-button text-lg-end text-md-end text-sm-end my-0 " data-bs-toggle="dropdown">
+                  <span class="heart-icon">&#x2665;</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Lista 1</a></li>
+                  <li><a class="dropdown-item" href="#">Lista 2</a></li>
+                  <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                </ul>
+              </div>
+              <div class="d-flex flex-column align-items-center">
+                <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+                  title="Ver detalles del producto">
+                  <img src="http://localhost/prueba/PWCI/img/principal/audifonos.jpg" class="card-img-top fixed-image"
+                    alt="..." style="object-fit: cover; height: 200px;">
+                  <div class="card-body" style="height: 70px;">
+                    <div class="row mb-3">
+                      <div class="col-4">
+                        <div class="badge rounded-pill btnColorCard">Audifonos</div>
+                      </div>
+                      <div class="col-8 text-end">
+                        <div class="price-hp"><strong>MXN$400.00</strong></div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -289,6 +302,8 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
+                <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+                  title="Ver detalles del producto">
                 <img src="http://localhost/prueba/PWCI/img/principal/Labial.jpg" class="card-img-top  fixed-image"
                   alt="..." style="object-fit: cover; height: 200px;">
                 <div class="card-body" style="height: 70px;">
@@ -301,6 +316,7 @@
                     </div>
                   </div>
                 </div>
+                </a>
               </div>
             </div>
           </div>
@@ -321,6 +337,8 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
+                <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+                  title="Ver detalles del producto">
                 <img src="http://localhost/prueba/PWCI/img/principal/lampara.jpg" class="card-img-top  fixed-image"
                   alt="..." style="object-fit: cover; height: 200px;">
                 <div class="card-body" style="height: 70px;">
@@ -333,6 +351,7 @@
                     </div>
                   </div>
                 </div>
+                </a>
               </div>
             </div>
           </div>
@@ -353,6 +372,8 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
+                <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+                  title="Ver detalles del producto">
                 <img src="http://localhost/prueba/PWCI/img/principal/maceta.jpg" class="card-img-top  fixed-image"
                   alt="..." style="object-fit: cover; height: 200px;">
                 <div class="card-body" style="height: 70px;">
@@ -365,6 +386,7 @@
                     </div>
                   </div>
                 </div>
+                </a>
               </div>
             </div>
           </div>
@@ -385,6 +407,8 @@
                 </ul>
               </div>
               <div class="d-flex flex-column align-items-center">
+                <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+                  title="Ver detalles del producto">
                 <img src="http://localhost/prueba/PWCI/img/principal/sombrilla.jpg" class="card-img-top fixed-image"
                   alt="..." style="object-fit: cover; height: 200px;">
                 <div class="card-body" style="height: 70px;">
@@ -397,6 +421,7 @@
                     </div>
                   </div>
                 </div>
+                </a>
               </div>
             </div>
           </div>

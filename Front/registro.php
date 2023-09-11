@@ -19,6 +19,7 @@
     </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/registro.js"></script>   
 </head>
 <body>
 <div class="container-fluid">
@@ -28,7 +29,7 @@
              <img class="mx-auto mb-3" src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Centered Image" style="max-width: 150px;">
             <h4>Micherry</h4>
           </div>
-          <form action="" class="row g-3">
+          <form action="" class="row g-3" onsubmit="return validarFormulario()">
               <div class="col-12 text-center align-items-center">
                 <h5>Registro de usuario</h5>
              </div>
@@ -40,7 +41,7 @@
 
                     <input type="Password" class="form-control my-2" id="PasswordLogin"name="Password" placeholder="password" required>
                    
-                    <input type="text" class="form-control my-2" id="correoLogin" placeholder="nombre completo" required>
+                    <input type="text" class="form-control my-2" id="usuarioNombre" placeholder="nombre completo" required>
   
 
                 </div>
@@ -58,7 +59,7 @@
                     <label class="form-check-label" for="genderSwitch">Hombre</label>
                   </div>
                   <label for="form-label" class="form-label col-sm-8 col-md-5 col-lg-5 px-5">Fecha de nacimiento
-                    <input type="date" class="form-control" id="R_FECHA" name="R_FECHA" required>
+                    <input type="date" class="form-control" id="R_FECHA" name="R_FECHA" onchange="validarFecha()" required>
                 </div>
                   <div class="col-12 text-center">
                     <div class="form-check mb-3">
