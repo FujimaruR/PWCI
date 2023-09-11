@@ -73,74 +73,75 @@
       </div>
     </div>
   </nav>
-    <div class="collapse" id="collapseFiltros">
-        <div class="card card-body">
-          <ul class="ml-2">
-            <li>
-              <div class="configbus">
-                <button type="button" class="btn btn-outline-danger" data-bs-toggle="offcanvas" data-bs-target="#categorias"
-                  aria-controls="categorias">Categorias</button>
-              </div>
-            </li>
-            <li>
-              <div class="precio-input">
-                Precio : <input type="number" id="input1" name="input1">
-                - <input type="number" id="input2" name="input2">
-              </div>
-            </li>
-            <li>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Mejor calificados
-                </label>
-              </div>
-            </li>
-            <li>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Mas vendidos</option>
-                <option value="1">Menos vendidos</option>
-              </select>
-            </li>
-            <li>
-              <button type="button" class="btn btn-outline-danger">Confirmar</button>
-            </li>
-          </ul>
-        </div>
-      </div>
+  <div class="collapse" id="collapseFiltros">
+    <div class="card card-body">
+      <ul class="ml-2">
+        <li>
+          <div class="configbus">
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="offcanvas" data-bs-target="#categorias"
+              aria-controls="categorias">Categorias</button>
+          </div>
+        </li>
+        <li>
+          <div class="precio-input">
+            <span>Precio:</span> 
+            <input type="number" id="input1" name="input1">
+            - <input type="number" id="input2" name="input2">
+          </div>
+        </li>
+        <li>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Mejor calificados
+            </label>
+          </div>
+        </li>
+        <li>
+          <select class="form-select tamanven" aria-label="Default select example">
+            <option selected>Mas vendidos</option>
+            <option value="1">Menos vendidos</option>
+          </select>
+        </li>
+        <li>
+          <button type="button" class="btn btn-outline-danger">Confirmar</button>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="categorias" aria-labelledby="titulocatego">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="titulocatego">Menu de categorias</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div class="input-group">
-            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-              <option selected>Anime</option>
-              <option value="1">Ropa</option>
-              <option value="2">Electronica</option>
-              <option value="3">Figuras</option>
-            </select>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="categorias" aria-labelledby="titulocatego">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="titulocatego">Menu de categorias</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="input-group">
+        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+          <option selected>Anime</option>
+          <option value="1">Ropa</option>
+          <option value="2">Electronica</option>
+          <option value="3">Figuras</option>
+        </select>
+        <button class="btn btn-outline-danger" type="button">Confirmar</button>
+      </div>
+      <div class="form-floating my-2">
+        <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
+        <label for="floatingTextaread">Categorias del producto</label>
+      </div>
+      <div>
+        <ul class="ml-2">
+          <li>
+            <button class="btn btn-outline-danger" type="button">Eliminar</button>
+          </li>
+          <li>
             <button class="btn btn-outline-danger" type="button">Confirmar</button>
-          </div>
-          <div class="form-floating my-2">
-            <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
-            <label for="floatingTextaread">Categorias del producto</label>
-          </div>
-          <div>
-            <ul class="ml-2">
-              <li>
-                <button class="btn btn-outline-danger" type="button">Eliminar</button>
-              </li>
-              <li>
-                <button class="btn btn-outline-danger" type="button">Confirmar</button>
-              </li>
-            </ul>
+          </li>
+        </ul>
 
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-lg-8 ">

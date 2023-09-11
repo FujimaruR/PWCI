@@ -44,11 +44,34 @@ li {
     align-items: center;
 }
 
-.precio-input input {
-    width: 30%;
-    margin: 0 1%;
+.precio-input span {
+    margin-right: 1%;
 }
 
+.precio-input input {
+    width: 50%;
+    min-width: 20%;
+    margin: 0 1%;
+    margin-left: 1%;
+}
+
+.tamanven {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .precio-input {
+        flex-direction: column;
+    }
+
+    .precio-input span {
+        margin-bottom: 5%;
+    }
+
+    .precio-input input {
+        margin: 2% 0;
+    }
+}
 
 .configbus button {
     margin-left: 1%;

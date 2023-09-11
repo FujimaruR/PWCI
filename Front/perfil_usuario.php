@@ -90,7 +90,8 @@
         </li>
         <li>
           <div class="precio-input">
-            Precio : <input type="number" id="input1" name="input1">
+            <span>Precio:</span> 
+            <input type="number" id="input1" name="input1">
             - <input type="number" id="input2" name="input2">
           </div>
         </li>
@@ -103,7 +104,7 @@
           </div>
         </li>
         <li>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select tamanven" aria-label="Default select example">
             <option selected>Mas vendidos</option>
             <option value="1">Menos vendidos</option>
           </select>
