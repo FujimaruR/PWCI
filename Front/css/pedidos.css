@@ -112,11 +112,6 @@ li {
 
 /*estrellas */
 
-.estrellas {
-    width: 30%;
-    height: 10%;
-}
-
 .clasificacion label {
     color: grey;
 }
@@ -143,4 +138,19 @@ li {
     color: orange;
 }
 
+.star {
+    font-size: 15px;
+    color: #B9B4D9;
+    transition: color o.3s;
+    cursor: pointer;
+}
+
+.star:hover,
+.star.checked {
+    color: gold;
+}
+
+.rating {
+    display: flex;
+}
 /* fin de las estrellas */

@@ -10,7 +10,9 @@
     src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet"
     href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
-  <title>Micherry</title>
+    <link rel="stylesheet" href="http://localhost/prueba/PWCI/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+  
+    <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
   <style>
     body{
@@ -150,49 +152,62 @@
     </div>
   </div>
 
-  <div id="elementoFijo">
-    <div class="contenido">
-      <h2>Filtrar por:</h2>
-      <h3>Fechas</h3>
-      <p class="me-2">Desde: </p>
-      <input type="date" name="dateIni" class="form-control mb-2 mb-md-0" />
-      <p class="me-2">Hasta: </p>
-      <input type="date" name="dateFin" class="form-control mb-2 mb-md-0" />
-      <p class="me-2">Categorias: </p>
-      <div class="input-group">
-        <select class="form-select" id="inputGroupSelect05" aria-label="Example select with button addon">
-          <option selected>Anime</option>
-          <option value="1">Ropa</option>
-          <option value="2">Electronica</option>
-          <option value="3">Figuras</option>
-        </select>
-        <button class="btn btn-outline-danger" type="button">Confirmar</button>
-      </div>
-      <div class="form-floating my-2">
-        <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
-        <label for="floatingTextaread">Categorias del producto</label>
-      </div>
-      <div>
-        <ul class="ml-2">
-          <li>
-            <button class="btn btn-outline-danger" type="button">Eliminar</button>
-          </li>
-          <li>
-            <button class="btn btn-outline-danger" type="button">Confirmar</button>
-          </li>
-        </ul>
-
+  <div class="container p-5">
+    <div class="row ">
+      <div class="col-lg-12">
+        <div class="card"style="background-color:#f5d3dfe4; border-radius: 30px;">
+          <div class="card-body">
+            <h5>Filtrar por...</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <h6>Fechas</h6>
+                <div class="d-flex">
+                  <p class="me-2">Desde: </p>
+                  <input type="date" name="dateIni" class="form-control mb-2 mb-md-0" />
+                  <p class="me-2">Hasta: </p>
+                  <input type="date" name="dateFin" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h6>Categorias</h6>
+                <div class="input-group">
+                  <select class="form-select" id="inputGroupSelect05" aria-label="Example select with button addon">
+                    <option selected>Anime</option>
+                    <option value="1">Ropa</option>
+                    <option value="2">Electronica</option>
+                    <option value="3">Figuras</option>
+                  </select>
+                  <button class="btn btn-outline-danger" type="button">Confirmar</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-floating my-2">
+              <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
+              <label for="floatingTextaread">Categorias del producto</label>
+            </div>
+            <div>
+              <ul class="ml-2">
+                <li>
+                  <button class="btn btn-outline-danger" type="button">Eliminar</button>
+                </li>
+                <li>
+                  <button class="btn btn-outline-danger" type="button">Confirmar</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="headerpedidos">
-    <h1>Consulta de pedidos realizados</h1>
+  
+  <div class="text-center">
+    <h4>Consulta de pedidos realizados</h4>
   </div>
-
-  <div class="mpedidos">
-    <h1>Pedidos</h1>
-    <div class="card mb-3" style="max-width: 60%;">
+  
+  <div class="container ">
+    <h5>Pedidos</h5>
+    <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="img-fluid rounded-start" alt="..."
@@ -200,7 +215,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <div class="badge rounded-pill btnColorCard">Laptop </div>
+            <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Laptop</h6> </div>
             <p class="card-text" style="padding-top: 1%;">Laptop linda kawai uwu chi</p>
             <p class="card-text"><small class="text-body-secondary"><strong>MXN$18300.00</strong></small></p>
             <hr>
@@ -208,26 +223,22 @@
             <p>Categorias: Electronica</p>
             <p>Cantidad: 1</p>
             <p>Calificacion:</p>
-            <form class="estrellas">
-              <p class="clasificacion">
-                <input id="radio1" type="radio" name="estrellas" value="5">
-                <label for="radio1">★</label>
-                <input id="radio2" type="radio" name="estrellas" value="4">
-                <label for="radio2">★</label>
-                <input id="radio3" type="radio" name="estrellas" value="3">
-                <label for="radio3">★</label>
-                <input id="radio4" type="radio" name="estrellas" value="2">
-                <label for="radio4">★</label>
-                <input id="radio5" type="radio" name="estrellas" value="1">
-                <label for="radio5">★</label>
-              </p>
-            </form>
+            <div class="rating">
+              <i class="bi bi-star-fill star "></i>
+              <i class="bi bi-star-fill star "></i>
+              <i class="bi bi-star-fill star "></i>
+              <i class="bi bi-star-fill star"></i>
+              <i class="bi bi-star-fill star"></i>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
 
+
   </div>
+
 </body>
 
 <footer class="bg-dark text-white p-5">
