@@ -46,7 +46,7 @@
           <li class="nav-item dropdown">
 
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35">
+              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35" style="border-radius: 20px 20px">
 
             </a>
             <ul class="dropdown-menu">
@@ -139,13 +139,13 @@
       </div>
     </div>
   </div>
-
-  <div class="carrito">
-    <div class="container px-4 text-center">
-      <div class="row gx-5 gutter">
-        <div class="col-md-6 col-lg-6 headercomp mb-4">
-          <div class="p-3">
-            <h3>Cesta de la comprar (2)</h3>
+  <div class="container mt-2 my-5">
+    <div class="row">
+      <div class="col-md-6 col-lg-6 mx-auto">
+        <div class="card" style="background-color:#f5d3dfe4; border-radius: 30px;">
+          <div class="card-body ">
+            <h4>Cesta de la compra(2)</h4>
+         
             <div class="form-check">
               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
@@ -259,20 +259,59 @@
               <hr>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 col-lg-4 headercompd mb-4">
-          <div class="p-3">
-            <h3>Resumen</h3>
-            <h5>Total a pagar: </h5>
-            <p><strong>MXN$0,00</strong></p>
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <button type="button" class="btn btn-danger mb-3">Pagar</button>
-            </div>
+          </div>
+      </div>
+    
+    <div class="col-md-6 col-lg-4 mx-auto" >
+      <div class="card"style="background-color:#f5d3dfe4;  border-radius: 30px;">  
+        <div class="card-body">
+          <h5 class="text-center">Resumen</h5>
+          <h5>Total a pagar: </h5>
+          <p><strong>MXN$0,00</strong></p>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="button" class="btn btn-danger mb-3"data-bs-toggle="modal" data-bs-target="#pagar">Pagar</button>
           </div>
         </div>
       </div>
+
+
     </div>
   </div>
+  </div>
+</div>
+
+                        <!-- Modal -->
+ <div class="modal fade" id="pagar"  tabindex="-1" aria-labelledby="pagar" aria-hidden="true">
+                          <div class="modal-dialog">
+                          <div class="modal-content">
+
+                              <!-- Cabecera del Modal -->
+                              <div class="modal-header">
+                              <h4 class="modal-title">Método de pago</h4>
+                              <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                              </div>
+
+                              <!-- Contenido del Modal -->
+                              <div class="modal-body text-center">
+                                  <p><span>Un articulo en tu carrito</span></p>
+                                  <div class="row">
+                                      <div class="col-4 mx-5" >
+                                          <p><span>Subtotal=</span></p>
+                                      </div>
+                                      <div class="col-4">
+                                          <p><span>$500</span></p>
+                                      </div>
+                                  </div>
+                                  <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C;"><h5>Pagar con PayPal</h5></button>
+                              </div>
+
+                              <!-- Pie del Modal -->
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btnColorCard btnHover" data-bs-dismiss="modal">Cerrar</button>
+                              </div>
+                          </div>
+                          </div>
+</div>
 
   <script src="http://localhost/prueba/PWCI/Front/js/carrito.js"></script>
 </body>
