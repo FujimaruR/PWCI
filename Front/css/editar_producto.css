@@ -1,0 +1,73 @@
+ul {
+    display: flex;
+    list-style: none;
+}
+
+li {
+    margin-left: 20px;
+}
+
+
+
+.vproducto {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    background-color: rgba(255, 219, 219, 0.7);
+    border-radius: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.vproducto h1 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: Bradley Hand, cursive;
+}
+
+.imgven {
+    justify-content: center;
+    text-align: center;
+    font-family: Bradley Hand, cursive;
+}
+
+.datven {
+    font-family: Bradley Hand, cursive;
+}
+
+.datven h2{
+    text-align: center;
+}
+
+.carousel-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+}
+
+.carousel-media img,
+.carousel-media video {
+    object-fit: cover;
+    height: 50%;
+}
+
+.custom-image {
+    max-width: 100%;
+    max-height: 500px; /* Altura deseada */
+    width: auto;
+    height: auto;
+    margin: 0 auto; /* Para centrar la imagen horizontalmente */
+}
+
+body{ background-image: url(http://localhost/prueba/PWCI/img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+.letraFuente {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
