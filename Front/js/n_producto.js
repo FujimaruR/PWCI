@@ -13,7 +13,7 @@ var loadMediaCarousel = function () {
       image.classList.add('d-block');
       image.style.maxWidth = '100%'; // Limitar el ancho al 100%
       image.style.maxHeight = '400px'; // Limitar la altura a 500px
-      image.style.objectFit = 'cover';      
+      image.style.objectFit = 'cover';
       carouselItem.appendChild(image);
     } else if (media.type.startsWith('video')) {
       const video = document.createElement('video');
@@ -55,4 +55,18 @@ checkbox.addEventListener('change', function () {
     priceInput.disabled = false; // Habilitar el input
   }
 });
+
+var input1 = document.getElementById("floatingInput");
+var input2 = document.getElementById("priceinput");
+
+input1.addEventListener("input", validarNumero);
+input2.addEventListener("input", validarNumero);
+
+function validarNumero() {
+  var valor = parseFloat(this.value);
+
+  if (valor <= 0 || isNaN(valor)) {
+    this.value = 1;
+  }
+}
 

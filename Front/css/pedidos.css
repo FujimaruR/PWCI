@@ -153,6 +153,7 @@ li {
 .rating {
     display: flex;
 }
+
 /*scrollbar*/
 ::-webkit-scrollbar {
     width: 10px;

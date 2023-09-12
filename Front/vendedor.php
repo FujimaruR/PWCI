@@ -11,6 +11,7 @@
     href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
+  <script src="js/vendedor.js"></script>   
 </head>
 
 <body>
@@ -65,9 +66,9 @@
                     <h5 class="card-title">Consulta de ventas</h5>
                     <p class="card-text">Ingrese el rango de fechas: </p>
                     <p class="me-2">Desde: </p>
-                    <input type="date" name="dateIni" class="form-control mb-2 mb-md-0" />
+                    <input type="date" name="dateIni" id="dateIni" class="form-control mb-2 mb-md-0" onchange="validarFechaI()"/>
                     <p class="me-2">Hasta: </p>
-                    <input type="date" name="dateFin" class="form-control mb-2 mb-md-0"/>
+                    <input type="date" name="dateFin" id="dateFin" class="form-control mb-2 mb-md-0" onchange="validarFechaF()"/>
                   </div>
               </div>
               <div class="col-lg-3 mx-auto">

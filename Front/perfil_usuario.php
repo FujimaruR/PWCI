@@ -257,7 +257,9 @@
             <h5>6 articulos</h5>
           </li>
         </ul>
+        <a data-bs-toggle="modal" data-bs-target="#verlistaprod">
         <ul class="ml-2">
+        
           <li>
             <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid" alt="...">
           </li>
@@ -271,10 +273,12 @@
             <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="img-fluid" alt="...">
             <div class="overlay">
               <h2>+</h2>
-              <p>15 productos</p>
+              <p>3 productos</p>
             </div>
           </li>
+        
         </ul>
+        </a>
         
       </div>
   </div>
@@ -284,6 +288,163 @@
     </div>
   </div>
 
+  <div class="modal fade" id="verlistaprod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabelped">Productos en la lista</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+        <div class="container ">
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Vestido rojo</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Vestido lindo color rojo</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$750.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Vestido escolar</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Vestido sacado de un dorama</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$1000.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindod.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Vestido para citas</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Vestido lindo para una cita</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$1200.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Vestido blanco</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Ropa casual lindo</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$500.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_chino.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Cosplay</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Cosplay chino lindo</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$2000.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_linda.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Ropa citas</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Ropa para una cita con tu novio</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$1300.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+        </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var input1 = document.getElementById("input1");
+    var input2 = document.getElementById("input2");
+
+    input1.addEventListener("input", validarNumero);
+    input2.addEventListener("input", validarNumero);
+
+    function validarNumero() {
+      var valor = parseFloat(this.value);
+
+      if (valor <= 0 || isNaN(valor)) {
+        this.value = 1;
+      }
+    }
+  </script>
   
   <script src="http://localhost/prueba/PWCI/Front/js/perfil_usuario.js"></script>
 </body>

@@ -35,7 +35,7 @@
              </div>
                 <div class="col-1 mx-4"></div>
                 <div class="col-4">
-                    <input type="email" class="form-control " id="correoLogin" placeholder="name@example.com" required>
+                    <input type="email" class="form-control " id="correoLogin" placeholder="name@example.com" required title="Por favor, ingresa tu correo">
                     
                     <input type="text" class="form-control my-2" id="usuario" placeholder="usuario" required>
 

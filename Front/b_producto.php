@@ -449,6 +449,21 @@
       </ul>
     </nav>
   </div>
+  <script>
+    var input1 = document.getElementById("input1");
+    var input2 = document.getElementById("input2");
+
+    input1.addEventListener("input", validarNumero);
+    input2.addEventListener("input", validarNumero);
+
+    function validarNumero() {
+      var valor = parseFloat(this.value);
+
+      if (valor <= 0 || isNaN(valor)) {
+        this.value = 1;
+      }
+    }
+  </script>
 </body>
 <footer class="bg-dark text-white p-5">
   <div class="container Footer">

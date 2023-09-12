@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/pedidos.css">
-  <script src="http://localhost/prueba/PWCI/Front/js/b_producto.js"></script>
+  <script src="http://localhost/prueba/PWCI/Front/js/pedidos.js"></script>
   <script
     src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet"
@@ -163,9 +163,9 @@
                 <h6>Fechas</h6>
                 <div class="d-flex">
                   <p class="me-2">Desde: </p>
-                  <input type="date" name="dateIni" class="form-control mb-2 mb-md-0" />
+                  <input type="date" name="dateIni" id="dateIni" class="form-control mb-2 mb-md-0" onchange="validarFechaI()"/>
                   <p class="me-2">Hasta: </p>
-                  <input type="date" name="dateFin" class="form-control" />
+                  <input type="date" name="dateFin" id="dateFin" class="form-control" onchange="validarFechaF()"/>
                 </div>
               </div>
               <div class="col-md-6">
@@ -236,6 +236,35 @@
     </div>
     
   </div>
+  <script>
+    var input1 = document.getElementById("input1");
+    var input2 = document.getElementById("input2");
+
+    input1.addEventListener("input", validarNumero);
+    input2.addEventListener("input", validarNumero);
+
+    function validarNumero() {
+      var valor = parseFloat(this.value);
+
+      if (valor <= 0 || isNaN(valor)) {
+        this.value = 1;
+      }
+    }
+
+
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach(function (star, index) {
+        star.addEventListener('click', function () {
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('checked');
+            }
+            for (let i = index + 1; i < stars.length; i++) {
+                stars[i].classList.remove('checked');
+            }
+        })
+    });
+  </script>
 </body>
 <footer class="bg-dark text-white p-5">
   <div class="container Footer">
