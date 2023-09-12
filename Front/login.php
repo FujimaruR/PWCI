@@ -29,7 +29,7 @@
              <img class="mx-auto mb-3" src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Centered Image" style="max-width: 150px;">
             <h4>Micherry</h4>
           </div>
-            <form action="" class="col-8 mx-auto">
+            <form id="loginForm"action="" class="col-8 mx-auto">
                   <input type="email" class="form-control my-3" id="correoLogin" placeholder="name@example.com" required>
 
                   <input type="Password" class="form-control my-3" id="PasswordLogin"name="Password" placeholder="password" required> 
@@ -51,5 +51,6 @@
     </div>
 
   </div>
+  <script src="js/login.js"></script>
 </body>
 </html>
