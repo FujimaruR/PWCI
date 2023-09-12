@@ -216,7 +216,7 @@
                           <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Lista 1</a></li>
                             <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                            <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                            <li><a class="dropdown-item" href="#"data-bs-toggle="modal" data-bs-target="#crearLista">Crear lista</a></li>
                           </ul>
 
                         </div>
@@ -252,7 +252,7 @@
                           <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Lista 1</a></li>
                             <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                            <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                            <li><a class="dropdown-item" href="#"data-bs-toggle="modal" data-bs-target="#crearLista">Crear lista</a></li>
                           </ul>
                         </div>
                         <a href="vistaProducto.php">
@@ -284,7 +284,7 @@
                           <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Lista 1</a></li>
                             <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                            <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crearLista">Crear lista</a></li>
                           </ul>
                         </div>
                         <a href="vistaProducto.php">
@@ -316,7 +316,7 @@
                           <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Lista 1</a></li>
                             <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                            <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                            <li><a class="dropdown-item" href="#"data-bs-toggle="modal" data-bs-target="#crearLista">Crear lista</a></li>
                           </ul>
                         </div>
                         <a href="vistaProducto.php">
@@ -349,7 +349,7 @@
                           <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Lista 1</a></li>
                             <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                            <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crearLista">Crear lista</a></li>
                           </ul>
                         </div>
                     <a href="vistaProducto.php">
@@ -387,7 +387,7 @@
                               <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Lista 1</a></li>
                                 <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#crearLista">Crear lista</a></li>
                               </ul>
                             </div>
                             <a href="vistaProducto.php">
@@ -425,7 +425,7 @@
                             <ul class="dropdown-menu">
                               <li><a class="dropdown-item" href="#">Lista 1</a></li>
                               <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                              <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                              <li><a class="dropdown-item" href="#"data-bs-toggle="modal" data-bs-target="#crearLista">Crear lista</a></li>
                             </ul>
                           </div>
                           <a href="vistaProducto.php">
@@ -450,7 +450,53 @@
                   </div>
               </div>
         </div>
+                        <!-- Crear Lista  -->
+                        <div class="modal fade" id="crearLista" tabindex="-1" aria-labelledby="crearLista" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
 
+                                <!-- Cabecera del Modal -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Crear lista</h4>
+                                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Contenido del Modal -->
+                                <div class="modal-body text-center">
+
+                                    <div class="row">
+                                        <div class="col-5 mx-5 my-5" >
+                                            <input type="text" class="form-control my-2" id="nomLista" placeholder="Nombre de la lista" required>
+                                            <input type="text" class="form-control my-2" id="descLista" placeholder="Descripción" required>
+                                          
+                                            <label for="privacidad">Tipo</label>
+                                            <div class="d-flex my-switch">
+                                              <div class="form-text text-1">Pública</div>
+                                              <div class="form-check form-switch form-check-inline">
+                                                <input id="privacidad" class="form-check-input form-check-inline" type="checkbox">
+                                              </div>
+                                              <div class="form-text text-2">Privada</div>
+                                            </div>
+             
+
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="card">
+                                                <input class="form-control" style="background-size: 50vh" type="file" id="#img-preview" onchange="loadFile(event)" required>
+                                                <img id="#img-uploader" src="../img/principal/abanico.jpg"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pie del Modal -->
+                                <div class="modal-footer">
+                                    <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C; color:aliceblue;">Crear</button>
+                                    <button type="button" class="btn btnColorCard btnHover" data-bs-dismiss="modal" style="color:aliceblue;">Cerrar</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
     </div>
 
     <script>

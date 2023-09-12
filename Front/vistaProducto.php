@@ -264,6 +264,16 @@
                                         <div class="col-5 mx-5 my-5" >
                                             <input type="text" class="form-control my-2" id="nomLista" placeholder="Nombre de la lista" required>
                                             <input type="text" class="form-control my-2" id="descLista" placeholder="Descripción" required>
+                                          
+                                            <label for="privacidad">Tipo</label>
+                                            <div class="d-flex my-switch">
+                                              <div class="form-text text-1">Pública</div>
+                                              <div class="form-check form-switch form-check-inline">
+                                                <input id="privacidad" class="form-check-input form-check-inline" type="checkbox">
+                                              </div>
+                                              <div class="form-text text-2">Privada</div>
+                                            </div>
+
                                         </div>
                                         <div class="col-4">
                                             <div class="card">
