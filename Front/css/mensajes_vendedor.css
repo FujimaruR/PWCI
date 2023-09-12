@@ -22,14 +22,7 @@ body{
 .letraFuente {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
-.Footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    color: #fff; /* Cambia esto al color deseado */
-    text-align: center;
-    padding: 10px;
-}
+
 /*scrollbar*/
 ::-webkit-scrollbar {
     width: 10px;
@@ -47,4 +40,30 @@ body{
 ::-webkit-scrollbar-thumb:hover {
     background-color: #dd5a5a;
 
+}
+
+/* Estilos generales para todo el cuerpo de la página */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para el contenido principal */
+.container {
+    flex: 1;
+    /* Aquí puedes agregar margen, padding u otros estilos necesarios */
+}
+
+/* Estilos para el footer */
+.Footer {
+    background-color: #343a40; /* Color de fondo del footer */
+    color: white; /* Color del texto del footer */
+    text-align: center;
+    padding: 10px; /* Espaciado interior del footer */
 }

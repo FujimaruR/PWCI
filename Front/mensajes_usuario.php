@@ -19,6 +19,7 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
+
   }
   </style>
 </head>
@@ -184,7 +185,6 @@
     </div>
   </div>
 
-
   <script>
     var input1 = document.getElementById("input1");
     var input2 = document.getElementById("input2");
@@ -201,8 +201,7 @@
     }
   </script>
 </body>
-
-<footer class="bg-dark text-white p-5 Footer" >
+<footer class="bg-dark text-white p-5 Footer">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
@@ -239,5 +238,4 @@
     </div>
   </div>
 </footer>
-
 </html>

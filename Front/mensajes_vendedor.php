@@ -85,7 +85,8 @@
     </div>
   </div>
 </body>
-<footer class="bg-dark text-white p-5 Footer" >
+
+<footer class="bg-dark text-white p-5 Footer">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
