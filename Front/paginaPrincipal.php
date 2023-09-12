@@ -37,7 +37,10 @@
         .bg-custom-color {
           background-color: #BA3A47!important;
         }
-
+        a {
+            text-decoration: none;
+            color: black;
+        }
   </style>
 
   </head>
@@ -166,7 +169,7 @@
   </div>
 
 <!--carrusel principal -->
-    <div class="container-fluid">
+  <div class="container-fluid">
         <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="1000">
@@ -195,7 +198,8 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </div>
+  </div>
+
 <!-- cards -->
     <div class="row p-5">
         <div class="col-12  ">
@@ -214,54 +218,58 @@
                             <li><a class="dropdown-item" href="#">Lista 2</a></li>
                             <li><a class="dropdown-item" href="#">Crear lista</a></li>
                           </ul>
+
                         </div>
+                           <a href="vistaProducto.php">
+                                <div class="d-flex flex-column align-items-center">
+                                <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image" alt="...">
+                                <div class="card-body">
+                                      <div class="row mb-3">
+                                      <div class="col-4">
+                                          <div class="badge rounded-pill btnColorCard">Laptop </div>
 
-                        <div class="d-flex flex-column align-items-center">
-                          <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" class="card-img-top  fixed-image" alt="...">
-                          <div class="card-body">
-                                <div class="row mb-3">
+                                      </div>
+                                      <div class="col-8 text-end">
+                                          <div class="price-hp"><strong>MXN$18300.00</strong></div>
+
+                                      </div>
+                                      </div>
+                                </div>
+                              </div>
+                           </a>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="elemento">
+                    <div class="col-2">
+                      <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+
+                          <div class="dropdown">
+                            <button class="heart-button text-lg-end text-md-end text-sm-end my-0 " data-bs-toggle="dropdown">
+                              <span class="heart-icon">&#x2665;</span>
+                            </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Lista 1</a></li>
+                            <li><a class="dropdown-item" href="#">Lista 2</a></li>
+                            <li><a class="dropdown-item" href="#">Crear lista</a></li>
+                          </ul>
+                        </div>
+                        <a href="vistaProducto.php">
+                          <div class="d-flex flex-column align-items-center">
+                            <img src="http://localhost/prueba/PWCI/img/principal/audifonos.jpg" class="card-img-top fixed-image" alt="...">
+                            <div class="card-body">
+                              <div class="row mb-3">
                                 <div class="col-4">
-                                    <div class="badge rounded-pill btnColorCard">Laptop </div>
-
+                                  <div class="badge rounded-pill btnColorCard">Audifonos rosas</div>
                                 </div>
                                 <div class="col-8 text-end">
-                                    <div class="price-hp"><strong>MXN$18300.00</strong></div>
-
+                                  <div class="price-hp"><strong>MXN$230.00</strong></div>
                                 </div>
-                                </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="elemento">
-                    <div class="col-2">
-                      <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-
-                          <div class="dropdown">
-                            <button class="heart-button text-lg-end text-md-end text-sm-end my-0 " data-bs-toggle="dropdown">
-                              <span class="heart-icon">&#x2665;</span>
-                            </button>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                            <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                            <li><a class="dropdown-item" href="#">Crear lista</a></li>
-                          </ul>
-                        </div>
-
-                        <div class="d-flex flex-column align-items-center">
-                          <img src="http://localhost/prueba/PWCI/img/principal/audifonos.jpg" class="card-img-top fixed-image" alt="...">
-                          <div class="card-body">
-                            <div class="row mb-3">
-                              <div class="col-4">
-                                <div class="badge rounded-pill btnColorCard">Audifonos rosas</div>
-                              </div>
-                              <div class="col-8 text-end">
-                                <div class="price-hp"><strong>MXN$230.00</strong></div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -279,20 +287,21 @@
                             <li><a class="dropdown-item" href="#">Crear lista</a></li>
                           </ul>
                         </div>
-
-                        <div class="d-flex flex-column align-items-center">
-                          <img src="http://localhost/prueba/PWCI/img/principal/anillos.jpg" class="card-img-top fixed-image" alt="...">
-                          <div class="card-body">
-                            <div class="row mb-3">
-                              <div class="col-4">
-                                <div class="badge rounded-pill btnColorCard">Anillos de gato</div>
-                              </div>
-                              <div class="col-8 text-end">
-                                <div class="price-hp"><strong>MXN$300.00</strong></div>
+                        <a href="vistaProducto.php">
+                          <div class="d-flex flex-column align-items-center">
+                            <img src="http://localhost/prueba/PWCI/img/principal/anillos.jpg" class="card-img-top fixed-image" alt="...">
+                            <div class="card-body">
+                              <div class="row mb-3">
+                                <div class="col-4">
+                                  <div class="badge rounded-pill btnColorCard">Anillos de gato</div>
+                                </div>
+                                <div class="col-8 text-end">
+                                  <div class="price-hp"><strong>MXN$300.00</strong></div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -310,7 +319,7 @@
                             <li><a class="dropdown-item" href="#">Crear lista</a></li>
                           </ul>
                         </div>
-
+                        <a href="vistaProducto.php">
                         <div class="d-flex flex-column align-items-center">
                           <img src="http://localhost/prueba/PWCI/img/principal/fundaMichi.jpg" class="card-img-top fixed-image" alt="...">
                           <div class="card-body">
@@ -324,9 +333,11 @@
                             </div>
                           </div>
                         </div>
+                        </a>
                       </div>
                     </div>
                   </div>
+
                   <div class="elemento">
                     <div class="col-2">
                       <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
@@ -341,7 +352,7 @@
                             <li><a class="dropdown-item" href="#">Crear lista</a></li>
                           </ul>
                         </div>
-
+                    <a href="vistaProducto.php">
                         <div class="d-flex flex-column align-items-center">
                           <img src="http://localhost/prueba/PWCI/img/principal/maceta.jpg" class="card-img-top fixed-image" alt="...">
                           <div class="card-body">
@@ -355,6 +366,7 @@
                             </div>
                           </div>
                         </div>
+                    </a>
                       </div>
                     </div>
                   </div>
@@ -378,7 +390,7 @@
                                 <li><a class="dropdown-item" href="#">Crear lista</a></li>
                               </ul>
                             </div>
-
+                            <a href="vistaProducto.php">
                             <div class="d-flex flex-column align-items-center">
                               <img src="http://localhost/prueba/PWCI/img/principal/abanico.jpg" class="card-img-top fixed-image" alt="...">
                               <div class="card-body">
@@ -392,6 +404,7 @@
                                 </div>
                               </div>
                             </div>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -415,7 +428,7 @@
                               <li><a class="dropdown-item" href="#">Crear lista</a></li>
                             </ul>
                           </div>
-
+                          <a href="vistaProducto.php">
                           <div class="d-flex flex-column align-items-center">
                             <img src="http://localhost/prueba/PWCI/img/principal/lampara.jpg" class="card-img-top fixed-image" alt="...">
                             <div class="card-body">
@@ -429,6 +442,7 @@
                               </div>
                             </div>
                           </div>
+                          </a>
                         </div>
                       </div>
                     </div>

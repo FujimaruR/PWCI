@@ -283,35 +283,35 @@
 
                         <!-- Modal -->
  <div class="modal fade" id="pagar"  tabindex="-1" aria-labelledby="pagar" aria-hidden="true">
-                          <div class="modal-dialog">
-                          <div class="modal-content">
+    <div class="modal-dialog">
+     <div class="modal-content">
 
-                              <!-- Cabecera del Modal -->
-                              <div class="modal-header">
-                              <h4 class="modal-title">Método de pago</h4>
-                              <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-                              </div>
+       <!-- Cabecera del Modal -->
+        <div class="modal-header">
+         <h4 class="modal-title">Método de pago</h4>
+         <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+          </div>
 
-                              <!-- Contenido del Modal -->
-                              <div class="modal-body text-center">
-                                  <p><span>Un articulo en tu carrito</span></p>
-                                  <div class="row">
-                                      <div class="col-4 mx-5" >
-                                          <p><span>Subtotal=</span></p>
-                                      </div>
-                                      <div class="col-4">
-                                          <p><span>$500</span></p>
-                                      </div>
-                                  </div>
-                                  <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C;"><h5>Pagar con PayPal</h5></button>
-                              </div>
+       <!-- Contenido del Modal -->
+         <div class="modal-body text-center">
+          <p><span>Un articulo en tu carrito</span></p>
+            <div class="row">
+               <div class="col-4 mx-5" >
+                  <p><span>Subtotal=</span></p>
+                </div>
+                <div class="col-4">
+                  <p><span>$500</span></p>
+                </div>
+               </div>
+             <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C;"><h5>Pagar con PayPal</h5></button>
+          </div>
 
-                              <!-- Pie del Modal -->
-                              <div class="modal-footer">
-                                  <button type="button" class="btn btnColorCard btnHover" data-bs-dismiss="modal">Cerrar</button>
-                              </div>
-                          </div>
-                          </div>
+    <!-- Pie del Modal -->
+    <div class="modal-footer">
+    <button type="button" class="btn btnColorCard btnHover" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+   </div>
+</div>
 </div>
 
 <script>
