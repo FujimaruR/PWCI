@@ -55,7 +55,12 @@ function validarNombre() {
 }
 
 function validarFormulario() {
-    return validarCorreo() && validarUsuario() && validarPassword() && validarNombre();
+    var correoValido = validarCorreo();
+    var usuarioValido = validarUsuario();
+    var passwordValido = validarPassword();
+    var nombreValido = validarNombre();
+
+    return correoValido && usuarioValido && passwordValido && nombreValido;
 }
 
 
@@ -78,10 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const registroForm = document.getElementById("registroForm");
 
     registroForm.addEventListener("submit", function (event) {
-        event.preventDefault(); 
-            if(validarFormulario())
-            {
-                window.location.href = "paginaPrincipal.php";
-            }
+        if (!validarFormulario()) {
+            event.preventDefault();
+            alert("Por favor, corrige los errores en el formulario antes de enviarlo.");
+        }
     });
 });
