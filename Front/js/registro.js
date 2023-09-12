@@ -5,7 +5,9 @@ function validarCorreo() {
         alert("El correo electrónico no es válido");
         correo.value = '';
         correo.focus();
+        return false;
     }
+    return true;
 }
 
 function validarUsuario() {
@@ -16,7 +18,10 @@ function validarUsuario() {
         alert('El usuario debe tener al menos 3 caracteres.');
         usuarioInput.value = '';
         usuarioInput.focus();
+        return false;
+
     }
+    return true;
 }
 
 function validarPassword() {
@@ -29,7 +34,10 @@ function validarPassword() {
         alert('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.');
         passwordInput.value = '';
         passwordInput.focus();
+        return false;
+
     }
+    return true;
 }
 
 function validarNombre() {
@@ -43,15 +51,11 @@ function validarNombre() {
         nombreInput.value = '';
         nombreInput.focus();
     }
+    return true;
 }
 
 function validarFormulario() {
-    validarCorreo();
-    validarUsuario();
-    validarPassword();
-    validarNombre();
-
-    return !document.querySelectorAll('.alert').length;
+    return validarCorreo() && validarUsuario() && validarPassword() && validarNombre();
 }
 
 
@@ -63,7 +67,11 @@ function validarFecha() {
     if (fechaIngresada >= fechaHoy) {
         alert("La fecha de nacimiento debe ser anterior a la fecha actual.");
         fechaInput.value = "";
+        return false;
+
     }
+    return true;
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -71,7 +79,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     registroForm.addEventListener("submit", function (event) {
         event.preventDefault(); 
-
-        window.location.href = "paginaPrincipal.php";
+            if(validarFormulario())
+            {
+                window.location.href = "paginaPrincipal.php";
+            }
     });
 });

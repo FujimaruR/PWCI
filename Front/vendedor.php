@@ -11,7 +11,13 @@
     href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
-  <script src="js/vendedor.js"></script>   
+  <script src="js/vendedor.js"></script> 
+  <style>
+   a {
+      text-decoration: none;
+      color: black;
+   }
+  </style>  
 </head>
 
 <body>
