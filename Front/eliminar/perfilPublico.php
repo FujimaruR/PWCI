@@ -12,13 +12,22 @@
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
   <link rel="stylesheet" href="http://localhost/prueba/PWCI/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      background-image: url(http://localhost/prueba/PWCI/img/principal/fondoPrincipal.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 
 <body>
   <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
     <div class="container-fluid ">
       <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
-      <a class="nav-link active mx-2" aria-current="page" href="http://localhost/prueba/PWCI/Front/paginaPrincipal.php">
+      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.php">
         <h5 class="letraFuente text-white">Micherry</h5>
       </a>
       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -28,7 +37,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex justify-content-center" role="search">
           <input class="form-control me-2 " type="search" placeholder="Buscar producto" aria-label="Search">
-          <a href="http://localhost/prueba/PWCI/Front/b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
+          <a href="b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
         </form>
         <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
@@ -46,23 +55,22 @@
           <li class="nav-item dropdown">
 
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35">
-
+              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35" style="border-radius: 20px 20px">
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/perfil_usuario.php">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/carrito.php">Carrito</a></li>
-              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/pedidos.php">Mis pedidos</a></li>
-              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/vendedor.php">Perfil vendedor</a></li>
+              <li><a class="dropdown-item" href="perfil_usuario.php">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="carrito.php">Carrito</a></li>
+              <li><a class="dropdown-item" href="pedidos.php">Mis pedidos</a></li>
+              <li><a class="dropdown-item" href="vendedor.php">Perfil vendedor</a></li>
 
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/login.php">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="login.php">Cerrar sesión</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost/prueba/PWCI/Front/mensajes_usuario.php">
+            <a class="nav-link" href="mensajes_usuario.php">
               <h6>Mensajes</h6>
             </a>
           </li>
@@ -82,7 +90,8 @@
         </li>
         <li>
           <div class="precio-input">
-            Precio : <input type="number" id="input1" name="input1">
+            <span>Precio:</span> 
+            <input type="number" id="input1" name="input1">
             - <input type="number" id="input2" name="input2">
           </div>
         </li>
@@ -95,7 +104,7 @@
           </div>
         </li>
         <li>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select tamanven" aria-label="Default select example">
             <option selected>Mas vendidos</option>
             <option value="1">Menos vendidos</option>
           </select>
@@ -140,63 +149,255 @@
     </div>
   </div>
 
-  <div class="datos_usuario">
-    <h1>Perfil de Lucero</h1>
+  <div class="container-fluid mt-5 p-3">
     <div class="row">
-
-        <div class="card mb-3" style="max-width: 90%; margin-left: 5%;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" class="img-fluid rounded-start" alt="..."
-                style="height: 100%; width: 100%; object-fit:cover;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <div class="badge rounded-pill btnColorCard">Lucero </div>
-                <hr>
-                <p class="card-text" style="padding-top: 1%;">Correo: lucero@gmail.com</p>
-                <p>Numero telefonico: 8183321706</p>
+      <div class="col-lg-7 col-md-10 col-sm-12 mx-auto">
+        <h5>Perfil de usuario</h5>
+        <div class="card"style="background-color:#f5d3dfe4; border-radius: 30px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-4 col-md-8 col-sm-8 m-4">
+                  <div class="col-lg-12 col-md-12 col-sm-12 ">
+                    <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" class="img-fluid rounded-start" alt="..." style="height: 100%; width: 80%;border-radius: 80px 80px 50px 50px;">
+                  </div>
+                  <div class="col-md-12">
+                    <div class="card-body">
+                    <h5 class="card-title">Lucero Mendoza</h5>
+                    </div>
+                  </div>
               </div>
+              <div class="col-lg-4">
+                      <h5>Información</h5>
+                      <p class="card-text">Correo: lucero@gmail.com</p>
+                      <p class="card-text">Codigo postal: 66420</p>
+                      <p class="card-text">Direccion de entrega: Cinco # 629, col VILLAZUL, San Nicolas de los Garza, Nuevo Leon, MX</p>
+                      <p class="card-text">Numero telefonico: 8183321706</p>
+
+              </div>
+
             </div>
           </div>
+        </div>
       </div>
     </div>
 
   </div>
 
-  <div class="listas">
-    <h1>Listas de Lucero</h1>
-    <div class="MlisUno">
-      <ul class="ml-2">
-        <li>
-          <h3><strong>Ropa bonita</strong></h3>
-        </li>
-      </ul>
-      <ul class="ml-2">
-        <li>
-          <h4>6 articulos</h4>
-        </li>
-      </ul>
-      <ul class="ml-2">
-        <li>
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid" alt="...">
-        </li>
-        <li>
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png" class="img-fluid" alt="...">
-        </li>
-        <li>
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindod.png" class="img-fluid" alt="...">
-        </li>
-        <li class="img-container">
-          <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="img-fluid" alt="...">
-          <div class="overlay">
-            <h2>+</h2>
-            <p>15 productos</p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-10 mx-auto p-5">
+        <h5 class=" my-4">Listas del usuario</h5>
+
+        <div class="card" style="border-radius: 10px 10px 10px 10px;background-color:#e1f5fae4;">
+          <div class="card-body">
+          <div class="text-center">
+
+      </div>
+      <div class="MlisUno">
+        <ul class="ml-2">
+          <li>
+            <h5 class="m-4"><strong>Ropa bonita</strong></h5>
+          </li>
+          <li class="posder">
+            <h6 class="m-4">Cambiar nombre<i class="bi bi-pencil-square"></i></h6>
+          </li>
+          <li class="posder">
+            <h6 class="m-4">Borrar<i class="bi bi-trash3-fill"></i></h6>
+          </li>
+        </ul>
+        <ul class="ml-2">
+          <li>
+            <h5>6 articulos</h5>
+          </li>
+        </ul>
+        <a data-bs-toggle="modal" data-bs-target="#verlistaprod">
+        <ul class="ml-2">
+        
+          <li>
+            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid" alt="...">
+          </li>
+          <li>
+            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png" class="img-fluid" alt="...">
+          </li>
+          <li>
+            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindod.png" class="img-fluid" alt="...">
+          </li>
+          <li class="img-container">
+            <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="img-fluid" alt="...">
+            <div class="overlay">
+              <h2>+</h2>
+              <p>3 productos</p>
+            </div>
+          </li>
+        
+        </ul>
+        </a>
+        
+      </div>
+  </div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="modal fade" id="verlistaprod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabelped">Productos en la lista</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+        <div class="container ">
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Vestido rojo</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Vestido lindo color rojo</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$750.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Vestido escolar</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Vestido sacado de un dorama</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$1000.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindod.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Vestido para citas</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Vestido lindo para una cita</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$1200.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Vestido blanco</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Ropa casual lindo</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$500.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_chino.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Cosplay</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Cosplay chino lindo</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$2000.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          title="Ver detalles del producto">
+          <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_linda.png" class="img-fluid rounded-start" alt="..."
+                  style="height: 100%; object-fit: cover;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <div class="badge btnColorCard" style="border-radius: 10px 30px;"><h6>Ropa citas</h6> </div>
+                  <p class="card-text" style="padding-top: 1%;">Ropa para una cita con tu novio</p>
+                  <p class="card-text"><small class="text-body-secondary"><strong>MXN$1300.00</strong></small></p>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
+
+        </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var input1 = document.getElementById("input1");
+    var input2 = document.getElementById("input2");
+
+    input1.addEventListener("input", validarNumero);
+    input2.addEventListener("input", validarNumero);
+
+    function validarNumero() {
+      var valor = parseFloat(this.value);
+
+      if (valor <= 0 || isNaN(valor)) {
+        this.value = 1;
+      }
+    }
+  </script>
   
   <script src="http://localhost/prueba/PWCI/Front/js/perfil_usuario.js"></script>
 </body>
