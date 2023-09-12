@@ -265,7 +265,7 @@
           </li>
         </ul>
         <a data-bs-toggle="modal" data-bs-target="#verlistaprod">
-        <ul class="ml-2">
+        <ul class="ml-2 pointprod">
         
           <li>
             <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid" alt="...">
