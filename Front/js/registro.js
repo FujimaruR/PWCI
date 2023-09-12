@@ -1,14 +1,10 @@
 function validarCorreo() {
     var correo = document.getElementById("correoLogin").value;
     var patronCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (patronCorreo.test(correo)) {
-        alert("El correo electrónico es válido");
-        noty({
-            text: 'El correo electrónico es válido',
-            type: 'success' // Puedes personalizar el tipo de notificación según tus preferencias
-        });
-    } else {
+    if (!patronCorreo.test(correo)) {
         alert("El correo electrónico no es válido");
+        correo.value = '';
+        correo.focus();
     }
 }
 
