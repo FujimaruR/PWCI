@@ -173,3 +173,12 @@ li {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #7b2362;
 }
+
+.hovlist{
+    text-decoration: none;
+    color: black;
+}
+
+.hovlist:hover{
+    cursor: pointer;
+}

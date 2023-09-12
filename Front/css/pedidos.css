@@ -171,3 +171,11 @@ li {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #7b2362;
 }
+
+.refervista{
+    color: black;
+}
+
+.refervista:hover{
+    color: black;
+}

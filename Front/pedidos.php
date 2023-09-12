@@ -207,6 +207,8 @@
   
   <div class="container ">
     <h5>Pedidos</h5>
+    <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+    title="Ver detalles del producto">
     <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
       <div class="row g-0">
         <div class="col-md-4">
@@ -224,16 +226,17 @@
             <p>Cantidad: 1</p>
             <p>Calificacion:</p>
             <div class="rating">
-              <i class="bi bi-star-fill star "></i>
-              <i class="bi bi-star-fill star "></i>
-              <i class="bi bi-star-fill star "></i>
-              <i class="bi bi-star-fill star"></i>
-              <i class="bi bi-star-fill star"></i>
+              <i class="bi bi-star-fill star checked"></i>
+              <i class="bi bi-star-fill star checked"></i>
+              <i class="bi bi-star-fill star checked"></i>
+              <i class="bi bi-star-fill star checked"></i>
+              <i class="bi bi-star-fill star checked"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </a>
     
   </div>
   <script>
@@ -250,20 +253,6 @@
         this.value = 1;
       }
     }
-
-
-    const stars = document.querySelectorAll('.star');
-
-    stars.forEach(function (star, index) {
-        star.addEventListener('click', function () {
-            for (let i = 0; i <= index; i++) {
-                stars[i].classList.add('checked');
-            }
-            for (let i = index + 1; i < stars.length; i++) {
-                stars[i].classList.remove('checked');
-            }
-        })
-    });
   </script>
 </body>
 <footer class="bg-dark text-white p-5">

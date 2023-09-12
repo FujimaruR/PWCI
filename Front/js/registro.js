@@ -44,7 +44,7 @@ function validarNombre() {
     var nombreInput = document.getElementById('usuarioNombre');
     var nombreValue = nombreInput.value;
 
-    var nombrePattern = /^[A-Za-z]+$/;
+    var nombrePattern = /^[A-Za-z\s]+$/;
 
     if (!nombrePattern.test(nombreValue)) {
         alert('El nombre no debe contener números ni caracteres especiales.');

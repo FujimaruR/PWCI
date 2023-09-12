@@ -179,10 +179,21 @@
                 <li>
                   <ul class="ml-2">
                     <li>
-                      <i class="bi bi-heart-fill"></i>
+                      <div class="dropdown">
+                        <button class="heart-button text-lg-end text-md-end text-sm-end my-0 " data-bs-toggle="dropdown">
+                          <span class="heart-icon">&#x2665;</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Lista 1</a></li>
+                          <li><a class="dropdown-item" href="#">Lista 2</a></li>
+                          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#crearLista">Crear lista</a></li>
+                        </ul>
+                      </div>
                     </li>
                     <li>
-                      <i class="bi bi-trash3-fill"></i>
+                      <a data-bs-toggle="modal" data-bs-target="#borrarlistamod">
+                        <i class="bi bi-trash3-fill trash"></i>
+                      </a>
                     </li>
                   </ul>
                   <ul>
@@ -232,10 +243,21 @@
                 <li>
                   <ul class="ml-2">
                     <li>
-                      <i class="bi bi-heart-fill"></i>
+                      <div class="dropdown">
+                        <button class="heart-button text-lg-end text-md-end text-sm-end my-0 " data-bs-toggle="dropdown">
+                          <span class="heart-icon">&#x2665;</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Lista 1</a></li>
+                          <li><a class="dropdown-item" href="#">Lista 2</a></li>
+                          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#crearLista">Crear lista</a></li>
+                        </ul>
+                      </div>
                     </li>
                     <li>
-                      <i class="bi bi-trash3-fill"></i>
+                      <a data-bs-toggle="modal" data-bs-target="#borrarlistamod">
+                        <i class="bi bi-trash3-fill trash"></i>
+                      </a>
                     </li>
                   </ul>
                   <ul>
@@ -281,7 +303,41 @@
   </div>
 </div>
 
-                        <!-- Modal -->
+<div class="modal fade" id="crearLista" tabindex="-1" aria-labelledby="crearLista" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Crear lista</h4>
+        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body text-center">
+
+        <div class="row">
+          <input type="text" class="form-control my-2" id="nomLista" placeholder="Nombre de la lista" required>
+          <input type="text" class="form-control my-2" id="descLista" placeholder="Descripción" required>
+
+          <label for="privacidad">Tipo</label>
+          <div class="d-flex my-switch">
+            <div class="form-text text-1">Pública</div>
+            <div class="form-check form-switch form-check-inline">
+              <input id="privacidad" class="form-check-input form-check-inline" type="checkbox">
+            </div>
+            <div class="form-text text-2">Privada</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C; color:aliceblue;">Crear</button>
+        <button type="button" class="btn btnColorCard btnHover" data-bs-dismiss="modal"
+          style="color:aliceblue;">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
  <div class="modal fade" id="pagar"  tabindex="-1" aria-labelledby="pagar" aria-hidden="true">
     <div class="modal-dialog">
      <div class="modal-content">
@@ -304,6 +360,7 @@
                 </div>
                </div>
              <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C;"><h5>Pagar con PayPal</h5></button>
+             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tarjetaCredito"><h5>Tarjeta de credito</h5></button>
           </div>
 
     <!-- Pie del Modal -->
@@ -313,6 +370,47 @@
    </div>
 </div>
 </div>
+
+
+<div class="modal fade" id="borrarlistamod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="borrarlistamodhead">Eliminar Producto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container ">
+            <h4>¿Seguro que quieres eliminar el producto del carrito?</h4>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="tarjetaCredito" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tarjetaCre" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="tarjetaCreditohead">Tarjeta de credito</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container ">
+            <h4>Datos de la tarjeta</h4>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-target="#pagar" data-bs-toggle="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script>
     var input1 = document.getElementById("input1");

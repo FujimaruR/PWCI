@@ -243,18 +243,25 @@
       <div class="MlisUno">
         <ul class="ml-2">
           <li>
-            <h5 class="m-4"><strong>Ropa bonita</strong></h5>
+            <h5 class="m-1"><strong>Ropa bonita</strong></h5>
           </li>
           <li class="posder">
-            <h6 class="m-4">Cambiar nombre<i class="bi bi-pencil-square"></i></h6>
+            <a data-bs-toggle="modal" data-bs-target="#editarlistamod" class="hovlist">
+            <h6 class="m-1">Editar lista<i class="bi bi-pencil-square"></i></h6>
+            </a>
           </li>
           <li class="posder">
-            <h6 class="m-4">Borrar<i class="bi bi-trash3-fill"></i></h6>
+            <a data-bs-toggle="modal" data-bs-target="#borrarlistamod" class="hovlist">
+              <h6 class="m-1">Borrar<i class="bi bi-trash3-fill"></i></h6>
+            </a>
           </li>
         </ul>
         <ul class="ml-2">
+          <li><p class="m-1">Lista bonita de ropa que me gusta</p></li>
+        </ul>
+        <ul class="ml-2">
           <li>
-            <h5>6 articulos</h5>
+            <h5 class="m-1">6 articulos</h5>
           </li>
         </ul>
         <a data-bs-toggle="modal" data-bs-target="#verlistaprod">
@@ -283,6 +290,59 @@
       </div>
   </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editarlistamod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editarlistamodhead">Editar lista</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <div class="container ">
+          <row>
+              <input type="text" class="form-control my-2" id="nomLista" placeholder="Nombre de la lista" required>
+              <input type="text" class="form-control my-2" id="descLista" placeholder="Descripción" required>
+
+              <label for="privacidad">Tipo</label>
+              <div class="d-flex my-switch">
+                <div class="form-text text-1">Pública</div>
+                <div class="form-check form-switch form-check-inline">
+                  <input id="privacidad" class="form-check-input form-check-inline" type="checkbox">
+                </div>
+                <div class="form-text text-2">Privada</div>
+              </div>
+
+          </row>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="borrarlistamod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="borrarlistamodhead">Eliminar lista</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container ">
+            <h4>¿Seguro que quieres eliminar la lista?</h4>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger">Confirmar</button>
         </div>
       </div>
     </div>
