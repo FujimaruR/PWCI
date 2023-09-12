@@ -78,3 +78,20 @@ li {
     text-align: center;
     padding: 10px;
 }
+/*scrollbar*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f100;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #dd5a5a;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #7b2362;
+}
