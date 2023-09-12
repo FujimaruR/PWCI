@@ -23,7 +23,7 @@ function validarPassword() {
     var passwordInput = document.getElementById('PasswordLogin');
     var passwordValue = passwordInput.value;
 
-    var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?/¿&.:;,=-_+*#¡{}"'])[A-Za-z\d@$!%*?/¿&.:;,=-_+*#¡{}"']{8,}$/;
 
     if (!passwordPattern.test(passwordValue)) {
         alert('La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.');
@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
     registroForm.addEventListener("submit", function (event) {
         event.preventDefault(); 
 
-        // Redirigir al usuario a la página deseada
         window.location.href = "paginaPrincipal.php";
     });
 });
