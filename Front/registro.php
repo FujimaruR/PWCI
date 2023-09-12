@@ -29,7 +29,7 @@
              <img class="mx-auto mb-3" src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Centered Image" style="max-width: 150px;">
             <h4>Micherry</h4>
           </div>
-          <form action="" class="row g-3" onsubmit="return validarFormulario()">
+          <form action="" class="row g-3" onsubmit="return validarFormulario()" id="registroForm">
               <div class="col-12 text-center align-items-center">
                 <h5>Registro de usuario</h5>
              </div>
@@ -46,7 +46,7 @@
 
                 </div>
                 <div class="col-4">
-                  <label for="formFile" class="form-label">Foto de perfil</label>
+                  <label for="formFile" class="form-label" id="registroForm">Foto de perfil</label>
                     <div class="card">
                       <input class="form-control" style="background-size: 50vh" type="file" id="#img-preview" onchange="loadFile(event)" required>
                       <img id="#img-uploader"/>
