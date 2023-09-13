@@ -12,6 +12,15 @@
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
   <link rel="stylesheet" href="http://localhost/prueba/PWCI/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      background-image: url(http://localhost/prueba/PWCI/img/principal/fondoPrincipal.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -46,8 +55,7 @@
           <li class="nav-item dropdown">
 
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35">
-
+              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35" style="border-radius: 20px 20px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/perfil_usuario.php">Mi perfil</a></li>
@@ -82,7 +90,8 @@
         </li>
         <li>
           <div class="precio-input">
-            Precio : <input type="number" id="input1" name="input1">
+            <span>Precio:</span> 
+            <input type="number" id="input1" name="input1">
             - <input type="number" id="input2" name="input2">
           </div>
         </li>
@@ -95,7 +104,7 @@
           </div>
         </li>
         <li>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select tamanven" aria-label="Default select example">
             <option selected>Mas vendidos</option>
             <option value="1">Menos vendidos</option>
           </select>
@@ -140,33 +149,75 @@
     </div>
   </div>
 
-  <div class="datos_usuario">
-    <h1>Perfil de Mei</h1>
+  <div class="container-fluid mt-5 p-3">
     <div class="row">
+      <div class="col-lg-9 col-md-10 col-sm-12 mx-auto">
+        <h5>Perfil de usuario</h5>
+        <div class="card"style="background-color:#f5d3dfe4; border-radius: 30px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 col-lg-6">
+                  <div class="col-lg-12 col-md-12 col-sm-12 ">
+                    <img src="http://localhost/prueba/PWCI/img/Lilysa.png" class="img-fluid rounded-start" alt="..." style="height: 100%; width: 80%;border-radius: 80px 80px 50px 50px;">
+                  </div>
+                  <div class="col-md-12">
+                    <div class="card-body">
+                    <h5 class="card-title">Mei</h5>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                      <h2>Información</h2>
+                      <p class="card-text">Este perfil es privado.</p>
 
-        <div class="card mb-3" style="max-width: 90%; margin-left: 5%;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="http://localhost/prueba/PWCI/img/Lilysa.png" class="img-fluid rounded-start" alt="..."
-                style="height: 100%; width: 100%; object-fit:cover;">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <div class="badge rounded-pill btnColorCard">Mei</div>
-                <hr>
-                <p class="card-text" style="padding-top: 1%;">Este perfil es privado. No se puede ver mas informacion.</p>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
 
   </div>
 
-  <div class="listas">
-    <h1>Listas de Mei</h1>
-    <h3>Este es un perfil privado. No se pueden ver las listas.</h3>
+
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10 mx-auto p-5">
+      <h5 class=" my-4">Listas de Mei</h5>
+
+      <div class="card" style="border-radius: 10px 10px 10px 10px;background-color:#e1f5fae4;">
+        <div class="card-body">
+          <div class="text-center">
+
+          </div>
+          <div class="MlisUno">
+            <h2>Este perfil es privado.</h2>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+</div>
+
+
+
+  <script>
+    var input1 = document.getElementById("input1");
+    var input2 = document.getElementById("input2");
+
+    input1.addEventListener("input", validarNumero);
+    input2.addEventListener("input", validarNumero);
+
+    function validarNumero() {
+      var valor = parseFloat(this.value);
+
+      if (valor <= 0 || isNaN(valor)) {
+        this.value = 1;
+      }
+    }
+  </script>
   
   <script src="http://localhost/prueba/PWCI/Front/js/perfil_usuario.js"></script>
 </body>

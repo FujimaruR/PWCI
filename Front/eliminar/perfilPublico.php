@@ -27,7 +27,7 @@
   <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
     <div class="container-fluid ">
       <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
-      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.php">
+      <a class="nav-link active mx-2" aria-current="page" href="http://localhost/prueba/PWCI/Front/paginaPrincipal.php">
         <h5 class="letraFuente text-white">Micherry</h5>
       </a>
       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -37,7 +37,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex justify-content-center" role="search">
           <input class="form-control me-2 " type="search" placeholder="Buscar producto" aria-label="Search">
-          <a href="b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
+          <a href="http://localhost/prueba/PWCI/Front/b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
         </form>
         <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
@@ -58,19 +58,19 @@
               <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35" style="border-radius: 20px 20px">
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="perfil_usuario.php">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="carrito.php">Carrito</a></li>
-              <li><a class="dropdown-item" href="pedidos.php">Mis pedidos</a></li>
-              <li><a class="dropdown-item" href="vendedor.php">Perfil vendedor</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/perfil_usuario.php">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/carrito.php">Carrito</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/pedidos.php">Mis pedidos</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/vendedor.php">Perfil vendedor</a></li>
 
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="login.php">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/login.php">Cerrar sesión</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="mensajes_usuario.php">
+            <a class="nav-link" href="http://localhost/prueba/PWCI/Front/mensajes_usuario.php">
               <h6>Mensajes</h6>
             </a>
           </li>
@@ -151,12 +151,12 @@
 
   <div class="container-fluid mt-5 p-3">
     <div class="row">
-      <div class="col-lg-7 col-md-10 col-sm-12 mx-auto">
+      <div class="col-lg-9 col-md-10 col-sm-12 mx-auto">
         <h5>Perfil de usuario</h5>
         <div class="card"style="background-color:#f5d3dfe4; border-radius: 30px;">
           <div class="card-body">
             <div class="row">
-              <div class="col-lg-4 col-md-8 col-sm-8 m-4">
+              <div class="col-md-6 col-lg-6">
                   <div class="col-lg-12 col-md-12 col-sm-12 ">
                     <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" class="img-fluid rounded-start" alt="..." style="height: 100%; width: 80%;border-radius: 80px 80px 50px 50px;">
                   </div>
@@ -166,15 +166,11 @@
                     </div>
                   </div>
               </div>
-              <div class="col-lg-4">
-                      <h5>Información</h5>
+              <div class="col-lg-6">
+                      <h2>Información</h2>
                       <p class="card-text">Correo: lucero@gmail.com</p>
-                      <p class="card-text">Codigo postal: 66420</p>
-                      <p class="card-text">Direccion de entrega: Cinco # 629, col VILLAZUL, San Nicolas de los Garza, Nuevo Leon, MX</p>
-                      <p class="card-text">Numero telefonico: 8183321706</p>
 
               </div>
-
             </div>
           </div>
         </div>
@@ -183,10 +179,11 @@
 
   </div>
 
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-10 col-md-10 col-sm-10 mx-auto p-5">
-        <h5 class=" my-4">Listas del usuario</h5>
+        <h5 class=" my-4">Listas de Lucero Mendoza</h5>
 
         <div class="card" style="border-radius: 10px 10px 10px 10px;background-color:#e1f5fae4;">
           <div class="card-body">
@@ -196,22 +193,19 @@
       <div class="MlisUno">
         <ul class="ml-2">
           <li>
-            <h5 class="m-4"><strong>Ropa bonita</strong></h5>
+            <h5 class="m-1"><strong>Ropa bonita</strong></h5>
           </li>
-          <li class="posder">
-            <h6 class="m-4">Cambiar nombre<i class="bi bi-pencil-square"></i></h6>
-          </li>
-          <li class="posder">
-            <h6 class="m-4">Borrar<i class="bi bi-trash3-fill"></i></h6>
-          </li>
+        </ul>
+        <ul class="ml-2">
+          <li><p class="m-1">Lista bonita de ropa que me gusta</p></li>
         </ul>
         <ul class="ml-2">
           <li>
-            <h5>6 articulos</h5>
+            <h5 class="m-1">6 articulos</h5>
           </li>
         </ul>
         <a data-bs-toggle="modal" data-bs-target="#verlistaprod">
-        <ul class="ml-2">
+        <ul class="ml-2 pointprod">
         
           <li>
             <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_rojo.png" class="img-fluid" alt="...">
@@ -251,7 +245,7 @@
         <div class="modal-body">
 
         <div class="container ">
-          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="http://localhost/prueba/PWCI/Front/vistaProducto.php"
           title="Ver detalles del producto">
           <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
             <div class="row g-0">
@@ -271,7 +265,7 @@
           </div>
           </a>
 
-          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="http://localhost/prueba/PWCI/Front/vistaProducto.php"
           title="Ver detalles del producto">
           <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
             <div class="row g-0">
@@ -291,7 +285,7 @@
           </div>
           </a>
 
-          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="http://localhost/prueba/PWCI/Front/vistaProducto.php"
           title="Ver detalles del producto">
           <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
             <div class="row g-0">
@@ -311,7 +305,7 @@
           </div>
           </a>
 
-          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="http://localhost/prueba/PWCI/Front/vistaProducto.php"
           title="Ver detalles del producto">
           <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
             <div class="row g-0">
@@ -331,7 +325,7 @@
           </div>
           </a>
 
-          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="http://localhost/prueba/PWCI/Front/vistaProducto.php"
           title="Ver detalles del producto">
           <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
             <div class="row g-0">
@@ -351,7 +345,7 @@
           </div>
           </a>
 
-          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="../vistaProducto.php"
+          <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="http://localhost/prueba/PWCI/Front/vistaProducto.php"
           title="Ver detalles del producto">
           <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
             <div class="row g-0">
