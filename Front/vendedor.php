@@ -41,12 +41,30 @@
             <a class="nav-link text-light" href="mensajes_vendedor.php">Mensajes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="perfil_usuario.php">Volver al perfil de comprador</a>
+            <a class="nav-link active salirbtn text-light" aria-current="page" data-bs-toggle="modal"
+              data-bs-target="#UsuarioVendedorPer" style="cursor: pointer;">Volver al perfil de comprador</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
+  <div class="modal fade" id="UsuarioVendedorPer" tabindex="-1" aria-labelledby="UsuarioVendedorPerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="UsuarioVendedorPerLabel">Perfil comprador</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Quieres ir al perfil de comprador?
+        </div>
+        <div class="modal-footer">
+          <a href="perfil_usuario.php" role="button" class="btn btn-danger">Confirmar</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container-fluid mt-5 p-5">
     <div class="row">

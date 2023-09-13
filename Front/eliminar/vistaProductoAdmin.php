@@ -20,7 +20,7 @@
 <body class="letraFuente">
   <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #070606;">
     <div class="container-fluid">
-      <a class="navbar-brand text-light" href="/prueba/PWCI/Front/administrador.php">
+      <a class="navbar-brand text-light" href="http://localhost/prueba/PWCI/Front/administrador.php">
         <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Logo" width="40" height="40"
           class="d-inline-block align-text-top">
         Micherry
@@ -56,7 +56,7 @@
         ¿Quieres salir de la sesion?
       </div>
       <div class="modal-footer">
-        <a href="/prueba/PWCI/Front/login.php" role="button" class="btn btn-danger">Salir</a>
+        <a href="http://localhost/prueba/PWCI/Front/login.php" role="button" class="btn btn-danger">Salir</a>
       </div>
     </div>
   </div>

@@ -68,7 +68,8 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="login.php">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" aria-current="page" data-bs-toggle="modal"
+              data-bs-target="#salirsesionF" style="cursor: pointer;">Salir de la sesion</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -80,6 +81,23 @@
       </div>
     </div>
   </nav>
+
+  <div class="modal fade" id="salirsesionF" tabindex="-1" aria-labelledby="salirsesionFLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="salirsesionFLabel">Salir de la sesion</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Quieres salir de la sesion?
+        </div>
+        <div class="modal-footer">
+          <a href="login.php" role="button" class="btn btn-danger">Salir</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="collapse" id="collapseFiltros">
     <div class="card card-body">
