@@ -163,3 +163,19 @@ body {
     text-align: center;
     padding: 10px; 
 }
+
+.star {
+    font-size: 15px;
+    color: #B9B4D9;
+    transition: color o.3s;
+    cursor: pointer;
+}
+
+.star:hover,
+.star.checked {
+    color: gold;
+}
+
+.rating {
+    display: flex;
+}
