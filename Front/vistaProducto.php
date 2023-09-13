@@ -262,9 +262,10 @@
 
                                     <div class="row">
                                         <div class="col-5 mx-5 my-5" >
+                                        <form action="">
                                             <input type="text" class="form-control my-2" id="nomLista" placeholder="Nombre de la lista" required>
                                             <input type="text" class="form-control my-2" id="descLista" placeholder="Descripción" required>
-                                          
+
                                             <label for="privacidad">Tipo</label>
                                             <div class="d-flex my-switch">
                                               <div class="form-text text-1">Pública</div>
@@ -273,6 +274,8 @@
                                               </div>
                                               <div class="form-text text-2">Privada</div>
                                             </div>
+                                            <button type="submit"class="btn btnHover" style="background-color: #FFC43A; color:#03258C; color:aliceblue;">Crear</button>
+                                        </form>
 
                                         </div>
                                         <div class="col-4">
@@ -286,7 +289,6 @@
 
                                 <!-- Pie del Modal -->
                                 <div class="modal-footer">
-                                    <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C; color:aliceblue;">Crear</button>
                                     <button type="button" class="btn btnColorCard btnHover" data-bs-dismiss="modal" style="color:aliceblue;">Cerrar</button>
                                 </div>
                             </div>
