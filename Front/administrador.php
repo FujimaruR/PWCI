@@ -79,7 +79,7 @@
               <!-- Aquí comienzan las tarjetas del carrusel -->
 
               <div class="col-md-3">
-                <a href="vistaProducto.php">
+                <a href="../Front/eliminar/vistaProductoAdmin.php">
                   <div class="card productocard" style="width: 18rem; ">
                     <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_blanca.png"
                       class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
@@ -92,7 +92,7 @@
               </div>
               <!-- Agregar más tarjetas aquí -->
               <div class="col-md-3">
-                <a href="vistaProducto.php">
+                <a href="../Front/eliminar/vistaProductoAdmin.php">
                   <div class="card productocard" style="width: 18rem; ">
                     <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_chino.png"
                       class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
@@ -104,7 +104,7 @@
                 </a>
               </div>
               <div class="col-md-3">
-                <a href="vistaProducto.php">
+                <a href="../Front/eliminar/vistaProductoAdmin.php">
                   <div class="card productocard" style="width: 18rem; ">
                     <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_miku.png" class="card-img-top"
                       alt="Camisa blanca" style="object-fit: cover; height: 200px;">
@@ -116,7 +116,7 @@
                 </a>
               </div>
               <div class="col-md-3">
-                <a href="vistaProducto.php">
+                <a href="../Front/eliminar/vistaProductoAdmin.php">
                   <div class="card productocard" style="width: 18rem; ">
                     <img src="http://localhost/prueba/PWCI/img/vendedor/productos/Gojo.png" class="card-img-top"
                       alt="Camisa blanca" style="object-fit: cover; height: 200px;">
@@ -133,7 +133,7 @@
             <div class="row">
               <!-- Continuación de las tarjetas del carrusel -->
               <div class="col-md-3">
-                <a href="vistaProducto.php">
+                <a href="../Front/eliminar/vistaProductoAdmin.php">
                   <div class="card productocard" style="width: 18rem;">
                     <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_linda.png" class="card-img-top"
                       alt="Producto 5" style="object-fit: cover; height: 200px;">
@@ -146,7 +146,7 @@
               </div>
               <!-- Agregar más tarjetas aquí -->
               <div class="col-md-3">
-                <a href="vistaProducto.php">
+                <a href="../Front/eliminar/vistaProductoAdmin.php">
                   <div class="card productocard" style="width: 18rem; ">
                     <img src="http://localhost/prueba/PWCI/img/vendedor/productos/sirvienta.png" class="card-img-top"
                       alt="Camisa blanca" style="object-fit: cover; height: 200px;">
@@ -158,7 +158,7 @@
                 </a>
               </div>
               <div class="col-md-3">
-                <a href="vistaProducto.php">
+                <a href="../Front/eliminar/vistaProductoAdmin.php">
                   <div class="card productocard" style="width: 18rem; ">
                     <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png"
                       class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">
@@ -170,7 +170,7 @@
                 </a>
               </div>
               <div class="col-md-3">
-                <a href="vistaProducto.php">
+                <a href="../Front/eliminar/vistaProductoAdmin.php">
                   <div class="card productocard" style="width: 18rem; ">
                     <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png"
                       class="card-img-top" alt="Camisa blanca" style="object-fit: cover; height: 200px;">

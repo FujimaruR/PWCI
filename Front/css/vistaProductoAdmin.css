@@ -1,0 +1,51 @@
+body{ 
+    background-image: url(http://localhost/prueba/PWCI/img/fondoadminxd.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+.Footer {
+    color: white; 
+    text-align: center;
+    padding: 10px; 
+}
+
+.info-box {
+    background-color: #ffe4e4;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #bc3f6d;
+    /* Cambia el color según tu preferencia */
+    margin-right: 10px;
+}
+.transparent-bg {
+    background-color: #855a8572;
+    /* Adjust the last value (0.9) for the desired transparency level  #5944428e*/
+}
+.salirbtn:hover{
+    cursor: pointer;
+}
