@@ -407,7 +407,7 @@
                       </ul>
                     </div>
                     <div class="d-flex flex-column align-items-center">
-                      <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php"
+                      <a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="http://localhost/prueba/PWCI/Front/eliminar/vistaProductoCotizar.php"
                         title="Ver detalles del producto">
                       <img src="http://localhost/prueba/PWCI/img/principal/sombrilla.jpg" class="card-img-top fixed-image"
                         alt="..." style="object-fit: cover; height: 200px;">

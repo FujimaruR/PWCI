@@ -12,7 +12,7 @@
 
   <title>Micherry</title>
   <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
-  <link rel="stylesheet" href="./css/vistaProducto.css">
+  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/vistaProducto.css">
   <link rel="stylesheet" href="http://localhost/prueba/PWCI/node_modules/bootstrap-icons/font/bootstrap-icons.css">
 
 </head>
@@ -21,7 +21,7 @@
 <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
     <div class="container-fluid ">
       <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40" style="border-radius: 20px 20px 20px 20px;">
-      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.php">
+      <a class="nav-link active mx-2" aria-current="page" href="http://localhost/prueba/PWCI/Front/paginaPrincipal.php">
         <h5 class="letraFuente text-white">Micherry</h5>
       </a>
       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="d-flex justify-content-center" role="search">
           <input class="form-control me-2 " type="search" placeholder="Buscar producto" aria-label="Search">
-          <a href="b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
+          <a href="http://localhost/prueba/PWCI/Front/b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
         </form>
         <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
@@ -53,19 +53,19 @@
 
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="perfil_usuario.php">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="carrito.php">Carrito</a></li>
-              <li><a class="dropdown-item" href="pedidos.php">Mis pedidos</a></li>
-              <li><a class="dropdown-item" href="vendedor.php">Perfil vendedor</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/perfil_usuario.php">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/carrito.php">Carrito</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/pedidos.php">Mis pedidos</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/vendedor.php">Perfil vendedor</a></li>
 
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="login.php">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="http://localhost/prueba/PWCI/Front/login.php">Cerrar sesión</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="mensajes_usuario.php">
+            <a class="nav-link" href="http://localhost/prueba/PWCI/Front/mensajes_usuario.php">
               <h6>Mensajes</h6>
             </a>
           </li>
@@ -158,18 +158,18 @@
                         <div class="carousel-inner">
                             <!-- Imágenes -->
                             <div class="carousel-item active">
-                                <img src="../img/principal/mascara.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 1">
+                                <img src="http://localhost/prueba/PWCI/img/principal/mascara.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 1">
                             </div>
                             <div class="carousel-item">
-                                <img src="../img/principal/lampara.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 2">
+                                <img src="http://localhost/prueba/PWCI/img/principal/lampara.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 2">
                             </div>
                             <div class="carousel-item">
-                                <img src="../img/principal/llaveroGatito.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 3">
+                                <img src="http://localhost/prueba/PWCI/img/principal/llaveroGatito.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 3">
                             </div>
                             <!-- Video -->
                             <div class="carousel-item">
                                 <video controls style="max-width: 100%; height: 500px;">
-                                    <source src="../img/cubo.mp4" type="video/mp4">
+                                    <source src="http://localhost/prueba/PWCI/img/principal/cubo.mp4" type="video/mp4">
                                     Tu navegador no admite el elemento de video.
                                 </video>
                             </div>
@@ -204,13 +204,11 @@
                             <h4>Lampara de Satoru Gojo</h4>
                             <p>Disponible en distintos colores.</p>
                         </div>
-                        <h4>$500</h4>
-                        <p><span class="info-label">Cantidad disponible:</span> 20</p>
                         <p><span class="info-label">Categoria:</span> Anime</p>
                             <div class="text-center my-5">
                                   <div class="btn-group" role="group" aria-label="Grupo de botones">
-                                     <button type="button" class="btn btnColorCard btnHover " style="color:aliceblue;"data-bs-toggle="modal" data-bs-target="#comprar">Comprar</button>
-                                     <a class="btn btnHover" href="carrito.php" role="button" style="background-color: #7dcf72;color:aliceblue;">&#128722;</a>
+                                     <a class="btn btnColorCard btnHover" href="http://localhost/prueba/PWCI/Front/mensajes_usuario.php" role="button" style="color:aliceblue;">Cotizar</a>
+                                     <a class="btn btnHover" href="http://localhost/prueba/PWCI/Front/carrito.php" role="button" style="background-color: #7dcf72;color:aliceblue;">&#128722;</a>
                                   </div>
                             </div>
                         <!-- Modal -->
@@ -283,7 +281,7 @@
                                         <div class="col-4">
                                             <div class="card">
                                                 <input class="form-control" style="background-size: 50vh" type="file" id="#img-preview" onchange="loadFile(event)" required>
-                                                <img id="#img-uploader" src="../img/principal/abanico.jpg"/>
+                                                <img id="#img-uploader" src="http://localhost/prueba/PWCI/Front/img/principal/abanico.jpg"/>
                                             </div>
                                         </div>
                                     </div>
@@ -305,24 +303,24 @@
                         <div class="card-body">
                             <h5 class="my-3 mx-2">Comentarios</h5>
                             <div class="my-2">
-                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="http://localhost/prueba/PWCI/Front/eliminar/perfilPublico.php">
-                                <img src="../img/fotoPerfil.jpg" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
+                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="perfilPublico.php">
+                                <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
                                 <span style="background-color: rgb(227, 156, 209); border-radius: 10px 10px 10px 10px;">Jaky</span>
                                 </a>
                                 <p class="mx-5" >
                                     Me encanta!!, es de las mejores lamparas del mercado xd, muy bonitaaa </p>
                             </div>
                             <div class="my-2">
-                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="http://localhost/prueba/PWCI/Front/eliminar/perfilPrivado.php">
-                                <img src="../img/Lilysa.png" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
+                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="perfilPrivado.php">
+                                <img src="http://localhost/prueba/PWCI/img/Lilysa.png" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
                                 <span style="background-color: rgb(227, 156, 209); border-radius: 10px 10px 10px 10px;">Mei</span>
                                 </a>
                                 <p class="mx-5" >
                                     Me gustaria que tuvieran mas variedad de colores, no se, tal vez uno de color turqueza estaria bastante bien
                             </div>
                             <div class="my-2">
-                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="http://localhost/prueba/PWCI/Front/eliminar/perfilPrivado.php">
-                                <img src="../img/Lilysa.png" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
+                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="perfilPrivado.php">
+                                <img src="http://localhost/prueba/PWCI/img/Lilysa.png" alt="" style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
                                 <span style="background-color: rgb(227, 156, 209); border-radius: 0px 10px 10px 10px;">uwu</span>
                                 </a>
                                 <br>
@@ -356,97 +354,9 @@
         </div>
     </div>
 
-    <div class="modal fade" id="tarjetaCredito" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="tarjetaCre" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="tarjetaCreditohead">Tarjeta de credito</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="container ">
-            <p>Ingresa el numero de la tarjeta.</p>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="numTarjetaCredit">
-              <label for="numTarjetaCredit">Numero de tarjeta</label>
-            </div>
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <div>
-                  <p>Fecha de expiracion</p>
-                </div>
-                <div class="form-floating d-flex">
-                  <select class="form-select" id="fechatarjeta1" aria-label="Floating label select example">
-                    <option selected>1</option>
-                    <?php
-                      for ($i = 2; $i <= 31; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                      }
-                    ?>
-                  </select>
-                  <h1>/</h1>
-                  <select class="form-select" id="fechatarjeta2" aria-label="Floating label select example">
-                    <option selected>1</option>
-                    <?php
-                      for ($i = 2; $i <= 31; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                      }
-                    ?>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <p>CVC</p>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="cvcTarjetaCredit">
-              <label for="numTarjetaCredit">cvc de la tarjeta</label>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-target="#pagar"
-            data-bs-toggle="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger" id="validarBtnTarjeta">Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-
-  <div class="modal fade" id="CalificarProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="CalificarProductohead">Calificar Producto</h1>
-        </div>
-        <div class="modal-body">
-          <div class="container ">
-            <div class="mb-3">
-              <label for="comentarioventa" class="form-label">Qué te pareció este producto?</label>
-              <div class="rating">
-                <i class="bi bi-star-fill star "></i>
-                <i class="bi bi-star-fill star "></i>
-                <i class="bi bi-star-fill star "></i>
-                <i class="bi bi-star-fill star"></i>
-                <i class="bi bi-star-fill star"></i>
-              </div>
-              <textarea class="form-control" id="comentarioventa" rows="4"
-                placeholder="Escribe tu comentario aquí"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" id="btncomentariomod" data-bs-dismiss="modal">Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-    <script src="../Front/js/cargaImagen.js"></script>
-    <script src="../Front/js/vistaProducto.js"></script>
+    <script src="http://localhost/prueba/PWCI/Front/js/cargaImagen.js"></script>
+    <script src="http://localhost/prueba/PWCI/Front/js/vistaProducto.js"></script>
 </body>
 <footer class="bg-dark text-white p-5">
   <div class="container Footer">
