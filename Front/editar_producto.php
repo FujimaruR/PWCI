@@ -121,6 +121,7 @@
             </div>
             <button type="button" class="btn btn-secondary">Cancelar</button>
             <button type="button" class="btn btn-danger">Confirmar</button>
+            <button type="button" class="btn" style="background-color:#7D2C6F; margin-top: 1%; color: white;">Eliminar producto</button>
           </div>
         </div>
 
