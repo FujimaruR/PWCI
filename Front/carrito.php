@@ -20,6 +20,7 @@
   </style>
 </head>
 
+
 <body>
   <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
     <div class="container-fluid ">
@@ -266,7 +267,7 @@
               <div class="col-lg-4 mx-auto">
                 <div class="card-body">
                   <h5 class="card-title">Computadora Linda</h5>
-                  <p class="card-text">MXN$12000 </p>
+                  <p class="card-text">MXN$12000</p>
                   <div class="form-floating">
                     <select class="form-select" id="cantidadcom">
                       <option selected>1</option>
