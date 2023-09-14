@@ -223,25 +223,50 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <label for="postalcod">Codigo postal: </label>
-          <input type="text" class="form-control" id="postalcod" placeholder="...">
-          <label for="direc">Direccion: </label>
-          <input type="text" class="form-control" id="direc" placeholder="...">
-          <label for="telef">Numero telefonico:</label>  
-          <input type="number" class="form-control" id="telef" placeholder="...">
-          
+          <form action="">
+            <label for="postalcod">Codigo postal: </label>
+            <input type="text" class="form-control" id="postalcod" placeholder="..." required>
+            <label for="direc">Direccion: </label>
+            <input type="text" class="form-control" id="direc" placeholder="..." required>
+            <label for="telef">Número telefónico:</label>
+            <input type="tel" class="form-control" id="telef" placeholder="Ejemplo: 1234567890" required>
+            <div id="telefError" style="color: red;"></div>
 
-          <div class="col-4">
-            <label for="formFile" class="form-label">Foto de perfil</label>
-              <div class="card">
-                <input class="form-control" style="background-size: 50%" type="file" id="#img-preview" onchange="loadFile(event)" required>
-                <img id="#img-uploader"/>
-              </div>
-          </div>
+            <div class="col-4">
+              <label for="formFile" class="form-label">Foto de perfil</label>
+                <div class="card">
+                  <input class="form-control" style="background-size: 50%" type="file" id="#img-preview" onchange="loadFile(event)" required>
+                  <img id="#img-uploader"/>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-danger" id="guardarButton" disabled>Guardar</button>
+
+                  <script>
+                  const telefInput = document.getElementById('telef');
+                  const telefError = document.getElementById('telefError');
+                  const guardarButton = document.getElementById('guardarButton');
+
+                  telefInput.addEventListener('input', function () {
+                    let telefValue = telefInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                    telefInput.value = telefValue;
+
+                    if (telefValue.length !== 10) {
+                      telefError.textContent = 'El número de teléfono debe tener 10 dígitos numéricos';
+                      guardarButton.disabled = true; // Deshabilitar el botón "Guardar"
+                    } else {
+                      telefError.textContent = '';
+                      guardarButton.disabled = false; // Habilitar el botón "Guardar"
+                    }
+                  });
+                  </script>
+
+
+        </form>
+        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-danger">Guardar</button>
         </div>
       </div>
     </div>
