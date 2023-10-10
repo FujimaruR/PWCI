@@ -1,18 +1,3 @@
-Hola, hice este repositorio para la materia de PWCI. 
+Segundo avance para para PWCI
 
-Como puedes imaginar, hice las divisiones basicas de front, back, imagenes y dependencias. 
-Si no te gusta, eres bienvenida a cambiarlo jaja yo me acomodo como mejor te parezca trabajar.
-
-En las dependencias puse boostrap. Puede que no te funcione pero es por la referencia.
-Para funcionar debes de poner la refencia tal cual de tu carpeta. En mi caso es:
-C:/Users/yairc/OneDrive/Documentos/GitHub/PWCI/Dependencias
-
-
-En la tuya probablemente va a ser igual pero en vez de "yairc" va a ser lucero o algo asi. 
-Esta en ti verificar y poner.
-
-En el front puse un html basico con un navbar de boostrap, solamente esta para probar que funcione bien boostrap.
-Una vez verifiques que todo esta correcto, puedes quitar todo y ahora si empezar con las pantallas.
-
-
-Fuera de todo eso, espero salga bien trabajar asi en git porque es la primera vez que lo uso en compañia.
+Esta vez vere si puedo hacer mas dinamico el proyecto y agregar login e inicio de sesion
