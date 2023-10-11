@@ -2,208 +2,69 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/mensajes_usuario.css">
-  <script src="http://localhost/prueba/PWCI/Front/js/mensajes_usuario.js"></script>
-  <script
-    src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet"
-    href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
-  <title>Micherry</title>
-  <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost/prueba/PWCI/Front/css/mensajes_usuario.css">
+    <script src="http://localhost/prueba/PWCI/Front/js/mensajes_usuario.js"></script>
+    <script src="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js">
+    </script>
+    <link rel="stylesheet"
+        href="http://localhost/prueba/PWCI/Dependencias/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
+    <title>Micherry</title>
+    <link rel="shortcut icon" href="http://localhost/prueba/PWCI/img/logo/Micherry.png">
+    <style>
     body {
-    background-image: url(http://localhost/prueba/PWCI/img/principal/fondoPrincipal.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+        background-image: url(http://localhost/prueba/PWCI/img/principal/fondoPrincipal.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
 
-  }
-  </style>
+    }
+    </style>
 </head>
 
 <body>
-  <nav class="bg-custom-color navbar navbar-expand-lg sticky-top">
-    <div class="container-fluid ">
-      <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="" height="40">
-      <a class="nav-link active mx-2" aria-current="page" href="paginaPrincipal.php">
-        <h5 class="letraFuente text-white">Micherry</h5>
-      </a>
-      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex justify-content-center" role="search">
-          <input class="form-control me-2 " type="search" placeholder="Buscar producto" aria-label="Search">
-          <a href="b_producto.php" role="button" class="btn btnColorCard btnHover">Buscar</a>
-        </form>
-        <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
-          style="margin-left: 1%;">
-          Filtros
-        </button>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <?php
+        $_GET['logged'] = '1';
+        include_once('../assets/General/navbarSettings.php');
+    ?>
 
-
-          <li class="nav-item">
-            <a class="nav-link disabled">
-              <h6>Usuario</h6>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35">
-
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="perfil_usuario.php">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="carrito.php">Carrito</a></li>
-              <li><a class="dropdown-item" href="pedidos.php">Mis pedidos</a></li>
-              <li><a class="dropdown-item" href="vendedor.php">Perfil vendedor</a></li>
-
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" aria-current="page" data-bs-toggle="modal"
-              data-bs-target="#salirsesionF" style="cursor: pointer;">Salir de la sesion</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="mensajes_usuario.php">
-              <h6>Mensajes</h6>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="modal fade" id="salirsesionF" tabindex="-1" aria-labelledby="salirsesionFLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="salirsesionFLabel">Salir de la sesion</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ¿Quieres salir de la sesion?
-        </div>
-        <div class="modal-footer">
-          <a href="login.php" role="button" class="btn btn-danger">Salir</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="collapse" id="collapseFiltros">
-    <div class="card card-body">
-      <ul class="ml-2">
-        <li>
-          <div class="configbus">
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="offcanvas" data-bs-target="#categorias"
-              aria-controls="categorias">Categorias</button>
-          </div>
-        </li>
-        <li>
-          <div class="precio-input">
-            <span>Precio:</span> 
-            <input type="number" id="input1" name="input1">
-            - <input type="number" id="input2" name="input2">
-          </div>
-        </li>
-        <li>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Mejor calificados
-            </label>
-          </div>
-        </li>
-        <li>
-          <select class="form-select tamanven" aria-label="Default select example">
-            <option selected>Mas vendidos</option>
-            <option value="1">Menos vendidos</option>
-          </select>
-        </li>
-        <li>
-          <button type="button" class="btn btn-outline-danger">Confirmar</button>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="categorias" aria-labelledby="titulocatego">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="titulocatego">Menu de categorias</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="input-group">
-        <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-          <option selected>Anime</option>
-          <option value="1">Ropa</option>
-          <option value="2">Electronica</option>
-          <option value="3">Figuras</option>
-        </select>
-        <button class="btn btn-outline-danger" type="button">Confirmar</button>
-      </div>
-      <div class="form-floating my-2">
-        <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextaread"></textarea>
-        <label for="floatingTextaread">Categorias del producto</label>
-      </div>
-      <div>
-        <ul class="ml-2">
-          <li>
-            <button class="btn btn-outline-danger" type="button">Eliminar</button>
-          </li>
-          <li>
-            <button class="btn btn-outline-danger" type="button">Confirmar</button>
-          </li>
-        </ul>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-3">
-        <ul class="list-group" id="user-list">
-          <li class="list-group-item active list-group-item-danger" data-user="usuario1">Usuario 1</li>
-          <li class="list-group-item list-group-item-danger" data-user="usuario2">Usuario 2</li>
-          <!-- Agrega más usuarios aquí -->
-        </ul>
-      </div>
-      <div class="col-md-9">
-        <div class="card" id="conversation-card">
-          <div class="card-header">
-            Conversación
-          </div>
-          <div class="card-body">
-            <ul class="list-group" id="message-list">
-              <!-- Mensajes se agregarán aquí dinámicamente -->
-            </ul>
-          </div>
-          <div class="card-footer">
-            <form id="message-form">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Escribe tu mensaje...">
-                <div class="input-group-append">
-                  <button class="btn btn-danger" type="submit">Enviar</button>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="list-group" id="user-list">
+                    <li class="list-group-item active list-group-item-danger" data-user="usuario1">Usuario 1</li>
+                    <li class="list-group-item list-group-item-danger" data-user="usuario2">Usuario 2</li>
+                    <!-- Agrega más usuarios aquí -->
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="card" id="conversation-card">
+                    <div class="card-header">
+                        Conversación
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group" id="message-list">
+                            <!-- Mensajes se agregarán aquí dinámicamente -->
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <form id="message-form">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Escribe tu mensaje...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-danger" type="submit">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
-            </form>
-          </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <script>
+    <script>
     var input1 = document.getElementById("input1");
     var input2 = document.getElementById("input2");
 
@@ -211,49 +72,18 @@
     input2.addEventListener("input", validarNumero);
 
     function validarNumero() {
-      var valor = parseFloat(this.value);
+        var valor = parseFloat(this.value);
 
-      if (valor <= 0 || isNaN(valor)) {
-        this.value = 1;
-      }
+        if (valor <= 0 || isNaN(valor)) {
+            this.value = 1;
+        }
     }
-  </script>
+    </script>
+
+    <?php
+        include_once('../assets/General/footer.php');
+    ?>
+    
 </body>
-<footer class="bg-dark text-white p-5 Footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-lg-3 text-reset text-uppercase d-flex align-items-center">
 
-        <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png" width="60" alt="Logo Micherry"
-          class="img-logo mr-2">
-        Micherry
-      </div>
-
-      <div class="col-md-3 col-lg-3">
-
-        <ul class="list-unstyled">
-          <li class="my-2">1975922</li>
-          <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
-        </ul>
-      </div>
-
-      <div class="col-md-3 col-lg-3">
-
-        <ul class="list-unstyled">
-          <li class="my-2"></li>
-          <li class="my-2">1959520</li>
-          <li class="my-2">Emilio Yair Castillo Pacheco</li>
-        </ul>
-      </div>
-
-      <div class="col-md-3 col-lg-3">
-
-        <ul class="list-unstyled">
-          <li class="my-3">Materia</li>
-          <li class="my-2">Programación web de capa intermedia</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
 </html>

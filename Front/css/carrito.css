@@ -157,12 +157,6 @@ body {
 .container {
     flex: 1;
 }
-.Footer {
-    background-color: #396a9c;
-    color: white; 
-    text-align: center;
-    padding: 10px; 
-}
 
 .star {
     font-size: 15px;
