@@ -1,3 +1,17 @@
 Segundo avance para para PWCI
 
-Esta vez vere si puedo hacer mas dinamico el proyecto y agregar login e inicio de sesion
+-Propuesta para al menos 1 middleware (para mandar a llamar la api)
+
+-Al menos 1 API propia aplicada al avance (login y registro de sesion, Yair)
+
+*Landing page atractiva y acorde a la temática. 
+
+*Página para el Registro, modificación y consulta del perfil del usuario, por rol de usuario.
+
+*Validación de requisitos de contraseña para el perfil de usuario.
+
+-Propuesta de API de terceros. (google en inicio de sesion)
+
+-Propuesta para funcionamiento de al menos 1 función AJAX en el proyecto.
+
+*Clase para la conexión a la base de datos en PHP.
