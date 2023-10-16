@@ -20,16 +20,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 header("Location: ../Front/paginaPrincipal.php");
                 exit(); 
             } else {
-                echo "Contraseña incorrecta";
+                header("Location: ../Front/login.php?error=Contraseña%20incorrecta.");
+                exit();
 
                 //echo "Email: " . $row['email'] . "<br>";
                 //echo "Contraseña hash: " . $row['contrasena'] . "<br>";
             }
         } else {
-            echo "Usuario no encontrado";
+            header("Location: ../Front/login.php?error=Usuario%no%20encontrado.");
+            exit();
         }
     } catch(PDOException $e) {
         echo "Error en la base de datos: " . $e->getMessage();
+        exit();
     }
 }
 ?>

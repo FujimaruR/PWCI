@@ -48,6 +48,11 @@ include("../BackEnd/loginUser.php");
                   </div> 
 
             </form>
+            <?php
+              if (isset($_GET['error'])) {
+                echo "Error: " . urldecode($_GET['error']);
+              }
+            ?>
             <div class="col-8  mx-auto align-items-center">
               <label>No tienes cuenta?</label><a href="registro.php" style="color:brown">Regístrate</a>
             </div>
