@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     loginForm.addEventListener("submit", function (event) {
         event.preventDefault(); 
 
-        // Redirigir al usuario a la página deseada
         window.location.href = "paginaPrincipal.php";
     });
 });

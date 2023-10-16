@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("../BackEnd/loginUser.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +33,10 @@
              <img class="mx-auto mb-3" src="http://localhost/prueba/PWCI/img/logo/Micherry.png" alt="Centered Image" style="max-width: 150px;">
             <h4>Micherry</h4>
           </div>
-            <form id="loginForm"action="" class="col-8 mx-auto">
-                  <input type="email" class="form-control my-3" id="correoLogin" placeholder="name@example.com" required>
+            <form id="loginForm" action="" method="post" class="col-8 mx-auto">
+                  <input type="email" class="form-control my-3" id="correoLogin" name="correoLogin" placeholder="name@example.com" required>
 
-                  <input type="Password" class="form-control my-3" id="PasswordLogin"name="Password" placeholder="password" required> 
+                  <input type="Password" class="form-control my-3" id="PasswordLogin"name="PasswordLogin" placeholder="password" required> 
 
                   <div class="form-check mb-3">
                     <input type="checkbox" class="form-check-input" id="rememberMe">
@@ -51,6 +55,5 @@
     </div>
 
   </div>
-  <script src="js/login.js"></script>
 </body>
 </html>

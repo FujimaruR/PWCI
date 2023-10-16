@@ -38,7 +38,7 @@ include("../BackEnd/registroUser.php");
                         alt="Centered Image" style="max-width: 150px;">
                     <h4>Micherry</h4>
                 </div>
-                <form action="" method="post" class="row g-3" id="registroForm">
+                <form action="" method="post" class="row g-3" id="registroForm" enctype="multipart/form-data">
                     <div class="col-12 text-center align-items-center">
                         <h5>Registro de usuario</h5>
                     </div>
@@ -59,8 +59,7 @@ include("../BackEnd/registroUser.php");
                     <div class="col-4">
                         <label for="formFile" class="form-label" id="registroForm">Foto de perfil</label>
                         <div class="card">
-                            <input class="form-control" style="background-size: 50vh" name="imgupload" type="file"
-                                id="#img-preview" onchange="loadFile(event)" required>
+                            <input class="form-control" style="background-size: 50vh" name="imgupload" type="file" id="#img-preview" onchange="loadFile(event)" required>
                             <img id="#img-uploader" />
                         </div>
                     </div>
