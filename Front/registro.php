@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("../BackEnd/registroUser.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +27,6 @@
     </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="js/registro.js"></script>
 </head>
 
 <body>
@@ -35,7 +38,7 @@
                         alt="Centered Image" style="max-width: 150px;">
                     <h4>Micherry</h4>
                 </div>
-                <form action="" class="row g-3" onsubmit="return validarFormulario()" id="registroForm">
+                <form action="" method="post" class="row g-3" id="registroForm">
                     <div class="col-12 text-center align-items-center">
                         <h5>Registro de usuario</h5>
                     </div>
@@ -56,15 +59,16 @@
                     <div class="col-4">
                         <label for="formFile" class="form-label" id="registroForm">Foto de perfil</label>
                         <div class="card">
-                            <input class="form-control" style="background-size: 50vh" name="img-upload" type="file" id="#img-preview"
-                                onchange="loadFile(event)" required>
-                            <img id="#img-uploader"/>
+                            <input class="form-control" style="background-size: 50vh" name="imgupload" type="file"
+                                id="#img-preview" onchange="loadFile(event)" required>
+                            <img id="#img-uploader" />
                         </div>
                     </div>
                     <div class="col-12 text-center">
                         <div class="form-check form-switch d-flex my-2 ">
                             <label class="form-check-label px-5 " for="genderSwitch">Mujer</label>
-                            <input class="form-check-input px-3" type="checkbox" id="genderSwitch" name="genderSwitch" value="1">
+                            <input class="form-check-input px-3" type="checkbox" id="genderSwitch" name="genderSwitch"
+                                value="1">
                             <label class="form-check-label" for="genderSwitch">Hombre</label>
                         </div>
                         <label for="form-label" class="form-label col-sm-8 col-md-5 col-lg-5 px-5">Fecha de nacimiento
@@ -86,6 +90,7 @@
             </div>
         </div>
     </div>
+    <script src="js/registro.js"></script>
     <script src="js/cargaImagen.js"></script>
 </body>
 

@@ -9,7 +9,6 @@ try {
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    echo "Conexión establecida correctamente";
 } catch(PDOException $e) {
     echo "Error de conexión: " . $e->getMessage();
 }
