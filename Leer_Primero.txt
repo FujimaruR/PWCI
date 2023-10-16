@@ -1,8 +1,8 @@
 Segundo avance para para PWCI
 
--Propuesta para al menos 1 middleware (para mandar a llamar la api)
+*Propuesta para al menos 1 middleware (para mandar a llamar la api)
 
--Al menos 1 API propia aplicada al avance (login y registro de sesion, Yair)
+*Al menos 1 API propia aplicada al avance (Deberia de estar)
 
 *Landing page atractiva y acorde a la temática. 
 
@@ -10,8 +10,11 @@ Segundo avance para para PWCI
 
 *Validación de requisitos de contraseña para el perfil de usuario.
 
--Propuesta de API de terceros. (google en inicio de sesion)
+*Propuesta de API de terceros. (google en inicio de sesion)
 
--Propuesta para funcionamiento de al menos 1 función AJAX en el proyecto.
+*Propuesta para funcionamiento de al menos 1 función AJAX en el proyecto.
 
 *Clase para la conexión a la base de datos en PHP.
+
+
+Felicidades! completamos el avance 2!
