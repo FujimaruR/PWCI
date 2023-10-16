@@ -15,6 +15,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     try {
+
+        $consulta_email = "SELECT * FROM tb_usuarios WHERE email = :email";
+
+        $stmt_email = $conn->prepare($consulta_email);
+        $stmt_email->bindParam(':email', $email);
+        $stmt_email->execute();
+
+        if ($stmt_email->rowCount() > 0) {
+            header("Location: ../Front/registro.php?error=Este%20correo%20electrónico%20ya%20está%20registrado.");
+            exit();
+        }
+
         $consulta = "INSERT INTO tb_usuarios(nombre, email, contrasena, tuser, fecha_registro) 
         VALUES (:nombre, :email, :contrasena, :tuser, :fecha_registro)";
 
@@ -26,11 +38,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt->bindParam(':fecha_registro', $fecha_registro);
     
         if($stmt->execute()){
-
-            if ($_FILES['imgupload']['error'] !== UPLOAD_ERR_OK) {
-                echo "Error al subir el archivo. Código de error: " . $_FILES['imgupload']['error'];
-                exit();
-            }
             if (isset($_FILES['imgupload']) && $_FILES['imgupload']['error'] === UPLOAD_ERR_OK) {
                 $nombreArchivo = $_FILES['imgupload']['name'];
                 $rutaTempArchivo = $_FILES['imgupload']['tmp_name'];
@@ -39,13 +46,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
                 if (!in_array(strtolower($extension), $extensionesPermitidas)) {
-                    echo "Error: Archivo no permitido.";
+                    header("Location: ../Front/registro.php?error=Archivo%20no%20permitido.");
                     exit();
                 }
 
                 $contenidoArchivo = file_get_contents($rutaTempArchivo);
             } else {
-                echo "Error al subir el archivo.";
+                header("Location: ../Front/registro.php?error=Error%20al%20subir%20el%20archivo.");
                 exit();
             }
             
@@ -70,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     header("Location: ../Front/paginaPrincipal.php");
                     exit(); 
                 } else {
-                    echo "Error en la creacion del usuario.";
+                    header("Location: ../Front/registro.php?error=Error%20en%20la%20creacion%20del%20usuario.");
                     exit();
                 }
             } catch(PDOException $e) {
@@ -78,7 +85,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 exit();
             }
         } else {
-            echo "Error al crear el usuario.";
+            header("Location: ../Front/registro.php?error=Error%20en%20la%20creacion%20del%20usuario.");
             exit();
         }
     } catch(PDOException $e) {

@@ -59,7 +59,8 @@ include("../BackEnd/registroUser.php");
                     <div class="col-4">
                         <label for="formFile" class="form-label" id="registroForm">Foto de perfil</label>
                         <div class="card">
-                            <input class="form-control" style="background-size: 50vh" name="imgupload" type="file" id="#img-preview" onchange="loadFile(event)" required>
+                            <input class="form-control" style="background-size: 50vh" name="imgupload" type="file"
+                                id="#img-preview" onchange="loadFile(event)" required>
                             <img id="#img-uploader" />
                         </div>
                     </div>
@@ -86,6 +87,12 @@ include("../BackEnd/registroUser.php");
                 <div class="col-sm-8 mx-auto text-center">
                     <label>Ya tienes cuenta?</label><a href="login.php" style="color:brown">Inicia sesion</a>
                 </div>
+
+                <?php
+                if (isset($_GET['error'])) {
+                    echo "Error: " . urldecode($_GET['error']);
+                }
+                ?>
             </div>
         </div>
     </div>
