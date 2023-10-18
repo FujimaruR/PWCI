@@ -4,9 +4,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $emaila = trim($_POST['correoLogin']);
     $contrab = trim($_POST['PasswordLogin']);
+    $tuser = trim($_POST['formControlTypeUser']);
 
     try {
-        $consulta = "SELECT email, contrasena FROM tb_usuarios WHERE email = :emailb";
+        $consulta = "SELECT email, contrasena, tuser FROM tb_usuarios WHERE email = :emailb";
         $stmt = $conn->prepare($consulta);
         $stmt->bindParam(':emailb', $emaila);
         $stmt->execute();
@@ -14,13 +15,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $hashed_password = $row['contrasena'];
+            $db_tuser = $row['tuser'];
 
-            if (password_verify($contrab, $hashed_password)) {
+            if (password_verify($contrab, $hashed_password) && $tuser == $db_tuser) {
                 $_SESSION['usuario'] = $emaila;
                 header("Location: ../Front/paginaPrincipal.php");
                 exit(); 
             } else {
-                header("Location: ../Front/login.php?error=Contraseña%20incorrecta.");
+                header("Location: ../Front/login.php?error=Usuario,%20contraseña%20o%20tipo%20de%20usuario%20incorrectos.");
                 exit();
 
                 //echo "Email: " . $row['email'] . "<br>";

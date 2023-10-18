@@ -38,6 +38,14 @@ include("../BackEnd/loginUser.php");
 
                   <input type="Password" class="form-control my-3" id="PasswordLogin"name="PasswordLogin" placeholder="password" required> 
 
+                  <div class="mb-3">
+                        <label for="formControlTypeUser" class="form-label">Tipo de usuario</label>
+                        <select class="form-control" aria-label="Default select example" id="formControlTypeUser" name="formControlTypeUser">
+                            <option selected value="1">Usuario</option>
+                            <option value="0">Administrador</option>
+                        </select>
+                  </div>
+
                   <div class="form-check mb-3">
                     <input type="checkbox" class="form-check-input" id="rememberMe">
                     <label class="form-check-label" for="rememberMe">Recordar cuenta</label>
