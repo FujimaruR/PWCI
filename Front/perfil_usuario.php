@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("../BackEnd/showUser.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,23 +43,23 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-8 col-sm-8 m-4">
                                 <div class="col-lg-12 col-md-12 col-sm-12 ">
-                                    <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg"
+                                    <img src="<?php echo $imagen_url; ?>"
                                         class="img-fluid rounded-start" alt="..."
                                         style="height: 100%; width: 80%;border-radius: 80px 80px 50px 50px;">
                                 </div>
                                 <div class="col-md-12">
                                     <div class="card-body">
-                                        <h5 class="card-title">Lucero Mendoza</h5>
+                                        <h5 class="card-title"><?php echo $usuario['nombre']; ?></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <h5>Información</h5>
-                                <p class="card-text">Correo: lucero@gmail.com</p>
-                                <p class="card-text">Codigo postal: 66420</p>
-                                <p class="card-text">Direccion de entrega: Cinco # 629, col VILLAZUL, San Nicolas de los
-                                    Garza, Nuevo Leon, MX</p>
-                                <p class="card-text">Numero telefonico: 8183321706</p>
+                                <p class="card-text">Correo: <?php echo $usuario['email']; ?></p>
+                                <p class="card-text">Nombre completo: <?php echo $usuarioNormal['complete_name']; ?></p>
+                                <p class="card-text">Codigo postal: <?php echo isset($usuarioNormalInfo['codepos']) ? $usuarioNormalInfo['codepos'] : 'No disponible'; ?></p>
+                                <p class="card-text">Direccion de entrega: <?php echo isset($usuarioNormalInfo['direc']) ? $usuarioNormalInfo['direc'] : 'No disponible'; ?></p>
+                                <p class="card-text">Numero telefonico: <?php echo isset($usuarioNormalInfo['telef']) ? $usuarioNormalInfo['telef'] : 'No disponible'; ?></p>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#editarPerfil">Editar</button>
 
@@ -80,7 +84,11 @@
                 </div>
             </div>
         </div>
-
+        <?php
+            if (isset($_GET['error'])) {
+                echo "Error: " . urldecode($_GET['error']);
+            }
+        ?>
     </div>
 
     <div class="modal fade" id="editarPerfil" tabindex="-1" aria-labelledby="editarPerfilLabel" aria-hidden="true">
@@ -91,19 +99,21 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="" method="post" id="editperfilform" enctype="multipart/form-data">
+                        <label for="editnom">Nombre completo: </label>
+                        <input type="text" class="form-control" id="editnom" name="editnom" placeholder="..." required>
                         <label for="postalcod">Codigo postal: </label>
-                        <input type="text" class="form-control" id="postalcod" placeholder="..." required>
+                        <input type="text" class="form-control" id="postalcod" name="postalcod" placeholder="..." required>
                         <label for="direc">Direccion: </label>
-                        <input type="text" class="form-control" id="direc" placeholder="..." required>
+                        <input type="text" class="form-control" id="direc" name="direc" placeholder="..." required>
                         <label for="telef">Número telefónico:</label>
-                        <input type="tel" class="form-control" id="telef" placeholder="Ejemplo: 1234567890" required>
+                        <input type="tel" class="form-control" id="telef" name="telefono" placeholder="Ejemplo: 1234567890" required>
                         <div id="telefError" style="color: red;"></div>
 
                         <div class="col-4">
                             <label for="formFile" class="form-label">Foto de perfil</label>
                             <div class="card">
-                                <input class="form-control" style="background-size: 50%" type="file" id="#img-preview"
+                                <input class="form-control" style="background-size: 50%" type="file" id="#img-preview" name="editImg"
                                     onchange="loadFile(event)" required>
                                 <img id="#img-uploader" />
                             </div>

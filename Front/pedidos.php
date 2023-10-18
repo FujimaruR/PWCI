@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("../BackEnd/showSeller.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 

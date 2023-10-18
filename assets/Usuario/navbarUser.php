@@ -32,7 +32,7 @@
 
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="http://localhost/prueba/PWCI/img/fotoPerfil.jpg" alt="" height="35"
+                        <img src="<?php echo $imagen_url; ?>" alt="" height="35"
                             style="border-radius: 20px 20px">
                     </a>
                     <ul class="dropdown-menu">

@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("../BackEnd/showSeller.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,15 +39,13 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-6 col-sm-8 m-4">
                                 <div class="col-lg-8 col-md-8 col-sm-8 ">
-                                    <img src="http://localhost/prueba/PWCI/img/logo/Micherry.png"
+                                    <img src="<?php echo $imagen_url; ?>"
                                         class="img-fluid rounded-start" alt="..." style="height: 100%; width: 80%;">
                                 </div>
                                 <div class="col-md-12">
                                     <div class="card-body">
-                                        <h5 class="card-title">Yair Castillo</h5>
-                                        <p class="card-text">Correo: yair.castillo.p1@gmail.com</p>
-                                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                                ago</small></p>
+                                        <h5 class="card-title"><?php echo $usuario['nombre']; ?></h5>
+                                        <p class="card-text">Correo: <?php echo $usuario['email']; ?></p>
                                     </div>
                                 </div>
                             </div>
