@@ -119,7 +119,7 @@ include("../BackEnd/showUser.php");
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-danger" id="guardarButton" disabled>Guardar</button>
+                        <button type="submit" class="btn btn-danger" id="guardarButton" style="margin-top: 3%;" disabled>Guardar</button>
 
                         <script>
                         const telefInput = document.getElementById('telef');
