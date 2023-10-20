@@ -9,7 +9,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = trim($_POST['correoLogin']);
     $contra = trim($_POST['Password']);
     $tuser = 1;
-    $fecha_registro = date("d/m/y");
+    $timestamp = time();
+    $fecha_registro = date("Y-m-d H:i:s", $timestamp);
 
     $hashed_password = password_hash($contra, PASSWORD_DEFAULT);
 
