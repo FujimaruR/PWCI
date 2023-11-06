@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $tuser = trim($_POST['formControlTypeUser']);
 
     try {
-        $consulta = "SELECT email, contrasena, tuser FROM tb_usuarios WHERE email = :emailb";
+        $consulta = "SELECT id, email, contrasena, tuser FROM tb_usuarios WHERE email = :emailb";
         $stmt = $conn->prepare($consulta);
         $stmt->bindParam(':emailb', $emaila);
         $stmt->execute();
@@ -16,9 +16,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $hashed_password = $row['contrasena'];
             $db_tuser = $row['tuser'];
+            $db_id_user = $row['id'];
 
             if (password_verify($contrab, $hashed_password) && $tuser == $db_tuser) {
                 $_SESSION['usuario'] = $emaila;
+                $_SESSION['usuarioId'] = $db_id_user;
                 header("Location: ../Front/paginaPrincipal.php");
                 exit(); 
             } else {

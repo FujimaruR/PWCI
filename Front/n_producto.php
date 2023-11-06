@@ -49,9 +49,14 @@ include("../BackEnd/editProd.php");
                             </div>
 
                             <video id="video-preview" controls style="display: none;"></video>
-                            <input class="form-control" type="file" id="img-uploader-nprod" accept="image/*, video/*"
+                            <input class="form-control" type="file" id="img-uploader-nprod" name="imguploaderNprod" accept="image/*, video/*"
                                 multiple>
                         </div>
+                        <?php
+                        if (isset($_GET['error'])) {
+                            echo "Error: " . urldecode($_GET['error']);
+                        }
+                        ?>
                     </div>
 
                 </div>
@@ -60,27 +65,33 @@ include("../BackEnd/editProd.php");
                         <div class="card-body">
                             <h5 class="text-center">Datos del producto</h5>
                             <div class="form-floating my-2">
-                                <input type="text" class="form-control" id="productinput" placeholder="...">
+                                <input type="text" class="form-control" id="productinput" name="productinput" placeholder="...">
                                 <label for="productinput">Nombre del producto</label>
                             </div>
                             <div class="form-floating my-2">
                                 <textarea class="form-control" placeholder="Leave a comment here"
-                                    id="floatingTextarea"></textarea>
+                                    id="floatingTextarea" name="floatingTextarea"></textarea>
                                 <label for="floatingTextarea">Descripcion del producto</label>
                             </div>
                             <div class="form-floating my-2">
-                                <input type="number" class="form-control" id="floatingInput" placeholder="...">
+                                <input type="number" class="form-control" id="floatingInput" name="floatingInput" placeholder="...">
                                 <label for="floatingInput">Cantidad del producto</label>
                             </div>
                             <p>Categorias: </p>
-                            <div class="form-floating my-2">
-                                <select class="form-select" id="floatingSelect"
+                            <div class="input-group form-floating my-2">
+                                <select class="form-select" id="floatingSelect" name="floatingSelect"
                                     aria-label="Floating label select example">
-                                    <option selected>Anime</option>
-                                    <option value="1">Ropa</option>
-                                    <option value="2">Electronica</option>
-                                    <option value="3">Figuras</option>
+                                    <?php
+                                    if ($catestmt->rowCount() > 0) {
+                                        while($row = $catestmt->fetch(PDO::FETCH_ASSOC)) {
+                                            echo '<option value="' . $row['id_categ'] . '">' . $row['nombre'] . '</option>';
+                                        }
+                                    } else {
+                                        echo '<option value="' . 1 . '"> hola </option>';
+                                    }
+                                    ?>
                                 </select>
+                                <button class="btn btn-danger" type="button" id="buttonAgregarCategoria">Confirmar</button>
                                 <label for="floatingSelect">Categoria del producto</label>
                             </div>
                             <div class="input-group my-2">
@@ -96,11 +107,11 @@ include("../BackEnd/editProd.php");
                             <div class="form-check form-switch d-flex">
                                 <label class="form-check-label px-5" for="flexSwitchCheckDefault">Vender</label>
                                 <input class="form-check-input px-3" type="checkbox" role="switch"
-                                    id="flexSwitchCheckDefault">
+                                    id="flexSwitchCheckDefault" name="flexSwitchCheckDefault" value="cotizar">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Cotizar</label>
                             </div>
                             <div class="form-floating my-2">
-                                <input type="number" class="form-control" id="priceinput" placeholder="...">
+                                <input type="number" class="form-control" id="priceinput" name="priceinput" placeholder="...">
                                 <label for="priceinput">Precio del producto</label>
                             </div>
                             <button type="submit" class="btn btn-danger">Confirmar</button>
@@ -114,6 +125,35 @@ include("../BackEnd/editProd.php");
     </form>
 
     <script src="http://localhost/prueba/PWCI/Front/js/n_producto.js"></script>
+
+    <script>
+        var categoriasAgregadas = [];
+
+        document.getElementById("buttonAgregarCategoria").addEventListener("click", function() {
+        var select = document.getElementById("floatingSelect");
+        var categoriaSeleccionada = select.options[select.selectedIndex].text;
+        var textarea = document.getElementById("floatingTextaread");
+        if (!categoriasAgregadas.includes(categoriaSeleccionada)) {
+            textarea.value += categoriaSeleccionada + "\n";
+            categoriasAgregadas.push(categoriaSeleccionada);
+        } else {
+            alert("¡Esta categoría ya ha sido agregada!");
+        }
+        });
+
+        document.getElementById("button-addon2").addEventListener("click", function() {
+        var nuevaCategoria = document.getElementById("button-addon2").previousElementSibling.value;
+        var textarea = document.getElementById("floatingTextaread");
+        if (!categoriasAgregadas.includes(nuevaCategoria)) {
+            textarea.value += nuevaCategoria + "\n";
+            categoriasAgregadas.push(nuevaCategoria);
+            // También puedes limpiar el input después de agregarlo al textarea si lo deseas:
+            document.getElementById("button-addon2").previousElementSibling.value = "";
+        } else {
+            alert("¡Esta categoría ya ha sido agregada!");
+        }
+        });
+    </script>
 
     <?php
         include_once('../assets/General/footer.php');
