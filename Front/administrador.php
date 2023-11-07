@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("../BackEnd/adminpri.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 

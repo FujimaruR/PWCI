@@ -101,9 +101,10 @@ include("../BackEnd/editProd.php");
                             </div>
                             <div class="form-floating my-2">
                                 <textarea disabled class="form-control" placeholder="Leave a comment here"
-                                    id="floatingTextaread"></textarea>
+                                    id="floatingTextaread" name="floatingTextaread"></textarea>
                                 <label for="floatingTextaread">Categorias del producto</label>
                             </div>
+                            <input type="hidden" id="categoriasInput" name="categoriasInput" value="">
                             <div class="form-check form-switch d-flex">
                                 <label class="form-check-label px-5" for="flexSwitchCheckDefault">Vender</label>
                                 <input class="form-check-input px-3" type="checkbox" role="switch"
@@ -153,6 +154,15 @@ include("../BackEnd/editProd.php");
             alert("¡Esta categoría ya ha sido agregada!");
         }
         });
+
+        document.getElementById("formProducto").addEventListener("submit", function(event) {
+
+        var categoriasJSON = JSON.stringify(categoriasAgregadas);
+
+        document.getElementById("categoriasInput").value = categoriasJSON;
+        });
+
+
     </script>
 
     <?php

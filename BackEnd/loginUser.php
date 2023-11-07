@@ -21,8 +21,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if (password_verify($contrab, $hashed_password) && $tuser == $db_tuser) {
                 $_SESSION['usuario'] = $emaila;
                 $_SESSION['usuarioId'] = $db_id_user;
-                header("Location: ../Front/paginaPrincipal.php");
-                exit(); 
+                if ($tuser == 0) {
+                    header("Location: ../Front/administrador.php");
+                    exit(); 
+                } elseif ($tuser == 1) {
+                    header("Location: ../Front/paginaPrincipal.php");
+                    exit(); 
+                } else {
+                    header("Location: ../Front/login.php?error=Usuario%20no%20o%20encontrado.");
+                    exit();
+                }
             } else {
                 header("Location: ../Front/login.php?error=Usuario,%20contraseña%20o%20tipo%20de%20usuario%20incorrectos.");
                 exit();

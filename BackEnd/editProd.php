@@ -35,8 +35,7 @@ try {
             }
 
 
-            $stmt = $conn->prepare("CALL InsertarDatos(:nombre, :descripcion, :precio, :estatus, :t_producto, :cant_disp, :rating, :id_usuarioProd, :imagenes, :id_categorias)");
-
+            $stmt = $conn->prepare("CALL InsertarProductos(:p_nombre, :p_descripcion, :p_precio, :p_estatus, :p_t_producto, :p_cant_disp, :p_rating, :p_id_usuarioProd, :p_imagenes, @idProducto)");
             
             $name = trim($_POST['productinput']);
             $descripcion = trim($_POST['floatingTextarea']);
@@ -50,22 +49,46 @@ try {
                 $precio = trim($_POST['priceinput']);
             }
             $rating = 0; 
-            $id_usuarioProd = $_SESSION['usuarioId']; 
-            $id_categorias = trim($_POST['floatingSelect']);
+            $id_usuarioProd = $_SESSION['usuarioId'];
 
-            $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-            $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
-            $stmt->bindParam(':precio', $precio, PDO::PARAM_INT);
-            $stmt->bindParam(':estatus', $estatus, PDO::PARAM_BOOL);
-            $stmt->bindParam(':t_producto', $t_producto, PDO::PARAM_BOOL);
-            $stmt->bindParam(':cant_disp', $cantidad, PDO::PARAM_INT);
-            $stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
-            $stmt->bindParam(':id_usuarioProd', $id_usuarioProd, PDO::PARAM_INT);
-            $stmt->bindParam(':imagenes', $contenidoArchivo, PDO::PARAM_LOB);
-            $stmt->bindParam(':id_categorias', $id_categorias, PDO::PARAM_INT);
+            $stmt->bindParam(':p_nombre', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':p_descripcion', $descripcion, PDO::PARAM_STR);
+            $stmt->bindParam(':p_precio', $precio, PDO::PARAM_INT);
+            $stmt->bindParam(':p_estatus', $estatus, PDO::PARAM_BOOL);
+            $stmt->bindParam(':p_t_producto', $t_producto, PDO::PARAM_BOOL);
+            $stmt->bindParam(':p_cant_disp', $cantidad, PDO::PARAM_INT);
+            $stmt->bindParam(':p_rating', $rating, PDO::PARAM_INT);
+            $stmt->bindParam(':p_id_usuarioProd', $id_usuarioProd, PDO::PARAM_INT);
+            $stmt->bindParam(':p_imagenes', $contenidoArchivo, PDO::PARAM_LOB);
 
             if($stmt->execute()){
+
+                $stmt = $conn->query("SELECT @idProducto AS idProducto");
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                $idProducto = $result['idProducto'];
+                $categoriasArray = json_decode($_POST['categoriasInput']);
+
+                foreach ($categoriasArray as $categoria) {
+                    $stmtd = $conn->prepare("SELECT id_categ FROM tb_categorias WHERE nombre = :categoria");
+                    $stmtd->bindParam(':categoria', $categoria);
+                    $stmtd->execute();
+                    $result = $stmtd->fetch(PDO::FETCH_ASSOC);
+                    if (!$result) {
+                        $stmtInsertCategoria = $conn->prepare("INSERT INTO tb_categorias (nombre) VALUES (:categoria)");
+                        $stmtInsertCategoria->bindParam(':categoria', $categoria);
+                        $stmtInsertCategoria->execute();
+                        $idCategoria = $conn->lastInsertId();
+                    } else {
+                        $idCategoria = $result['id_categ'];
+                    }
+                
+                    $stmtInsertRelacion = $conn->prepare("INSERT INTO tb_categoriasprod (id_productoc, id_categoriac) VALUES (:idProducto, :idCategoria)");
+                    $stmtInsertRelacion->bindParam(':idProducto', $idProducto); // Debes definir $idProducto antes de esta línea
+                    $stmtInsertRelacion->bindParam(':idCategoria', $idCategoria);
+                    $stmtInsertRelacion->execute();
+                }
                 header("Location: ../Front/vendedor.php");
+                
                 exit(); 
             } else {
                 header("Location: ../Front/n_producto.php?error=Error%20en%20la%20creacion%20del%20usuario.");
