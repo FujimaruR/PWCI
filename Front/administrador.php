@@ -57,7 +57,7 @@ include("../BackEnd/adminProductos.php");
                                         style="object-fit: cover; height: 200px;">
                                     <div class="card-body">
                                         <h5 class="card-title"><strong>MXN$' . $productoas['precio'] . '</strong></h5>
-                                        <p class="card-text">' . $productoas['descripcion'] . '</p>
+                                        <p class="card-text">' . $productoas['nombre'] . '</p>
                                     </div>
                                 </div>
                             </a>
@@ -76,7 +76,7 @@ include("../BackEnd/adminProductos.php");
                     echo '<div class="col-md-3">
                                 <div class="card productocard" style="width: 18rem;">
                                     <div class="card-body">
-                                        <h5 class="card-title"><strong>No producto encontrado</strong></h5>
+                                        <h5 class="card-title"><strong>No productos encontrados</strong></h5>
                                     </div>
                                 </div>
                         </div>';
@@ -126,7 +126,7 @@ include("../BackEnd/adminProductos.php");
                                         style="object-fit: cover; height: 200px;">
                                     <div class="card-body">
                                         <h5 class="card-title"><strong>MXN$' . $producto['precio'] . '</strong></h5>
-                                        <p class="card-text">' . $producto['descripcion'] . '</p>
+                                        <p class="card-text">' . $producto['nombre'] . '</p>
                                     </div>
                                 </div>
                             </a>

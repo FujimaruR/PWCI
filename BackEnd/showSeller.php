@@ -2,8 +2,9 @@
 include('../BackEnd/conexion/cn_db.php');
 
     try{
-        if(isset($_SESSION['usuario'])){
+        if(isset($_SESSION['usuarioId'])){
             $email = $_SESSION['usuario'];
+            $id_seller = $_SESSION['usuarioId'];
         } else {
             header("Location: ../Front/login.php"); 
             exit();
@@ -28,6 +29,17 @@ include('../BackEnd/conexion/cn_db.php');
         $mime_type = 'image/png';
     
         $imagen_url = 'data:' . $mime_type . ';base64,' . base64_encode($usuarioNormal['img']);
+
+        $sql = "SELECT id_categ, nombre FROM tb_categorias";
+        $catestmt = $conn->prepare($sql);
+        $catestmt->execute();
+
+        $sqlac = "SELECT * FROM vista_producto_aceptado WHERE id_usuarioProd = :useridi";
+        $stmtt = $conn->prepare($sqlac);
+        $stmtt->bindParam(':useridi', $id_seller);
+        $stmtt->execute();
+
+        $productosAceptados = $stmtt->fetchAll(PDO::FETCH_ASSOC);
     } catch(PDOException $e) {
         echo "Error en la base de datos: " . $e->getMessage();
         exit();

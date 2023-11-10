@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../BackEnd/showSeller.php");
+include("../BackEnd/showProducto.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,33 +35,43 @@ include("../BackEnd/showSeller.php");
 
                     <div id="miCarrusel" class="carousel">
                         <ol class="carousel-indicators">
-                            <li data-bs-target="#miCarrusel" data-bs-slide-to="0" class="active"></li>
-                            <li data-bs-target="#miCarrusel" data-bs-slide-to="1"></li>
-                            <li data-bs-target="#miCarrusel" data-bs-slide-to="2"></li>
-                            <li data-bs-target="#miCarrusel" data-bs-slide-to="3"></li>
+                        <?php
+                        // Crear los indicadores del carrusel
+                        $numCategorias = count($ImagenesFila);
+                        for ($i = 0; $i < $numCategorias; $i++) {
+                            echo '<li data-bs-target="#miCarrusel" data-bs-slide-to="' . $i . '"';
+                            if ($i === 0) {
+                                echo ' class="active"';
+                            }
+                            echo '></li>';
+                        }
+                        ?>
                         </ol>
                         <!-- Contenido del carrusel -->
                         <div class="carousel-inner">
-                            <!-- Imágenes -->
-                            <div class="carousel-item active">
-                                <img src="../img/principal/mascara.jpg" style="max-width: 100%; height: 500px;"
-                                    class="card-img-top object-fit-cover" alt="Imagen 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="../img/principal/lampara.jpg" style="max-width: 100%; height: 500px;"
-                                    class="card-img-top object-fit-cover" alt="Imagen 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="../img/principal/llaveroGatito.jpg" style="max-width: 100%; height: 500px;"
-                                    class="card-img-top object-fit-cover" alt="Imagen 3">
-                            </div>
-                            <!-- Video -->
-                            <div class="carousel-item">
-                                <video controls style="max-width: 100%; height: 500px;">
-                                    <source src="../img/cubo.mp4" type="video/mp4">
-                                    Tu navegador no admite el elemento de video.
-                                </video>
-                            </div>
+                        <?php
+                        $contador = 0;
+                        foreach ($ImagenesFila as $index => $fila) {
+                            echo '<div class="carousel-item';
+                            if ($index === 0) {
+                                echo ' active';
+                            }
+                            echo '">';
+
+                            if ($contador < 3) {
+                              echo '<img src="data:image/jpeg;base64,' . base64_encode($fila['img']) . '" style="max-width: 100%; height: 500px;" class="card-img-top object-fit-cover" alt="Categoría: ' . $fila['id_img'] . '">';
+                              
+                            } else {
+                              $contador = 0;
+                              echo '<video controls style="max-width: 100%; height: 500px;">
+                                <source src="data:image/jpeg;base64,' . base64_encode($fila['img']) . '" type="video/mp4">
+                                Tu navegador no admite el elemento de video.
+                              </video>';
+                            }
+                            $contador++;
+                            echo '</div>';
+                        }
+                        ?>
                         </div>
                         <a class="carousel-control-prev" href="#miCarrusel" role="button" data-bs-slide="prev"
                             style="margin:0 -50px">
@@ -94,18 +104,25 @@ include("../BackEnd/showSeller.php");
                             </div>
                         </div>
                         <div class="info-box">
-                            <h4>Lampara de Satoru Gojo</h4>
-                            <p>Disponible en distintos colores.</p>
+                            <h4><?php echo $productoBuscado['nombre']; ?></h4>
+                            <p><?php echo $productoBuscado['descripcion']; ?></p>
                         </div>
-                        <h4>$500</h4>
-                        <p><span class="info-label">Cantidad disponible:</span> 20</p>
-                        <p><span class="info-label">Categoria:</span> Anime</p>
+                        <h4>$<?php echo $productoBuscado['precio']; ?></h4>
+                        <p><span class="info-label">Cantidad disponible:</span><?php echo $productoBuscado['cant_disp']; ?></p>
+                        <p><span class="info-label">Categorias:</span><?php echo $categoriasString; ?></p>
                         <div class="text-center my-5">
                             <div class="btn-group" role="group" aria-label="Grupo de botones">
-                                <button type="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
-                                    data-bs-toggle="modal" data-bs-target="#comprar">Comprar</button>
-                                <a class="btn btnHover" href="carrito.php" role="button"
-                                    style="background-color: #7dcf72;color:aliceblue;">&#128722;</a>
+                                <?php 
+                                if($productoBuscado['t_producto'] === 1){
+                                    echo '<button type="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
+                                        data-bs-toggle="modal" data-bs-target="#comprar">Comprar</button>
+                                    <a class="btn btnHover" href="carrito.php" role="button"
+                                        style="background-color: #7dcf72;color:aliceblue;">&#128722;</a>';
+                                } else {
+                                    echo '<a role="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
+                                    href="../Front/mensajes_usuario.php">Cotizar</a>';
+                                }
+                                ?>
                             </div>
                         </div>
                         <!-- Modal -->

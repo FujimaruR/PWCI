@@ -63,21 +63,29 @@ include("../BackEnd/showSeller.php");
                             </div>
                             <div class="col-lg-3 mx-auto">
                                 <label for="combobox" class="me-2">Selecciona o escribe una categoria:</label>
-                                <select id="combobox" name="combobox" class="form-control">
-                                    <option value="opcion1">Anime</option>
-                                    <option value="opcion2">Ropa</option>
-                                    <option value="opcion3">Electronica</option>
-                                    <option value="opcion4">Figuras</option>
-                                </select>
-                                <input type="text" class="form-control my-2" id="nuevaOpcion" name="nuevaOpcion"
+                                <div class="input-group form-floating my-2">
+                                    <select id="combobox" name="combobox" class="form-control">
+                                        <?php
+                                        if ($catestmt->rowCount() > 0) {
+                                            while($row = $catestmt->fetch(PDO::FETCH_ASSOC)) {
+                                                echo '<option value="' . $row['id_categ'] . '">' . $row['nombre'] . '</option>';
+                                            }
+                                        } else {
+                                            echo '<option value="' . 1 . '"> Error </option>';
+                                        }
+                                        ?>
+                                    </select>
+                                    <button class="btn btn-danger" type="button" id="buttonAgregarCategoriaVendedor">Confirmar</button>
+                                </div>
+                                <div class="input-group my-2">
+                                <input type="text" class="form-control" id="nuevaOpcion" name="nuevaOpcion"
                                     placeholder="Escribe una nueva categoria">
-                                <div class="col-12">
-                                    <button type="button" class="btn btn-danger btn-sm">Agregar categoria</button>
+                                    <button type="button" class="btn btn-danger" id="buttonAgregarNCategoriaVendedor">Agregar categoria</button>
                                 </div>
                                 <p>Categorias: </p>
                                 <textarea disabled class="form-control"></textarea>
 
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-danger my-2" data-bs-toggle="modal"
                                     data-bs-target="#consulvent">
                                     Confirmar
                                 </button>
@@ -145,123 +153,48 @@ include("../BackEnd/showSeller.php");
     <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <!-- Aquí comienzan las tarjetas del carrusel -->
+                <?php
+                if ($productosAceptados !== null){
+                    $contadorA = 0;
+                    foreach ($productosAceptados as $productoas){
+                        if ($contadorA % 4 == 0) {
+                            echo '<div class="carousel-item' . ($contadorA === 0 ? ' active' : '') . '"><div class="row">';
+                        }
+                        $imagen_base64a = base64_encode($productoas['primera_imagen']);
+                        $imagen_urla = 'data:image/png;base64,' . $imagen_base64a;
 
-                        <div class="col-md-3">
-                            <a href="editar_producto.php">
-                                <div class="card productocard" style="width: 18rem; ">
-                                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_blanca.png"
-                                        class="card-img-top" alt="Camisa blanca"
-                                        style="object-fit: cover; height: 200px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><strong>MXN$300</strong></h5>
-                                        <p class="card-text">Camisa blanca</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Agregar más tarjetas aquí -->
-                        <div class="col-md-3">
-                            <a href="editar_producto.php">
-                                <div class="card productocard" style="width: 18rem; ">
-                                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_chino.png"
-                                        class="card-img-top" alt="Camisa blanca"
-                                        style="object-fit: cover; height: 200px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><strong>MXN$200</strong></h5>
-                                        <p class="card-text">Ropa china</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="editar_producto.php">
-                                <div class="card productocard" style="width: 18rem; ">
-                                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_miku.png"
-                                        class="card-img-top" alt="Camisa blanca"
-                                        style="object-fit: cover; height: 200px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><strong>MXN$1000</strong></h5>
-                                        <p class="card-text">Hatsune Miku cosplay</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="editar_producto.php">
-                                <div class="card productocard" style="width: 18rem; ">
-                                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/Gojo.png"
-                                        class="card-img-top" alt="Camisa blanca"
-                                        style="object-fit: cover; height: 200px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><strong>MXN$6000</strong></h5>
-                                        <p class="card-text">Gojo cosplay maid</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <!-- Continuación de las tarjetas del carrusel -->
-                        <div class="col-md-3">
-                            <a href="editar_producto.php">
+                        echo '<div class="col-md-3">
+                            <a href="../Front/vistaProducto.php?idProductoEn=' . $productoas['id_Producto'] . '">
                                 <div class="card productocard" style="width: 18rem;">
-                                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_linda.png"
-                                        class="card-img-top" alt="Producto 5" style="object-fit: cover; height: 200px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><strong>MXN$450</strong></h5>
-                                        <p class="card-text">Vestido lindo</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Agregar más tarjetas aquí -->
-                        <div class="col-md-3">
-                            <a href="editar_producto.php">
-                                <div class="card productocard" style="width: 18rem; ">
-                                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/sirvienta.png"
-                                        class="card-img-top" alt="Camisa blanca"
+                                    <img src="' . $imagen_urla . '" class="card-img-top" alt="' . $productoas['nombre'] . '"
                                         style="object-fit: cover; height: 200px;">
                                     <div class="card-body">
-                                        <h5 class="card-title"><strong>MXN$8000</strong></h5>
-                                        <p class="card-text">Traje lindo de sirvienta</p>
+                                        <h5 class="card-title"><strong>MXN$' . $productoas['precio'] . '</strong></h5>
+                                        <p class="card-text">' . $productoas['nombre'] . '</p>
                                     </div>
                                 </div>
                             </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="editar_producto.php">
-                                <div class="card productocard" style="width: 18rem; ">
-                                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png"
-                                        class="card-img-top" alt="Camisa blanca"
-                                        style="object-fit: cover; height: 200px;">
+                        </div>';
+
+                        $contadorA++;
+                        if ($contadorA % 4 == 0) {
+                            echo '</div></div>';
+                        }
+                    }
+
+                    if ($contadorA % 4 != 0) {
+                        echo '</div></div>';
+                    }
+                } else {
+                    echo '<div class="col-md-3">
+                                <div class="card productocard" style="width: 18rem;">
                                     <div class="card-body">
-                                        <h5 class="card-title"><strong>MXN$4000</strong></h5>
-                                        <p class="card-text">Vestido blanco</p>
+                                        <h5 class="card-title"><strong>No producto encontrado</strong></h5>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="editar_producto.php">
-                                <div class="card productocard" style="width: 18rem; ">
-                                    <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png"
-                                        class="card-img-top" alt="Camisa blanca"
-                                        style="object-fit: cover; height: 200px;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><strong>MXN$500</strong></h5>
-                                        <p class="card-text">Vestido de temporada</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Agregar más elementos "carousel-item" según sea necesario -->
+                        </div>';
+                }
+                ?>
             </div>
             <a class="carousel-control-prev" href="#productCarousel" role="button" data-bs-slide="prev"
                 style="margin-left: -15%;">

@@ -33,7 +33,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/prueba/PWCI/BackEnd/searchAdminProd.php');
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <form class="d-flex" role="search" action="" method="POST">
+      <form class="d-flex" role="search" action="http://localhost/prueba/PWCI/Front/administrador.php" method="POST">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="productobuscar">
         <button class="btn btn-danger text-light" type="submit" name="buscarProducto">Search</button>
       </form>
@@ -144,7 +144,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/prueba/PWCI/BackEnd/searchAdminProd.php');
                         <ol class="carousel-indicators">
                         <?php
                         // Crear los indicadores del carrusel
-                        $numCategorias = count($filasImagenes);
+                        $numCategorias = count($ImagenesFila);
                         for ($i = 0; $i < $numCategorias; $i++) {
                             echo '<li data-bs-target="#miCarrusel" data-bs-slide-to="' . $i . '"';
                             if ($i === 0) {
@@ -157,21 +157,25 @@ include($_SERVER['DOCUMENT_ROOT'] . '/prueba/PWCI/BackEnd/searchAdminProd.php');
                         <!-- Contenido del carrusel -->
                         <div class="carousel-inner">
                         <?php
-                        foreach ($filasImagenes as $index => $fila) {
+                        $contador = 0;
+                        foreach ($ImagenesFila as $index => $fila) {
                             echo '<div class="carousel-item';
                             if ($index === 0) {
                                 echo ' active';
                             }
                             echo '">';
-                            if (stripos($fila['img'], 'data:image/jpeg;base64') === 0) {
 
-                              echo '<img src="data:image/jpeg;base64,' . base64_encode($fila['img']) . '" style="max-width: 100%; height: 500px;" class="card-img-top object-fit-cover" alt="Categoría: ' . $fila['nombre_categoria'] . '">';
+                            if ($contador < 3) {
+                              echo '<img src="data:image/jpeg;base64,' . base64_encode($fila['img']) . '" style="max-width: 100%; height: 500px;" class="card-img-top object-fit-cover" alt="Categoría: ' . $fila['id_img'] . '">';
+                              
                             } else {
+                              $contador = 0;
                               echo '<video controls style="max-width: 100%; height: 500px;">
-                                <source src="' . $fila['img'] . '" type="video/mp4">
+                                <source src="data:image/jpeg;base64,' . base64_encode($fila['img']) . '" type="video/mp4">
                                 Tu navegador no admite el elemento de video.
                               </video>';
                             }
+                            $contador++;
                             echo '</div>';
                         }
                         ?>
@@ -194,7 +198,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/prueba/PWCI/BackEnd/searchAdminProd.php');
                             <h4><?php echo $usuario['nombre']; ?></h4>
                             <p><?php echo $usuario['descripcion']; ?></p>
                         </div>
-                        <h4><?php echo $usuario['precio']; ?></h4>
+                        <h4>$<?php echo $usuario['precio']; ?></h4>
                         <p><span class="info-label">Cantidad disponible:</span><?php echo $usuario['cant_disp']; ?></p>
                         <p><span class="info-label">Categoria:</span><?php echo $categoriasString; ?></p>
                     </div>

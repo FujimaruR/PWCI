@@ -87,7 +87,7 @@ include("../BackEnd/editProd.php");
                                             echo '<option value="' . $row['id_categ'] . '">' . $row['nombre'] . '</option>';
                                         }
                                     } else {
-                                        echo '<option value="' . 1 . '"> hola </option>';
+                                        echo '<option value="' . 1 . '"> Error </option>';
                                     }
                                     ?>
                                 </select>

@@ -1,6 +1,34 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/prueba/PWCI/BackEnd/conexion/cn_db.php');
+include('../BackEnd/conexion/cn_db.php');
 try {
+    if(isset($_SESSION['usuarioId'])){
+        $email = $_SESSION['usuario'];
+        $id_seller = $_SESSION['usuarioId'];
+    } else {
+        header("Location: ../Front/login.php"); 
+        exit();
+    }
+
+    $consulta = "SELECT * FROM tb_usuarios 
+    WHERE email = :email";
+    
+    $stmt = $conn->prepare($consulta);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        $consultad = "SELECT * FROM tb_normaluser 
+    WHERE usuario_id = :idb";
+    
+    $stmtd = $conn->prepare($consultad);
+    $stmtd->bindParam(':idb', $usuario['id']);
+    $stmtd->execute();
+    $usuarioNormal = $stmtd->fetch(PDO::FETCH_ASSOC);
+        
+    $mime_type = 'image/png';
+    
+    $imagen_url = 'data:' . $mime_type . ';base64,' . base64_encode($usuarioNormal['img']);
+
     if(isset($_GET['idProductoEn'])){
         $idProductoEn = $_GET['idProductoEn'];
 
@@ -29,35 +57,16 @@ try {
         $stmtImgv->execute();
         $ImagenesFila = $stmtImgv->fetchAll(PDO::FETCH_ASSOC);
 
-        $consulta = "SELECT * FROM vista_producto_aceptado
+        $consultap = "SELECT * FROM vista_producto_aceptado
         WHERE id_Producto = :idprod";
     
-        $stmt = $conn->prepare($consulta);
-        $stmt->bindParam(':idprod', $idProductoEn);
-        $stmt->execute();
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmtproducto = $conn->prepare($consultap);
+        $stmtproducto->bindParam(':idprod', $idProductoEn);
+        $stmtproducto->execute();
+        $productoBuscado = $stmtproducto->fetch(PDO::FETCH_ASSOC);
     } else {
         echo "ID del producto no proporcionado.";
     }
-    /*if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["buscarProducto"])) {
-
-            $productobuscado = $_POST["productobuscar"];
-            $productobuscado = "%{$productobuscado}%";
-
-            $sqlpu = "SELECT * FROM vista_producto_aceptado WHERE nombre LIKE :nombreproducbus";
-            $stmt = $conn->prepare($sqlpu);
-            $stmt->bindParam(':nombreproducbus', $productobuscado);
-            $stmt->execute();
-            if($stmt->rowCount() > 0){
-                header("Location: ../Front/administrador.php");
-                exit(); 
-            } else {
-                header("Location: ../Front/administrador.php?error=Producto%20no%20encontrado.");
-                exit();
-            }
-        }
-    }*/
 } catch (PDOException $e) {
     echo "Error en la base de datos: " . $e->getMessage();
     exit();
