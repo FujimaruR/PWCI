@@ -1,3 +1,7 @@
+<?php
+session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/prueba/PWCI/BackEnd/searchAdminProd.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,9 +33,9 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-danger text-light" type="submit">Search</button>
+      <form class="d-flex" role="search" action="" method="POST">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="productobuscar">
+        <button class="btn btn-danger text-light" type="submit" name="buscarProducto">Search</button>
       </form>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -138,30 +142,39 @@
 
                     <div id="miCarrusel" class="carousel">
                         <ol class="carousel-indicators">
-                            <li data-bs-target="#miCarrusel" data-bs-slide-to="0" class="active"></li>
-                            <li data-bs-target="#miCarrusel" data-bs-slide-to="1"></li>
-                            <li data-bs-target="#miCarrusel" data-bs-slide-to="2"></li>
-                            <li data-bs-target="#miCarrusel" data-bs-slide-to="3"></li>
+                        <?php
+                        // Crear los indicadores del carrusel
+                        $numCategorias = count($filasImagenes);
+                        for ($i = 0; $i < $numCategorias; $i++) {
+                            echo '<li data-bs-target="#miCarrusel" data-bs-slide-to="' . $i . '"';
+                            if ($i === 0) {
+                                echo ' class="active"';
+                            }
+                            echo '></li>';
+                        }
+                        ?>
                         </ol>
                         <!-- Contenido del carrusel -->
                         <div class="carousel-inner">
-                            <!-- Imágenes -->
-                            <div class="carousel-item active">
-                                <img src="http://localhost/prueba/PWCI/img/principal/gojo.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="http://localhost/prueba/PWCI/img/principal/gojoxd.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="http://localhost/prueba/PWCI/img/principal/gojoxdxd.jpg" style="max-width: 100%; height: 500px;"class="card-img-top object-fit-cover" alt="Imagen 3">
-                            </div>
-                            <!-- Video -->
-                            <div class="carousel-item">
-                                <video controls style="max-width: 100%; height: 500px;">
-                                    <source src="http://localhost/prueba/PWCI/img/cubo.mp4" type="video/mp4">
-                                    Tu navegador no admite el elemento de video.
-                                </video>
-                            </div>
+                        <?php
+                        foreach ($filasImagenes as $index => $fila) {
+                            echo '<div class="carousel-item';
+                            if ($index === 0) {
+                                echo ' active';
+                            }
+                            echo '">';
+                            if (stripos($fila['img'], 'data:image/jpeg;base64') === 0) {
+
+                              echo '<img src="data:image/jpeg;base64,' . base64_encode($fila['img']) . '" style="max-width: 100%; height: 500px;" class="card-img-top object-fit-cover" alt="Categoría: ' . $fila['nombre_categoria'] . '">';
+                            } else {
+                              echo '<video controls style="max-width: 100%; height: 500px;">
+                                <source src="' . $fila['img'] . '" type="video/mp4">
+                                Tu navegador no admite el elemento de video.
+                              </video>';
+                            }
+                            echo '</div>';
+                        }
+                        ?>
                         </div>
                         <a class="carousel-control-prev" href="#miCarrusel" role="button" data-bs-slide="prev" style="margin:0 -50px">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -178,12 +191,12 @@
                 <div class="card" style="height: 550px;background-color: white;">
                     <div class="card-body mx-5">
                         <div class="info-box">
-                            <h4>Lampara de Satoru Gojo</h4>
-                            <p>Disponible en distintos colores.</p>
+                            <h4><?php echo $usuario['nombre']; ?></h4>
+                            <p><?php echo $usuario['descripcion']; ?></p>
                         </div>
-                        <h4>$500</h4>
-                        <p><span class="info-label">Cantidad disponible:</span> 20</p>
-                        <p><span class="info-label">Categoria:</span> Anime</p>
+                        <h4><?php echo $usuario['precio']; ?></h4>
+                        <p><span class="info-label">Cantidad disponible:</span><?php echo $usuario['cant_disp']; ?></p>
+                        <p><span class="info-label">Categoria:</span><?php echo $categoriasString; ?></p>
                     </div>
                 </div>
             </div>

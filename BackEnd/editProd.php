@@ -16,26 +16,48 @@ try {
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         try {
-            if (isset($_FILES['imguploaderNprod']) && $_FILES['imguploaderNprod']['error'] === UPLOAD_ERR_OK) {
-                $nombreArchivo = $_FILES['imguploaderNprod']['name'];
-                $rutaTempArchivo = $_FILES['imguploaderNprod']['tmp_name'];
 
+            if (isset($_FILES['imguploaderNprod']) && !empty($_FILES['imguploaderNprod']['name'][0])) {
                 $extensionesPermitidas = array("jpg", "jpeg", "png", "gif", "mp4", "mov");
-
-                $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-                if (!in_array(strtolower($extension), $extensionesPermitidas)) {
-                    header("Location: ../Front/n_producto.php?error=Archivo%20no%20permitido.");
-                    exit();
+                $archivos = array();
+            
+                foreach ($_FILES['imguploaderNprod']['name'] as $key => $nombreArchivo) {
+                    $rutaTempArchivo = $_FILES['imguploaderNprod']['tmp_name'][$key];
+                    $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+            
+                    if (!in_array(strtolower($extension), $extensionesPermitidas)) {
+                        header("Location: ../Front/n_producto.php?error=Archivo%20no%20permitido.");
+                        exit();
+                    }
+            
+                    $contenidoArchivo = file_get_contents($rutaTempArchivo);
+            
+                    $archivos[] = array(
+                        'nombre' => $nombreArchivo,
+                        'tipo' => $extension,
+                        'contenido' => $contenidoArchivo
+                    );
+            
                 }
-
-                $contenidoArchivo = file_get_contents($rutaTempArchivo);
+                /*
+                foreach ($archivos as $archivo) {
+                    echo "File Name: " . $archivo['nombre'] . "<br>";
+                    echo "File Size: " . strlen($archivo['contenido']) . "<br>";
+                    echo "File Type: " . $archivo['tipo'] . "<br>";
+                }
+                exit();
+                */
             } else {
                 header("Location: ../Front/n_producto.php?error=Error%20al%20subir%20el%20archivo.");
+                var_dump($_FILES['imguploaderNprod']);
                 exit();
             }
+            
+            
+            
 
 
-            $stmt = $conn->prepare("CALL InsertarProductos(:p_nombre, :p_descripcion, :p_precio, :p_estatus, :p_t_producto, :p_cant_disp, :p_rating, :p_id_usuarioProd, :p_imagenes, @idProducto)");
+            $stmt = $conn->prepare("CALL InsertarProductos(:p_nombre, :p_descripcion, :p_precio, :p_estatus, :p_t_producto, :p_cant_disp, :p_rating, :p_id_usuarioProd, @idProducto)");
             
             $name = trim($_POST['productinput']);
             $descripcion = trim($_POST['floatingTextarea']);
@@ -59,7 +81,6 @@ try {
             $stmt->bindParam(':p_cant_disp', $cantidad, PDO::PARAM_INT);
             $stmt->bindParam(':p_rating', $rating, PDO::PARAM_INT);
             $stmt->bindParam(':p_id_usuarioProd', $id_usuarioProd, PDO::PARAM_INT);
-            $stmt->bindParam(':p_imagenes', $contenidoArchivo, PDO::PARAM_LOB);
 
             if($stmt->execute()){
 
@@ -86,6 +107,15 @@ try {
                     $stmtInsertRelacion->bindParam(':idProducto', $idProducto); // Debes definir $idProducto antes de esta línea
                     $stmtInsertRelacion->bindParam(':idCategoria', $idCategoria);
                     $stmtInsertRelacion->execute();
+                }
+
+                foreach ($archivos as $archivo) {
+                    $contenidoArchivo = $archivo['contenido'];
+                
+                    $stmtInsertImagen = $conn->prepare("INSERT INTO tb_img (img, id_prod) VALUES (:contenidoArchivo, :idProducto)");
+                    $stmtInsertImagen->bindParam(':contenidoArchivo', $contenidoArchivo, PDO::PARAM_LOB);
+                    $stmtInsertImagen->bindParam(':idProducto', $idProducto, PDO::PARAM_INT);
+                    $stmtInsertImagen->execute();
                 }
                 header("Location: ../Front/vendedor.php");
                 

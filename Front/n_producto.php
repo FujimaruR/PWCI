@@ -49,7 +49,7 @@ include("../BackEnd/editProd.php");
                             </div>
 
                             <video id="video-preview" controls style="display: none;"></video>
-                            <input class="form-control" type="file" id="img-uploader-nprod" name="imguploaderNprod" accept="image/*, video/*"
+                            <input class="form-control" type="file" id="img-uploader-nprod" name="imguploaderNprod[]" accept="image/*, video/*"
                                 multiple>
                         </div>
                         <?php

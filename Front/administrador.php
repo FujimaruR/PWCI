@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../BackEnd/adminpri.php");
+include("../BackEnd/adminProductos.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@ include("../BackEnd/adminpri.php");
         $_GET['logged'] = '3';
         include_once('../assets/General/navbarSettings.php');
     ?>
-    
+
     <div class="tituload  p-3">
         <h4 class="text-light "><strong>Productos autorizados y por autorizar</strong></h4>
     </div>
@@ -39,124 +39,49 @@ include("../BackEnd/adminpri.php");
         <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
             <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <!-- Aquí comienzan las tarjetas del carrusel -->
-
-                            <div class="col-md-3">
-                                <a href="../Front/eliminar/vistaProductoAdmin.php">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_blanca.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$300</strong></h5>
-                                            <p class="card-text">Camisa blanca</p>
-                                        </div>
+                    <?php
+                if ($productosAceptados !== null){
+                    $contadorA = 0;
+                    foreach ($productosAceptados as $productoas) {
+                        if ($contadorA % 4 == 0) {
+                            echo '<div class="carousel-item' . ($contadorA === 0 ? ' active' : '') . '"><div class="row">';
+                        }
+                    
+                        $imagen_base64a = base64_encode($productoas['primera_imagen']);
+                        $imagen_urla = 'data:image/png;base64,' . $imagen_base64a;
+                    
+                        echo '<div class="col-md-3">
+                            <a href="../Front/eliminar/vistaProductoAdmin.php?idProductoEn=' . $productoas['id_Producto'] . '">
+                                <div class="card productocard" style="width: 18rem;">
+                                    <img src="' . $imagen_urla . '" class="card-img-top" alt="' . $productoas['nombre'] . '"
+                                        style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><strong>MXN$' . $productoas['precio'] . '</strong></h5>
+                                        <p class="card-text">' . $productoas['descripcion'] . '</p>
                                     </div>
-                                </a>
-                            </div>
-                            <!-- Agregar más tarjetas aquí -->
-                            <div class="col-md-3">
-                                <a href="../Front/eliminar/vistaProductoAdmin.php">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_chino.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$200</strong></h5>
-                                            <p class="card-text">Ropa china</p>
-                                        </div>
+                                </div>
+                            </a>
+                        </div>';
+                    
+                        $contadorA++;
+                        if ($contadorA % 4 == 0) {
+                            echo '</div></div>';
+                        }
+                    }
+                    
+                    if ($contadorA % 4 != 0) {
+                        echo '</div></div>';
+                    }
+                } else {
+                    echo '<div class="col-md-3">
+                                <div class="card productocard" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><strong>No producto encontrado</strong></h5>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="../Front/eliminar/vistaProductoAdmin.php">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_miku.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$1000</strong></h5>
-                                            <p class="card-text">Hatsune Miku cosplay</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="../Front/eliminar/vistaProductoAdmin.php">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/Gojo.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$6000</strong></h5>
-                                            <p class="card-text">Gojo cosplay maid</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <!-- Continuación de las tarjetas del carrusel -->
-                            <div class="col-md-3">
-                                <a href="../Front/eliminar/vistaProductoAdmin.php">
-                                    <div class="card productocard" style="width: 18rem;">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_linda.png"
-                                            class="card-img-top" alt="Producto 5"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$450</strong></h5>
-                                            <p class="card-text">Vestido lindo</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- Agregar más tarjetas aquí -->
-                            <div class="col-md-3">
-                                <a href="../Front/eliminar/vistaProductoAdmin.php">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/sirvienta.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$8000</strong></h5>
-                                            <p class="card-text">Traje lindo de sirvienta</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="../Front/eliminar/vistaProductoAdmin.php">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$4000</strong></h5>
-                                            <p class="card-text">Vestido blanco</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="../Front/eliminar/vistaProductoAdmin.php">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$500</strong></h5>
-                                            <p class="card-text">Vestido de temporada</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Agregar más elementos "carousel-item" según sea necesario -->
+                                </div>
+                        </div>';
+                }
+                ?>
                 </div>
                 <a class="carousel-control-prev" href="#productCarousel" role="button" data-bs-slide="prev"
                     style="margin-left: -15%;">
@@ -179,123 +104,45 @@ include("../BackEnd/adminpri.php");
         <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
             <div id="productCarouseld" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <!-- Aquí comienzan las tarjetas del carrusel -->
-                            <div class="col-md-3">
-                                <a data-bs-toggle="modal" data-bs-target="#pconfirmarp">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_blanca.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$300</strong></h5>
-                                            <p class="card-text">Camisa blanca</p>
-                                        </div>
+                    <?php
+                    $contador = 0;
+                    foreach ($productosnaceptados as $producto) {
+                        if ($contador % 4 == 0) {
+                            echo '<div class="carousel-item' . ($contador === 0 ? ' active' : '') . '"><div class="row">';
+                        }
+                    
+                        // Convertir el BLOB a una URL de imagen
+                        /*$imagen_base64 = base64_encode($producto['img']);
+                        $imagen_url = 'data:image/png;base64,' . $imagen_base64;*/
+
+                        $mime_type = 'image/png';
+    
+                        $imagen_url = 'data:' . $mime_type . ';base64,' . base64_encode($producto['img']);
+                    
+                        echo '<div class="col-md-3">
+                            <a data-bs-toggle="modal" data-bs-target="#pconfirmarp" onclick="storeProductId(' . $producto['id_Producto'] . ')">
+                                <div class="card productocard" style="width: 18rem;">
+                                    <img src="' . $imagen_url . '" class="card-img-top" alt="' . $producto['nombre'] . '"
+                                        style="object-fit: cover; height: 200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><strong>MXN$' . $producto['precio'] . '</strong></h5>
+                                        <p class="card-text">' . $producto['descripcion'] . '</p>
                                     </div>
-                                </a>
-                            </div>
-                            <!-- Agregar más tarjetas aquí -->
-                            <div class="col-md-3">
-                                <a data-bs-toggle="modal" data-bs-target="#pconfirmarp">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_chino.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$200</strong></h5>
-                                            <p class="card-text">Ropa china</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a data-bs-toggle="modal" data-bs-target="#pconfirmarp">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/cosplay_miku.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$1000</strong></h5>
-                                            <p class="card-text">Hatsune Miku cosplay</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a data-bs-toggle="modal" data-bs-target="#pconfirmarp">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/Gojo.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$6000</strong></h5>
-                                            <p class="card-text">Gojo cosplay maid</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <!-- Continuación de las tarjetas del carrusel -->
-                            <div class="col-md-3">
-                                <a data-bs-toggle="modal" data-bs-target="#pconfirmarp">
-                                    <div class="card productocard" style="width: 18rem;">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/camisa_linda.png"
-                                            class="card-img-top" alt="Producto 5"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$450</strong></h5>
-                                            <p class="card-text">Vestido lindo</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- Agregar más tarjetas aquí -->
-                            <div class="col-md-3">
-                                <a data-bs-toggle="modal" data-bs-target="#pconfirmarp">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/sirvienta.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$8000</strong></h5>
-                                            <p class="card-text">Traje lindo de sirvienta</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a data-bs-toggle="modal" data-bs-target="#pconfirmarp">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_blanco.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$4000</strong></h5>
-                                            <p class="card-text">Vestido blanco</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a data-bs-toggle="modal" data-bs-target="#pconfirmarp">
-                                    <div class="card productocard" style="width: 18rem; ">
-                                        <img src="http://localhost/prueba/PWCI/img/vendedor/productos/vestido_lindo.png"
-                                            class="card-img-top" alt="Camisa blanca"
-                                            style="object-fit: cover; height: 200px;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><strong>MXN$500</strong></h5>
-                                            <p class="card-text">Vestido de temporada</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Agregar más elementos "carousel-item" según sea necesario -->
+                                </div>
+                            </a>
+                        </div>';
+                    
+                        $contador++;
+                        if ($contador % 4 == 0) {
+                            echo '</div></div>';
+                        }
+                    }
+                    
+                    // Cerrar la última fila y el último div del carrusel si es necesario
+                    if ($contador % 4 != 0) {
+                        echo '</div></div>';
+                    }
+                    ?>
                 </div>
                 <a class="carousel-control-prev" href="#productCarouseld" role="button" data-bs-slide="prev"
                     style="margin-left: -15%;">
@@ -309,11 +156,15 @@ include("../BackEnd/adminpri.php");
                 </a>
             </div>
         </div>
-
+        <?php
+            if (isset($_GET['error'])) {
+                echo "Error: " . urldecode($_GET['error']);
+            }
+        ?>
     </div>
 
     <div class="modal fade" id="pconfirmarp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        aria-labelledby="staticBackdropLabel" aria-hidden="true" data-idproducto-modal="">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -324,14 +175,54 @@ include("../BackEnd/adminpri.php");
                     ¿Quieres autorizar el pedido?
                 </div>
                 <div class="modal-footer">
+                    <form action="" method="POST">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-danger">Confirmar</button>
+                    <input type="hidden" id="idProductoInput" name="idProducto" value="">
+                    <button type="submit" class="btn btn-danger" id="confirmarBtn" name="confirmarBtn">Confirmar</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="http://localhost/prueba/PWCI/Front/js/administrador.js"></script>
+    <script>
+    
+    function storeProductId(idProducto) {
+        var modal = document.getElementById('pconfirmarp');
+        modal.setAttribute('data-idproducto-modal', idProducto);
+    }
+    /*
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('pconfirmarp');
+        const confirmarBtn = modal.querySelector('#confirmarBtn');
+
+        confirmarBtn.addEventListener('click', function() {
+            var idProducto = modal.getAttribute('data-idproducto-modal');
+            fetch('http://localhost/prueba/PWCI/BackEnd/adminProductos.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'idProducto=' + idProducto,
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                });
+        });
+    }); */
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('pconfirmarp');
+        const idProductoInput = modal.querySelector('#idProductoInput');
+        
+        modal.addEventListener('show.bs.modal', function(event) {
+            var idProducto = modal.getAttribute('data-idproducto-modal');
+            idProductoInput.value = idProducto;
+        });
+    });
+    </script>
+
 
     <?php
         include_once('../assets/General/footer.php');
