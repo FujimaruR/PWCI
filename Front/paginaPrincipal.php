@@ -102,186 +102,55 @@ include("../BackEnd/showPrincipal.php");
         <div class="col-12  ">
             <h5 class="letraFuente ">Recomendados</h5>
             <div class="carrusel p-5">
-                <div class="elemento">
-                    <div class="col-2">
-                        <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-
-                            <div class="dropdown">
-                                <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
-                                    data-bs-toggle="dropdown">
-                                    <span class="heart-icon">&#x2665;</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                            data-bs-target="#crearLista">Crear lista</a></li>
-                                </ul>
-
-                            </div>
-                            <a href="vistaProducto.php">
-                                <div class="d-flex flex-column align-items-center">
-                                    <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg"
-                                        class="card-img-top  fixed-image" alt="...">
-                                    <div class="card-body">
-                                        <div class="row mb-3">
-                                            <div class="col-4">
-                                                <div class="badge rounded-pill btnColorCard">Laptop </div>
-
-                                            </div>
-                                            <div class="col-8 text-end">
-                                                <div class="price-hp"><strong>MXN$18300.00</strong></div>
-
+                <?php 
+                if ($productosAceptados !== null){
+                    foreach ($productosAceptados as $productoas){
+                        echo '<div class="elemento">
+                            <div class="col-2">
+                                <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+                                    <div class="dropdown">
+                                        <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
+                                            data-bs-toggle="dropdown">
+                                            <span class="heart-icon">&#x2665;</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Lista 1</a></li>
+                                            <li><a class="dropdown-item" href="#">Lista 2</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#crearLista">Crear lista</a></li>
+                                        </ul>
+                                    </div>
+                                    <a href="../Front/vistaProducto.php?idProductoEn=' . $productoas['id_Producto'] . '">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <img src="data:image/png;base64,' . base64_encode($productoas['primera_imagen']) . '" class="card-img-top fixed-image" alt="' . $productoas['nombre'] . '">
+                                            <div class="card-body">
+                                                <div class="row mb-3">
+                                                    <div class="col-4">
+                                                        <div class="badge rounded-pill btnColorCard">' . $productoas['nombre'] . '</div>
+                                                    </div>
+                                                    <div class="col-8 text-end">
+                                                        <div class="price-hp"><strong>MXN$' . $productoas['precio'] . '</strong></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="elemento">
-                    <div class="col-2">
-                        <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-
-                            <div class="dropdown">
-                                <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
-                                    data-bs-toggle="dropdown">
-                                    <span class="heart-icon">&#x2665;</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                            data-bs-target="#crearLista">Crear lista</a></li>
-                                </ul>
                             </div>
-                            <a href="vistaProducto.php">
-                                <div class="d-flex flex-column align-items-center">
-                                    <img src="http://localhost/prueba/PWCI/img/principal/audifonos.jpg"
-                                        class="card-img-top fixed-image" alt="...">
-                                    <div class="card-body">
-                                        <div class="row mb-3">
-                                            <div class="col-4">
-                                                <div class="badge rounded-pill btnColorCard">Audifonos rosas</div>
-                                            </div>
-                                            <div class="col-8 text-end">
-                                                <div class="price-hp"><strong>MXN$230.00</strong></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        </div>';
+                    }
+                } else{
+                    echo '<div class="elemento">
+                        <div class="col-2">
+                            <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>No productos encontrados</strong></h5>
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="elemento">
-                    <div class="col-2">
-                        <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-
-                            <div class="dropdown">
-                                <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
-                                    data-bs-toggle="dropdown">
-                                    <span class="heart-icon">&#x2665;</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                            data-bs-target="#crearLista">Crear lista</a></li>
-                                </ul>
                             </div>
-                            <a href="vistaProducto.php">
-                                <div class="d-flex flex-column align-items-center">
-                                    <img src="http://localhost/prueba/PWCI/img/principal/anillos.jpg"
-                                        class="card-img-top fixed-image" alt="...">
-                                    <div class="card-body">
-                                        <div class="row mb-3">
-                                            <div class="col-4">
-                                                <div class="badge rounded-pill btnColorCard">Anillos de gato</div>
-                                            </div>
-                                            <div class="col-8 text-end">
-                                                <div class="price-hp"><strong>MXN$300.00</strong></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
                         </div>
-                    </div>
-                </div>
-                <div class="elemento">
-                    <div class="col-2">
-                        <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-
-                            <div class="dropdown">
-                                <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
-                                    data-bs-toggle="dropdown">
-                                    <span class="heart-icon">&#x2665;</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                            data-bs-target="#crearLista">Crear lista</a></li>
-                                </ul>
-                            </div>
-                            <a href="vistaProducto.php">
-                                <div class="d-flex flex-column align-items-center">
-                                    <img src="http://localhost/prueba/PWCI/img/principal/fundaMichi.jpg"
-                                        class="card-img-top fixed-image" alt="...">
-                                    <div class="card-body">
-                                        <div class="row mb-3">
-                                            <div class="col-4">
-                                                <div class="badge rounded-pill btnColorCard">Funda de celular</div>
-                                            </div>
-                                            <div class="col-8 text-end">
-                                                <div class="price-hp"><strong>MXN$300.00</strong></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="elemento">
-                    <div class="col-2">
-                        <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-
-                            <div class="dropdown">
-                                <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
-                                    data-bs-toggle="dropdown">
-                                    <span class="heart-icon">&#x2665;</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                            data-bs-target="#crearLista">Crear lista</a></li>
-                                </ul>
-                            </div>
-                            <a href="vistaProducto.php">
-                                <div class="d-flex flex-column align-items-center">
-                                    <img src="http://localhost/prueba/PWCI/img/principal/maceta.jpg"
-                                        class="card-img-top fixed-image" alt="...">
-                                    <div class="card-body">
-                                        <div class="row mb-3">
-                                            <div class="col-4">
-                                                <div class="badge rounded-pill btnColorCard">Anillos de gato</div>
-                                            </div>
-                                            <div class="col-8 text-end">
-                                                <div class="price-hp"><strong>MXN$300.00</strong></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                    </div>';
+                }
+                ?>
                 <!--agrega mas aqui -->
             </div>
 
@@ -424,6 +293,12 @@ include("../BackEnd/showPrincipal.php");
             </div>
         </div>
     </div>
+    
+    <?php
+    if (isset($_GET['error'])) {
+        echo "Error: " . urldecode($_GET['error']);
+    }
+    ?>
 
     <script>
     var input1 = document.getElementById("input1");

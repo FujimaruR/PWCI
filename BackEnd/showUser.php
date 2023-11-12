@@ -4,6 +4,7 @@ include('../BackEnd/conexion/cn_db.php');
     try{
         if(isset($_SESSION['usuario'])){
             $email = $_SESSION['usuario'];
+            $id_usuarioNom = $_SESSION['usuarioId'];
         } else {
             header("Location: ../Front/login.php"); 
             exit();
@@ -36,6 +37,14 @@ include('../BackEnd/conexion/cn_db.php');
         $stmtt->bindParam(':useridinf', $usuario['id']);
         $stmtt->execute();
         $usuarioNormalInfo = $stmtt->fetch(PDO::FETCH_ASSOC);
+
+        $consultarTabla = "SELECT * FROM tb_listas 
+        WHERE id_usuarioLista = :iduserLista";
+    
+        $stmtTabla = $conn->prepare($consultarTabla);
+        $stmtTabla->bindParam(':iduserLista', $id_usuarioNom);
+        $stmtTabla->execute();
+        $TablaOver = $stmtTabla->fetch(PDO::FETCH_ASSOC);        
     } catch(PDOException $e) {
         echo "Error en la base de datos: " . $e->getMessage();
         exit();

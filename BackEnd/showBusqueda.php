@@ -28,15 +28,9 @@ try {
     $mime_type = 'image/png';
     
     $imagen_url = 'data:' . $mime_type . ';base64,' . base64_encode($usuarioNormal['img']);
-
-    $sqlac = "SELECT * FROM vista_producto_aceptado";
-    $stmtt = $conn->prepare($sqlac);
-    $stmtt->execute();
-
-    $productosAceptados = $stmtt->fetchAll(PDO::FETCH_ASSOC);
-    
 } catch (PDOException $e) {
     echo "Error en la base de datos: " . $e->getMessage();
     exit();
 }
+
 ?>

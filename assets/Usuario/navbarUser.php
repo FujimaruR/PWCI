@@ -10,10 +10,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex justify-content-center" role="search">
-                <input class="form-control me-2 " type="search" placeholder="Buscar producto" aria-label="Search">
-                <a href="http://localhost/prueba/PWCI/Front/b_producto.php" role="button"
-                    class="btn btnColorCard btnHover">Buscar</a>
+            <form class="d-flex justify-content-center" role="search" action="../assets/Usuario/navbarPost.php" id="formNavbar" method="post">
+                <input class="form-control me-2 " type="search" placeholder="Buscar producto" name="bproductonav" aria-label="Search" required>
+                <input type="hidden" name="precioMeNavbar" id="precioMeNavbar">
+                <input type="hidden" name="precioMaNavbar" id="precioMaNavbar">
+                <input type="hidden" name="calificadoNavbar" id="calificadoNavbar">
+                <input type="hidden" name="vendidosNavbar" id="vendidosNavbar">
+                <input type="hidden" name="categoriasNavbar" id="categoriasNavbar">
+                <button type="submit" class="btn btnColorCard btnHover" name="buscarNavbar">Buscar</button>
             </form>
             <button class="btn btnColorCard btnHover" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseFiltros" aria-expanded="false" aria-controls="collapseExample"
@@ -92,26 +96,26 @@
             <li>
                 <div class="precio-input">
                     <span>Precio:</span>
-                    <input type="number" id="input1" name="input1">
-                    - <input type="number" id="input2" name="input2">
+                    <input type="number" id="inputPrecioNavU" name="inputPrecioNavU">
+                    - <input type="number" id="inputPrecioNavD" name="inputPrecioNavD">
                 </div>
             </li>
             <li>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="" id="checkCalificados">
                     <label class="form-check-label" for="flexCheckDefault">
                         Mejor calificados
                     </label>
                 </div>
             </li>
             <li>
-                <select class="form-select tamanven" aria-label="Default select example">
-                    <option selected>Mas vendidos</option>
+                <select class="form-select tamanven" aria-label="Default select example" id="selectMvendidos">
+                    <option value="0" selected>Mas vendidos</option>
                     <option value="1">Menos vendidos</option>
                 </select>
             </li>
             <li>
-                <button type="button" class="btn btn-outline-danger">Confirmar</button>
+                <button type="button" class="btn btn-outline-danger" name="confirmfiltrosNavbar" id="confirmfiltrosNavbar">Confirmar</button>
             </li>
         </ul>
     </div>
@@ -125,28 +129,111 @@
     <div class="offcanvas-body">
         <div class="input-group">
             <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                <option selected>Anime</option>
-                <option value="1">Ropa</option>
-                <option value="2">Electronica</option>
-                <option value="3">Figuras</option>
+                <?php
+                    $categoriasFiltros = "SELECT id_categ, nombre FROM tb_categorias";
+                    $catestmtFiltros = $conn->prepare($categoriasFiltros);
+                    $catestmtFiltros->execute();
+                    if ($catestmtFiltros->rowCount() > 0) {
+                        while($row = $catestmtFiltros->fetch(PDO::FETCH_ASSOC)) {
+                            echo '<option value="' . $row['id_categ'] . '">' . $row['nombre'] . '</option>';
+                        }
+                    } else {
+                        echo '<option value="' . 1 . '"> Error </option>';
+                    }
+                ?>
             </select>
-            <button class="btn btn-outline-danger" type="button">Confirmar</button>
+            <button class="btn btn-outline-danger" type="button" id="agregarCateNav">Confirmar</button>
         </div>
         <div class="form-floating my-2">
             <textarea disabled class="form-control" placeholder="Leave a comment here"
-                id="floatingTextaread"></textarea>
-            <label for="floatingTextaread">Categorias del producto</label>
+                id="textCateNav"></textarea>
+            <label for="textCateNav">Categorias del producto</label>
         </div>
         <div>
             <ul class="ml-2">
                 <li>
-                    <button class="btn btn-outline-danger" type="button">Eliminar</button>
+                    <button class="btn btn-outline-danger" type="button" name="elimCategNavbar" id="elimCategNavbar">Eliminar</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline-danger" type="button">Confirmar</button>
+                    <button class="btn btn-outline-danger" type="button" name="confirmCategNavbar" id="confirmCategNavbar">Confirmar</button>
                 </li>
             </ul>
 
         </div>
     </div>
 </div>
+
+
+<script>
+    var categoriasAgregadas = [];
+    document.getElementById("agregarCateNav").addEventListener("click", function() {
+    var select = document.getElementById("inputGroupSelect04");
+    var categoriaSeleccionada = select.options[select.selectedIndex].text;
+    var textarea = document.getElementById("textCateNav");
+    if (!categoriasAgregadas.includes(categoriaSeleccionada)) {
+        textarea.value += categoriaSeleccionada + "\n";
+        categoriasAgregadas.push(categoriaSeleccionada);
+    } else {
+        alert("¡Esta categoría ya ha sido agregada!");
+    }
+    });
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var formulario = document.getElementById('formNavbar');
+
+        var inputPrecioNavU = document.getElementById('inputPrecioNavU');
+        var inputPrecioNavD = document.getElementById('inputPrecioNavD');
+        var checkCalificados = document.getElementById('checkCalificados');
+        var selectMvendidos = document.getElementById('selectMvendidos');
+
+        var confirmFiltrosBtn = document.getElementById('confirmfiltrosNavbar');
+
+        var confirmCategoriaBtn = document.getElementById('confirmCategNavbar');
+        var textCategoriasNav = document.getElementById('textCateNav');
+
+        var elimCategoriaBtn = document.getElementById('elimCategNavbar');
+
+        confirmFiltrosBtn.addEventListener('click', function () {
+            var input1Value = inputPrecioNavU.value !== '' ? inputPrecioNavU.value : null;
+            var input2Value = inputPrecioNavD.value !== '' ? inputPrecioNavD.value : null;
+            var checkboxValue = checkCalificados.checked;
+            var selectValue = selectMvendidos.value !== '' ? selectMvendidos.value : null;
+
+            document.getElementById('precioMeNavbar').value = input1Value;
+            document.getElementById('precioMaNavbar').value = input2Value;
+            document.getElementById('calificadoNavbar').value = checkboxValue ? 'calificado' : null;
+            document.getElementById('vendidosNavbar').value = selectValue;
+        });
+
+        confirmCategoriaBtn.addEventListener('click', function () {
+            /*var textAreaNav = textCategoriasNav.value;
+
+            document.getElementById('categoriasNavbar').value = textAreaNav;*/
+
+            var categoriasJSON = categoriasAgregadas.length > 0 ? JSON.stringify(categoriasAgregadas) : null;
+
+            document.getElementById("categoriasNavbar").value = categoriasJSON;
+        });
+
+        elimCategoriaBtn.addEventListener('click', function () {
+            document.getElementById('textCateNav').value = null;
+        });
+    });
+
+
+    var input1 = document.getElementById("inputPrecioNavU");
+    var input2 = document.getElementById("inputPrecioNavD");
+
+    input1.addEventListener("input", validarNumero);
+    input2.addEventListener("input", validarNumero);
+
+    function validarNumero() {
+    var valor = parseFloat(this.value);
+
+    if (valor <= 0 || isNaN(valor)) {
+        this.value = 1;
+    }
+    }
+</script>
