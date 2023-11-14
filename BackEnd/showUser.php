@@ -2,6 +2,16 @@
 include('../BackEnd/conexion/cn_db.php');
 
     try{
+        if (isset($_GET['idListaProdVer'])) {
+            $idListaProdVer = $_GET['idListaProdVer'];
+            $consultaProdLista = "SELECT * FROM v_lista_producto_img WHERE IDlista = :idListaProd";
+            $stmtConsultaProd = $conn->prepare($consultaProdLista);
+            $stmtConsultaProd->bindParam(':idListaProd', $idListaProdVer);
+            $stmtConsultaProd->execute();
+            $listaProductosV = $stmtConsultaProd->fetch(PDO::FETCH_ASSOC);
+            $rowListasProdCount = $stmtConsultaProd->rowCount();
+        }
+
         if(isset($_SESSION['usuario'])){
             $email = $_SESSION['usuario'];
             $id_usuarioNom = $_SESSION['usuarioId'];
@@ -44,7 +54,9 @@ include('../BackEnd/conexion/cn_db.php');
         $stmtTabla = $conn->prepare($consultarTabla);
         $stmtTabla->bindParam(':iduserLista', $id_usuarioNom);
         $stmtTabla->execute();
-        $TablaOver = $stmtTabla->fetch(PDO::FETCH_ASSOC);        
+        $TablaOver = $stmtTabla->fetch(PDO::FETCH_ASSOC);
+        $rowListasCount = $stmtTabla->rowCount();
+       
     } catch(PDOException $e) {
         echo "Error en la base de datos: " . $e->getMessage();
         exit();
@@ -52,10 +64,13 @@ include('../BackEnd/conexion/cn_db.php');
 
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_GET['guardarButton'])){
+            
         $name = trim($_POST['editnom']);
         $postal = trim($_POST['postalcod']);
         $direc = trim($_POST['direc']);
         $telef = trim($_POST['telefono']);
+        $private = isset($_POST['privateSwitch']) && $_POST['privateSwitch'] == '1' ? 1 : 0;
 
         try {
             if (isset($_FILES['editImg']) && $_FILES['editImg']['error'] === UPLOAD_ERR_OK) {
@@ -84,11 +99,12 @@ include('../BackEnd/conexion/cn_db.php');
             $rowCount = $stmtCheck->fetchColumn();
 
             if ($rowCount > 0) {
-                $updateQuery = "UPDATE tb_userinformation SET codepos = :postal, direc = :direccion, telef = :telefono WHERE usuario_idInfo = :useridin";
+                $updateQuery = "UPDATE tb_userinformation SET codepos = :postal, direc = :direccion, telef = :telefono, privado = :userprivate WHERE usuario_idInfo = :useridin";
                 $stmtUpdate = $conn->prepare($updateQuery);
                 $stmtUpdate->bindParam(':postal', $postal);
                 $stmtUpdate->bindParam(':direccion', $direc);
                 $stmtUpdate->bindParam(':telefono', $telef);
+                $stmtUpdate->bindParam(':userprivate', $private);
                 $stmtUpdate->bindParam(':useridin', $usuario['id']);
                 $stmtUpdate->execute();
 
@@ -103,11 +119,12 @@ include('../BackEnd/conexion/cn_db.php');
                 header("Location: ../Front/perfil_usuario.php");
                 exit(); 
             } else {
-                $insertQuery = "INSERT INTO tb_userinformation (codepos, direc, telef, usuario_idInfo) VALUES (:postal, :direccion, :telefono, :useridinfor)";
+                $insertQuery = "INSERT INTO tb_userinformation (codepos, direc, telef, usuario_idInfo, privado) VALUES (:postal, :direccion, :telefono, :useridinfor, :userprivated)";
                 $stmtInsert = $conn->prepare($insertQuery);
                 $stmtInsert->bindParam(':postal', $postal);
                 $stmtInsert->bindParam(':direccion', $direc);
                 $stmtInsert->bindParam(':telefono', $telef);
+                $stmtUpdate->bindParam(':userprivated', $private);
                 $stmtInsert->bindParam(':useridinfor', $usuario['id']);
                 $stmtInsert->execute();
 
@@ -124,6 +141,20 @@ include('../BackEnd/conexion/cn_db.php');
         } catch (PDOException $e) {
             echo "Error en la base de datos: " . $e->getMessage();
             exit();
+        }
+        }
+        if(isset($_GET['confirmBTNeditarL'])){
+            $nomLista = trim($_POST['nomLista']);
+            $descLista = trim($_POST['descLista']);
+            $editImgLista = trim($_POST['editImgLista']);
+            $privacidad = trim($_POST['privacidad']);
+            $idListaEditar = trim($_POST['idListaEditar']);
+        }
+        if(isset($_GET['confirmBTNborrarL'])){
+            echo "borrar";
+        }
+        if(isset($_GET['btnElmProdLis'])){
+            echo "borrar producto";
         }
     }
 ?>
