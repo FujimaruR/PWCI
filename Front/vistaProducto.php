@@ -110,6 +110,7 @@ include("../BackEnd/showProducto.php");
                         <h4>$<?php echo $productoBuscado['precio']; ?></h4>
                         <p><span class="info-label">Cantidad disponible:</span><?php echo $productoBuscado['cant_disp']; ?></p>
                         <p><span class="info-label">Categorias:</span><?php echo $categoriasString; ?></p>
+                        <p><span class="info-label">Rating de los usuarios:</span><?php echo $productoBuscado['rating']; ?></p>
                         <div class="text-center my-5">
                             <div class="btn-group" role="group" aria-label="Grupo de botones">
                                 <?php 
@@ -229,62 +230,56 @@ include("../BackEnd/showProducto.php");
                     <div class="card" style="background-color: rgba(246, 244, 233, 0.903);">
                         <div class="card-body">
                             <h5 class="my-3 mx-2">Comentarios</h5>
-                            <div class="my-2">
-                                <a class="link-offset-2 link-underline link-underline-opacity-0"
-                                    href="http://localhost/prueba/PWCI/Front/eliminar/perfilPublico.php">
-                                    <img src="../img/fotoPerfil.jpg" alt=""
-                                        style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
-                                    <span
-                                        style="background-color: rgb(227, 156, 209); border-radius: 10px 10px 10px 10px;">Jaky</span>
-                                </a>
-                                <p class="mx-5">
-                                    Me encanta!!, es de las mejores lamparas del mercado xd, muy bonitaaa </p>
-                            </div>
-                            <div class="my-2">
-                                <a class="link-offset-2 link-underline link-underline-opacity-0"
-                                    href="http://localhost/prueba/PWCI/Front/eliminar/perfilPrivado.php">
-                                    <img src="../img/Lilysa.png" alt=""
-                                        style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
-                                    <span
-                                        style="background-color: rgb(227, 156, 209); border-radius: 10px 10px 10px 10px;">Mei</span>
-                                </a>
-                                <p class="mx-5">
-                                    Me gustaria que tuvieran mas variedad de colores, no se, tal vez uno de color
-                                    turqueza estaria bastante bien
-                            </div>
-                            <div class="my-2">
-                                <a class="link-offset-2 link-underline link-underline-opacity-0"
-                                    href="http://localhost/prueba/PWCI/Front/eliminar/perfilPrivado.php">
-                                    <img src="../img/Lilysa.png" alt=""
-                                        style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
-                                    <span
-                                        style="background-color: rgb(227, 156, 209); border-radius: 0px 10px 10px 10px;">uwu</span>
-                                </a>
-                                <br>
-                                <p class="mx-5">
-                                    Bastante buena
-                            </div>
+                            <?php
+                            if($usuarioVcomentario !== null){
+                                foreach ($usuarioVcomentario as $comentario){
+                                    $mime_typeCom = 'image/png';
+            
+                                    $imagen_urlCom = 'data:' . $mime_typeCom . ';base64,' . base64_encode($comentario['img']);
+                                    echo '
+                                    <div class="my-2">
+                                        <a class="link-offset-2 link-underline link-underline-opacity-0"
+                                            href="http://localhost/prueba/PWCI/Front/eliminar/perfilPublico.php">
+                                            <img src="'.$imagen_urlCom.'" alt="Foto de perfil"
+                                                style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
+                                            <span
+                                                style="background-color: rgb(227, 156, 209); border-radius: 10px 10px 10px 10px;">'.$comentario['nombre'].'</span>
+                                        </a>
+                                        <p class="mx-5">
+                                            '.$comentario['comentario'].' </p>
+                                    </div>';
+                                }
+                            } else {
+                                echo '
+                                <div class="my-2">
+                                    <p class="mx-5">
+                                        No comentarios</p>
+                                </div>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card" style="background-color: rgba(246, 244, 233, 0.903);">
                         <div class="card-body">
-                            <form>
+                            <form action="" method="post">
                                 <div class="mb-3">
                                     <label for="comentario" class="form-label">Qué te pareció este producto?</label>
                                     <div class="rating">
-                                        <i class="bi bi-star-fill star "></i>
-                                        <i class="bi bi-star-fill star "></i>
-                                        <i class="bi bi-star-fill star "></i>
-                                        <i class="bi bi-star-fill star"></i>
-                                        <i class="bi bi-star-fill star"></i>
+                                        <i class="bi bi-star-fill star " onclick="updateStarValue(1)"></i>
+                                        <i class="bi bi-star-fill star " onclick="updateStarValue(2)"></i>
+                                        <i class="bi bi-star-fill star " onclick="updateStarValue(3)"></i>
+                                        <i class="bi bi-star-fill star" onclick="updateStarValue(4)"></i>
+                                        <i class="bi bi-star-fill star" onclick="updateStarValue(5)"></i>
                                     </div>
-                                    <textarea class="form-control" id="comentario" rows="4"
+                                    <textarea class="form-control" id="comentario" name="comentario" rows="4"
                                         placeholder="Escribe tu comentario aquí"></textarea>
                                 </div>
+                                
+                                <input type="hidden" id="numStarsForm" name="numStarsForm" value="">
                                 <button type="submit" class="btn btnColorCard btnHover"
-                                    style="color:aliceblue;">Publicar Comentario</button>
+                                    style="color:aliceblue;" id="btncomentariomod" name="btncomentariomod">Publicar Comentario</button>
                             </form>
                         </div>
                     </div>
@@ -362,6 +357,7 @@ include("../BackEnd/showProducto.php");
                 </div>
                 <div class="modal-body">
                     <div class="container ">
+                        <form action="" method="post">
                         <div class="mb-3">
                             <label for="comentarioventa" class="form-label">Qué te pareció este producto?</label>
                             <div class="rating">
@@ -371,14 +367,14 @@ include("../BackEnd/showProducto.php");
                                 <i class="bi bi-star-fill star"></i>
                                 <i class="bi bi-star-fill star"></i>
                             </div>
-                            <textarea class="form-control" id="comentarioventa" rows="4"
+                            <textarea class="form-control" id="comentarioventa" name="comentarioventa" rows="4"
                                 placeholder="Escribe tu comentario aquí"></textarea>
                         </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" id="btncomentariomod"
+                        <input type="hidden" id="numStarsFormVenta" name="numStarsFormVenta" value="">
+                        <button type="submit" class="btn btn-danger" id="btncomentariomodVenta" name="btncomentariomodVenta"
                         data-bs-dismiss="modal">Confirmar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -387,6 +383,12 @@ include("../BackEnd/showProducto.php");
 
     <script src="../Front/js/cargaImagen.js"></script>
     <script src="../Front/js/vistaProducto.js"></script>
+    <script>
+    function updateStarValue(starValue) {
+        var nomLista = document.getElementById('numStarsForm');
+        nomLista.value = starValue;
+    }
+    </script>
 
     <?php
         include_once('../assets/General/footer.php');

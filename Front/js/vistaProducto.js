@@ -68,3 +68,5 @@ validarBtnComen.addEventListener("click", function () {
     validarBtn.removeAttribute("data-bs-toggle");
     validarBtn.removeAttribute("data-bs-target");
 });
+
+

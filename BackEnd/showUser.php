@@ -8,7 +8,7 @@ include('../BackEnd/conexion/cn_db.php');
             $stmtConsultaProd = $conn->prepare($consultaProdLista);
             $stmtConsultaProd->bindParam(':idListaProd', $idListaProdVer);
             $stmtConsultaProd->execute();
-            $listaProductosV = $stmtConsultaProd->fetch(PDO::FETCH_ASSOC);
+            $listaProductosV = $stmtConsultaProd->fetchAll(PDO::FETCH_ASSOC);
             $rowListasProdCount = $stmtConsultaProd->rowCount();
         }
 
@@ -54,8 +54,7 @@ include('../BackEnd/conexion/cn_db.php');
         $stmtTabla = $conn->prepare($consultarTabla);
         $stmtTabla->bindParam(':iduserLista', $id_usuarioNom);
         $stmtTabla->execute();
-        $TablaOver = $stmtTabla->fetch(PDO::FETCH_ASSOC);
-        $rowListasCount = $stmtTabla->rowCount();
+        $TablaOver = $stmtTabla->fetchAll(PDO::FETCH_ASSOC);
        
     } catch(PDOException $e) {
         echo "Error en la base de datos: " . $e->getMessage();
@@ -64,8 +63,7 @@ include('../BackEnd/conexion/cn_db.php');
 
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(isset($_GET['guardarButton'])){
-            
+        if(isset($_POST['guardarButton'])){
         $name = trim($_POST['editnom']);
         $postal = trim($_POST['postalcod']);
         $direc = trim($_POST['direc']);
@@ -143,18 +141,86 @@ include('../BackEnd/conexion/cn_db.php');
             exit();
         }
         }
-        if(isset($_GET['confirmBTNeditarL'])){
+        if(isset($_POST['confirmBTNeditarL'])){
+            try {
             $nomLista = trim($_POST['nomLista']);
             $descLista = trim($_POST['descLista']);
             $editImgLista = trim($_POST['editImgLista']);
-            $privacidad = trim($_POST['privacidad']);
+            $privacidad = isset($_POST['privacidad']) && $_POST['privacidad'] == '1' ? 1 : 0;
             $idListaEditar = trim($_POST['idListaEditar']);
+
+            if (isset($_FILES['editImgLista']) && $_FILES['editImgLista']['error'] === UPLOAD_ERR_OK) {
+                $nombreArchivo = $_FILES['editImgLista']['name'];
+                $rutaTempArchivo = $_FILES['editImgLista']['tmp_name'];
+
+                $extensionesPermitidas = array("jpg", "jpeg", "png", "gif");
+
+                $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+                if (!in_array(strtolower($extension), $extensionesPermitidas)) {
+                    header("Location: ../Front/perfil_usuario.php?error=Archivo%20no%20permitido.");
+                    exit();
+                }
+
+                $contenidoArchivoL = file_get_contents($rutaTempArchivo);
+            } else {
+                header("Location: ../Front/perfil_usuario.php?error=Error%20al%20subir%20el%20archivo.");
+                exit();
+            }
+
+            $queryEditLista = "UPDATE tb_listas SET nombre = :nameLedit, descripcion = :descEditL, privacidad = :priveditL, img = :imgEditL WHERE id_Lista = :idLEdit";
+            $stmtUpdateLista = $conn->prepare($queryEditLista);
+            $stmtUpdateLista->bindParam(':nameLedit', $nomLista);
+            $stmtUpdateLista->bindParam(':descEditL', $descLista);
+            $stmtUpdateLista->bindParam(':priveditL', $privacidad);
+            $stmtUpdateLista->bindParam(':imgEditL', $contenidoArchivoL);
+            $stmtUpdateLista->bindParam(':idLEdit', $idListaEditar);
+            $stmtUpdateLista->execute();
+
+            header("Location: ../Front/perfil_usuario.php");
+            
+            exit(); 
+            } catch (PDOException $e) {
+                echo "Error en la base de datos: " . $e->getMessage();
+                exit();
+            }
         }
-        if(isset($_GET['confirmBTNborrarL'])){
-            echo "borrar";
+        if(isset($_POST['confirmBTNborrarL'])){
+            try {
+                
+            $idListaBorrar = trim($_POST['idListaBorrar']);
+
+            $queryElimLista = "DELETE FROM tb_listas WHERE id_Lista = :idLElim";
+            $stmtElimLista = $conn->prepare($queryElimLista);
+            $stmtElimLista->bindParam(':idLElim', $idListaBorrar);
+            $stmtElimLista->execute();
+
+            header("Location: ../Front/perfil_usuario.php");
+            
+            exit(); 
+            } catch (PDOException $e) {
+                echo "Error en la base de datos: " . $e->getMessage();
+                exit();
+            }
         }
-        if(isset($_GET['btnElmProdLis'])){
-            echo "borrar producto";
+        if(isset($_POST['btnElmProdLis'])){
+            try {
+                
+                $idProdLBorrar = trim($_POST['idProdLBorrar']);
+                $idProdListaB = trim($_POST['idProdListaB']);
+    
+                $queryElimProdFLista = "DELETE FROM tb_listasprod WHERE IDlista = :idLpElim AND IDproductoLista = :idLisPElim";
+                $stmtElimPFLista = $conn->prepare($queryElimProdFLista);
+                $stmtElimPFLista->bindParam(':idLpElim', $idProdLBorrar);
+                $stmtElimPFLista->bindParam(':idLisPElim', $idProdListaB);
+                $stmtElimPFLista->execute();
+    
+                header("Location: ../Front/perfil_usuario.php");
+                
+                exit(); 
+                } catch (PDOException $e) {
+                    echo "Error en la base de datos: " . $e->getMessage();
+                    exit();
+                }
         }
     }
 ?>

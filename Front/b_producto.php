@@ -49,10 +49,16 @@ include("../BackEnd/showBusqueda.php");
                                                 data-bs-toggle="dropdown">
                                                 <span class="heart-icon">&#x2665;</span>
                                             </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                                                <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            <ul class="dropdown-menu">';
+                                            if ($listasCom !== null){
+                                                foreach ($listasCom as $lista) {
+                                                    echo '<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#agregarProdLmod" onclick="storeListIdAgregar(' . $producto['id_Producto'] . ',' . $lista['id_Lista'] . ')">' . $lista['nombre'] . '</a></li>';
+                                                }
+                                            } else {
+                                                echo '<li><a class="dropdown-item" href="#">No listas disponibles</a></li>';
+                                            }
+                                                echo '<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                 data-bs-target="#crearLista" onclick="storeProductId(' . $producto['id_Producto'] . ')">Crear lista</a></li>
                                             </ul>
                                         </div>
@@ -116,6 +122,13 @@ include("../BackEnd/showBusqueda.php");
                 echo '</div>'; 
             }
             ?>
+
+            
+        <?php
+            if (isset($_GET['error'])) {
+                echo "Error: " . urldecode($_GET['error']);
+            }
+        ?>
 
     <!--<div class="paginacionp">
         <nav aria-label="Page navigation example">
@@ -194,11 +207,41 @@ include("../BackEnd/showBusqueda.php");
         </div>
     </div>
 
+    <div class="modal fade" id="agregarProdLmod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="borrarlistamodhead">Agregar articulo a la lista</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container ">
+                        <form action="" method="post" enctype="multipart/form-data" id="idFormAgregarProdList">
+                        <h4>¿Seguro que quieres agregar este articulo a la lista?</h4>
+                        <input type="hidden" name="idListaAgregarProd" id="idListaAgregarProd" value="">
+                        <input type="hidden" name="idListaAgregarIDl" id="idListaAgregarIDl" value="">
+                        <button type="submit" class="btn btn-danger" id="confirmBTNagregarL" name="confirmBTNagregarL">Confirmar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
     function storeProductId(idProducto) {
         var modal = document.getElementById('idProdLista');
         modal.value = idProducto;
+    }
+
+    function storeListIdAgregar(idProducto, idLista) {
+        var modald = document.getElementById('idListaAgregarIDl');
+        modald.value = idLista;
+
+        var modalt = document.getElementById('idListaAgregarProd');
+        modalt.value = idProducto;
     }
 
     var loadFile = function(event) {

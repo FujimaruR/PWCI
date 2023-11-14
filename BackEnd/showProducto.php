@@ -64,8 +64,42 @@ try {
         $stmtproducto->bindParam(':idprod', $idProductoEn);
         $stmtproducto->execute();
         $productoBuscado = $stmtproducto->fetch(PDO::FETCH_ASSOC);
+
+        $consultaVcomentarios = "SELECT * FROM vista_usuarios_comentarios 
+        WHERE IDproductoCom = :idpro";
+        
+        $stmtVcom = $conn->prepare($consultaVcomentarios);
+        $stmtVcom->bindParam(':idpro', $idProductoEn);
+        $stmtVcom->execute();
+        $usuarioVcomentario = $stmtVcom->fetchAll(PDO::FETCH_ASSOC);
     } else {
         echo "ID del producto no proporcionado.";
+    }
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST['btncomentariomod'])){
+            $IDuserCom = $id_seller;
+            $IDproductoCom = $_GET['idProductoEn']; 
+            $comentario = trim($_POST['comentario']);
+            $calificacion = trim($_POST['numStarsForm']);
+            
+            $sqlComentario = "SELECT insertar_comentario_y_actualizar_rating(?, ?, ?, ?) as result";
+            $stmtComentario = $conn->prepare($sqlComentario);
+            $stmtComentario->bindParam(1, $IDuserCom, PDO::PARAM_INT);
+            $stmtComentario->bindParam(2, $IDproductoCom, PDO::PARAM_INT);
+            $stmtComentario->bindParam(3, $comentario, PDO::PARAM_STR);
+            $stmtComentario->bindParam(4, $calificacion, PDO::PARAM_INT);
+            $stmtComentario->execute();
+
+            $result = $stmtComentario->fetch(PDO::FETCH_ASSOC);
+
+            if ($result['result'] == 1) {
+                header("Location: ../Front/vistaProducto.php?idProductoEn=$IDproductoCom"); 
+                exit();
+            } else {
+                echo "Error al ejecutar la función.";
+            }
+        }
+
     }
 } catch (PDOException $e) {
     echo "Error en la base de datos: " . $e->getMessage();
