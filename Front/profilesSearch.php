@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../BackEnd/showUser.php");
+include("../BackEnd/showUserSearch.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,53 +41,25 @@ include("../BackEnd/showUser.php");
                 <div class="card" style="background-color:#f5d3dfe4; border-radius: 30px;">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-3 col-md-8 col-sm-8 m-4">
+                            <div class="col-md-6 col-lg-6">
                                 <div class="col-lg-12 col-md-12 col-sm-12 ">
-                                    <img src="<?php echo $imagen_url; ?>"
-                                        class="img-fluid rounded-start" alt="..."
-                                        style="height: 100%; width: 80%;border-radius: 80px 80px 50px 50px;">
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?php echo $usuario['nombre']; ?></h5>
-                                    </div>
+                                    <img src="<?php echo $imagen_urlSearch; ?>" class="img-fluid rounded-start"
+                                        alt="..." style="height: 100%; width: 80%;border-radius: 80px 80px 50px 50px;">
                                 </div>
                             </div>
-                            <div class="col-lg-3">
-                                <h5>Información</h5>
-                                <p class="card-text">Correo: <?php echo $usuario['email']; ?></p>
-                                <p class="card-text">Nombre completo: <?php echo $usuarioNormal['complete_name']; ?></p>
-                                <p class="card-text">Codigo postal: <?php echo isset($usuarioNormalInfo['codepos']) ? $usuarioNormalInfo['codepos'] : 'No disponible'; ?></p>
-                                <p class="card-text">Direccion de entrega: <?php echo isset($usuarioNormalInfo['direc']) ? $usuarioNormalInfo['direc'] : 'No disponible'; ?></p>
-                                <p class="card-text">Numero telefonico: <?php echo isset($usuarioNormalInfo['telef']) ? $usuarioNormalInfo['telef'] : 'No disponible'; ?></p>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#editarPerfil">Editar</button>
-
-                            </div>
-                            <div class="col-md-5">
-                                <div class="card-body ">
-                                    <h5>Otras configuraciones</h5>
-                                    <a class="btn btn-danger" role="button" data-bs-toggle="modal"
-                                        data-bs-target="#UsuarioVendedorPer">
-                                        Ir al perfil de vendedor
-                                    </a>
-                                    <h5>Perfil</h5>
-                                    <p>Tu perfil es: <?php 
-                                    if(isset($usuarioNormalInfo['privado'])) {
-                                        if ($usuarioNormalInfo['privado'] == 0) {
-                                            echo 'Publico';
-                                        } elseif ($usuarioNormalInfo['privado'] == 1) {
-                                            echo 'Privado';
-                                        } elseif (is_null($usuarioNormalInfo['privado'])) {
-                                            echo 'No disponible';
-                                        } else {
-                                            echo 'Valor no reconocido';
-                                        }
-                                    } else {
-                                        echo 'No disponible';
-                                    } 
-                                    ?></p>
-                                </div>
+                            <div class="col-lg-6">
+                                <h5>Información del usuario</h5>
+                                <?php
+                                if($usuarioNormalInfoSearch['privado'] === 0){
+                                    echo'
+                                    <p class="card-text">Nombre de usuario: '.$usuarioSearch['nombre'].'</p>
+                                    <p class="card-text">Correo: '.$usuarioSearch['email'].'</p>
+                                    <p class="card-text">Nombre completo: '.$usuarioNormalSearch['complete_name'].'</p>';
+                                } else{
+                                    echo'
+                                    <p class="card-text">Este perfil es privado</p>';
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -101,81 +73,13 @@ include("../BackEnd/showUser.php");
         ?>
     </div>
 
-    <div class="modal fade" id="editarPerfil" tabindex="-1" aria-labelledby="editarPerfilLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editarPerfilLabel">Editar perfil</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="post" id="editperfilform" enctype="multipart/form-data">
-                        <label for="editnom">Nombre completo: </label>
-                        <input type="text" class="form-control" id="editnom" name="editnom" placeholder="..." required>
-                        <label for="postalcod">Codigo postal: </label>
-                        <input type="text" class="form-control" id="postalcod" name="postalcod" placeholder="..." required>
-                        <label for="direc">Direccion: </label>
-                        <input type="text" class="form-control" id="direc" name="direc" placeholder="..." required>
-                        <label for="telef">Número telefónico:</label>
-                        <input type="tel" class="form-control" id="telef" name="telefono" placeholder="Ejemplo: 1234567890" required>
-                        <div id="telefError" style="color: red;"></div>
-
-                        <div class="col-4">
-                            <label for="formFile" class="form-label">Foto de perfil</label>
-                            <div class="card">
-                                <input class="form-control" style="background-size: 50%" type="file" id="#img-preview" name="editImg"
-                                    onchange="loadFile(event)" required>
-                                <img id="#img-uploader" />
-                            </div>
-                        </div>
-
-                        <div class="form-check form-switch d-flex my-2 ">
-                            <label class="form-check-label px-5 " for="genderSwitch">Publico</label>
-                            <input class="form-check-input px-3" type="checkbox" id="privateSwitch" name="privateSwitch"
-                                value="1">
-                            <label class="form-check-label" for="genderSwitch">Privado</label>
-                        </div>
-
-                        <button type="submit" class="btn btn-danger" id="guardarButton" name="guardarButton" style="margin-top: 3%;" disabled>Guardar</button>
-
-                        <script>
-                        const telefInput = document.getElementById('telef');
-                        const telefError = document.getElementById('telefError');
-                        const guardarButton = document.getElementById('guardarButton');
-
-                        telefInput.addEventListener('input', function() {
-                            let telefValue = telefInput.value.replace(/\D/g,
-                            ''); // Eliminar caracteres no numéricos
-                            telefInput.value = telefValue;
-
-                            if (telefValue.length !== 10) {
-                                telefError.textContent =
-                                'El número de teléfono debe tener 10 dígitos numéricos';
-                                guardarButton.disabled = true; // Deshabilitar el botón "Guardar"
-                            } else {
-                                telefError.textContent = '';
-                                guardarButton.disabled = false; // Habilitar el botón "Guardar"
-                            }
-                        });
-                        </script>
-
-
-                    </form>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-10 mx-auto p-5">
-                <h5 class=" my-4">Listas del usuario</h5>
+                <h5 class=" my-4">Listas de <?php echo $usuarioSearch['nombre']; ?></h5>
                 <?php
+                if($usuarioNormalInfoSearch['privado'] === 0){
+                    
                 if ($TablaOver !== null) {
                     foreach ($TablaOver as $TablaListas) {
                         echo '<div class="card" style="border-radius: 10px 10px 10px 10px;background-color:#e1f5fae4;">
@@ -187,16 +91,6 @@ include("../BackEnd/showUser.php");
                                     <ul class="ml-2">
                                         <li>
                                             <h5 class="m-1"><strong>'.$TablaListas['nombre'].'</strong></h5>
-                                        </li>
-                                        <li class="posder">
-                                            <a data-bs-toggle="modal" data-bs-target="#editarlistamod" class="hovlist" onclick="storeProductIdEdit(' . $TablaListas['id_Lista'] . ')">
-                                                <h6 class="m-1">Editar lista<i class="bi bi-pencil-square"></i></h6>
-                                            </a>
-                                        </li>
-                                        <li class="posder">
-                                            <a data-bs-toggle="modal" data-bs-target="#borrarlistamod" class="hovlist" onclick="storeProductIdBorrar(' . $TablaListas['id_Lista'] . ')">
-                                                <h6 class="m-1">Borrar<i class="bi bi-trash3-fill"></i></h6>
-                                            </a>
                                         </li>
                                     </ul>
                                     <ul class="ml-2">
@@ -233,69 +127,15 @@ include("../BackEnd/showUser.php");
                         </div>';
                     } 
                 } else {
-                    echo 'No listas disponibles';
+                    echo '<p>No listas disponibles</p>';
+                }
+                } else {
+                    echo '<p>Perfil privado</p>';
                 }
                 ?>
             </div>
         </div>
     </div>
-    </div>
-
-    <div class="modal fade" id="editarlistamod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editarlistamodhead">Editar lista</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container ">
-                        <row>
-                            <form action="" method="post" enctype="multipart/form-data" id="idFormEList">
-                            <input type="text" class="form-control my-2" id="nomLista" name="nomLista" placeholder="Nombre de la lista"
-                                required>
-                            <input type="text" class="form-control my-2" id="descLista" name="descLista" placeholder="Descripción"
-                                required>
-                            <input class="form-control" type="file" id="editImgLista" name="editImgLista" required>
-
-                            <label for="privacidad">Tipo</label>
-                            <div class="d-flex my-switch">
-                                <div class="form-text text-1">Pública</div>
-                                <div class="form-check form-switch form-check-inline">
-                                    <input id="privacidad" name="privacidad" class="form-check-input form-check-inline" type="checkbox">
-                                </div>
-                                <div class="form-text text-2">Privada</div>
-                            </div>
-                            <input type="hidden" name="idListaEditar" id="idListaEditar" value="">
-                            <button type="submit" class="btn btn-danger" id="confirmBTNeditarL" name="confirmBTNeditarL">Confirmar</button>
-                            </form>
-                        </row>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="borrarlistamod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="borrarlistamodhead">Eliminar lista</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container ">
-                        <form action="" method="post" enctype="multipart/form-data" id="idFormELimList">
-                        <h4>¿Seguro que quieres eliminar la lista?</h4>
-                        <input type="hidden" name="idListaBorrar" id="idListaBorrar" value="">
-                        <button type="submit" class="btn btn-danger" id="confirmBTNborrarL" name="confirmBTNborrarL">Confirmar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="modal fade" id="verlistaprod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -312,9 +152,6 @@ include("../BackEnd/showUser.php");
                         <?php
                         if ($listaProductosV !== null){
                             foreach ($listaProductosV as $ProductosListados){
-                                $idProdListaB = 'idProdListaB_' . $ProductosListados['id_Producto'];
-                                $idProdLBorrar = 'idProdLBorrar_' . $ProductosListados['id_Producto'];
-                                $btnElmProdLis = 'btnElmProdLis_' . $ProductosListados['id_Producto'];
                                 echo '<a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php?idProductoEn='.$ProductosListados['id_Producto'].'" title="Ver detalles del producto">
                             <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
                                 <div class="row g-0">
@@ -336,20 +173,13 @@ include("../BackEnd/showUser.php");
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        <div>
-                        <form action="" method="post">
-                        <input type="hidden" name="'.$idProdListaB.'" id="'.$idProdListaB.'" value="'.$ProductosListados['IDlista'].'">
-                        <input type="hidden" name="'.$idProdLBorrar.'" id="'.$idProdLBorrar.'" value="'.$ProductosListados['id_Producto'].'">
-                        <button type="button" class="btn btn-secondary" id="'.$btnElmProdLis.'" name="'.$btnElmProdLis.'">Eliminar</button>
-                        </form>
-                        </div>';
+                        </a>';
                             }
                         } else {
                             echo 'No articulos disponibles';
                         }
                         ?>
-                        
+
 
                     </div>
                 </div>
@@ -379,19 +209,6 @@ include("../BackEnd/showUser.php");
     </div>
 
     <script>
-    var input1 = document.getElementById("input1");
-    var input2 = document.getElementById("input2");
-
-    input1.addEventListener("input", validarNumero);
-    input2.addEventListener("input", validarNumero);
-
-    function validarNumero() {
-        var valor = parseFloat(this.value);
-
-        if (valor <= 0 || isNaN(valor)) {
-            this.value = 1;
-        }
-    }
 
     function storeProductIdEdit(idProducto) {
         var modal = document.getElementById('idListaEditar');
@@ -403,7 +220,7 @@ include("../BackEnd/showUser.php");
         modald.value = idProducto;
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         var idListaProdVer = <?php echo isset($_GET['idListaProdVer']) ? $_GET['idListaProdVer'] : 'null'; ?>;
 
         if (idListaProdVer !== null) {

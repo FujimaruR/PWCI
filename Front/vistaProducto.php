@@ -239,7 +239,7 @@ include("../BackEnd/showProducto.php");
                                     echo '
                                     <div class="my-2">
                                         <a class="link-offset-2 link-underline link-underline-opacity-0"
-                                            href="http://localhost/prueba/PWCI/Front/eliminar/perfilPublico.php">
+                                            href="../Front/profilesSearch.php?idUserSearch='.$comentario['usuario_id'].'">
                                             <img src="'.$imagen_urlCom.'" alt="Foto de perfil"
                                                 style="width: 30px; height: 30px; object-fit: cover; border-radius: 10px 10px 10px 10px;">
                                             <span
