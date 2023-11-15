@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../BackEnd/showSeller.php");
+include("../BackEnd/showCarrito.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +88,7 @@ include("../BackEnd/showSeller.php");
                                     <h5 class="card-title">Computadora Linda</h5>
                                     <p class="card-text">MXN$12000 </p>
                                     <div class="form-floating">
-                                        <select class="form-select" id="cantidadcom">
+                                        <select class="form-select" id="cantidadcomd">
                                             <option selected>1</option>
                                             <option value="1">2</option>
                                             <option value="2">3</option>
@@ -367,6 +367,29 @@ include("../BackEnd/showSeller.php");
     </div>
 
     <script src="http://localhost/prueba/PWCI/Front/js/carrito.js"></script>
+    <script>
+        const radioSeleccionarTodos = document.getElementById("flexRadioDefault1");
+        const radioProducto1 = document.getElementById("productrad1");
+        const radioProducto2 = document.getElementById("productrad2");
+
+        radioSeleccionarTodos.addEventListener("click", () => {
+            radioProducto1.checked = radioSeleccionarTodos.checked;
+            radioProducto2.checked = radioSeleccionarTodos.checked;
+        });
+
+        radioProducto1.addEventListener("click", () => {
+            if (radioProducto1.checked) {
+                radioSeleccionarTodos.checked = false;
+            }
+        });
+
+        radioProducto2.addEventListener("click", () => {
+            if (radioProducto2.checked) {
+                radioSeleccionarTodos.checked = false;
+            }
+        });
+
+    </script>
 
     <?php
         include_once('../assets/General/footer.php');

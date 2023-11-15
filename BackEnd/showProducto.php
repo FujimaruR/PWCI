@@ -29,6 +29,13 @@ try {
     
     $imagen_url = 'data:' . $mime_type . ';base64,' . base64_encode($usuarioNormal['img']);
 
+    $queryListasS = "SELECT id_Lista, nombre FROM tb_listas";
+    
+    $stmtSListas = $conn->prepare($queryListasS);
+    $stmtSListas->execute();
+    $listasCom = $stmtSListas->fetchAll(PDO::FETCH_ASSOC);
+    $rowListasNCount = $stmtSListas->rowCount();
+
     if(isset($_GET['idProductoEn'])){
         $idProductoEn = $_GET['idProductoEn'];
 
@@ -97,6 +104,46 @@ try {
                 exit();
             } else {
                 echo "Error al ejecutar la función.";
+            }
+        }
+
+        if(isset($_POST['confirmBTNagregarL'])){
+            $idListaL = trim($_POST['idListaAgregarIDl']);
+            $idProdL = trim($_POST['idListaAgregarProd']);
+    
+            $consultaInsertProdL = "INSERT INTO tb_listasprod (IDlista, IDproductoLista) 
+            VALUES (:idLIS, :idPROD)";
+            
+            $stmtIprodL = $conn->prepare($consultaInsertProdL);
+            $stmtIprodL->bindParam(':idLIS', $idListaL);
+            $stmtIprodL->bindParam(':idPROD', $idProdL);
+    
+            if($stmtIprodL->execute()){
+                header("Location: ../Front/paginaPrincipal.php");
+                exit(); 
+            } else {
+                header("Location: ../Front/paginaPrincipal.php?error=Error%20en%20la%20actualizacion%20de%20la%20lista.");
+                exit();
+            }
+        }
+
+        if(isset($_POST['confirmBTNagregarCarrito'])){
+            $idCarritoAgregarProd = trim($_POST['idCarritoAgregarProd']);
+            $idCarritoAgregarUser = trim($_POST['idCarritoAgregarUser']);
+    
+            $consultaInsertProdC = "INSERT INTO tb_carrito (id_productoCar, id_usuariocar) 
+            VALUES (:idprodcar, :idusercar)";
+            
+            $stmtIprodC = $conn->prepare($consultaInsertProdC);
+            $stmtIprodC->bindParam(':idprodcar', $idCarritoAgregarProd);
+            $stmtIprodC->bindParam(':idusercar', $idCarritoAgregarUser);
+    
+            if($stmtIprodC->execute()){
+                header("Location: ../Front/carrito.php");
+                exit(); 
+            } else {
+                header("Location: ../Front/paginaPrincipal.php?error=Error%20en%20la%20creacion%20del%20carrito.");
+                exit();
             }
         }
 

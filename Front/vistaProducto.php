@@ -27,7 +27,7 @@ include("../BackEnd/showProducto.php");
         $_GET['logged'] = '1';
         include_once('../assets/General/navbarSettings.php');
     ?>
-    
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 col-lg-8 ">
@@ -35,7 +35,7 @@ include("../BackEnd/showProducto.php");
 
                     <div id="miCarrusel" class="carousel">
                         <ol class="carousel-indicators">
-                        <?php
+                            <?php
                         // Crear los indicadores del carrusel
                         $numCategorias = count($ImagenesFila);
                         for ($i = 0; $i < $numCategorias; $i++) {
@@ -49,7 +49,7 @@ include("../BackEnd/showProducto.php");
                         </ol>
                         <!-- Contenido del carrusel -->
                         <div class="carousel-inner">
-                        <?php
+                            <?php
                         $contador = 0;
                         foreach ($ImagenesFila as $index => $fila) {
                             echo '<div class="carousel-item';
@@ -96,10 +96,18 @@ include("../BackEnd/showProducto.php");
                                     <span class="heart-icon">&#x2665;</span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                                    <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                    <li><a class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#crearLista">Crear lista</a></li>
+                                    <?php 
+                                    if ($listasCom !== null){
+                                        foreach ($listasCom as $lista) {
+                                            echo '<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#agregarProdLmod" onclick="storeListIdAgregar(' . $productoBuscado['id_Producto'] . ',' . $lista['id_Lista'] . ')">' . $lista['nombre'] . '</a></li>';
+                                        }
+                                    } else {
+                                        echo '<li><a class="dropdown-item" href="#">No listas disponibles</a></li>';
+                                    }
+                                    echo '<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#crearLista" onclick="storeProductId(' . $productoBuscado['id_Producto'] . ')">Crear lista</a></li>';
+                                    ?>
                                 </ul>
                             </div>
                         </div>
@@ -108,16 +116,18 @@ include("../BackEnd/showProducto.php");
                             <p><?php echo $productoBuscado['descripcion']; ?></p>
                         </div>
                         <h4>$<?php echo $productoBuscado['precio']; ?></h4>
-                        <p><span class="info-label">Cantidad disponible:</span><?php echo $productoBuscado['cant_disp']; ?></p>
+                        <p><span class="info-label">Cantidad
+                                disponible:</span><?php echo $productoBuscado['cant_disp']; ?></p>
                         <p><span class="info-label">Categorias:</span><?php echo $categoriasString; ?></p>
-                        <p><span class="info-label">Rating de los usuarios:</span><?php echo $productoBuscado['rating']; ?></p>
+                        <p><span class="info-label">Rating de los
+                                usuarios:</span><?php echo $productoBuscado['rating']; ?></p>
                         <div class="text-center my-5">
                             <div class="btn-group" role="group" aria-label="Grupo de botones">
                                 <?php 
                                 if($productoBuscado['t_producto'] === 1){
                                     echo '<button type="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
                                         data-bs-toggle="modal" data-bs-target="#comprar">Comprar</button>
-                                    <a class="btn btnHover" href="carrito.php" role="button"
+                                    <a class="btn btnHover" data-bs-toggle="modal" data-bs-target="#agregarProdCarrito" href="#" role="button"
                                         style="background-color: #7dcf72;color:aliceblue;">&#128722;</a>';
                                 } else {
                                     echo '<a role="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
@@ -167,7 +177,7 @@ include("../BackEnd/showProducto.php");
                         </div>
                         <!-- Crear Lista  -->
                         <div class="modal fade" id="crearLista" tabindex="-1" aria-labelledby="crearLista"
-                            aria-hidden="true">
+                            aria-hidden="true" data-idproducto-modal="">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
@@ -182,42 +192,41 @@ include("../BackEnd/showProducto.php");
 
                                         <div class="row">
                                             <div class="col-5 mx-5 my-5">
-                                                <form action="">
+                                                <form action="../BackEnd/crearLista.php" method="post"
+                                                    id="crearListaForm" enctype="multipart/form-data">
                                                     <input type="text" class="form-control my-2" id="nomLista"
-                                                        placeholder="Nombre de la lista" required>
+                                                        name="nomLista" placeholder="Nombre de la lista" required>
                                                     <input type="text" class="form-control my-2" id="descLista"
-                                                        placeholder="Descripción" required>
+                                                        name="descLista" placeholder="Descripción" required>
 
                                                     <label for="privacidad">Tipo</label>
                                                     <div class="d-flex my-switch">
                                                         <div class="form-text text-1">Pública</div>
                                                         <div class="form-check form-switch form-check-inline">
-                                                            <input id="privacidad"
+                                                            <input id="privacidad" name="privacidad"
                                                                 class="form-check-input form-check-inline"
-                                                                type="checkbox">
+                                                                type="checkbox" value="1">
                                                         </div>
                                                         <div class="form-text text-2">Privada</div>
                                                     </div>
-                                                    <button type="submit" class="btn btnHover"
-                                                        style="background-color: #FFC43A; color:#03258C; color:aliceblue;">Crear</button>
+
+                                                    <input class="form-control my-2" style="background-size: 50vh"
+                                                        type="file" id="#img-preview" name="imgupload"
+                                                        onchange="loadFile(event)" required>
+                                                    <input type="hidden" name="idProdLista" id="idProdLista" value="">
+                                                    <button type="submit" class="btn btnHover" name="crearLisBTN"
+                                                        style="background-color: #FFC43A; color:#03258C; color:aliceblue;"
+                                                        data-bs-dismiss="modal">Crear</button>
                                                 </form>
+
 
                                             </div>
                                             <div class="col-4">
                                                 <div class="card">
-                                                    <input class="form-control" style="background-size: 50vh"
-                                                        type="file" id="#img-preview" onchange="loadFile(event)"
-                                                        required>
                                                     <img id="#img-uploader" src="../img/principal/abanico.jpg" />
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Pie del Modal -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btnColorCard btnHover" data-bs-dismiss="modal"
-                                            style="color:aliceblue;">Cerrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -276,10 +285,10 @@ include("../BackEnd/showProducto.php");
                                     <textarea class="form-control" id="comentario" name="comentario" rows="4"
                                         placeholder="Escribe tu comentario aquí"></textarea>
                                 </div>
-                                
+
                                 <input type="hidden" id="numStarsForm" name="numStarsForm" value="">
-                                <button type="submit" class="btn btnColorCard btnHover"
-                                    style="color:aliceblue;" id="btncomentariomod" name="btncomentariomod">Publicar Comentario</button>
+                                <button type="submit" class="btn btnColorCard btnHover" style="color:aliceblue;"
+                                    id="btncomentariomod" name="btncomentariomod">Publicar Comentario</button>
                             </form>
                         </div>
                     </div>
@@ -358,21 +367,65 @@ include("../BackEnd/showProducto.php");
                 <div class="modal-body">
                     <div class="container ">
                         <form action="" method="post">
-                        <div class="mb-3">
-                            <label for="comentarioventa" class="form-label">Qué te pareció este producto?</label>
-                            <div class="rating">
-                                <i class="bi bi-star-fill star "></i>
-                                <i class="bi bi-star-fill star "></i>
-                                <i class="bi bi-star-fill star "></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
+                            <div class="mb-3">
+                                <label for="comentarioventa" class="form-label">Qué te pareció este producto?</label>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill star "></i>
+                                    <i class="bi bi-star-fill star "></i>
+                                    <i class="bi bi-star-fill star "></i>
+                                    <i class="bi bi-star-fill star"></i>
+                                    <i class="bi bi-star-fill star"></i>
+                                </div>
+                                <textarea class="form-control" id="comentarioventa" name="comentarioventa" rows="4"
+                                    placeholder="Escribe tu comentario aquí"></textarea>
                             </div>
-                            <textarea class="form-control" id="comentarioventa" name="comentarioventa" rows="4"
-                                placeholder="Escribe tu comentario aquí"></textarea>
-                        </div>
-                        <input type="hidden" id="numStarsFormVenta" name="numStarsFormVenta" value="">
-                        <button type="submit" class="btn btn-danger" id="btncomentariomodVenta" name="btncomentariomodVenta"
-                        data-bs-dismiss="modal">Confirmar</button>
+                            <input type="hidden" id="numStarsFormVenta" name="numStarsFormVenta" value="">
+                            <button type="submit" class="btn btn-danger" id="btncomentariomodVenta"
+                                name="btncomentariomodVenta" data-bs-dismiss="modal">Confirmar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="agregarProdLmod" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="borrarlistamodhead">Agregar articulo a la lista</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container ">
+                        <form action="" method="post" enctype="multipart/form-data" id="idFormAgregarProdList">
+                        <h4>¿Seguro que quieres agregar este articulo a la lista?</h4>
+                        <input type="hidden" name="idListaAgregarProd" id="idListaAgregarProd" value="">
+                        <input type="hidden" name="idListaAgregarIDl" id="idListaAgregarIDl" value="">
+                        <button type="submit" class="btn btn-danger" id="confirmBTNagregarL" name="confirmBTNagregarL">Confirmar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="agregarProdCarrito" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Agregar articulo al carrito</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container ">
+                        <form action="" method="post">
+                        <h4>¿Seguro que quieres agregar este articulo al carrito?</h4>
+                        <input type="hidden" name="idCarritoAgregarProd" id="idCarritoAgregarProd" value="<?php $productoBuscado['id_Producto']; ?>">
+                        <input type="hidden" name="idCarritoAgregarUser" id="idCarritoAgregarUser" value="<?php $_SESSION['usuarioId']; ?>">
+                        <button type="submit" class="btn btn-danger" id="confirmBTNagregarCarrito" name="confirmBTNagregarCarrito">Confirmar</button>
                         </form>
                     </div>
                 </div>
@@ -387,6 +440,19 @@ include("../BackEnd/showProducto.php");
     function updateStarValue(starValue) {
         var nomLista = document.getElementById('numStarsForm');
         nomLista.value = starValue;
+    }
+
+    function storeProductId(idProducto) {
+        var modal = document.getElementById('idProdLista');
+        modal.value = idProducto;
+    }
+
+    function storeListIdAgregar(idProducto, idLista) {
+        var modald = document.getElementById('idListaAgregarIDl');
+        modald.value = idLista;
+
+        var modalt = document.getElementById('idListaAgregarProd');
+        modalt.value = idProducto;
     }
     </script>
 
