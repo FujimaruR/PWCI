@@ -45,7 +45,11 @@ include("../BackEnd/showCarrito.php");
                         </div>
                     </div>
                     <div class="card-body">
-
+                        <?php
+                        foreach ($carritoBuscar as $producto){
+                            
+                        }
+                        ?>
                         <div class="row">
                             <div class="card-header">
                                 <div class="row mx-auto">
