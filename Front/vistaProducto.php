@@ -320,22 +320,22 @@ include("../BackEnd/showProducto.php");
                                 <div class="form-floating d-flex">
                                     <select class="form-select" id="fechatarjeta1"
                                         aria-label="Floating label select example">
-                                        <option selected>1</option>
+                                        <option selected value="1">1</option>
                                         <?php
-                      for ($i = 2; $i <= 31; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                      }
-                    ?>
+                                        for ($i = 2; $i <= 31; $i++) {
+                                            echo "<option value='$i'>$i</option>";
+                                        }
+                                        ?>
                                     </select>
                                     <h1>/</h1>
                                     <select class="form-select" id="fechatarjeta2"
                                         aria-label="Floating label select example">
-                                        <option selected>1</option>
+                                        <option selected value="23">23</option>
                                         <?php
-                      for ($i = 2; $i <= 31; $i++) {
-                        echo "<option value='$i'>$i</option>";
-                      }
-                    ?>
+                                        for ($i = 23; $i <= 31; $i++) {
+                                            echo "<option value='$i'>$i</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -345,12 +345,24 @@ include("../BackEnd/showProducto.php");
                             <input type="text" class="form-control" id="cvcTarjetaCredit">
                             <label for="numTarjetaCredit">cvc de la tarjeta</label>
                         </div>
+                        <p>Ingresa la cantidad a comprar</p>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="cantCompV" aria-label="Floating label select example">
+                                <option selected value="1">1</option>
+                                <?php
+                                        $numeroOpciones = $productoBuscado['cant_disp'];
+                                        for ($i = 2; $i <= $numeroOpciones; $i++) {
+                                            echo "<option value='$i'>$i</option>";
+                                        }
+                                        ?>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-target="#pagar"
                         data-bs-toggle="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" id="validarBtnTarjeta">Confirmar</button>
+                    <button type="button" class="btn btn-danger" id="validarBtnTarjeta" onclick="storeCantidadProd(document.getElementById('cantCompV').value)">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -370,16 +382,19 @@ include("../BackEnd/showProducto.php");
                             <div class="mb-3">
                                 <label for="comentarioventa" class="form-label">Qué te pareció este producto?</label>
                                 <div class="rating">
-                                    <i class="bi bi-star-fill star "></i>
-                                    <i class="bi bi-star-fill star "></i>
-                                    <i class="bi bi-star-fill star "></i>
-                                    <i class="bi bi-star-fill star"></i>
-                                    <i class="bi bi-star-fill star"></i>
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(1)"></i>
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(2)"></i>
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(3)"></i>
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(4)"></i>
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(5)"></i>
                                 </div>
                                 <textarea class="form-control" id="comentarioventa" name="comentarioventa" rows="4"
                                     placeholder="Escribe tu comentario aquí"></textarea>
                             </div>
                             <input type="hidden" id="numStarsFormVenta" name="numStarsFormVenta" value="">
+                            <input type="hidden" id="cantProdVenta" name="cantProdVenta" value="">
+                            <input type="hidden" id="precioFormVenta" name="precioFormVenta"
+                                value="<?= $productoBuscado['precio']; ?>">
                             <button type="submit" class="btn btn-danger" id="btncomentariomodVenta"
                                 name="btncomentariomodVenta" data-bs-dismiss="modal">Confirmar</button>
                         </form>
@@ -400,10 +415,11 @@ include("../BackEnd/showProducto.php");
                 <div class="modal-body">
                     <div class="container ">
                         <form action="" method="post" enctype="multipart/form-data" id="idFormAgregarProdList">
-                        <h4>¿Seguro que quieres agregar este articulo a la lista?</h4>
-                        <input type="hidden" name="idListaAgregarProd" id="idListaAgregarProd" value="">
-                        <input type="hidden" name="idListaAgregarIDl" id="idListaAgregarIDl" value="">
-                        <button type="submit" class="btn btn-danger" id="confirmBTNagregarL" name="confirmBTNagregarL">Confirmar</button>
+                            <h4>¿Seguro que quieres agregar este articulo a la lista?</h4>
+                            <input type="hidden" name="idListaAgregarProd" id="idListaAgregarProd" value="">
+                            <input type="hidden" name="idListaAgregarIDl" id="idListaAgregarIDl" value="">
+                            <button type="submit" class="btn btn-danger" id="confirmBTNagregarL"
+                                name="confirmBTNagregarL">Confirmar</button>
                         </form>
                     </div>
                 </div>
@@ -422,10 +438,13 @@ include("../BackEnd/showProducto.php");
                 <div class="modal-body">
                     <div class="container ">
                         <form action="" method="post">
-                        <h4>¿Seguro que quieres agregar este articulo al carrito?</h4>
-                        <input type="hidden" name="idCarritoAgregarProd" id="idCarritoAgregarProd" value="<?php $productoBuscado['id_Producto']; ?>">
-                        <input type="hidden" name="idCarritoAgregarUser" id="idCarritoAgregarUser" value="<?php $_SESSION['usuarioId']; ?>">
-                        <button type="submit" class="btn btn-danger" id="confirmBTNagregarCarrito" name="confirmBTNagregarCarrito">Confirmar</button>
+                            <h4>¿Seguro que quieres agregar este articulo al carrito?</h4>
+                            <input type="hidden" name="idCarritoAgregarProd" id="idCarritoAgregarProd"
+                                value="<?= $_GET['idProductoEn']; ?>">
+                            <input type="hidden" name="idCarritoAgregarUser" id="idCarritoAgregarUser"
+                                value="<?= $_SESSION['usuarioId']; ?>">
+                            <button type="submit" class="btn btn-danger" id="confirmBTNagregarCarrito"
+                                name="confirmBTNagregarCarrito">Confirmar</button>
                         </form>
                     </div>
                 </div>
@@ -435,10 +454,14 @@ include("../BackEnd/showProducto.php");
 
 
     <script src="../Front/js/cargaImagen.js"></script>
-    <script src="../Front/js/vistaProducto.js"></script>
     <script>
     function updateStarValue(starValue) {
         var nomLista = document.getElementById('numStarsForm');
+        nomLista.value = starValue;
+    }
+
+    function updateStarValueVenta(starValue) {
+        var nomLista = document.getElementById('numStarsFormVenta');
         nomLista.value = starValue;
     }
 
@@ -454,6 +477,67 @@ include("../BackEnd/showProducto.php");
         var modalt = document.getElementById('idListaAgregarProd');
         modalt.value = idProducto;
     }
+
+    function storeCantidadProd(cantidad) {
+        var modalc = document.getElementById('cantProdVenta');
+        modalc.value = cantidad;
+    }
+    </script>
+
+    <script>
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach(function(star, index) {
+        star.addEventListener('click', function() {
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('checked');
+            }
+            for (let i = index + 1; i < stars.length; i++) {
+                stars[i].classList.remove('checked');
+            }
+        })
+    });
+
+    const numTarjetaInput = document.getElementById("numTarjetaCredit");
+    const cvcTarjetaInput = document.getElementById("cvcTarjetaCredit");
+    const validarBtn = document.getElementById("validarBtnTarjeta");
+
+    numTarjetaInput.addEventListener("input", function() {
+        this.value = this.value.replace(/[^0-9]/g, "");
+    });
+
+    numTarjetaInput.addEventListener("input", function() {
+        if (this.value.length > 19) {
+            this.value = this.value.slice(0, 19);
+        }
+    });
+
+    cvcTarjetaInput.addEventListener("input", function() {
+        this.value = this.value.replace(/[^0-9]/g, "");
+    });
+
+    validarBtn.addEventListener("click", function() {
+        const numTarjeta = numTarjetaInput.value;
+        const cvcTarjeta = cvcTarjetaInput.value;
+
+        if (numTarjeta.length < 15 || numTarjeta.length > 19) {
+            alert("El número de tarjeta debe tener entre 15 y 19 dígitos.");
+        } else if (cvcTarjeta.length !== 3) {
+            alert("El código CVC debe tener 3 dígitos.");
+        } else {
+            validarBtn.setAttribute("data-bs-toggle", "modal");
+            validarBtn.setAttribute("data-bs-target", "#CalificarProducto");
+            validarBtn.click();
+        }
+    });
+
+
+    const validarBtnComen = document.getElementById("btncomentariomod");
+
+    validarBtnComen.addEventListener("click", function() {
+        validarBtn.removeAttribute("data-bs-toggle");
+        validarBtn.removeAttribute("data-bs-target");
+    });
     </script>
 
     <?php

@@ -13,21 +13,6 @@ stars.forEach(function (star, index) {
 
 
 
-var input1 = document.getElementById("input1");
-var input2 = document.getElementById("input2");
-
-input1.addEventListener("input", validarNumero);
-input2.addEventListener("input", validarNumero);
-
-function validarNumero() {
-    var valor = parseFloat(this.value);
-
-    if (valor <= 0 || isNaN(valor)) {
-        this.value = 1;
-    }
-}
-
-
 const numTarjetaInput = document.getElementById("numTarjetaCredit");
 const cvcTarjetaInput = document.getElementById("cvcTarjetaCredit");
 const validarBtn = document.getElementById("validarBtnTarjeta");

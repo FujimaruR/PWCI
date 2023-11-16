@@ -37,6 +37,13 @@ try {
     $stmtbcar->execute();
     $carritoBuscar = $stmtbcar->fetchAll(PDO::FETCH_ASSOC);
     $rowCarritoNCount = $stmtbcar->rowCount();
+
+    $queryListasS = "SELECT id_Lista, nombre FROM tb_listas";
+    
+    $stmtSListas = $conn->prepare($queryListasS);
+    $stmtSListas->execute();
+    $listasCom = $stmtSListas->fetchAll(PDO::FETCH_ASSOC);
+    $rowListasNCount = $stmtSListas->rowCount();
 } catch (PDOException $e) {
     echo "Error en la base de datos: " . $e->getMessage();
     exit();
