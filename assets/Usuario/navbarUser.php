@@ -219,6 +219,7 @@
 
         elimCategoriaBtn.addEventListener('click', function () {
             document.getElementById('textCateNav').value = null;
+            categoriasAgregadas = [];
         });
     });
 

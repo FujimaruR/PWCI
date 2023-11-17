@@ -36,36 +36,37 @@ include("../BackEnd/showSeller.php");
                 <h5>Perfil vendedor</h5>
                 <div class="card" style="background-color:#f5d3dfe4; border-radius: 30px;">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-8 m-4">
-                                <div class="col-lg-8 col-md-8 col-sm-8 ">
-                                    <img src="<?php echo $imagen_url; ?>"
-                                        class="img-fluid rounded-start" alt="..." style="height: 100%; width: 80%;">
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?php echo $usuario['nombre']; ?></h5>
-                                        <p class="card-text">Correo: <?php echo $usuario['email']; ?></p>
+                        <form action="" id="formCV" method="post">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-8 m-4">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 ">
+                                        <img src="<?php echo $imagen_url; ?>" class="img-fluid rounded-start" alt="..."
+                                            style="height: 100%; width: 80%;">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?php echo $usuario['nombre']; ?></h5>
+                                            <p class="card-text">Correo: <?php echo $usuario['email']; ?></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 mx-auto">
-                                <div class="card-body">
-                                    <h5 class="card-title">Consulta de ventas</h5>
-                                    <p class="card-text">Ingrese el rango de fechas: </p>
-                                    <p class="me-2">Desde: </p>
-                                    <input type="date" name="dateIni" id="dateIni" class="form-control mb-2 mb-md-0"
-                                        onchange="validarFechaI()" />
-                                    <p class="me-2">Hasta: </p>
-                                    <input type="date" name="dateFin" id="dateFin" class="form-control mb-2 mb-md-0"
-                                        onchange="validarFechaF()" />
+                                <div class="col-lg-3 mx-auto">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Consulta de ventas</h5>
+                                        <p class="card-text">Ingrese el rango de fechas: </p>
+                                        <p class="me-2">Desde: </p>
+                                        <input type="date" name="dateIni" id="dateIni" class="form-control mb-2 mb-md-0"
+                                            onchange="validarFechaI()" />
+                                        <p class="me-2">Hasta: </p>
+                                        <input type="date" name="dateFin" id="dateFin" class="form-control mb-2 mb-md-0"
+                                            onchange="validarFechaF()" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 mx-auto">
-                                <label for="combobox" class="me-2">Selecciona o escribe una categoria:</label>
-                                <div class="input-group form-floating my-2">
-                                    <select id="combobox" name="combobox" class="form-control">
-                                        <?php
+                                <div class="col-lg-3 mx-auto">
+                                    <label for="combobox" class="me-2">Selecciona una categoria:</label>
+                                    <div class="input-group form-floating my-2">
+                                        <select id="comboboxCV" name="comboboxCV" class="form-control">
+                                            <?php
                                         if ($catestmt->rowCount() > 0) {
                                             while($row = $catestmt->fetch(PDO::FETCH_ASSOC)) {
                                                 echo '<option value="' . $row['id_categ'] . '">' . $row['nombre'] . '</option>';
@@ -74,23 +75,29 @@ include("../BackEnd/showSeller.php");
                                             echo '<option value="' . 1 . '"> Error </option>';
                                         }
                                         ?>
-                                    </select>
-                                    <button class="btn btn-danger" type="button" id="buttonAgregarCategoriaVendedor">Confirmar</button>
-                                </div>
-                                <div class="input-group my-2">
-                                <input type="text" class="form-control" id="nuevaOpcion" name="nuevaOpcion"
-                                    placeholder="Escribe una nueva categoria">
-                                    <button type="button" class="btn btn-danger" id="buttonAgregarNCategoriaVendedor">Agregar categoria</button>
-                                </div>
-                                <p>Categorias: </p>
-                                <textarea disabled class="form-control"></textarea>
+                                        </select>
+                                        <button class="btn btn-danger" type="button"
+                                            id="buttonAgregarCategoriaVendedor">Confirmar</button>
+                                    </div>
+                                    <p>Categorias: </p>
+                                    <textarea disabled class="form-control" id="textCategVen" name="textCategVen"></textarea>
 
-                                <button type="button" class="btn btn-danger my-2" data-bs-toggle="modal"
-                                    data-bs-target="#consulvent">
-                                    Confirmar
-                                </button>
+                                    
+                                    <div>
+                                        <ul class="ml-2">
+                                            <li>
+                                                <button class="btn btn-outline-danger my-2" type="button" id="elimCategcv" name="elimCategcv">Eliminar</button>
+                                            </li>
+                                            <li>
+                                                <input type="hidden" name="categoriaCVarray" id="categoriaCVarray">
+                                                <button type="button" name="confirmcvbtn" id="confirmcvbtn" class="btn btn-danger my-2" data-bs-toggle="modal"
+                                                data-bs-target="#consulvent">Confirmar</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -212,6 +219,43 @@ include("../BackEnd/showSeller.php");
     <?php
         include_once('../assets/General/footer.php');
     ?>
+
+    
+    <script>
+    var categoriasAgregadasCV = [];
+    document.getElementById("buttonAgregarCategoriaVendedor").addEventListener("click", function() {
+    var selectCV = document.getElementById("comboboxCV");
+    var categoriaSeleccionadaCV = selectCV.options[selectCV.selectedIndex].text;
+    var textareacv = document.getElementById("textCategVen");
+    if (!categoriasAgregadasCV.includes(categoriaSeleccionadaCV)) {
+        textareacv.value += categoriaSeleccionadaCV + "\n";
+        categoriasAgregadasCV.push(categoriaSeleccionadaCV);
+    } else {
+        alert("¡Esta categoría ya ha sido agregada!");
+    }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+            
+        var confirmFormBtncv = document.getElementById('confirmcvbtn');
+        var elimCategoriaBtncv = document.getElementById('elimCategcv');
+
+        confirmFormBtncv.addEventListener('click', function () {
+            
+            var categoriasJSONcv = categoriasAgregadasCV.length > 0 ? JSON.stringify(categoriasAgregadasCV) : null;
+            
+            document.getElementById("categoriaCVarray").value = categoriasJSONcv;
+            
+        });
+
+        elimCategoriaBtncv.addEventListener('click', function () {
+            
+            document.getElementById('textCategVen').value = null;
+            categoriasAgregadasCV = [];
+        });
+    });
+    </script>
 
 </body>
 
