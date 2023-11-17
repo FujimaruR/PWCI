@@ -20,7 +20,7 @@ if(!empty($_GET['paymentID']) && !empty($_GET['payerID']) &&
  </table>
  <?php
  } else {
- header('Location:index.php');
+ header('Location: ../Front/paginaPrincipal.php');
  }
 
 ?>

@@ -9,6 +9,7 @@ include('../BackEnd/conexion/cn_db.php');
             header("Location: ../Front/login.php"); 
             exit();
         }
+        
     
         $consulta = "SELECT * FROM tb_usuarios 
         WHERE email = :email";
@@ -40,6 +41,45 @@ include('../BackEnd/conexion/cn_db.php');
         $stmtt->execute();
 
         $productosAceptados = $stmtt->fetchAll(PDO::FETCH_ASSOC);
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            if(isset($_POST['confirmcvbtn'])){
+                $dateIni = trim($_POST['dateIni']);
+                $dateFin = trim($_POST['dateFin']);
+                $categoriasArrayCV = json_decode($_POST['categoriaCVarray']);
+
+
+                $sqlbusquedaCV= "SELECT * FROM vista_ordensearch 
+                WHERE id_UserCreador = :iduserprod AND :dateI < fechaCompra AND :dateF > fechaCompra";
+
+                if (!empty($categoriasArrayCV)) {
+                    $sqlbusquedaCV .= " AND FIND_IN_SET(:categoria, nombre_categoria) > 0";
+                }
+                
+                $stmtconsultaVenta = $conn->prepare($sqlbusquedaCV);
+                $stmtconsultaVenta->bindParam(':iduserprod', $id_seller);
+                $stmtconsultaVenta->bindParam(':dateI', $dateIni);
+                $stmtconsultaVenta->bindParam(':dateF', $dateFin);
+                if (!empty($categoriasArrayCV)) {
+                    foreach ($categoriasArrayCV as $categoria) {
+                        $stmtconsultaVenta->bindParam(':categoria', $categoria);
+                    }
+                }
+                $stmtconsultaVenta->execute();
+                if($stmtconsultaVenta->rowCount() > 0){
+                $consultaVenta = $stmtconsultaVenta->fetchAll(PDO::FETCH_ASSOC);
+                } else {
+                $consultaVenta = null;
+                }
+
+                echo '<script>
+                    window.onload = function() {
+                        const myModal = new bootstrap.Modal(document.getElementById("consulvent"));
+                        myModal.show();
+                    };
+                </script>';
+            }
+        }
     } catch(PDOException $e) {
         echo "Error en la base de datos: " . $e->getMessage();
         exit();

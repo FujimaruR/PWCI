@@ -209,7 +209,7 @@ include("../BackEnd/showUser.php");
                                             <h5 class="m-1">Ver articulos</h5>
                                         </li>
                                     </ul>
-                                    <a class="hovlist" data-bs-toggle="modal" data-bs-target="#verlistaprod" href="../Front/perfil_usuario.php?idListaProdVer='.$TablaListas['id_Lista'].'">
+                                    <a class="hovlist" href="../Front/perfil_usuario.php?idListaProdVer='.$TablaListas['id_Lista'].'">
                                         <ul class="ml-2 pointprod">';
         
                                             $mime_typeL = 'image/png';
@@ -311,9 +311,12 @@ include("../BackEnd/showUser.php");
                     <div class="container ">
                         <?php
                         if ($listaProductosV !== null){
+                            echo'
+                            <form action="" id="idFELM" method="post">
+                            <input type="hidden" name="idProdListaB" id="idProdListaB" value="">
+                            <input type="hidden" name="idProdLBorrar" id="idProdLBorrar" value="">
+                            </form>';
                             foreach ($listaProductosV as $ProductosListados){
-                                $idProdListaB = 'idProdListaB_' . $ProductosListados['id_Producto'];
-                                $idProdLBorrar = 'idProdLBorrar_' . $ProductosListados['id_Producto'];
                                 $btnElmProdLis = 'btnElmProdLis_' . $ProductosListados['id_Producto'];
                                 echo '<a class="link-offset-2 link-underline link-underline-opacity-0 refervista" href="vistaProducto.php?idProductoEn='.$ProductosListados['id_Producto'].'" title="Ver detalles del producto">
                             <div class="card mb-3" style="max-width: 60%; background-color:#ecd3f0e4; border-radius: 30px;">
@@ -338,11 +341,7 @@ include("../BackEnd/showUser.php");
                             </div>
                         </a>
                         <div>
-                        <form action="" method="post">
-                        <input type="hidden" name="'.$idProdListaB.'" id="'.$idProdListaB.'" value="'.$ProductosListados['IDlista'].'">
-                        <input type="hidden" name="'.$idProdLBorrar.'" id="'.$idProdLBorrar.'" value="'.$ProductosListados['id_Producto'].'">
-                        <button type="button" class="btn btn-secondary" id="'.$btnElmProdLis.'" name="'.$btnElmProdLis.'">Eliminar</button>
-                        </form>
+                        <button type="button" class="btn btn-secondary" id="'.$btnElmProdLis.'" name="'.$btnElmProdLis.'" onclick="storeProductIdListaBorrar(' . $ProductosListados['id_Producto'] . ', '.$ProductosListados['IDlista'].')">Eliminar</button>
                         </div>';
                             }
                         } else {
@@ -403,17 +402,21 @@ include("../BackEnd/showUser.php");
         modald.value = idProducto;
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var idListaProdVer = <?php echo isset($_GET['idListaProdVer']) ? $_GET['idListaProdVer'] : 'null'; ?>;
+    function storeProductIdListaBorrar(idProducto, idlista) {
+        var modalt = document.getElementById('idProdLBorrar');
+        modalt.value = idProducto;
 
-        if (idListaProdVer !== null) {
-            var modal = new bootstrap.Modal(document.getElementById('verlistaprod'));
-            modal.show();
-        }
-    });
+        var modalc = document.getElementById('idProdListaB');
+        modalc.value = idlista;
+
+        var form = document.getElementById('idFELM');
+
+        form.submit();
+    }
     </script>
 
     <script src="http://localhost/prueba/PWCI/Front/js/perfil_usuario.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <?php
         include_once('../assets/General/footer.php');

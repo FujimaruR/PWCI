@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../BackEnd/showProducto.php");
+include('../Api/config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,12 +122,27 @@ include("../BackEnd/showProducto.php");
                         <p><span class="info-label">Categorias:</span><?php echo $categoriasString; ?></p>
                         <p><span class="info-label">Rating de los
                                 usuarios:</span><?php echo $productoBuscado['rating']; ?></p>
+                                <?php 
+                                if($productoBuscado['t_producto'] === 1){
+                                    echo'
+                                    <p><span class="info-label">Ingresa la cantidad a comprar:</span></p>
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="cantCompV" aria-label="Floating label select example">
+                                            <option selected value="1">1</option>';
+                                                    $numeroOpciones = $productoBuscado['cant_disp'];
+                                                    for ($i = 2; $i <= $numeroOpciones; $i++) {
+                                                        echo "<option value='$i'>$i</option>";
+                                                    }
+                                        echo '</select>
+                                    </div>';
+                                }
+                                ?>
                         <div class="text-center my-5">
                             <div class="btn-group" role="group" aria-label="Grupo de botones">
                                 <?php 
                                 if($productoBuscado['t_producto'] === 1){
                                     echo '<button type="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
-                                        data-bs-toggle="modal" data-bs-target="#comprar">Comprar</button>
+                                        data-bs-toggle="modal" data-bs-target="#comprar" onclick="storeCantidadProd(document.getElementById('; echo "'cantCompV'"; echo ').value)">Comprar</button>
                                     <a class="btn btnHover" data-bs-toggle="modal" data-bs-target="#agregarProdCarrito" href="#" role="button"
                                         style="background-color: #7dcf72;color:aliceblue;">&#128722;</a>';
                                 } else {
@@ -158,9 +174,37 @@ include("../BackEnd/showProducto.php");
                                                 <p><span>$500</span></p>
                                             </div>
                                         </div>
-                                        <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C;">
-                                            <h5>Pagar con PayPal</h5>
-                                        </button>
+                                        <div id="paypal-button-container"></div>
+                                        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                                        <script>
+                                            paypal.Button.render({
+                                                env: '<?php echo PayPalENV; ?>',
+                                                client: {
+                                                    <?php if(ProPayPal) { ?>  
+                                                    production: '<?php echo PayPalClientId; ?>'
+                                                    <?php } else { ?>
+                                                    sandbox: '<?php echo PayPalClientId; ?>'
+                                                    <?php } ?>  
+                                                },
+                                                payment: function (data, actions) {
+                                                    return actions.payment.create({
+                                                        transactions: [{
+                                                            amount: {
+                                                                total: '<?php echo $productoBuscado['precio']; ?>',
+                                                                currency: '<?php echo 'MXN' ?>'
+                                                            }
+                                                        }]
+                                                    });
+                                                },
+                                                onAuthorize: function (data, actions) {
+                                                    return actions.payment.execute()
+                                                        .then(function () {
+                                                            const myModal = new bootstrap.Modal(document.getElementById("CalificarProducto"));
+                                                            myModal.show();
+                                                        });
+                                                }
+                                            }, '#paypal-button-container');
+                                        </script>
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#tarjetaCredito">
                                             <h5>Tarjeta de credito</h5>
@@ -345,24 +389,12 @@ include("../BackEnd/showProducto.php");
                             <input type="text" class="form-control" id="cvcTarjetaCredit">
                             <label for="numTarjetaCredit">cvc de la tarjeta</label>
                         </div>
-                        <p>Ingresa la cantidad a comprar</p>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="cantCompV" aria-label="Floating label select example">
-                                <option selected value="1">1</option>
-                                <?php
-                                        $numeroOpciones = $productoBuscado['cant_disp'];
-                                        for ($i = 2; $i <= $numeroOpciones; $i++) {
-                                            echo "<option value='$i'>$i</option>";
-                                        }
-                                        ?>
-                            </select>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-target="#pagar"
                         data-bs-toggle="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" id="validarBtnTarjeta" onclick="storeCantidadProd(document.getElementById('cantCompV').value)">Confirmar</button>
+                    <button type="button" class="btn btn-danger" id="validarBtnTarjeta">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -539,6 +571,7 @@ include("../BackEnd/showProducto.php");
         validarBtn.removeAttribute("data-bs-target");
     });
     </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <?php
         include_once('../assets/General/footer.php');

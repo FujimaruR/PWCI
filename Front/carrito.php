@@ -37,16 +37,15 @@ include("../BackEnd/showCarrito.php");
                 <div class="card" style="background-color:#f5d3dfe4; border-radius: 30px;">
                     <div class="card-header">
                         <h5>Cesta de la compra<?php echo '('.$rowListasNCount.')'; ?></h5>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Seleccionar todos los productos
-                            </label>
-                        </div>
                     </div>
                     <div class="card-body">
                         <?php
                         if($carritoBuscar !== null){
+                                echo '<form action="" id="idFormCarrito" method="post">
+                                <input type="text" name="idProdCarritoForm" id="idProdCarritoForm" value="">
+                                <input type="text" name="precioCarritoForm" id="precioCarritoForm" value="">
+                                <input type="text" name="cantidadCarritoForm" id="cantidadCarritoForm" value="">
+                            </form>';
                             foreach ($carritoBuscar as $producto){
                                 $productrad1 = 'idProdCarrito_' . $producto['id_productoCar'];
                                 $cantidadcomd = 'idProdCarritoCan_' . $producto['id_productoCar'];
@@ -60,7 +59,7 @@ include("../BackEnd/showCarrito.php");
                                         <div class="row mx-auto">
                                             <div class="col-lg-3">
                                                 <input class="form-check-input producto-checkbox" type="radio" name="'.$productrad1.'"
-                                                    id="'.$productrad1.'">
+                                                    id="'.$productrad1.'" onclick="storeProductIdCarrito(' . $producto['id_productoCar'] . ', '.$producto['precio'].')">
                                             </div>
                                             <div class="col-lg-4 text-center">
                                                 <div class="dropdown">
@@ -387,22 +386,6 @@ include("../BackEnd/showCarrito.php");
     <script src="http://localhost/prueba/PWCI/Front/js/carrito.js"></script>
     <script>
     const radiosProductos = document.querySelectorAll('[name^="idProdCarrito_"]');
-    const radioSeleccionarTodos = document.getElementById("flexRadioDefault1");
-
-    radioSeleccionarTodos.addEventListener("click", () => {
-        radiosProductos.forEach(radio => {
-            radio.checked = radioSeleccionarTodos.checked;
-        });
-    });
-
-    radiosProductos.forEach(radioProducto => {
-        radioProducto.addEventListener("click", () => {
-            if (radioProducto.checked) {
-                radioProducto.checked = false;
-                //radioSeleccionarTodos.checked = false;
-            }
-        });
-    });
 
     function storeProductId(idProducto) {
         var modal = document.getElementById('idProdLista');
@@ -419,7 +402,56 @@ include("../BackEnd/showCarrito.php");
 
     function storeProductIdBorrar(idProducto) {
         var modal = document.getElementById('idProdListaBorrar');
-        modal.value = idProducto;
+            modal.value = idProducto;
+        }
+
+        var carritoData = [];
+
+        function storeProductIdCarrito(idProducto, idlista) {
+            var modalc = document.getElementById('idProdCarritoForm');
+        var modalci = document.getElementById('precioCarritoForm');
+        var modalse = document.getElementById('cantidadCarritoForm');
+
+        // Busca si ya existe un registro para el producto actual
+        var existingIndex = carritoData.findIndex(item => item.idProducto === idProducto);
+
+        if (existingIndex !== -1) {
+            // Si ya existe, actualiza los valores
+            carritoData[existingIndex].precio = idlista;
+            carritoData[existingIndex].cantidad = document.getElementById('idProdCarritoCan_' + idProducto).value;
+        } else {
+            // Si no existe, agrega un nuevo registro
+            carritoData.push({
+                idProducto: idProducto,
+                precio: idlista,
+                cantidad: document.getElementById('idProdCarritoCan_' + idProducto).value
+            });
+        }
+
+        // Actualiza los valores en los campos ocultos
+        modalc.value = JSON.stringify(carritoData.map(item => item.idProducto));
+        modalci.value = JSON.stringify(carritoData.map(item => item.precio));
+        modalse.value = JSON.stringify(carritoData.map(item => item.cantidad));
+
+        var inputIdProdCarrito = document.getElementById('idProdCarritoForm');
+        var inputPrecioCarrito = document.getElementById('precioCarritoForm');
+        var inputCantidadCarrito = document.getElementById('cantidadCarritoForm');
+
+        inputIdProdCarrito.value = carritoData.map(item => item.idProducto).join(', ');
+        inputPrecioCarrito.value = carritoData.map(item => item.precio).join(', ');
+        inputCantidadCarrito.value = carritoData.map(item => item.cantidad).join(', ');
+
+        var radiobtnA = document.getElementById('idProdCarrito_'+ idProducto);
+        if(!radiobtnA.checked){
+            radiobtnA.checked = !radiobtnA.checked;
+        } else{
+            radiobtnA.checked = radiobtnA.checked;
+        }
+
+
+        /*var form = document.getElementById('idFELM');
+
+        form.submit();*/
     }
     </script>
 

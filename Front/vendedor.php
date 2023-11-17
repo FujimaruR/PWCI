@@ -56,10 +56,10 @@ include("../BackEnd/showSeller.php");
                                         <p class="card-text">Ingrese el rango de fechas: </p>
                                         <p class="me-2">Desde: </p>
                                         <input type="date" name="dateIni" id="dateIni" class="form-control mb-2 mb-md-0"
-                                            onchange="validarFechaI()" />
+                                            onchange="validarFechaI()" required />
                                         <p class="me-2">Hasta: </p>
                                         <input type="date" name="dateFin" id="dateFin" class="form-control mb-2 mb-md-0"
-                                            onchange="validarFechaF()" />
+                                            onchange="validarFechaF()" required />
                                     </div>
                                 </div>
                                 <div class="col-lg-3 mx-auto">
@@ -80,18 +80,21 @@ include("../BackEnd/showSeller.php");
                                             id="buttonAgregarCategoriaVendedor">Confirmar</button>
                                     </div>
                                     <p>Categorias: </p>
-                                    <textarea disabled class="form-control" id="textCategVen" name="textCategVen"></textarea>
+                                    <textarea disabled class="form-control" id="textCategVen"
+                                        name="textCategVen"></textarea>
 
-                                    
+
                                     <div>
                                         <ul class="ml-2">
                                             <li>
-                                                <button class="btn btn-outline-danger my-2" type="button" id="elimCategcv" name="elimCategcv">Eliminar</button>
+                                                <button class="btn btn-outline-danger my-2" type="button"
+                                                    id="elimCategcv" name="elimCategcv">Eliminar</button>
                                             </li>
                                             <li>
                                                 <input type="hidden" name="categoriaCVarray" id="categoriaCVarray">
-                                                <button type="button" name="confirmcvbtn" id="confirmcvbtn" class="btn btn-danger my-2" data-bs-toggle="modal"
-                                                data-bs-target="#consulvent">Confirmar</button>
+
+                                                <button type="submit" name="confirmcvbtn" id="confirmcvbtn"
+                                                    class="btn btn-danger my-2">Confirmar</button>
                                             </li>
                                         </ul>
                                     </div>
@@ -105,44 +108,107 @@ include("../BackEnd/showSeller.php");
 
     </div>
 
-    <div class="modal fade" id="consulvent" tabindex="-1" aria-labelledby="consulventLabel" aria-hidden="true">
+    <div class=" modal fade" id="consulvent" tabindex="-1" aria-labelledby="consulventLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Consulta de ventas</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Consulta de ventas</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6 consuagrupa">
                             <h1>Detallada</h1>
-                            <div class="consualtagrupada">
-                                <p class="izquierda">Fecha y hora de la venta:</p>
-                                <p class="derecha">01/09/2023 a las 11:59</p>
-                                <p class="izquierda">Categoria:</p>
-                                <p class="derecha">Anime, ropa</p>
-                                <p class="izquierda">Producto:</p>
-                                <p class="derecha">Cosplay escolar Hatsune Miku</p>
-                                <p class="izquierda">Calificacion:</p>
-                                <p class="derecha">5 estrellas</p>
-                                <p class="izquierda">Precio:</p>
-                                <p class="derecha">200MXN</p>
-                                <p class="izquierda">Existencia actual:</p>
-                                <p class="derecha">5</p>
-                                <p>Producto detallado</p>
-                            </div>
+                            <?php
+                            if ($consultaVenta !== null){
+                                foreach ($consultaVenta as $consulta){
+                                    $idProductoEn = $consulta['id_producto'];
+
+                                    $consultaImagenes = "SELECT img, id_categoriac, nombre_categoria FROM vista_productos_completo WHERE id_Producto = :idprod";
+                                    $stmtImagenes = $conn->prepare($consultaImagenes);
+                                    $stmtImagenes->bindParam(':idprod', $idProductoEn);
+                                    $stmtImagenes->execute();
+                                    $filasImagenes = $stmtImagenes->fetchAll(PDO::FETCH_ASSOC);
+
+                                    $imagenesPorCategoria = [];
+                                    $categoriasString = '';
+                                    foreach ($filasImagenes as $fila) {
+                                        $categoria = $fila['id_categoriac'];
+                                        $nombreCategoria = $fila['nombre_categoria'];
+                                        $imagen = $fila['img'];
+                                        if (!isset($imagenesPorCategoria[$categoria])) {
+                                            $imagenesPorCategoria[$categoria] = $imagen;
+                                            $categoriasString .= $nombreCategoria . ', ';
+                                        }
+                                    }
+                                    $categoriasString = rtrim($categoriasString, ', '); 
+
+                                    echo'<div class="consualtagrupada">
+                                    <p class="izquierda">Fecha y hora de la venta:</p>
+                                    <p class="derecha">'.$consulta['fechaCompra'].'</p>
+                                    <p class="izquierda">Categoria:</p>
+                                    <p class="derecha">'.$categoriasString.'</p>
+                                    <p class="izquierda">Producto:</p>
+                                    <p class="derecha">'.$consulta['nombre_producto'].'</p>
+                                    <p class="izquierda">Calificacion:</p>
+                                    <p class="derecha">'.$consulta['calificacion'].' estrellas</p>
+                                    <p class="izquierda">Precio:</p>
+                                    <p class="derecha">MXN$'.$consulta['precio_producto'].'</p>
+                                    <p class="izquierda">Existencia actual:</p>
+                                    <p class="derecha">'.$consulta['cant_disp_producto'].'</p>
+                                    <p>Producto detallado</p>
+                                </div>';
+                                }
+                            } else{
+                                echo '<div class="consualtagrupada">
+                                <p>No compras en el rango de fechas.</p>
+                                </div>';
+                            }
+                            ?>
                         </div>
                         <div class="col-md-6 consuagrupa">
                             <h1>Agrupada</h1>
-                            <div class="consualtagrupada">
-                                <p class="izquierda">Mes y año de la venta:</p>
-                                <p class="derecha">Septiembre del 2023</p>
-                                <p class="izquierda">Categoria:</p>
-                                <p class="derecha">Anime, ropa</p>
-                                <p class="izquierda">Ventas:</p>
-                                <p class="derecha">1 pieza</p>
-                                <p>Producto agrupado</p>
-                            </div>
+                            <?php 
+                            if ($consultaVenta !== null){
+                                foreach ($consultaVenta as $consultag){
+                                    $idProductoEng = $consultag['id_producto'];
+
+                                    $consultaImagenesg = "SELECT img, id_categoriac, nombre_categoria FROM vista_productos_completo WHERE id_Producto = :idprod";
+                                    $stmtImagenesg = $conn->prepare($consultaImagenesg);
+                                    $stmtImagenesg->bindParam(':idprod', $idProductoEng);
+                                    $stmtImagenesg->execute();
+                                    $filasImagenesg = $stmtImagenesg->fetchAll(PDO::FETCH_ASSOC);
+
+                                    $imagenesPorCategoriag = [];
+                                    $categoriasStringr = '';
+                                    foreach ($filasImagenesg as $filag) {
+                                        $categoriag = $filag['id_categoriac'];
+                                        $nombreCategoriag = $filag['nombre_categoria'];
+                                        $imageng = $filag['img'];
+                                        if (!isset($imagenesPorCategoriag[$categoriag])) {
+                                            $imagenesPorCategoriag[$categoriag] = $imageng;
+                                            $categoriasStringr .= $nombreCategoriag . ', ';
+                                        }
+                                    }
+                                    $categoriasStringr = rtrim($categoriasStringr, ', '); 
+
+                                    echo '<div class="consualtagrupada">
+                                    <p class="izquierda">Mes y año de la venta:</p>
+                                    <p class="derecha">'.date('m/Y', strtotime($consultag['fechaCompra'])).'</p>
+                                    <p class="izquierda">Categoria:</p>
+                                    <p class="derecha">'.$categoriasString.'</p>
+                                    <p class="izquierda">Ventas:</p>
+                                    <p class="derecha">'.$consultag['cantidadComprada'].' piezas</p>
+                                    <p>Producto agrupado</p>
+                                </div>';
+                                }
+                            } else{
+                                echo '<div class="consualtagrupada">
+                                <p>No compras en el rango de fechas.</p>
+                                </div>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -171,7 +237,7 @@ include("../BackEnd/showSeller.php");
                         $imagen_urla = 'data:image/png;base64,' . $imagen_base64a;
 
                         echo '<div class="col-md-3">
-                            <a href="../Front/vistaProducto.php?idProductoEn=' . $productoas['id_Producto'] . '">
+                            <a href="../Front/editar_producto.php?idProductoEn=' . $productoas['id_Producto'] . '">
                                 <div class="card productocard" style="width: 18rem;">
                                     <img src="' . $imagen_urla . '" class="card-img-top" alt="' . $productoas['nombre'] . '"
                                         style="object-fit: cover; height: 200px;">
@@ -220,42 +286,48 @@ include("../BackEnd/showSeller.php");
         include_once('../assets/General/footer.php');
     ?>
 
-    
+
     <script>
     var categoriasAgregadasCV = [];
-    document.getElementById("buttonAgregarCategoriaVendedor").addEventListener("click", function() {
-    var selectCV = document.getElementById("comboboxCV");
-    var categoriaSeleccionadaCV = selectCV.options[selectCV.selectedIndex].text;
-    var textareacv = document.getElementById("textCategVen");
-    if (!categoriasAgregadasCV.includes(categoriaSeleccionadaCV)) {
-        textareacv.value += categoriaSeleccionadaCV + "\n";
-        categoriasAgregadasCV.push(categoriaSeleccionadaCV);
-    } else {
-        alert("¡Esta categoría ya ha sido agregada!");
-    }
-    });
+    document.getElementById("buttonAgregarCategoriaVendedor").addEventListener("click",
+        function() {
+            var selectCV = document.getElementById("comboboxCV");
+            var categoriaSeleccionadaCV = selectCV.options[selectCV.selectedIndex]
+                .text;
+            var textareacv = document.getElementById("textCategVen");
+            if (!categoriasAgregadasCV.includes(categoriaSeleccionadaCV)) {
+                textareacv.value += categoriaSeleccionadaCV + "\n";
+                categoriasAgregadasCV.push(categoriaSeleccionadaCV);
+            } else {
+                alert("¡Esta categoría ya ha sido agregada!");
+            }
+        });
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
 
-            
+
         var confirmFormBtncv = document.getElementById('confirmcvbtn');
         var elimCategoriaBtncv = document.getElementById('elimCategcv');
 
-        confirmFormBtncv.addEventListener('click', function () {
-            
-            var categoriasJSONcv = categoriasAgregadasCV.length > 0 ? JSON.stringify(categoriasAgregadasCV) : null;
-            
-            document.getElementById("categoriaCVarray").value = categoriasJSONcv;
-            
+        confirmFormBtncv.addEventListener('click', function() {
+
+            var categoriasJSONcv = categoriasAgregadasCV.length > 0 ?
+                JSON.stringify(categoriasAgregadasCV) : null;
+
+            document.getElementById("categoriaCVarray").value =
+                categoriasJSONcv;
+
         });
 
-        elimCategoriaBtncv.addEventListener('click', function () {
-            
+        elimCategoriaBtncv.addEventListener('click', function() {
+
             document.getElementById('textCategVen').value = null;
             categoriasAgregadasCV = [];
         });
     });
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 </body>
 

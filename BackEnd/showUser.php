@@ -10,6 +10,13 @@ include('../BackEnd/conexion/cn_db.php');
             $stmtConsultaProd->execute();
             $listaProductosV = $stmtConsultaProd->fetchAll(PDO::FETCH_ASSOC);
             $rowListasProdCount = $stmtConsultaProd->rowCount();
+
+            echo '<script>
+                    window.onload = function() {
+                        const myModal = new bootstrap.Modal(document.getElementById("verlistaprod"));
+                        myModal.show();
+                    };
+                </script>';
         }
 
         if(isset($_SESSION['usuario'])){
@@ -202,16 +209,17 @@ include('../BackEnd/conexion/cn_db.php');
                 exit();
             }
         }
-        if(isset($_POST['btnElmProdLis'])){
+        if(isset($_POST['idProdListaB'])){
             try {
                 
                 $idProdLBorrar = trim($_POST['idProdLBorrar']);
                 $idProdListaB = trim($_POST['idProdListaB']);
+
     
                 $queryElimProdFLista = "DELETE FROM tb_listasprod WHERE IDlista = :idLpElim AND IDproductoLista = :idLisPElim";
                 $stmtElimPFLista = $conn->prepare($queryElimProdFLista);
-                $stmtElimPFLista->bindParam(':idLpElim', $idProdLBorrar);
-                $stmtElimPFLista->bindParam(':idLisPElim', $idProdListaB);
+                $stmtElimPFLista->bindParam(':idLpElim', $idProdListaB);
+                $stmtElimPFLista->bindParam(':idLisPElim', $idProdLBorrar);
                 $stmtElimPFLista->execute();
     
                 header("Location: ../Front/perfil_usuario.php");
@@ -221,6 +229,10 @@ include('../BackEnd/conexion/cn_db.php');
                     echo "Error en la base de datos: " . $e->getMessage();
                     exit();
                 }
+        } else {
+            echo 'hola ';
+            print_r($_POST);
+            exit();
         }
     }
 ?>
