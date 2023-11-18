@@ -103,6 +103,8 @@ include("../BackEnd/editProd.php");
                                 <textarea disabled class="form-control" placeholder="Leave a comment here"
                                     id="floatingTextaread" name="floatingTextaread"></textarea>
                                 <label for="floatingTextaread">Categorias del producto</label>
+                                <button class="btn btn-secondary my-2" type="button" id="btnBorrarCate">Borrar categorias</button>
+                                <hr>
                             </div>
                             <input type="hidden" id="categoriasInput" name="categoriasInput" value="">
                             <div class="form-check form-switch d-flex">
@@ -160,6 +162,12 @@ include("../BackEnd/editProd.php");
         var categoriasJSON = JSON.stringify(categoriasAgregadas);
 
         document.getElementById("categoriasInput").value = categoriasJSON;
+        });
+
+        var elimCategoriaBtn = document.getElementById('btnBorrarCate');
+        elimCategoriaBtn.addEventListener('click', function () {
+            document.getElementById('floatingTextaread').value = null;
+            categoriasAgregadas = [];
         });
 
 
