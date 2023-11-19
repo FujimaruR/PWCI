@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../BackEnd/showSeller.php");
+include("../BackEnd/showMensajesCom.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,9 +38,15 @@ include("../BackEnd/showSeller.php");
         <div class="row">
             <div class="col-md-3">
                 <ul class="list-group" id="user-list">
-                    <li class="list-group-item active list-group-item-danger" data-user="usuario1">Usuario 1</li>
-                    <li class="list-group-item list-group-item-danger" data-user="usuario2">Usuario 2</li>
-                    <!-- Agrega más usuarios aquí -->
+                    <?php 
+                    if ($usuarioConversaciones !== null){
+                        foreach ($usuarioConversaciones as $conversaciones){
+                            echo ' <li class="list-group-item active list-group-item-danger" data-user="'.$conversaciones['id_mensaje'].'">Vendedor '.$conversaciones['id_receptor'].'</li>';
+                        }
+                    } else {
+
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="col-md-9">
@@ -56,7 +62,9 @@ include("../BackEnd/showSeller.php");
                     <div class="card-footer">
                         <form id="message-form">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Escribe tu mensaje...">
+                                <input type="text" class="form-control" placeholder="Escribe tu mensaje..." name="mensajeForm" id="mensajeForm" value="">
+                                <input type="hidden" name="idchatForm" id="idchatForm" value="">
+                                <input type="hidden" name="idemisorForm" id="idemisorForm" value="<?= $id_seller; ?>">
                                 <div class="input-group-append">
                                     <button class="btn btn-danger" type="submit">Enviar</button>
                                 </div>
@@ -68,25 +76,10 @@ include("../BackEnd/showSeller.php");
         </div>
     </div>
 
-    <script>
-    var input1 = document.getElementById("input1");
-    var input2 = document.getElementById("input2");
-
-    input1.addEventListener("input", validarNumero);
-    input2.addEventListener("input", validarNumero);
-
-    function validarNumero() {
-        var valor = parseFloat(this.value);
-
-        if (valor <= 0 || isNaN(valor)) {
-            this.value = 1;
-        }
-    }
-    </script>
-
     <?php
         include_once('../assets/General/footer.php');
     ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     
 </body>
 

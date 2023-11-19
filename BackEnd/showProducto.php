@@ -79,6 +79,16 @@ try {
         $stmtVcom->bindParam(':idpro', $idProductoEn);
         $stmtVcom->execute();
         $usuarioVcomentario = $stmtVcom->fetchAll(PDO::FETCH_ASSOC);
+
+
+        $consultaCotizar = "SELECT * FROM tb_cotizaciones 
+        WHERE id_productoC = :idprocot AND id_userC = :idusercot";
+        
+        $stmtVcoti = $conn->prepare($consultaCotizar);
+        $stmtVcoti->bindParam(':idprocot', $idProductoEn);
+        $stmtVcoti->bindParam(':idusercot', $id_seller);
+        $stmtVcoti->execute();
+        $usuarioVcotizar = $stmtVcoti->fetch(PDO::FETCH_ASSOC);
     } else {
         echo "ID del producto no proporcionado.";
     }

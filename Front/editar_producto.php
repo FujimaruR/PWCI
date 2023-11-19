@@ -28,46 +28,70 @@ include("../BackEnd/modificarProducto.php");
                 <div class="col-md-6 col-lg-6 imgven mx-auto">
                     <div class="card " style="background-color:#f5d3dfe4; border-radius: 30px;">
                         <div class="card-body ">
-                            <h4>Laptop</h4>
+                            <h4><?php echo $productoBuscado['nombre']; ?></h4>
                             <p class="mb-2 mb-md-0 py-2">Modificar las imágenes y el video del producto</p>
 
                             <div id="mediaCarousel" class="carousel slide py-2">
-                                <div class="carousel-inner text-center" id="mediaCarouselInner">
-                                    <div class="carousel-item active">
-                                        <img src="http://localhost/prueba/PWCI/img/principal/compu.jpg" alt="..."
-                                            style="max-width: 100%; max-height: 400px">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="http://localhost/prueba/PWCI/img/principal/lampara.jpg"
-                                            class="d-block w-100" alt="..." style="max-width: 100%; max-height: 400px">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="http://localhost/prueba/PWCI/img/principal/Labial.jpg"
-                                            class="d-block w-100" alt="..." style="max-width: 100%; max-height: 400px">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <video controls style="max-width: 100%; height: 400px;">
-                                            <source src="../img/cubo.mp4" type="video/mp4">
-                                            Tu navegador no admite el elemento de video.
-                                        </video>
-                                    </div>
+                                <ol class="carousel-indicators">
+                                    <?php
+                                // Crear los indicadores del carrusel
+                                $numCategorias = count($ImagenesFila);
+                                for ($i = 0; $i < $numCategorias; $i++) {
+                                    echo '<li data-bs-target="#mediaCarousel" data-bs-slide-to="' . $i . '"';
+                                    if ($i === 0) {
+                                        echo ' class="active"';
+                                    }
+                                    echo '></li>';
+                                }
+                                ?>
+                                </ol>
+                                <!-- Contenido del carrusel -->
+                                <div class="carousel-inner">
+                                    <?php
+                                $contador = 0;
+                                foreach ($ImagenesFila as $index => $fila) {
+                                    echo '<div class="carousel-item';
+                                    if ($index === 0) {
+                                        echo ' active';
+                                    }
+                                    echo '">';
+
+                                    if ($contador < 3) {
+                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($fila['img']) . '" style="max-width: 100%; height: 500px;" class="card-img-top object-fit-cover" alt="Categoría: ' . $fila['id_img'] . '">';
+                                    
+                                    } else {
+                                    $contador = 0;
+                                    echo '<video controls style="max-width: 100%; height: 500px;">
+                                        <source src="data:image/jpeg;base64,' . base64_encode($fila['img']) . '" type="video/mp4">
+                                        Tu navegador no admite el elemento de video.
+                                    </video>';
+                                    }
+                                    $contador++;
+                                    echo '</div>';
+                                }
+                                ?>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#mediaCarousel"
-                                    data-bs-slide="prev">
+                                <a class="carousel-control-prev" href="#mediaCarousel" role="button" data-bs-slide="prev"
+                                    style="margin:0 -50px">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#mediaCarousel"
-                                    data-bs-slide="next">
+                                    <span class="visually-hidden">Anterior</span>
+                                </a>
+                                <a class="carousel-control-next" href="#mediaCarousel" role="button" data-bs-slide="next"
+                                    style="margin:0 -50px">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </a>
                             </div>
 
                             <video id="video-preview" controls style="display: none;"></video>
-                            <input class="form-control" type="file" id="img-uploader-nprod" accept="image/*, video/*"
+                            <input class="form-control" type="file" id="img-uploader-nprod" name="imguploaderNprod[]" accept="image/*, video/*"
                                 multiple>
                         </div>
+                        <?php
+                        if (isset($_GET['error'])) {
+                            echo "Error: " . urldecode($_GET['error']);
+                        }
+                        ?>
                     </div>
 
                 </div>
@@ -76,16 +100,16 @@ include("../BackEnd/modificarProducto.php");
                         <div class="card-body">
                             <h5 class="text-center">Datos del producto</h5>
                             <div class="form-floating my-2">
-                                <input type="text" class="form-control" id="productinput" placeholder="...">
+                                <input type="text" class="form-control" id="productinput" name="productinput" value="<?= $productoBuscado['nombre']; ?>">
                                 <label for="productinput">Nombre del producto</label>
                             </div>
                             <div class="form-floating my-2">
-                                <textarea class="form-control" placeholder="Leave a comment here"
-                                    id="floatingTextarea"></textarea>
+                                <textarea class="form-control"
+                                    id="floatingTextarea" name="floatingTextarea" value="<?= $productoBuscado['descripcion']; ?>"><?= $productoBuscado['descripcion']; ?></textarea>
                                 <label for="floatingTextarea">Descripcion del producto</label>
                             </div>
                             <div class="form-floating my-2">
-                                <input type="number" class="form-control" id="floatingInput" placeholder="...">
+                                <input type="number" class="form-control" id="floatingInput" name="floatingInput" value="<?= $productoBuscado['cant_disp']; ?>">
                                 <label for="floatingInput">Cantidad del producto</label>
                             </div>
                             <p>Categorias: </p>
@@ -126,9 +150,9 @@ include("../BackEnd/modificarProducto.php");
                             </div>
                             <div class="input-group form-floating my-2">
                                 <div class="input-group-text">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                    <input class="form-check-input mt-0" type="checkbox" id="checkCot" name="checkCot" value="CotizarUsuario" aria-label="Checkbox for following text input" disabled>
                                 </div>
-                                <select class="form-select" id="userSelect" name="userSelect" aria-label="Floating label select example">
+                                <select class="form-select" id="userSelect" name="userSelect" aria-label="Floating label select example" disabled>
                                 <?php
                                     if ($stmt->rowCount() > 0) {
                                         while($rowUser = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -142,13 +166,13 @@ include("../BackEnd/modificarProducto.php");
                                 <label for="userSelect" class="text-center">Usuario al que cotizar</label>
                             </div>
                             <div class="form-floating my-2">
-                                <input type="number" class="form-control" id="priceinput" placeholder="...">
+                                <input type="number" class="form-control" id="priceinput" name="priceinput" placeholder="..." value="<?= $productoBuscado['precio']; ?>">
                                 <label for="priceinput">Precio del producto</label>
                             </div>
-                            <button type="button" class="btn btn-secondary">Cancelar</button>
-                            <button type="button" class="btn btn-danger">Confirmar</button>
-                            <button type="button" class="btn"
-                                style="background-color:#7D2C6F; margin-top: 1%; color: white;">Eliminar
+                            <a role="button" class="btn btn-secondary" href="../Front/vendedor.php">Cancelar</a>
+                            <button type="submit" class="btn btn-danger" id="btnConfirmEdicion" name="btnConfirmEdicion">Confirmar</button>
+                            <button type="submit" class="btn"
+                                style="background-color:#7D2C6F; margin-top: 1%; color: white;" id="btnEliminarProd" name="btnEliminarProd">Eliminar
                                 producto</button>
                         </div>
                     </div>
@@ -198,12 +222,41 @@ include("../BackEnd/modificarProducto.php");
         elimCategoriaBtn.addEventListener('click', function () {
             document.getElementById('floatingTextaread').value = null;
             categoriasAgregadas = [];
+            document.getElementById("categoriasInput").value = null;
         });
 
 
     </script>
 
     <script src="http://localhost/prueba/PWCI/Front/js/editar_producto.js"></script>
+    <script>
+    const checkbox = document.getElementById('flexSwitchCheckDefault');
+    const priceInput = document.getElementById('priceinput');
+    const confirmUserCheck = document.getElementById('checkCot');
+    const userInput = document.getElementById('userSelect');
+
+    checkbox.addEventListener('change', function () {
+    if (this.checked) {
+        priceInput.disabled = true; // Desactivar el input
+        confirmUserCheck.disabled = false;
+    } else {
+        priceInput.disabled = false; // Habilitar el input
+        confirmUserCheck.disabled = true;
+        userInput.disabled = true;
+    }
+    });
+
+    confirmUserCheck.addEventListener('change', function (){
+        if (this.checked){
+            userInput.disabled = false;
+            priceInput.disabled = false;
+        } else {
+            userInput.disabled = true;
+            priceInput.disabled = true;
+        }
+    });
+
+    </script>
 
     <?php
         include_once('../assets/General/footer.php');

@@ -264,7 +264,7 @@ include("../BackEnd/showCarrito.php");
                     
                     <input type="hidden" name="idProdListaBorrar" id="idProdListaBorrar" value="">
                     
-                    <button type="submit" class="btn btn-danger">Confirmar</button>
+                    <button type="submit" class="btn btn-danger" name="btnElmPCar" id="btnElmPCar">Confirmar</button>
                     </form>
                 </div>
             </div>

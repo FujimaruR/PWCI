@@ -44,6 +44,22 @@ try {
     $stmtSListas->execute();
     $listasCom = $stmtSListas->fetchAll(PDO::FETCH_ASSOC);
     $rowListasNCount = $stmtSListas->rowCount();
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST['btnElmPCar'])){
+            $idpelim = trim($_POST['idProdListaBorrar']);
+            $consultaElim = "DELETE FROM tb_carrito 
+            WHERE id_productoCar = :idprodca";
+            
+            $stmtelim = $conn->prepare($consultaElim);
+            $stmtelim->bindParam(':idprodca', $idpelim);
+            $stmtelim->execute();
+
+            header("Location: ../Front/carrito.php");
+                
+            exit(); 
+        }
+    }
 } catch (PDOException $e) {
     echo "Error en la base de datos: " . $e->getMessage();
     exit();
