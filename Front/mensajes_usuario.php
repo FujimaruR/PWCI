@@ -44,7 +44,7 @@ include("../BackEnd/showMensajesCom.php");
                             echo ' <li class="list-group-item active list-group-item-danger" data-user="'.$conversaciones['id_mensaje'].'">Vendedor '.$conversaciones['id_receptor'].'</li>';
                         }
                     } else {
-
+                        echo ' <li class="list-group-item active list-group-item-danger">No chats</li>';
                     }
                     ?>
                 </ul>
@@ -56,7 +56,6 @@ include("../BackEnd/showMensajesCom.php");
                     </div>
                     <div class="card-body">
                         <ul class="list-group" id="message-list">
-                            <!-- Mensajes se agregarán aquí dinámicamente -->
                         </ul>
                     </div>
                     <div class="card-footer">

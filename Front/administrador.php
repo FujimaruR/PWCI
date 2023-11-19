@@ -189,8 +189,8 @@ include("../BackEnd/adminProductos.php");
     <script>
     
     function storeProductId(idProducto) {
-        var modal = document.getElementById('pconfirmarp');
-        modal.setAttribute('data-idproducto-modal', idProducto);
+        var modal = document.getElementById('idProductoInput');
+        modal.value = idProducto;
     }
     /*
     document.addEventListener('DOMContentLoaded', function() {
@@ -211,16 +211,6 @@ include("../BackEnd/adminProductos.php");
                 });
         });
     }); */
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('pconfirmarp');
-        const idProductoInput = modal.querySelector('#idProductoInput');
-        
-        modal.addEventListener('show.bs.modal', function(event) {
-            var idProducto = modal.getAttribute('data-idproducto-modal');
-            idProductoInput.value = idProducto;
-        });
-    });
     </script>
 
 
