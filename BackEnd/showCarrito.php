@@ -59,6 +59,63 @@ try {
                 
             exit(); 
         }
+        if(isset($_POST['btncomentariomodVenta'])){
+            $IDuserComV = $id_seller;
+            $IDproductoComV = $_GET['idProductoEn']; 
+            $comentarioV = trim($_POST['comentarioventa']);
+            $calificacionV = trim($_POST['numStarsFormVenta']);
+            $precioV = trim($_POST['precioFormVenta']);
+            $cantidadV = trim($_POST['cantProdVenta']);
+
+            $consultaInsertVenta = "INSERT INTO tb_ordencompra (subtotal, id_usuario, calificacion) 
+            VALUES (:subtotalVenta, :iduserventa, :califven)";
+            
+            $stmtVenta = $conn->prepare($consultaInsertVenta);
+            $stmtVenta->bindParam(':subtotalVenta', $precioV);
+            $stmtVenta->bindParam(':iduserventa', $IDuserComV);
+            $stmtVenta->bindParam(':califven', $calificacionV);
+
+            $stmtVenta->execute();
+
+            $idVenta = $conn->lastInsertId();
+
+            $consultaInsertOrdenProd = "SELECT insertar_y_actualizarOrden(?, ?, ?, ?) as resultOrden";
+            
+            $stmtOrdenProd = $conn->prepare($consultaInsertOrdenProd);
+            $stmtOrdenProd->bindParam(1, $idVenta, PDO::PARAM_INT);
+            $stmtOrdenProd->bindParam(2, $IDproductoComV, PDO::PARAM_INT);
+            $stmtOrdenProd->bindParam(3, $precioV, PDO::PARAM_INT);
+            $stmtOrdenProd->bindParam(4, $cantidadV, PDO::PARAM_INT);
+
+            $stmtOrdenProd->execute();
+
+            $resultActualizar = $stmtOrdenProd->fetch(PDO::FETCH_ASSOC);
+
+            if ($resultActualizar['resultOrden'] == 1) {
+            
+                $sqlComentarioV = "SELECT insertar_comentario_y_actualizar_rating(?, ?, ?, ?) as result";
+                $stmtComentarioV = $conn->prepare($sqlComentarioV);
+                $stmtComentarioV->bindParam(1, $IDuserComV, PDO::PARAM_INT);
+                $stmtComentarioV->bindParam(2, $IDproductoComV, PDO::PARAM_INT);
+                $stmtComentarioV->bindParam(3, $comentarioV, PDO::PARAM_STR);
+                $stmtComentarioV->bindParam(4, $calificacionV, PDO::PARAM_INT);
+                $stmtComentarioV->execute();
+    
+                $resultV = $stmtComentarioV->fetch(PDO::FETCH_ASSOC);
+    
+                if ($resultV['result'] == 1) {
+                    header("Location: ../Front/pedidos.php"); 
+                    exit();
+                } else {
+                    echo "Error al ejecutar la función.";
+                    exit();
+                }
+
+            } else {
+                echo "Error al ejecutar la función.";
+                exit();
+            }
+        }
     }
 } catch (PDOException $e) {
     echo "Error en la base de datos: " . $e->getMessage();

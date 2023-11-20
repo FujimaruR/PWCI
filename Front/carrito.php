@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../BackEnd/showCarrito.php");
+include('../Api/config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +46,7 @@ include("../BackEnd/showCarrito.php");
                                 <input type="text" name="idProdCarritoForm" id="idProdCarritoForm" value="">
                                 <input type="text" name="precioCarritoForm" id="precioCarritoForm" value="">
                                 <input type="text" name="cantidadCarritoForm" id="cantidadCarritoForm" value="">
+                                <input type="text" name="totalPaypalF" id="totalPaypalF" value="0.00">
                             </form>';
                             foreach ($carritoBuscar as $producto){
                                 $productrad1 = 'idProdCarrito_' . $producto['id_productoCar'];
@@ -59,7 +61,7 @@ include("../BackEnd/showCarrito.php");
                                         <div class="row mx-auto">
                                             <div class="col-lg-3">
                                                 <input class="form-check-input producto-checkbox" type="radio" name="'.$productrad1.'"
-                                                    id="'.$productrad1.'" onclick="storeProductIdCarrito(' . $producto['id_productoCar'] . ', '.$producto['precio'].')">
+                                                    id="'.$productrad1.'" value="' . $producto['id_productoCar'] . '" onclick="storeProductIdCarrito(' . $producto['id_productoCar'] . ', '.$producto['precio'].')">
                                             </div>
                                             <div class="col-lg-4 text-center">
                                                 <div class="dropdown">
@@ -230,9 +232,38 @@ include("../BackEnd/showCarrito.php");
                             <p><span>$500</span></p>
                         </div>
                     </div>
-                    <button class="btn btnHover" style="background-color: #FFC43A; color:#03258C;">
-                        <h5>Pagar con PayPal</h5>
-                    </button>
+                    <div id="paypal-button-container"></div>
+                    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                    <script>
+                    paypal.Button.render({
+                        env: '<?php echo PayPalENV; ?>',
+                        client: {
+                            <?php if(ProPayPal) { ?>
+                            production: '<?php echo PayPalClientId; ?>'
+                            <?php } else { ?>
+                            sandbox: '<?php echo PayPalClientId; ?>'
+                            <?php } ?>
+                        },
+                        payment: function(data, actions) {
+                            return actions.payment.create({
+                                transactions: [{
+                                    amount: {
+                                        total: document.getElementById('totalPaypalF').value,
+                                        currency: '<?php echo 'MXN' ?>'
+                                    }
+                                }]
+                            });
+                        },
+                        onAuthorize: function(data, actions) {
+                            return actions.payment.execute()
+                                .then(function() {
+                                    const myModal = new bootstrap.Modal(document.getElementById(
+                                        "CalificarProducto"));
+                                    myModal.show();
+                                });
+                        }
+                    }, '#paypal-button-container');
+                    </script>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                         data-bs-target="#tarjetaCredito">
                         <h5>Tarjeta de credito</h5>
@@ -258,13 +289,14 @@ include("../BackEnd/showCarrito.php");
                 </div>
                 <div class="modal-body">
                     <form action="" method="post">
-                    <div class="container ">
-                        <h4>¿Seguro que quieres eliminar el producto del carrito?</h4>
-                    </div>
-                    
-                    <input type="hidden" name="idProdListaBorrar" id="idProdListaBorrar" value="">
-                    
-                    <button type="submit" class="btn btn-danger" name="btnElmPCar" id="btnElmPCar">Confirmar</button>
+                        <div class="container ">
+                            <h4>¿Seguro que quieres eliminar el producto del carrito?</h4>
+                        </div>
+
+                        <input type="hidden" name="idProdListaBorrar" id="idProdListaBorrar" value="">
+
+                        <button type="submit" class="btn btn-danger" name="btnElmPCar"
+                            id="btnElmPCar">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -339,23 +371,27 @@ include("../BackEnd/showCarrito.php");
                 </div>
                 <div class="modal-body">
                     <div class="container ">
-                        <div class="mb-3">
-                            <label for="comentario" class="form-label">Qué te pareció este producto?</label>
-                            <div class="rating">
-                                <i class="bi bi-star-fill star "></i>
-                                <i class="bi bi-star-fill star "></i>
-                                <i class="bi bi-star-fill star "></i>
-                                <i class="bi bi-star-fill star"></i>
-                                <i class="bi bi-star-fill star"></i>
+                        <form action="" method="post">
+                            <div class="mb-3">
+                                <label for="comentarioventa" class="form-label">Qué te pareció este producto?</label>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(1)"></i>
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(2)"></i>
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(3)"></i>
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(4)"></i>
+                                    <i class="bi bi-star-fill star" onclick="updateStarValueVenta(5)"></i>
+                                </div>
+                                <textarea class="form-control" id="comentarioventa" name="comentarioventa" rows="4"
+                                    placeholder="Escribe tu comentario aquí"></textarea>
                             </div>
-                            <textarea class="form-control" id="comentario" rows="4"
-                                placeholder="Escribe tu comentario aquí"></textarea>
-                        </div>
+                            <input type="hidden" id="numStarsFormVenta" name="numStarsFormVenta" value="">
+                            <input type="hidden" id="cantProdVenta" name="cantProdVenta" value="">
+                            <input type="hidden" id="precioFormVenta" name="precioFormVenta"
+                                value="<?= $productoBuscado['precio']; ?>">
+                            <button type="submit" class="btn btn-danger" id="btncomentariomodVenta"
+                                name="btncomentariomodVenta" data-bs-dismiss="modal">Confirmar</button>
+                        </form>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" id="btncomentariomod"
-                        data-bs-dismiss="modal">Confirmar</button>
                 </div>
             </div>
         </div>
@@ -372,10 +408,11 @@ include("../BackEnd/showCarrito.php");
                 <div class="modal-body">
                     <div class="container ">
                         <form action="" method="post" enctype="multipart/form-data" id="idFormAgregarProdList">
-                        <h4>¿Seguro que quieres agregar este articulo a la lista?</h4>
-                        <input type="hidden" name="idListaAgregarProd" id="idListaAgregarProd" value="">
-                        <input type="hidden" name="idListaAgregarIDl" id="idListaAgregarIDl" value="">
-                        <button type="submit" class="btn btn-danger" id="confirmBTNagregarL" name="confirmBTNagregarL">Confirmar</button>
+                            <h4>¿Seguro que quieres agregar este articulo a la lista?</h4>
+                            <input type="hidden" name="idListaAgregarProd" id="idListaAgregarProd" value="">
+                            <input type="hidden" name="idListaAgregarIDl" id="idListaAgregarIDl" value="">
+                            <button type="submit" class="btn btn-danger" id="confirmBTNagregarL"
+                                name="confirmBTNagregarL">Confirmar</button>
                         </form>
                     </div>
                 </div>
@@ -402,25 +439,47 @@ include("../BackEnd/showCarrito.php");
 
     function storeProductIdBorrar(idProducto) {
         var modal = document.getElementById('idProdListaBorrar');
-            modal.value = idProducto;
-        }
+        modal.value = idProducto;
+    }
 
-        var carritoData = [];
+    function updateStarValueVenta(starValue) {
+        var nomLista = document.getElementById('numStarsFormVenta');
+        nomLista.value = starValue;
+    }
 
-        function storeProductIdCarrito(idProducto, idlista) {
-            var modalc = document.getElementById('idProdCarritoForm');
+    var carritoData = [];
+
+    function storeProductIdCarrito(idProducto, idlista) {
+
+        var radiobtnA = document.getElementById('idProdCarrito_' + idProducto);
+
+        radiobtnA.addEventListener('click', function(event) {
+            if (radiobtnA.checked === false) {
+                radiobtnA.checked = true;
+                console.log('Radiobutton checked false:', radiobtnA.checked);
+            } else if (radiobtnA.checked === true) {
+                radiobtnA.checked = false;
+                console.log('Radiobutton checked true:', radiobtnA.checked);
+
+                /*var indexToRemove = carritoData.findIndex(item => item.idProducto === idProducto);
+                if (indexToRemove !== -1) {
+                    carritoData.splice(indexToRemove, 1);
+                }*/
+            }
+        });
+
+
+        var modalc = document.getElementById('idProdCarritoForm');
         var modalci = document.getElementById('precioCarritoForm');
         var modalse = document.getElementById('cantidadCarritoForm');
 
-        // Busca si ya existe un registro para el producto actual
         var existingIndex = carritoData.findIndex(item => item.idProducto === idProducto);
 
         if (existingIndex !== -1) {
-            // Si ya existe, actualiza los valores
-            carritoData[existingIndex].precio = idlista;
-            carritoData[existingIndex].cantidad = document.getElementById('idProdCarritoCan_' + idProducto).value;
+            /*carritoData[existingIndex].precio = idlista;
+            carritoData[existingIndex].cantidad = document.getElementById('idProdCarritoCan_' + idProducto).value;*/
+            carritoData.splice(existingIndex, 1);
         } else {
-            // Si no existe, agrega un nuevo registro
             carritoData.push({
                 idProducto: idProducto,
                 precio: idlista,
@@ -428,7 +487,6 @@ include("../BackEnd/showCarrito.php");
             });
         }
 
-        // Actualiza los valores en los campos ocultos
         modalc.value = JSON.stringify(carritoData.map(item => item.idProducto));
         modalci.value = JSON.stringify(carritoData.map(item => item.precio));
         modalse.value = JSON.stringify(carritoData.map(item => item.cantidad));
@@ -441,13 +499,6 @@ include("../BackEnd/showCarrito.php");
         inputPrecioCarrito.value = carritoData.map(item => item.precio).join(', ');
         inputCantidadCarrito.value = carritoData.map(item => item.cantidad).join(', ');
 
-        var radiobtnA = document.getElementById('idProdCarrito_'+ idProducto);
-        if(!radiobtnA.checked){
-            radiobtnA.checked = !radiobtnA.checked;
-        } else{
-            radiobtnA.checked = radiobtnA.checked;
-        }
-
 
         /*var form = document.getElementById('idFELM');
 
@@ -456,15 +507,15 @@ include("../BackEnd/showCarrito.php");
     </script>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         // Obtener todos los elementos de radio y precios
         var radios = document.querySelectorAll('.producto-checkbox');
         var precios = document.querySelectorAll('.precio-producto');
         var totalPagarElement = document.getElementById('totalPagar');
 
-        // Asignar la función a ejecutar cuando cambia un radio
+        // Asignar la función a ejecutar cuando se hace clic en un radio
         radios.forEach(function(radio) {
-            radio.addEventListener('change', recalcularTotal);
+            radio.addEventListener('click', recalcularTotal);
         });
 
         // Función para recalcular el total
@@ -475,14 +526,19 @@ include("../BackEnd/showCarrito.php");
             radios.forEach(function(radio, index) {
                 if (radio.checked) {
                     total += parseFloat(precios[index].innerText.replace('MXN$', ''));
+                } else {
+                    total -= parseFloat(precios[index].innerText.replace('MXN$', ''));
                 }
             });
 
             // Actualizar el contenido del elemento <p> del total a pagar
             totalPagarElement.innerHTML = '<strong>MXN$' + total.toFixed(2) + '</strong>';
+            var tpayp = document.getElementById('totalPaypalF');
+            tpayp.value = total.toFixed(2);
         }
     });
     </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <?php
         include_once('../assets/General/footer.php');
