@@ -61,59 +61,73 @@ try {
         }
         if(isset($_POST['btncomentariomodVenta'])){
             $IDuserComV = $id_seller;
-            $IDproductoComV = $_GET['idProductoEn']; 
+            $IDproductoComV = json_decode($_POST['idProdCarritoForm']); 
             $comentarioV = trim($_POST['comentarioventa']);
             $calificacionV = trim($_POST['numStarsFormVenta']);
-            $precioV = trim($_POST['precioFormVenta']);
-            $cantidadV = trim($_POST['cantProdVenta']);
+            $precioV = json_decode($_POST['precioCarritoForm']);
+            $cantidadV = json_decode($_POST['cantidadCarritoForm']);
 
-            $consultaInsertVenta = "INSERT INTO tb_ordencompra (subtotal, id_usuario, calificacion) 
-            VALUES (:subtotalVenta, :iduserventa, :califven)";
+            $carritoData = array_map(function($idProducto, $precio, $cantidad) {
+                return [
+                    'idProducto' => $idProducto,
+                    'precio' => $precio,
+                    'cantidad' => $cantidad,
+                ];
+            }, $IDproductoComV, $precioV, $cantidadV);
+
+            foreach ($carritoData as $producto){
+                $idProducto = $producto['idProducto'];
+                $precio = $producto['precio'];
+                $cantidad = $producto['cantidad'];
+
+                $consultaInsertVenta = "INSERT INTO tb_ordencompra (subtotal, id_usuario, calificacion) 
+                VALUES (:subtotalVenta, :iduserventa, :califven)";
+                
+                $stmtVenta = $conn->prepare($consultaInsertVenta);
+                $stmtVenta->bindParam(':subtotalVenta', $precio);
+                $stmtVenta->bindParam(':iduserventa', $IDuserComV);
+                $stmtVenta->bindParam(':califven', $calificacionV);
+
+                $stmtVenta->execute();
+
+                $idVenta = $conn->lastInsertId();
+
+                $consultaInsertOrdenProd = "SELECT insertar_y_actualizarOrden(?, ?, ?, ?) as resultOrden";
             
-            $stmtVenta = $conn->prepare($consultaInsertVenta);
-            $stmtVenta->bindParam(':subtotalVenta', $precioV);
-            $stmtVenta->bindParam(':iduserventa', $IDuserComV);
-            $stmtVenta->bindParam(':califven', $calificacionV);
+                $stmtOrdenProd = $conn->prepare($consultaInsertOrdenProd);
+                $stmtOrdenProd->bindParam(1, $idVenta, PDO::PARAM_INT);
+                $stmtOrdenProd->bindParam(2, $idProducto, PDO::PARAM_INT);
+                $stmtOrdenProd->bindParam(3, $precio, PDO::PARAM_INT);
+                $stmtOrdenProd->bindParam(4, $cantidad, PDO::PARAM_INT);
 
-            $stmtVenta->execute();
+                $stmtOrdenProd->execute();
+                $resultActualizar = $stmtOrdenProd->fetch(PDO::FETCH_ASSOC);
 
-            $idVenta = $conn->lastInsertId();
 
-            $consultaInsertOrdenProd = "SELECT insertar_y_actualizarOrden(?, ?, ?, ?) as resultOrden";
+                if ($resultActualizar['resultOrden'] == 1) {
             
-            $stmtOrdenProd = $conn->prepare($consultaInsertOrdenProd);
-            $stmtOrdenProd->bindParam(1, $idVenta, PDO::PARAM_INT);
-            $stmtOrdenProd->bindParam(2, $IDproductoComV, PDO::PARAM_INT);
-            $stmtOrdenProd->bindParam(3, $precioV, PDO::PARAM_INT);
-            $stmtOrdenProd->bindParam(4, $cantidadV, PDO::PARAM_INT);
-
-            $stmtOrdenProd->execute();
-
-            $resultActualizar = $stmtOrdenProd->fetch(PDO::FETCH_ASSOC);
-
-            if ($resultActualizar['resultOrden'] == 1) {
-            
-                $sqlComentarioV = "SELECT insertar_comentario_y_actualizar_rating(?, ?, ?, ?) as result";
-                $stmtComentarioV = $conn->prepare($sqlComentarioV);
-                $stmtComentarioV->bindParam(1, $IDuserComV, PDO::PARAM_INT);
-                $stmtComentarioV->bindParam(2, $IDproductoComV, PDO::PARAM_INT);
-                $stmtComentarioV->bindParam(3, $comentarioV, PDO::PARAM_STR);
-                $stmtComentarioV->bindParam(4, $calificacionV, PDO::PARAM_INT);
-                $stmtComentarioV->execute();
+                    $sqlComentarioV = "SELECT insertar_comentario_y_actualizar_rating(?, ?, ?, ?) as result";
+                    $stmtComentarioV = $conn->prepare($sqlComentarioV);
+                    $stmtComentarioV->bindParam(1, $IDuserComV, PDO::PARAM_INT);
+                    $stmtComentarioV->bindParam(2, $idProducto, PDO::PARAM_INT);
+                    $stmtComentarioV->bindParam(3, $comentarioV, PDO::PARAM_STR);
+                    $stmtComentarioV->bindParam(4, $calificacionV, PDO::PARAM_INT);
+                    $stmtComentarioV->execute();
+        
+                    $resultV = $stmtComentarioV->fetch(PDO::FETCH_ASSOC);
+        
+                    if ($resultV['result'] == 1) {
+                        header("Location: ../Front/pedidos.php"); 
+                        exit();
+                    } else {
+                        echo "Error al ejecutar la función.";
+                        exit();
+                    }
     
-                $resultV = $stmtComentarioV->fetch(PDO::FETCH_ASSOC);
-    
-                if ($resultV['result'] == 1) {
-                    header("Location: ../Front/pedidos.php"); 
-                    exit();
                 } else {
                     echo "Error al ejecutar la función.";
                     exit();
                 }
-
-            } else {
-                echo "Error al ejecutar la función.";
-                exit();
             }
         }
     }

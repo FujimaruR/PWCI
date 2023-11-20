@@ -163,83 +163,121 @@ include("../BackEnd/showPrincipal.php");
             <div class="py-5">
                 <h5 class="letraFuente">Mas vendidos</h5>
                 <div class="carrusel p-5">
-                    <div class="elemento">
-                        <div class="col-2">
-                            <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-
-                                <div class="dropdown">
-                                    <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
-                                        data-bs-toggle="dropdown">
-                                        <span class="heart-icon">&#x2665;</span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#crearLista">Crear lista</a></li>
-                                    </ul>
-                                </div>
-                                <a href="vistaProducto.php">
-                                    <div class="d-flex flex-column align-items-center">
-                                        <img src="http://localhost/prueba/PWCI/img/principal/abanico.jpg"
-                                            class="card-img-top fixed-image" alt="...">
-                                        <div class="card-body">
-                                            <div class="row mb-3">
-                                                <div class="col-4">
-                                                    <div class="badge rounded-pill btnColorCard">Abanico</div>
-                                                </div>
-                                                <div class="col-8 text-end">
-                                                    <div class="price-hp"><strong>MXN$350.00</strong></div>
+                <?php 
+                if ($productosMasVendidos !== null){
+                    foreach ($productosMasVendidos as $pmven){
+                        echo '<div class="elemento">
+                            <div class="col-2">
+                                <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+                                    <div class="dropdown">
+                                        <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
+                                            data-bs-toggle="dropdown">
+                                            <span class="heart-icon">&#x2665;</span>
+                                        </button>
+                                        <ul class="dropdown-menu">';
+                                            if ($listasCom !== null){
+                                                foreach ($listasCom as $lista) {
+                                                    echo '<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#agregarProdLmod" onclick="storeListIdAgregar(' . $pmven['id_Producto'] . ',' . $lista['id_Lista'] . ')">' . $lista['nombre'] . '</a></li>';
+                                                }
+                                            } else {
+                                                echo '<li><a class="dropdown-item" href="#">No listas disponibles</a></li>';
+                                            }
+                                            echo '<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                data-bs-target="#crearLista" onclick="storeProductId(' . $pmven['id_Producto'] . ')">Crear lista</a></li>
+                                        </ul>
+                                    </div>
+                                    <a href="../Front/vistaProducto.php?idProductoEn=' . $pmven['id_Producto'] . '">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <img src="data:image/png;base64,' . base64_encode($pmven['img']) . '" class="card-img-top fixed-image" alt="' . $pmven['nombre'] . '">
+                                            <div class="card-body">
+                                                <div class="row mb-3">
+                                                    <div class="col-4">
+                                                        <div class="badge rounded-pill btnColorCard">' . $pmven['nombre'] . '</div>
+                                                    </div>
+                                                    <div class="col-8 text-end">
+                                                        <div class="price-hp"><strong>MXN$' . $pmven['precio'] . '</strong></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+                } else{
+                    echo '<div class="elemento">
+                        <div class="col-2">
+                            <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>No productos encontrados</strong></h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--agrega mas aqui -->
+                    </div>';
+                }
+                ?>
                 </div>
             </div>
             <div class="py-5">
                 <h5 class="letraFuente">Productos nuevos</h5>
                 <div class="carrusel p-5">
-                    <div class="elemento">
-                        <div class="col-2">
-                            <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
-
-                                <div class="dropdown">
-                                    <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
-                                        data-bs-toggle="dropdown">
-                                        <span class="heart-icon">&#x2665;</span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Lista 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Lista 2</a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#crearLista">Crear lista</a></li>
-                                    </ul>
-                                </div>
-                                <a href="vistaProducto.php">
-                                    <div class="d-flex flex-column align-items-center">
-                                        <img src="http://localhost/prueba/PWCI/img/principal/lampara.jpg"
-                                            class="card-img-top fixed-image" alt="...">
-                                        <div class="card-body">
-                                            <div class="row mb-3">
-                                                <div class="col-4">
-                                                    <div class="badge rounded-pill btnColorCard">Lampara cute</div>
-                                                </div>
-                                                <div class="col-8 text-end">
-                                                    <div class="price-hp princPrecio"><strong>MXN$500.00</strong></div>
+                <?php 
+                if ($productosAceptadosFecha !== null){
+                    foreach ($productosAceptadosFecha as $ppfec){
+                        echo '<div class="elemento">
+                            <div class="col-2">
+                                <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+                                    <div class="dropdown">
+                                        <button class="heart-button text-lg-end text-md-end text-sm-end my-0 "
+                                            data-bs-toggle="dropdown">
+                                            <span class="heart-icon">&#x2665;</span>
+                                        </button>
+                                        <ul class="dropdown-menu">';
+                                            if ($listasCom !== null){
+                                                foreach ($listasCom as $lista) {
+                                                    echo '<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#agregarProdLmod" onclick="storeListIdAgregar(' . $ppfec['id_Producto'] . ',' . $lista['id_Lista'] . ')">' . $lista['nombre'] . '</a></li>';
+                                                }
+                                            } else {
+                                                echo '<li><a class="dropdown-item" href="#">No listas disponibles</a></li>';
+                                            }
+                                            echo '<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                data-bs-target="#crearLista" onclick="storeProductId(' . $ppfec['id_Producto'] . ')">Crear lista</a></li>
+                                        </ul>
+                                    </div>
+                                    <a href="../Front/vistaProducto.php?idProductoEn=' . $ppfec['id_Producto'] . '">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <img src="data:image/png;base64,' . base64_encode($ppfec['primera_imagen']) . '" class="card-img-top fixed-image" alt="' . $ppfec['nombre'] . '">
+                                            <div class="card-body">
+                                                <div class="row mb-3">
+                                                    <div class="col-4">
+                                                        <div class="badge rounded-pill btnColorCard">' . $ppfec['nombre'] . '</div>
+                                                    </div>
+                                                    <div class="col-8 text-end">
+                                                        <div class="price-hp"><strong>MXN$' . $ppfec['precio'] . '</strong></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+                } else{
+                    echo '<div class="elemento">
+                        <div class="col-2">
+                            <div class="card h-100 shadow-sm cardColor fixed-card cardPrinc">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>No productos encontrados</strong></h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--agrega mas aqui -->
+                    </div>';
+                }
+                ?>
                 </div>
             </div>
         </div>

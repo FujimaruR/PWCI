@@ -42,6 +42,19 @@ try {
     $listasCom = $stmtSListas->fetchAll(PDO::FETCH_ASSOC);
     $rowListasNCount = $stmtSListas->rowCount();
 
+    $sqlMvendido = "SELECT * FROM vw_prodMvendidos ORDER BY cantidadComprada DESC";
+    $stmtMvendido = $conn->prepare($sqlMvendido);
+    $stmtMvendido->execute();
+
+    $productosMasVendidos = $stmtMvendido->fetchAll(PDO::FETCH_ASSOC);
+
+    $sqlPfecha = "SELECT * FROM vista_producto_aceptado ORDER BY fecha_creacion DESC";
+    $stmtFecha = $conn->prepare($sqlPfecha);
+    $stmtFecha->execute();
+
+    $productosAceptadosFecha = $stmtFecha->fetchAll(PDO::FETCH_ASSOC);
+
+
     if(isset($_POST['confirmBTNagregarL'])){
         $idListaL = trim($_POST['idListaAgregarIDl']);
         $idProdL = trim($_POST['idListaAgregarProd']);

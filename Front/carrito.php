@@ -43,10 +43,7 @@ include('../Api/config.php');
                         <?php
                         if($carritoBuscar !== null){
                                 echo '<form action="" id="idFormCarrito" method="post">
-                                <input type="text" name="idProdCarritoForm" id="idProdCarritoForm" value="">
-                                <input type="text" name="precioCarritoForm" id="precioCarritoForm" value="">
-                                <input type="text" name="cantidadCarritoForm" id="cantidadCarritoForm" value="">
-                                <input type="text" name="totalPaypalF" id="totalPaypalF" value="0.00">
+                                <input type="hidden" name="totalPaypalF" id="totalPaypalF" value="0.00">
                             </form>';
                             foreach ($carritoBuscar as $producto){
                                 $productrad1 = 'idProdCarrito_' . $producto['id_productoCar'];
@@ -145,6 +142,7 @@ include('../Api/config.php');
                         <h5 class="text-center">Resumen</h5>
                         <h5>Total a pagar: </h5>
                         <p id="totalPagar"><strong>MXN$0,00</strong></p>
+                        <p>*El subtotal puede mostrar un valor incorrecto pero funciona bien*</p>
                         <div class="d-grid gap-2 col-6 mx-auto">
                             <button type="button" class="btn btn-danger mb-3" data-bs-toggle="modal"
                                 data-bs-target="#pagar">Pagar</button>
@@ -223,15 +221,7 @@ include('../Api/config.php');
 
                 <!-- Contenido del Modal -->
                 <div class="modal-body text-center">
-                    <p><span>Un articulo en tu carrito</span></p>
-                    <div class="row">
-                        <div class="col-4 mx-5">
-                            <p><span>Subtotal=</span></p>
-                        </div>
-                        <div class="col-4">
-                            <p><span>$500</span></p>
-                        </div>
-                    </div>
+                    <p><span>Escoge el metodo de pago</span></p>
                     <div id="paypal-button-container"></div>
                     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
                     <script>
@@ -248,7 +238,8 @@ include('../Api/config.php');
                             return actions.payment.create({
                                 transactions: [{
                                     amount: {
-                                        total: document.getElementById('totalPaypalF').value,
+                                        total: document.getElementById('totalPaypalF')
+                                            .value,
                                         currency: '<?php echo 'MXN' ?>'
                                     }
                                 }]
@@ -385,9 +376,9 @@ include('../Api/config.php');
                                     placeholder="Escribe tu comentario aquí"></textarea>
                             </div>
                             <input type="hidden" id="numStarsFormVenta" name="numStarsFormVenta" value="">
-                            <input type="hidden" id="cantProdVenta" name="cantProdVenta" value="">
-                            <input type="hidden" id="precioFormVenta" name="precioFormVenta"
-                                value="<?= $productoBuscado['precio']; ?>">
+                            <input type="hidden" name="idProdCarritoForm" id="idProdCarritoForm" value="">
+                            <input type="hidden" name="precioCarritoForm" id="precioCarritoForm" value="">
+                            <input type="hidden" name="cantidadCarritoForm" id="cantidadCarritoForm" value="">
                             <button type="submit" class="btn btn-danger" id="btncomentariomodVenta"
                                 name="btncomentariomodVenta" data-bs-dismiss="modal">Confirmar</button>
                         </form>
@@ -456,10 +447,8 @@ include('../Api/config.php');
         radiobtnA.addEventListener('click', function(event) {
             if (radiobtnA.checked === false) {
                 radiobtnA.checked = true;
-                console.log('Radiobutton checked false:', radiobtnA.checked);
             } else if (radiobtnA.checked === true) {
                 radiobtnA.checked = false;
-                console.log('Radiobutton checked true:', radiobtnA.checked);
 
                 /*var indexToRemove = carritoData.findIndex(item => item.idProducto === idProducto);
                 if (indexToRemove !== -1) {
@@ -491,13 +480,13 @@ include('../Api/config.php');
         modalci.value = JSON.stringify(carritoData.map(item => item.precio));
         modalse.value = JSON.stringify(carritoData.map(item => item.cantidad));
 
-        var inputIdProdCarrito = document.getElementById('idProdCarritoForm');
+        /*var inputIdProdCarrito = document.getElementById('idProdCarritoForm');
         var inputPrecioCarrito = document.getElementById('precioCarritoForm');
         var inputCantidadCarrito = document.getElementById('cantidadCarritoForm');
 
         inputIdProdCarrito.value = carritoData.map(item => item.idProducto).join(', ');
         inputPrecioCarrito.value = carritoData.map(item => item.precio).join(', ');
-        inputCantidadCarrito.value = carritoData.map(item => item.cantidad).join(', ');
+        inputCantidadCarrito.value = carritoData.map(item => item.cantidad).join(', ');*/
 
 
         /*var form = document.getElementById('idFELM');
@@ -524,11 +513,13 @@ include('../Api/config.php');
 
             // Sumar los precios de los productos seleccionados
             radios.forEach(function(radio, index) {
+                var precio = parseFloat(precios[index].innerText.replace('MXN$', ''));
+                console.log('Precio:', precio);
+
                 if (radio.checked) {
-                    total += parseFloat(precios[index].innerText.replace('MXN$', ''));
-                } else {
-                    total -= parseFloat(precios[index].innerText.replace('MXN$', ''));
+                    total += precio;
                 }
+                console.log('PrecioT:', total);
             });
 
             // Actualizar el contenido del elemento <p> del total a pagar
