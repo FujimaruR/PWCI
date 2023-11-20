@@ -130,6 +130,25 @@ try {
                 }
             }
         }
+        if(isset($_POST['confirmBTNagregarL'])){
+            $idListaL = trim($_POST['idListaAgregarIDl']);
+            $idProdL = trim($_POST['idListaAgregarProd']);
+    
+            $consultaInsertProdL = "INSERT INTO tb_listasprod (IDlista, IDproductoLista) 
+            VALUES (:idLIS, :idPROD)";
+            
+            $stmtIprodL = $conn->prepare($consultaInsertProdL);
+            $stmtIprodL->bindParam(':idLIS', $idListaL);
+            $stmtIprodL->bindParam(':idPROD', $idProdL);
+    
+            if($stmtIprodL->execute()){
+                header("Location: ../Front/paginaPrincipal.php");
+                exit(); 
+            } else {
+                header("Location: ../Front/paginaPrincipal.php?error=Error%20en%20la%20actualizacion%20de%20la%20lista.");
+                exit();
+            }
+        }
     }
 } catch (PDOException $e) {
     echo "Error en la base de datos: " . $e->getMessage();
