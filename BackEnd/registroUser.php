@@ -75,6 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 if($stmtD->execute()){
                     $_SESSION['usuario'] = $email;
+                    $_SESSION['usuarioId'] = $conn->lastInsertId();
                     header("Location: ../Front/paginaPrincipal.php");
                     exit(); 
                 } else {
