@@ -197,7 +197,7 @@ include("../BackEnd/showSeller.php");
                                     <p class="izquierda">Mes y año de la venta:</p>
                                     <p class="derecha">'.date('m/Y', strtotime($consultag['fechaCompra'])).'</p>
                                     <p class="izquierda">Categoria:</p>
-                                    <p class="derecha">'.$categoriasString.'</p>
+                                    <p class="derecha">'.$categoriasStringr.'</p>
                                     <p class="izquierda">Ventas:</p>
                                     <p class="derecha">'.$consultag['cantidadComprada'].' piezas</p>
                                     <p>Producto agrupado</p>
