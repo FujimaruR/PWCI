@@ -5,10 +5,8 @@ try {
         $email = $_SESSION['usuario'];
         $id_seller = $_SESSION['usuarioId'];
     } else {
-        $email = "lucero@gmail.com";
-        $id_seller = 22;
-        /*header("Location: ../Front/login.php");
-        exit();*/ 
+        header("Location: ../Front/login.php");
+        exit(); 
     }
 
     $consulta = "SELECT * FROM tb_usuarios 
@@ -48,10 +46,13 @@ try {
         $stmtUltimoMensaje = $conn->prepare($consultaUltimoMensaje);
         $stmtUltimoMensaje->bindParam(':id_conversacion', $id_conversacion);
         $stmtUltimoMensaje->execute();
-        $ultimoMensaje = $stmtUltimoMensaje->fetch(PDO::FETCH_ASSOC);
 
-        $conversacion['ultimo_mensaje'] = $ultimoMensaje['mensaje'];
-        $conversacionesConMensajes[] = $conversacion;
+        if ($stmtUltimoMensaje->rowCount() > 0){
+            $ultimoMensaje = $stmtUltimoMensaje->fetch(PDO::FETCH_ASSOC);
+
+            $conversacion['ultimo_mensaje'] = $ultimoMensaje['mensaje'];
+            $conversacionesConMensajes[] = $conversacion;
+        }
     }    
 } catch (PDOException $e) {
     echo "Error en la base de datos: " . $e->getMessage();

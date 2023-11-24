@@ -146,14 +146,19 @@ include('../Api/config.php');
                                     <a class="btn btnHover" data-bs-toggle="modal" data-bs-target="#agregarProdCarrito" href="#" role="button"
                                         style="background-color: #7dcf72;color:aliceblue;">&#128722;</a>';
                                 } else {
-                                    if($usuarioVcotizar['permiso'] === 1){
-                                        echo '<button type="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
-                                        data-bs-toggle="modal" data-bs-target="#comprar" onclick="storeCantidadProd(document.getElementById('; echo "'cantCompV'"; echo ').value)">Comprar</button>
-                                    <a class="btn btnHover" data-bs-toggle="modal" data-bs-target="#agregarProdCarrito" href="#" role="button"
-                                        style="background-color: #7dcf72;color:aliceblue;">&#128722;</a>';
+                                    if ($usuarioVcotizar !== null){
+                                        if($usuarioVcotizar['permiso'] === 1){
+                                            echo '<button type="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
+                                            data-bs-toggle="modal" data-bs-target="#comprar" onclick="storeCantidadProd(document.getElementById('; echo "'cantCompV'"; echo ').value)">Comprar</button>
+                                        <a class="btn btnHover" data-bs-toggle="modal" data-bs-target="#agregarProdCarrito" href="#" role="button"
+                                            style="background-color: #7dcf72;color:aliceblue;">&#128722;</a>';
+                                        } else {
+                                            echo '<a role="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
+                                            href="../BackEnd/registrarMensaje.php?vendedor=' . $productoBuscado['id_usuarioProd'] . '">Cotizar</a>';
+                                        }
                                     } else {
                                         echo '<a role="button" class="btn btnColorCard btnHover " style="color:aliceblue;"
-                                        href="../Front/mensajes_usuario.php">Cotizar</a>';
+                                            href="../BackEnd/registrarMensaje.php?vendedor=' . $productoBuscado['id_usuarioProd'] . '">Cotizar</a>';
                                     }
                                 }
                                 ?>

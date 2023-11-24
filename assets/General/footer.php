@@ -29,7 +29,7 @@
 
                 <ul class="list-unstyled">
                     <li class="my-3">Materia</li>
-                    <li class="my-2">Programación web de capa intermedia</li>
+                    <li class="my-2">Base de datos multimedia</li>
                 </ul>
             </div>
         </div>

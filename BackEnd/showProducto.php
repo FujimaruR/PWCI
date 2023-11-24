@@ -88,7 +88,11 @@ try {
         $stmtVcoti->bindParam(':idprocot', $idProductoEn);
         $stmtVcoti->bindParam(':idusercot', $id_seller);
         $stmtVcoti->execute();
-        $usuarioVcotizar = $stmtVcoti->fetch(PDO::FETCH_ASSOC);
+        if ($stmtVcoti->rowCount() > 0){
+            $usuarioVcotizar = $stmtVcoti->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $usuarioVcotizar = null;
+        }
     } else {
         echo "ID del producto no proporcionado.";
     }
