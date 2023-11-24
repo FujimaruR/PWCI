@@ -11,8 +11,8 @@
             <div class="col-md-3 col-lg-3">
 
                 <ul class="list-unstyled">
-                    <li class="my-2">1975922</li>
-                    <li class="my-2">Lucero Jaqueline Mendoza Alejandro</li>
+                    <li class="my-2">1937873</li>
+                    <li class="my-2">Aymée Álvarez Villanueva</li>
                 </ul>
             </div>
 
