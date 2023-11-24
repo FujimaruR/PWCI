@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/prueba/PWCI/BackEnd/conexion/cn_db.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/BackEnd/conexion/cn_db.php');
 try {
     if(isset($_GET['idProductoEn'])){
         $idProductoEn = $_GET['idProductoEn'];

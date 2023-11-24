@@ -1,6 +1,6 @@
 <?php
 session_start();
-include($_SERVER['DOCUMENT_ROOT'] . '/prueba/PWCI/BackEnd/searchAdminProd.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/BackEnd/searchAdminProd.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
